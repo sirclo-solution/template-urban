@@ -1,0 +1,249 @@
+@import '../utils/_variables.scss';
+@import './Buttons.module.scss';
+
+.container
+{
+  @include position(sticky, 16px);
+  margin-bottom: 42px;
+}
+
+.containerRelative
+{
+  @include position(relative);
+}
+
+.header
+{
+  @include flex(column, center, center);
+  border-bottom: 1px solid $color_elements_line_darker;
+  padding-bottom: 12px;
+  margin: 0 0 24px;
+}
+
+.voucherButton
+{
+  @include flex(row, center, flex-start);
+  position: relative;
+  border: 1px solid $color_elements_placeholder;
+  margin-bottom: 12px;
+  border-radius: 2px;
+  height: 60px;
+  padding: 0 20px;
+  width: 100%;
+  cursor: pointer;
+  background: $color_white !important;
+
+  &::after
+  {
+    @include flex(row, center, center);
+    content: "";
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    margin-top: 5px;
+    right: 20px;
+    background-size: 10px auto;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.00305 3.0605L1.5478 9.51575L0.487305 8.45525L6.9418 2H1.25305V0.5H9.50305V8.75H8.00305V3.0605Z' fill='%23666666'/%3E%3C/svg%3E%0A");  }
+}
+
+.pointEarnedBanner
+{
+  @include SmallSmall;
+  background-color: $color_elements;
+  border-radius: 2px;
+  padding: 8px 12px;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.pointsButton
+{
+  @extend .voucherButton;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.voucherText,
+.pointsText
+{
+  @include typographyBuilder(400, 14, 18);
+  margin-left: 16px;
+  color: $color_placeholder;
+}
+
+.voucherIcon,
+.pointsIcon,
+.voucherButtonRemove,
+.voucherAppliedIcon
+{
+  margin-bottom: 5px;
+  z-index: 2;
+}
+
+.voucherButtonRemove,
+{
+  @include position(absolute, auto, 20px);
+  color: $color_error;
+}
+
+.subTotal
+{
+  @include RegulerSemiBold;
+  @include flex(row, center, space-between);
+  background: $color_elements;
+  border: 1px solid $color_elements_line_darker;
+  border-top: none;
+  margin-bottom: 24px;
+  border-radius: 0 0 2px 2px;
+  padding: 12px 18px;
+}
+
+.continueShopping
+{
+  display: none;
+}
+
+.footer
+{
+  border-top: none;
+  padding: 0;
+  width: 100%;
+}
+
+.submitButton
+{
+  @extend .btn;
+  @extend .btn_animated;
+  @extend .btn_primary;
+  outline: none;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  height: 46px;
+}
+
+.voucherButtonApplied
+{
+  @extend .voucherButton;
+  position: relative;
+
+  & > div:last-child
+  {
+    @include position(absolute, auto, 20px);
+    color: $color_error;
+  }
+
+  &::after
+  {
+    background-image: none;    
+  }
+}
+
+.voucherRemoveIcon
+{
+  @include flex(row, center, center);
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  width: 20px;
+  height: 20px;
+  background-size: 20px auto;
+  background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.75 6.81984L17.1802 5.25L12 10.4302L6.81984 5.25L5.25 6.81984L10.4302 12L5.25 17.1802L6.81984 18.75L12 13.5698L17.1802 18.75L18.75 17.1802L13.5698 12L18.75 6.81984Z' fill='%23FA3C3C' fill-opacity='0.9'/%3E%3C/svg%3E%0A");
+}
+
+.voucherAppliedText
+{
+  @extend .voucherText;
+  @include RegulerSemiBold;
+  @include truncate(1);
+  max-width: 60%;
+  color: $color_black;
+
+  &::after
+  {
+    content: "Poin"
+  }
+}
+
+.registerNow
+{
+  @include SmallSemiBold;
+  color: $color_blue;
+  text-align: right;
+  margin-top: 24px;
+  cursor: pointer;
+
+  &:hover
+  {
+    opacity: .7;
+  }
+}
+
+@media screen and (max-width: #{$breakpoint_max_md}) 
+{
+  .container
+  {
+    position: relative;
+  }
+
+  .subTotal
+  {
+    @include flex(column, flex-start, center);
+    @include position(fixed, auto, 0, 0, 0);
+    border-top: $color_elements_placeholder;
+    margin-bottom: 0;
+    height: 78px;
+    z-index: 10;
+    background-color: $color_white;
+    border-radius: none;
+  }
+
+  .header
+  {
+    padding: 24px 0 0;
+    margin-bottom: 6px;
+    border-top: 1px solid $color_elements_line_darker;
+    border-bottom: none;
+
+  }
+
+  .subTotalText,
+  .subTotalPrice
+  {
+    width: 50%;
+  }
+
+  .subTotalPrice
+  {
+    @include RegulerSemiBold;
+  }
+
+  .subTotalText
+  {
+    @include SmallSmall;
+  }
+
+  .submitButton
+  {
+    padding: 0 18px;
+  }
+
+  .popupErrorContainer
+  {
+    width: 100%;
+  }
+    
+  .footer
+  {
+    @include flex(row, center, flex-end);
+    position: fixed;
+    height: 78px;
+    padding: 0;
+    bottom: 0;
+    right: 16px;
+    border: none;
+    z-index: 11;
+    width: 40%;
+  }
+}

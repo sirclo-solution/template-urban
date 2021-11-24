@@ -1,0 +1,163 @@
+.scrollbar
+{
+  $scrollbar_color: #F7F7F7;
+  $scrollbar_color_hover: #EEE;
+  $scrollbar_color_white: #FFF;
+
+  &_main
+  {
+    &::-webkit-scrollbar 
+    {
+      width: 7px;
+      height: 7px;
+    }
+    
+    &::-webkit-scrollbar-corner
+    {
+      width: 7px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track
+    {
+      background: transparent;
+    }
+     
+    /* Handle */
+    &::-webkit-scrollbar-thumb 
+    {
+      background: $scrollbar_color; 
+      border-radius: 4px;
+      cursor: pointer; 
+    
+      &:hover 
+      {
+        background: $scrollbar_color_hover;
+      }
+    }
+
+     // * for mozilla
+    &::-moz-scrollbar
+    {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-moz-scrollbar-corner
+    {
+      width: 6px;
+    }
+
+    /* Track */
+    &::-moz-scrollbar-track 
+    {
+      background: transparent;
+    }
+    
+    /* Handle */
+    &::-moz-scrollbar-thumb 
+    {
+      background: $scrollbar_color; 
+      border-radius: 4px;
+      cursor: pointer; 
+    }
+
+    /* Handle on hover */
+    &::-moz-scrollbar-thumb:hover
+    {
+      background: $scrollbar_color_hover; 
+    }
+  }
+
+  &_secondary
+  {
+    &::-webkit-scrollbar 
+    {
+      width: 7px;
+      height: 7px;
+    }
+    
+    &::-webkit-scrollbar-corner
+    {
+      width: 7px;
+    }
+    
+    /* Track */
+    &::-webkit-scrollbar-track
+    {
+      background: $color_elements_line_darker;
+    }
+     
+    /* Handle */
+    &::-webkit-scrollbar-thumb 
+    {
+      background: $color_text_secondary; 
+      border-radius: 4px;
+      cursor: pointer; 
+      opacity: .8;
+      
+      &:hover 
+      {
+        opacity: 1;
+      }
+    }
+
+    // * for mozilla
+    &::-moz-scrollbar
+    {
+      width: 6px;
+      height: 6px;
+    }
+
+    &::-moz-scrollbar-corner
+    {
+      width: 6px;
+    }
+
+    /* Track */
+    &::-moz-scrollbar-track 
+    {
+      background: $color_elements_line_darker;
+    }
+    
+    /* Handle */
+    &::-moz-scrollbar-thumb 
+    {
+      background: $color_text_secondary; 
+      border-radius: 4px;
+      cursor: pointer; 
+      opacity: .8;
+
+      &:hover
+      {
+        opacity: 1;
+      }
+    }
+  }
+
+  &_whiteTrack
+  {
+    &::-webkit-scrollbar-track
+    {
+      background: $scrollbar_color_white;
+    }
+
+    &::-moz-scrollbar-track 
+    {
+      background: $scrollbar_color_white;
+    }
+  }
+  &_none
+  {
+    &::-webkit-scrollbar
+    {
+      display: none;
+    }
+    
+    &::-moz-scrollbar
+    {
+      display: none;
+    }
+  }
+
+}

@@ -1,0 +1,41 @@
+@import '../utils/_variables.scss';
+
+.container
+{
+  position: relative
+}
+
+.bannerCarousel
+{
+  &_header {
+    flex: 0 0 100%;
+    text-align: center;
+    cursor: pointer;
+  }
+
+  &_link {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  &_image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  &_placeholder
+  {
+    height: 100vh;
+  }
+}
+
+
+@media (max-width: #{$breakpoint_min_sm}) 
+{
+  .container
+  {
+    margin-top: 70px;
+  }
+}

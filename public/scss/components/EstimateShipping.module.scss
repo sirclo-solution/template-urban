@@ -1,0 +1,180 @@
+@import '../utils/_variables.scss';
+@import './Popup.module.scss';
+
+.estimateShippingWrapper
+{
+  @include fixedWidth(100%);
+  position: relative;
+}
+
+.estimateShippingTitle
+{
+  @include SmallSemiBold;
+  margin-bottom: 8px;
+}
+
+.estimateShippingLogo
+{
+  @include position(absolute, auto, 36px);
+  @include flex(row);
+  @include fixedWidth(34px);
+  
+  &::before
+  {
+    content: "";
+    @include fixedSize(10px);
+    @include position(absolute, auto, -22px);
+    display: block;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'%3E%3Cpath d='M3.78134 5.00001L0.481339 1.70001L1.424 0.757339L5.66667 5.00001L1.424 9.24267L0.481339 8.30001L3.78134 5.00001Z' fill='%23222222'/%3E%3C/svg%3E");
+  }
+}
+
+.estimateShippingLogoImg
+{
+  @include fixedWidth(34px);
+  @include fixedHeight(24px);
+}
+
+.estimateShippingDetail
+{
+  @include fixedHeight(58px);
+  @include flex(row, center, flex-start);
+  position: relative;
+  padding: 0 12px;
+  border-radius: 2px;
+  background-color: $color_elements;
+
+  &:hover
+  {
+    opacity: .7;
+  }
+}
+
+.estimateShippingShowCourier
+{
+  @include position(absolute, 0, 0, 0, 0);
+  cursor: pointer;
+  font-size: 0;
+}
+
+.estimateShippingCost
+{
+  @include SmallSemiBold;
+}
+
+.estimateShippingPopupContainer
+{
+  @extend .popup_overlay;
+}
+
+.estimateShippingPopupContent
+{
+  @extend .popup_container;
+  @include flex(column, flex-start, flex-start);
+  padding: 16px 16px 0;
+  border-top: 4px solid $color_blue;
+  width: 340px;
+  max-width: 100%;
+  border-radius: 2px,
+}
+
+.estimateShippingPopupTitle
+{
+  @include RegulerSemiBold;
+}
+
+.estimateShippingPopupButtonClose
+{
+  svg
+  {
+    @include position(absolute, 20px, 15px);
+    @include fixedSize(16px);
+    cursor: pointer;
+  }
+}
+
+.estimateShippingPopupBody
+{
+  padding: 0 12px;
+  background: $color_elements;
+  border: 1px solid $color_elements_line_darker;
+  margin: 10px 0 4px;
+  border-radius: 2px;
+}
+
+.estimateShippingPopupLineInfo
+{
+  @extend .grid;
+  @include gap-x-(42px);
+  grid-template-columns: 50px auto;
+  padding: 12px 0;
+  border-bottom: 1px solid $color_elements_line;
+
+  &:last-child
+  {
+    @include grid-(1);
+    border-bottom: none;
+
+    [class*="estimateShippingPopupLabel"]
+    {
+      margin-bottom: 8px;
+    }
+  }
+}
+
+.estimateShippingPopupLabel
+{
+  @include SmallSemiBold;
+  color: $color_text_secondary;
+}
+
+.estimateShippingPopupValue
+{
+  @include SmallSmall;
+}
+
+.estimateShippingPopupProvider
+{
+  @extend .scrollbar_main;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.estimateShippingPopupLineProvider
+{
+  @include flex(row, center, space-between);
+  padding: 12px;
+  margin-right: 8px;
+  border-bottom: 1px solid $color_elements_line;
+}
+
+.estimateShippingPopupProviderImg
+{
+  @include grid-start-(1, 1);
+  @include row-span-(2);
+  @include fixedWidth(34px);
+
+  img
+  {
+    @include fixedWidth(34px);
+  }
+}
+
+.estimateShippingPopupProviderLabel
+{
+  @include SmallSemiBold;
+  margin-left: 12px;
+  flex-grow: 1;
+
+  &:last-child
+  {
+    border-bottom: 0;
+  }
+}
+
+.estimateShippingPopupProviderValue
+{
+  @include SmallSmall;
+}

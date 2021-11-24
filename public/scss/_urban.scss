@@ -1,0 +1,47 @@
+/**
+ * _urban.scss
+ * Global css styles
+ */
+@import './utils/_variables.scss';
+@import './components/ProgressCircle.scss';
+@import './components/LoaderPage.scss';
+@import './utils/_datePicker.scss';
+@import './utils/_calendar.scss';
+
+body
+{
+  color: $color_black;
+}
+
+.container
+{
+  padding: 0 42px 0;
+}
+
+p
+{
+  margin-bottom: 0
+}
+
+h1
+{
+  @include typographyBuilder(700, 40, 56);
+}
+
+h2
+{
+  @include typographyBuilder(700, 32, 48);
+}
+
+h3
+{
+  @include typographyBuilder(700, 28, 40);
+}
+
+@media (max-width: #{$breakpoint_min_sm}) 
+{
+  .container
+  {
+    padding: 0 18px;
+  }
+}

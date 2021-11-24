@@ -1,0 +1,293 @@
+@import '../utils/_variables.scss';
+@import  '../components/Buttons.module.scss';
+@import '../components/Form.module.scss';
+
+.paymentNotif
+{
+  &_container
+  {
+    @include flex(row, center, center);
+  }
+
+  &_inner
+  {
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    margin-top: 24px;
+
+    @media screen and (max-width: 576px) {
+      width: 100%;
+    }
+
+    & > div:first-child
+    {
+      color: $color_text_secondary;
+      text-align: center;
+    }
+
+    &_title
+    { 
+      & > span
+      {
+        font-size: 14px;
+        color: $color_elements_line_darker;
+      }
+    }
+  }
+
+  &_form
+  {
+    margin-top: 24px;
+    order: 3;
+  }
+
+  &_inputContainer
+  {
+    position: relative;
+    margin-bottom: 12px;
+  
+    & > label
+    {
+      @include SmallSmall;
+      @include position(absolute, 5px, auto, auto, 16px);
+      color: $color_text_secondary;
+      z-index: 2;
+    }
+
+    &:first-child
+    {
+      &::after
+      {
+        content: "";
+        display: block;
+        @include position(absolute, 27px, 5px, auto, auto);
+        @include fixedSize(25px);
+        background: $color_white;
+        background-repeat: no-repeat;
+        pointer-events: none;
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M5.00001 3.879L8.71251 0.166504L9.77301 1.227L5.00001 6L0.227005 1.227L1.28751 0.166504L5.00001 3.879Z' fill='black'/%3E%3C/svg%3E");
+      
+        &:hover
+        {
+          opacity: .7;
+        }
+      }
+    }
+  }
+
+  &_select,
+  &_input
+  {
+    @extend .form_input;
+    @include fixedHeight(60px);
+    padding-left: 10px;
+    padding-top: 10px;
+    position: relative;
+  }
+
+  &_input
+  {
+    padding-left: 120px !important;
+    padding-top: 30px !important;
+  }
+
+  &_info 
+  {
+    @include SmallSmall;
+    color: $color_text_secondary;
+    text-align: center;
+    padding: 0px 30px;
+  }
+}
+
+.paymentConfirmation
+{
+  &_buttonConfirm 
+  {
+    @extend .btn_primary;
+    @include fixedHeight(52px);
+    width: 100%;
+    margin-top: 17px;
+  }
+
+  &_label 
+  {
+    color: $color_elements_line;
+  
+    span 
+    {
+      margin-left: 8px;
+    }
+  }
+
+  &_detailContainer 
+  {
+    background: rgba(251, 192, 45, 0.1);
+    margin-top: 24px;
+    border-radius: 2px;
+  }
+
+  &_detailHeader 
+  {
+    background: $color_elements_line_darker;
+    padding: 16px;
+    border-radius: 2px 2px 0 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &_detailTitle 
+  {
+    @include SmallSmall;
+    color: $color_text_secondary;
+
+    span 
+    {
+      @include SmallSemiBold;
+      color: $color_black;
+      display: flex;
+      font-size: 15px;
+    }
+  }
+
+  &_detailStatus 
+  {
+    @include ExtraSmallReguler;
+    margin: auto 0px;
+    height: auto;
+    color: $color_white;
+    background: $color_elements_line_darker;
+    padding: 5px 10px;
+    border-radius: 20px;
+  }
+
+  &_detailContent 
+  {
+    padding: 16px;
+    background: $color_elements;
+    border-radius: 0 0 2px 2px;
+  }
+
+  &_detailHeaderDropdown 
+  {
+    @include flex(row, center, space-between);
+  }
+
+  &_detailTotalAmount 
+  {
+    @include SmallSmall;
+    color: $color_text_secondary;
+
+    span 
+    {
+      @include RegulerSemiBold;
+      color: $color_black;
+      display: flex;
+    }
+  }
+
+  &_detailItem
+  {
+    @include flex(row, center, flex-start);
+    display: flex;
+    margin-top: 12px;
+  }
+
+  &_detailItemImg 
+  {
+    img 
+    {
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  &_detailItemLabel 
+  {
+    @include SmallSmall;
+    color: $color_black;
+    width: 70%;
+    padding-left: 12px;
+
+    span 
+    {
+      color: $color_text_secondary;
+      display: flex;
+    }
+  }
+  &_detailItemPrice 
+  {
+    @include SmallSmall; 
+    width: 30%;
+    text-align: right;
+  }
+
+  &_detailDropdown 
+  {
+    @include SmallSmall;
+    cursor: pointer;
+    color: $color_blue;
+
+    &:hover
+    {
+      opacity: .7;
+    }
+
+    svg
+    {
+      @include fixedSize(10px);
+      margin-left: 6px;
+    }
+  }
+
+  &_detailBodyDropdown
+  {
+    border-top: 1px solid $color_elements_line_darker;
+    margin-top: 12px;
+  }
+
+  &_detailPriceBreakdown, 
+  &_detailTotalField
+  {
+    border-top: 1px dashed $color_elements_line_darker;
+    margin: 10px 0px 0px 0px;
+    padding: 10px 0px 0px 0px;
+    line-height: 26px;
+  }
+
+  &_detailField,
+  &_detailTotalField 
+  {
+    @include SmallSmall;
+    @include flex(row, center, space-between);
+    margin-bottom: 8px;
+  }
+
+  &_detailTotalField
+  {
+    @include SmallSemiBold;
+  }
+
+  &_summaryTotalContainer
+  {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+
+  &_summaryItemTitle
+  {
+    @include SmallSmall;
+    display: block;
+    color: $color_text_secondary;
+  }
+  
+  &_summaryItemPrice
+  {
+    @include RegulerReguler;
+    color: $color_error;
+    margin-top: 6px;
+  }
+}

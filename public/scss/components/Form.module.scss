@@ -1,0 +1,164 @@
+@import '../utils/variables';
+@import '../components/Icons.module.scss';
+
+.form 
+{
+  &_control
+  {
+    position: relative;
+    margin-bottom: 20px;
+
+    & > div[class*="css-2b097c-container"]
+    {
+      @extend .form_input;
+      border: none !important;
+      padding: 0 !important;
+
+      & div
+      {
+        &[class*="css-yk16xz-control"]
+        {
+          height: 50px !important;
+          border-color: $color_grey !important;
+        }
+  
+        &[class*="css-1pahdxg-control"]
+        {
+          height: 50px !important;
+          border-color: $color_grey !important;
+          box-shadow: none;
+        }
+  
+        &[class*="css-26l3qy-menu"]
+        {
+          div
+          {
+            @extend .scrollbar_main;
+          }
+        }
+      }
+    }
+  }
+  
+  &_title
+  {
+    @include fontPrimary(800);
+    @include fontSize(20);
+    @include lineHeight(26);
+  }
+
+  &_label
+  {
+    @include fontPrimary();
+    @include fontSize(14);
+    @include lineHeight(18);
+    margin-bottom: 10px;
+
+    span
+    {
+      color: $color_red;
+      margin-left: 4px;
+    }
+  }
+
+  &_input
+  {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 0 12px;
+    border-radius: 2px;
+    background-color: $color_white;
+    border: 1px solid $color_elements_placeholder;
+    
+    @include fontPrimary();
+    @include fontSize(14);
+    @include lineHeight(18);
+    
+    &:focus
+    {
+      outline: 0;
+      box-shadow: none;
+      border: 1px solid $color_black;
+    }
+
+    &::placeholder
+    {
+      color: $color_light_black;
+    }
+
+    &[rows]
+    {
+      min-height: 140px;
+    }
+
+    &[type="file"]
+    {
+      @include typographyBuilder(400, 14, 14);
+      position: relative;
+      display: flex;
+      align-items: center;
+
+      &::-webkit-file-upload-button
+      {
+        position: absolute;
+        top: 65%;
+        left: 16px;
+        transform: translate(0, -50%);
+        border-radius: 2px;
+        border: none;
+        cursor: pointer;
+        background: linear-gradient(180deg, $color_light 0%, $color_light_low  100%);
+        padding: 2px 12px;
+        @include typographyBuilder(400, 14, 18);
+        color: $color_light_black;
+
+        &:active,
+        &:focus
+        {
+          outline: 0;
+          box-shadow: none;
+        }
+      } 
+    }
+  }
+  
+  &_select
+  {
+    @extend .form_input;
+    @extend .minimalicon;
+    @extend .minimalicon_chevronDown;
+    @extend .minimalicon_12;
+    @include flex(row, center, flex-start);
+    @include fixedWidth(100%);
+
+    background-position: calc(100% - 16px) center;
+    appearance: none;
+    outline: none;
+    text-align: left;
+
+    &::-ms-expand
+    {
+      display: none;
+    }
+  }
+
+  &_inputIcon
+  {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    font-size: 16px;
+    color: $color_black;
+
+    &:focus
+    {
+      outline: 0;
+      box-shadow: none;
+      border:none;
+    }
+  }
+}

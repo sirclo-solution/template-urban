@@ -1,0 +1,29 @@
+@import '../utils/_variables.scss';
+
+.socialShareParentDiv
+{
+  @include flex(row, center, space-between);
+  margin-top: 24px;
+  padding: 31px 0;
+  border-top: 1px solid $color_elements_line_darker;
+
+  p
+  {
+    @include SmallSemiBold;
+  }
+}
+
+.socialShareItem
+{
+  color: $color_placeholder;
+
+  svg
+  {
+    margin-left: 15px;
+
+    &:hover
+    {
+      opacity: .7;
+    }
+  }
+}

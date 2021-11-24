@@ -1,0 +1,142 @@
+@import '../utils/_variables.scss';
+@import '../components/Buttons.module.scss';
+@import '../components/Form.module.scss';
+
+.section
+{
+  @extend .grid;
+  @include grid-(3);
+  @include gap-x-(24px);
+  margin: 24px auto 100px;
+}
+
+.placeOrder
+{
+  @include col-span-(2);
+}
+
+.signupLabel,
+.shippingCheckboxLabel
+{
+  @include RegulerReguler;
+  margin-left: 12px;
+}
+
+.form
+{
+  @include fixedWidth(100%);
+}
+
+.formGroup
+{
+  position: relative;
+  margin-bottom: 12px;
+  
+  label
+  {
+    @include position(absolute, 8px, auto, auto, 16px);
+    @include SmallSmall;
+    color: $color_text_secondary;
+    z-index: 2;
+
+    & > span
+    {
+      color: $color_red_other;
+    }
+  }
+
+  [class^=" css-"]
+  {
+    &[class$="-placeholder"],
+    &[class$="-Placeholder"],
+    &[class$="-6us33n"]
+    {
+      @include SmallSmall;
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+  }
+
+}
+
+.input
+{
+  @extend .form_input;
+  padding: 18px 0 0 16px;
+
+  &[type="number"]
+  {
+    @include removeArrowsFromInput();
+  }
+}
+
+.billingAddressContainer
+{
+  @include flex(column-reverse, flex-start, flex-start);
+  padding-top: 44px;
+  position: relative;
+}
+
+
+.loginLabel
+{
+  @include position(absolute, 0, 0, 32, 0);
+  @include fixedWidth(100%);
+  @include SmallSemiBold;
+  height: 32px;
+  padding: 8px 0;
+  text-align: center;
+  background: $color_elements;
+  border: 1px solid $color_elements_line_darker;
+  border-radius: 2px;
+
+  span
+  {
+    margin-left: 4px;
+    color: $color_blue !important;
+  }
+}
+
+.submitButton
+{
+  @extend .btn_primary;
+  @include fixedHeight(52px);
+  @include fixedWidth(340px);
+  margin-top: 12px;
+}
+
+.orderSummaryBoxContainer
+{
+  @include fixedWidth(100%);
+}
+
+.passwordViewButton
+{
+  @include position(absolute, 20px, 10px);
+  @extend .btn_transparent;
+  padding: 0;
+  width: fit-content;
+}
+
+.placeholderList
+{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+
+@media screen and (max-width: #{$breakpoint_max_md}) 
+{
+  .section
+  {
+    @include grid-(1);
+    @include gap-x-(0px);
+    @include gap-y-(24px);
+  }
+
+  .submitButton
+  {
+    @include fixedWidth(100%);
+  }
+}

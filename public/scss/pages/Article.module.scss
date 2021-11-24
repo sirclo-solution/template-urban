@@ -1,0 +1,37 @@
+@import '../utils/variables';
+@import './Blog.module.scss';
+
+.article
+{
+  @extend .single_content;
+}
+
+.category
+{
+  &_item
+  {
+    @include fixedWidth(100%);
+
+    & > a
+    {
+      @extend .category_link;
+    }
+  }
+}
+
+@media (max-width: #{$breakpoint_max_md})
+{
+  .sidebar
+  {
+    &_item
+    {
+      &:first-child,
+      &:first-of-type
+      {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: solid 1px $color_elements_line_darker;
+      }
+    }
+  }
+}

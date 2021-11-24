@@ -1,0 +1,35 @@
+const locale = {
+  "testimonial": {
+    "addTestimonial": "Add New Testimonial",
+    "addTestimonialPopupTitle": "Add your testimonial",
+    "createError": "Something went wrong! Create testimonial failed!",
+    "createSuccess": "Create testimonial success!",
+    "inputAuthor": "Full Name",
+    "inputAuthorPlaceholder": "Eg. John Doe",
+    "inputCompany": "Company",
+    "inputCompanyPlaceholder": "Eg. SIRCLO",
+    "inputContent": "Testimonial",
+    "inputContentPlaceholder": "Testimonial",
+    "inputEmail": "Email",
+    "inputEmailPlaceholder": "Eg. myemail@gmail.com",
+    "inputImage": "IMAGE (MAX.SIZE 2MB)",
+    "inputTitle": "Title",
+    "inputTitlePlaceholder": "Title",
+    "isEmpty": "Testimonials not available",
+    "isEmptyDesc": "Be the first to write a testimonial for us",
+    "isEmptyProductDetail": "Be the first to write a review",
+    "moreReview": "More Review",
+    "no": "No",
+    "publishTestimonial": "May we publish your testimonial on our website?",
+    "submitBtn": "SUBMIT TESTIMONIAL",
+    "successUpload": "Upload image success",
+    "testimonialsFromOurLoyalCustomers": "testimonials from our loyal customers",
+    "title": "Testimonial",
+    "weHave": "We have as",
+    "writeReview": "Write a Review",
+    "writeReviewDesc": "How is the quality of this product?",
+    "yes": "Yes"
+  },
+}
+
+export default locale
