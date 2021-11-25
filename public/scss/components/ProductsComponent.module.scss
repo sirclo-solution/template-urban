@@ -1,0 +1,251 @@
+@import '../utils/variables';
+@import './Products.module.scss';
+@import './ProductSort.module.scss';
+@import './Buttons.module.scss';
+
+.productsComponent
+{
+  position: relative;
+  margin-bottom: 20px;
+  width: 100%;
+  padding-top: 42px;
+
+  &_lastSection
+  {
+    margin-bottom: 70px !important;
+  }
+
+  &_grid
+  {
+    @extend .grid;
+    @include grid-(4);
+    @include gap-x-(24px);
+    @include gap-y-(24px);
+    padding: 16px 0;
+    margin-top: 20px;
+  }
+
+  &_gridTree
+  {
+    @include grid-(3);
+    @include gap-x-(12px);
+    @include gap-y-(13px);
+  }
+
+  &_overflow
+  {
+    overflow-y: auto;
+    @extend .scrollbar_none;
+  }
+  
+  &_flexNoWrap
+  {
+    padding: 23px 12px 26px 16px;
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-wrap: nowrap;
+
+    & [class*="products_productContainer"]
+    {
+      &:not(:last-child)
+      {
+        margin-right: 24px;
+      }
+    }
+
+    & [class*="products_productImage"]
+    {
+      max-width: 250px;
+      width: 250px;
+    }
+  }
+  
+  &_titleContainer
+  {
+    @include flex(row, center, space-between);
+    width: 100%;
+    position: relative;
+    padding: 20px 0 0;
+
+    &[class*="center"]
+    {
+      justify-content: center;
+    }
+  }
+
+  &_title
+  {
+    @include typography_builder(700, 32, 48);
+    margin: 0;
+  }
+  
+  &_seeAll
+  {
+    @include typography_builder(500, 16, 24);
+    @include flex(row, center, center);
+    cursor: pointer;
+
+    &:hover
+    {
+      opacity: 0.6;
+    }
+
+    &:after
+    {
+      display: block;
+      content: "";
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.129 5.25L5.106 1.227L6.1665 0.166504L12 6L6.1665 11.8335L5.106 10.773L9.129 6.75H0V5.25H9.129Z' fill='%23222222'/%3E%3C/svg%3E%0A");
+      background-repeat: no-repeat;
+      width: 12px;
+      height: 12px;
+      margin-left: 11px; 
+    }
+  }
+
+  &_action
+  {
+    @include position(absolute, 62px, 42px);
+    @include flex(row, center, flex-start);
+  }
+
+  &_actionItem
+  {
+    @include flex(row, center, flex-start);
+    @extend .btn_transparent;
+    @include typographyBuilder(400, 16, 24);
+    padding: 0;
+    width: fit-content;
+
+    &:hover
+    {
+      opacity: .7;
+    }
+
+    &:first-child
+    {
+      margin-right: 25px;
+      &::before
+      {
+        @include fixedSize(9px);
+        content: "";
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg width='10' height='9' viewBox='0 0 10 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.5 0V1H9L6.5 4.75V9H3.5V4.75L1 1H0.5V0H9.5ZM2.202 1L4.5 4.447V8H5.5V4.447L7.798 1H2.202Z' fill='%23222222'/%3E%3C/svg%3E%0A");
+      }
+    }
+    &:last-child
+    {
+      &::before
+      {
+        @include fixedSize(11px);
+        content: "";
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.83333 7.5H7.16667V6.33333H4.83333V7.5ZM0.75 0.5V1.66667H11.25V0.5H0.75ZM2.5 4.58333H9.5V3.41667H2.5V4.58333Z' fill='%23222222'/%3E%3C/svg%3E%0A");
+      }
+    }
+  }
+
+  &_seeAllProducts
+  {
+    @include fontPrimary(700);
+    @include fontSize(14);
+    @include lineHeight(18);
+    padding: 0 16px 0 16px;
+    width: 100%;
+  }
+
+  & [class*="_popupBody"]
+  {
+    padding: 0;
+
+    & > button
+    {
+      @extend .btn_longLight;
+      margin: 20px 30px 0 30px;
+      min-height: 50px !important;
+      padding-left: 20px;
+      width: calc(100% - 55px);
+      padding-right: 20px;
+    }
+
+  }
+
+  &_showResetContainer
+  {
+    display: none;
+  }
+
+
+  &_reset
+  {
+    @extend .btn_transparent;
+    text-align: right;
+    width: fit-content;
+    padding: 0;
+    color: $color_red_other;
+    
+    &:focus
+    {
+      color: $color_red_other;
+    }
+  }
+
+  &_goToTop
+  {
+    @include position(fixed, auto, 16px, 80px, auto);
+    @include fixedWidth(56px);
+    @include fixedHeight(58px);
+    @include flex(row, center, center);
+    @extend .btn_primary;
+    z-index: 2;
+
+    &:after
+    {
+      display: none !important;
+    }
+  }
+
+  &_arrowUp
+  {
+    display: block;
+    @include fixedSize(14px);
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14' fill='none'%3E%3Cpath d='M7.83334 3.52333V13.6667H6.16667V3.52333L1.69667 7.99333L0.518341 6.81499L7.00001 0.333328L13.4817 6.81499L12.3033 7.99333L7.83334 3.52333Z' fill='white'/%3E%3C/svg%3E");
+  }
+
+  @media (max-width: #{$breakpoint_min_sm}) 
+  {
+    &_grid
+    {
+      @include grid-(2);
+      padding: 0;
+    }
+
+    &_titleContainer
+    {
+      @include flex(column, flex-start, center);
+    }
+
+    &_action
+    {
+      @include position(relative);
+      @include flex(row, center, flex-start);
+      width: calc(100% - 36px);
+    }
+
+    &_actionItem
+    {
+      width: fit-content;
+    }
+
+    &_showResetContainer
+    {
+      @include typographyBuilder(400, 16, 24);
+      @include flex(row, flex-start, space-between);
+      margin: 24px 0 24px 0;
+    }
+  }
+
+}

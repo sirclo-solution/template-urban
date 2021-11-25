@@ -1,0 +1,103 @@
+@import '../utils/_variables.scss';
+@import '../components/Form.module.scss';
+@import '../components/Buttons.module.scss';
+@import './Login.module.scss';
+
+.layout
+{
+  padding-bottom: 142px;
+}
+
+.sectionBrand
+{
+  @include fixedWidth(50vw);
+  padding: 29px 99px 0;
+
+  img
+  {
+    max-width: 120px;
+    height: auto;
+  }
+}
+
+.section
+{
+  @include fixedWidth(50vw);
+  padding: 0 99px;
+}
+
+.container
+{
+  @include fixedWidth(100%);
+  margin-top: 24px;
+}
+
+.passwordViewButton
+{
+  @extend .passwordViewButton;
+}
+
+.headerLabel
+{
+  display: none;
+}
+
+.inputContainer
+{
+  @extend .inputContainer;
+}
+
+.input
+{
+  @extend .form_input;
+  @include fixedHeight(60px);
+}
+
+.passwordInput
+{
+  @extend .form_input;
+  @include fixedHeight(60px);
+}
+
+.button
+{
+  @extend .btn_primary;
+  margin-bottom: 26px;
+}
+
+.verificationContainer
+{
+  margin-top: 24px;
+}
+
+.labelRequired
+{
+  display: none;
+}
+
+.placeholderList
+{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+@media screen and (max-width: #{$breakpoint_max_md}) 
+{
+  .section,
+  {
+    @include fixedWidth(100%);
+    padding: 0 18px;
+  }
+  
+  .sectionBrand
+  {
+    @include fixedWidth(100%);
+    padding: 29px 18px 0;
+  }
+
+  .widgetLogin
+  {
+    display: none;
+  }
+}

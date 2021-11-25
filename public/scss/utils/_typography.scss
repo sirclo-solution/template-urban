@@ -1,0 +1,176 @@
+@use "sass:math";
+
+/**
+ * Font Faces - DM Sans
+ */
+
+@font-face 
+{
+    src: local('DMSans Bold'), local('dmsans-bold'), url('#{$font_path}/DMSans-Bold.ttf');
+    font-family: 'DMSans';
+    font-weight: 700;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face 
+{
+    src: local('DMSans Medium'), local('dmsans-medium'), url('#{$font_path}/DMSans-Medium.ttf');
+    font-family: 'DMSans';
+    font-weight: 500;
+    font-style: normal;
+    font-display: fallback;
+}
+
+@font-face 
+{
+    src: local('DMSans Regular'), local('dmsans-regular'), url('#{$font_path}/DMSans-Regular.ttf');
+    font-family: 'DMSans';
+    font-weight: 400;
+    font-style: normal;
+    font-display: fallback;
+}
+
+/**
+ * Typography-related Mixins
+ */
+
+@mixin fontPrimary($font-weight: 400)
+{   
+    @if $font-weight > 500
+    {
+        $font-weight: 700;
+    }
+
+    @else if $font-weight > 400
+    {
+        $font-weight: 500;
+    }
+
+    font-family: 'DMSans', sans-serif;
+    font-weight: $font-weight;
+    font-style: normal;
+}
+
+
+/**
+ * Typography-related classes
+ */
+
+$headings: (
+    "1": 20,
+    "2": 18,
+    "3": 16,
+    "4": 15,
+    "5": 14,
+    "6": 12
+);
+
+@each $heading, $size in $headings
+{
+    /**
+     * Heading Texts
+     * 
+     * Usage:
+     * 
+     * @extend .typog_heading_1;
+     * ...
+     * @extend .typog_heading_6;
+     */
+    
+    .typog_heading_#{$heading}
+    {
+        @include fontPrimary(800);
+        @include fontSize($size);
+        @include lineHeight(math.div(($size * 150), 100));
+    }
+}
+
+@mixin typography_builder($font_weight: 400, $font_size: 16, $line_height: 0)
+{
+    @include fontPrimary($font_weight);
+    @include fontSize($font_size);
+
+    @if $line_height == 0 
+    {
+        @include lineHeight(math.div(($size * 150), 100));
+    }
+    @else
+    {
+        @include lineHeight($line_height);
+    }
+}
+
+@mixin typographyBuilder($font_weight: 400, $font_size: 16, $line_height: 0)
+{
+    @include typography_builder($font_weight, $font_size, $line_height);
+}
+
+/**
+ * Design System Typography
+ */
+
+@mixin h1
+{
+  @include typographyBuilder(700, 40, 56);
+}
+
+@mixin h2
+{
+  @include typographyBuilder(700, 32, 48);
+}
+
+@mixin h3
+{
+  @include typographyBuilder(700, 28, 40);
+}
+
+@mixin ExtraLargeReguler
+{
+    @include typographyBuilder(400, 25, 40);
+}
+
+@mixin LargeReguler
+{
+    @include typographyBuilder(400, 20, 24);
+}
+
+@mixin LargeSemiBold
+{
+    @include typographyBuilder(500, 20, 24);
+}
+
+@mixin RegulerReguler
+{
+    @include typographyBuilder(400, 16, 24);
+}
+
+@mixin RegulerSemiBold
+{
+    @include typographyBuilder(500, 16, 24);
+}
+
+@mixin RegulerBold
+{
+    @include typographyBuilder(700, 16, 24);
+}
+
+@mixin SmallSmall
+{
+    @include typographyBuilder(400, 12, 16);
+}
+
+@mixin SmallSemiBold
+{
+    @include typographyBuilder(500, 12, 16);
+}
+
+@mixin ExtraSmallReguler
+{
+    @include typographyBuilder(400, 10, 16);
+}
+
+@mixin ExtraSmallSemiBold
+{
+    @include typographyBuilder(500, 10, 16);
+}

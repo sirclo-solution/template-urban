@@ -1,0 +1,101 @@
+@import '../utils/_variables.scss';
+
+
+.section
+{
+  background: $color_elements;
+  border-bottom: 1px solid $color_elements_line_darker;
+}
+
+.customerDetaiBox
+{
+  padding-top: 12px;
+  padding-bottom: 16px;
+}
+
+.customerDetaiBoxShipping
+{
+  border-top: 1px dashed $color_elements_line_darker;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.customerDetailShipping
+{
+  p
+  {
+    @include RegulerReguler;
+  }
+
+  span
+  {
+    @include RegulerReguler;
+    color: $color_text_secondary;
+  }
+}
+
+.infoPersonaddressDetail
+{
+  @include flex(column, flex-start, center);
+}
+
+.infoPersonValueaddressValue
+{
+  @include SmallSmall;
+  color: $color_text_secondary;
+  order: 3;
+  
+  &:first-child
+  {
+    @include RegulerReguler;
+    text-transform: capitalize;
+    order: 1;
+    color: $color_black;
+  }
+  
+  &:last-child
+  {
+    @include RegulerReguler;
+    order: 2;
+  }
+}
+
+.headerContainer
+{
+  @include flex(row, center, space-between);
+
+  h3
+  {
+    @include SmallSmall;
+    @include flex;
+    color: $color_text_secondary;
+    text-transform: capitalize;
+
+    &::after
+    {
+      content: "";
+      display: block;
+      @include fixedSize(16px);
+      margin: 5px auto auto 5px;
+      background-repeat: no-repeat;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 10 10' fill='none'%3E%3Cpath d='M5 10.0001C2.2385 10.0001 0 7.76162 0 5.00012C0 2.23862 2.2385 0.00012207 5 0.00012207C7.7615 0.00012207 10 2.23862 10 5.00012C10 7.76162 7.7615 10.0001 5 10.0001ZM4.5015 7.00012L8.0365 3.46462L7.3295 2.75762L4.5015 5.58612L3.087 4.17162L2.38 4.87862L4.5015 7.00012Z' fill='%231DB954'/%3E%3C/svg%3E");
+    }
+  }
+}
+
+.notesTitle
+{
+  text-transform: uppercase !important;
+  color: $color_text_secondary !important;
+
+  &::after
+  {
+    display: none !important;
+  }
+}
+
+.change
+{
+  @include SmallSmall;
+  color: $color_blue;
+}

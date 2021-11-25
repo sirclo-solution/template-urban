@@ -1,0 +1,212 @@
+@import '../utils/_variables.scss';
+@import './Placeholder.module.scss';
+
+.section
+{
+  border: 1px solid $color_elements_line_darker;
+  padding: 16px;
+  margin: 0 0 16px 0;
+  background: $color_elements;
+  max-height: 228px;
+  overflow: hidden;
+}
+
+.container
+{
+  max-height: 300px;
+}
+
+.cartHeader
+{
+  display: none;
+}
+
+.header
+{
+  @include flex(row, center, space-between);
+  margin-bottom: 12px;
+}
+
+.changeCart
+{
+  @include SmallSmall;
+  @include flex(row, center, flex-start);
+  color: $color_blue;
+  cursor: pointer;
+
+  &:hover
+  {
+    opacity: .7;
+  }
+
+  &::before
+  {
+    content: "";
+    @include fixedSize(12px);
+    display: block;
+    margin: 3px 6px 0 0;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='6' height='10' viewBox='0 0 6 10' fill='none'%3E%3Cpath d='M2.21859 5.00048L5.51858 8.30048L4.57592 9.24315L0.333252 5.00048L4.57592 0.757812L5.51858 1.70048L2.21859 5.00048Z' fill='%232E77D0'/%3E%3C/svg%3E");
+  }
+}
+
+.cartBody
+{
+  padding: 8px;
+  background: $color_white;
+  max-height: 168px;
+  overflow-y: auto;
+  @extend .scrollbar_secondary;
+}
+
+.item
+{
+  display: grid;
+  grid-template-columns: 64px auto;
+  column-gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid $color_elements;
+  margin-bottom: 0;
+}
+
+.itemImage
+{
+  width: 64px;
+  grid-row:  1 / span 4;
+  border-radius: 2px;
+
+  img
+  {
+    width: 100%;
+  }
+}
+
+.itemTitle
+{
+  @include truncate(2);
+  cursor: pointer;
+
+  &:hover
+  {
+    opacity: .7;
+  }
+}
+
+.title
+{
+  @include SmallSmall;
+  margin-bottom: 0;
+  display: inline-block;
+}
+
+.selectedVariantContainer
+{
+  @include flex(row, center, flex-start);
+  @include SmallSmall;
+  display: inline-block;
+  text-transform: capitalize;
+
+  &::before
+  {
+    content: ",";
+    margin-right: 4px;
+  }
+}
+
+.selectedVariant
+{
+  display: inline-block;
+}
+
+.itemRegularPrice
+{
+  @include SmallSmall;
+  color: $color_text_secondary;
+
+  &:not(:only-of-type)
+  {
+    @include typography_builder(400, 12, 12);
+    text-decoration: line-through;
+    color: $color_grey;
+  }
+}
+
+.itemSalePrice
+{
+  @include SmallSemiBold;
+  color: $color_error
+}
+
+.qtyBox
+{
+  @include SmallSmall;
+  display: flex;
+  align-items: center;
+
+  input
+  {
+    width: 100%;
+    border: none;
+    outline: none;
+
+    -moz-appearance:textfield;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button 
+    {
+        -webkit-appearance: none;
+    }
+  }
+
+  &[class$="id"]::before
+  {
+    content: "Jumlah:";
+  }
+
+  &[class$="en"]::before
+  {
+    content: "Qty:";
+  }
+}
+
+.itemRegularAmount
+{
+  @include SmallSemiBold;
+  font-size: 14px;
+  font-size: 1;
+}
+
+.placeholderContainer
+{
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-rows: 20px auto;
+  column-gap: 16px;
+  row-gap: 8px;
+  margin-bottom: 8px;
+}
+
+.placeholderList
+{
+  @extend .placeholderItem;
+  height: 20px;
+  width: 100%;
+
+  &:nth-child(3)
+  {
+    width: 60%;
+  }
+  
+  &:last-child
+  {
+    width: 80%;
+  }
+}
+
+.placeholderImage
+{
+  @extend .placeholderItem;
+  grid-row:  1 / span 3;
+  height: 125px;
+  width: 100%;
+}

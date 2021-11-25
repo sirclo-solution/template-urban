@@ -1,0 +1,206 @@
+@import '../utils/_variables.scss';
+@import '../components/Buttons.module.scss';
+@import '../components/Form.module.scss';
+
+.section
+{
+  @extend .grid;
+  @include grid-(3);
+  @include gap-x-(24px);
+  margin: 24px auto 100px;
+}
+
+.shippingTitle
+{
+  @include RegulerSemiBold;
+}
+
+.shippingRadioDiv
+{
+  @extend .grid;
+  @include gap-x-(16px);
+  @include gap-y-(12px);
+  align-items: center;
+  grid-template-columns: 20px auto auto;
+  position: relative;
+  padding: 18px 16px;
+  border: 1px solid $color_placeholder;
+  border-radius: 2px;
+  margin-bottom: 12px;
+  cursor: pointer;
+
+  &:hover
+  {
+    [class*="inputLabel"]
+    {
+      border: 1px solid $color_black;
+
+      &::before
+      {
+        content: "";
+        @include fixedSize(12px);
+        @include position(absolute, 50%, auto, auto, 15%);
+        transform: translateY(-50%);
+        display: block;
+        border-radius: 100%;
+        background: $color_black;
+      }
+    }
+  }
+}
+
+.submitButton
+{
+  @extend .btn_primary;
+  @include fixedHeight(52px);
+  @include fixedWidth(340px);
+  margin-top: 24px;
+  cursor: pointer;
+}
+
+.input
+{  
+  display: none;
+
+  &:checked + label
+  {
+    border: 1px solid $color_black;
+
+    &::before
+    {
+      content: "";
+      @include fixedSize(12px);
+      @include position(absolute, 50%, auto, auto, 15%);
+      transform: translateY(-50%);
+      display: block;
+      border-radius: 100%;
+      background: $color_black;
+    }
+  }
+}
+
+.inputLabel
+{
+  content: "";
+  @include fixedSize(20px);
+  margin-top: 5px;
+  position: relative;
+  cursor: pointer;
+  display: block;
+  border-radius: 50%;
+  background: $color_white;
+  border: 1px solid $color_placeholder;
+
+  &:hover
+  {
+    border: 1px solid $color_black;
+
+    &::before
+    {
+      content: "";
+      @include fixedSize(12px);
+      @include position(absolute, 50%, auto, auto, 15%);
+      transform: translateY(-50%);
+      display: block;
+      border-radius: 100%;
+      background: $color_black;
+    }
+  }
+}
+
+.pinPointLocation
+{
+  @include col-span-(3);
+  @extend .btn_secondary;
+  @include fixedHeight(36px);
+}
+
+.shippingContainer
+{
+  @include col-span-(2);
+
+  & > [class*="disabled"]
+  {
+    background: $color_elements_line_darker;
+    cursor: not-allowed;
+
+    [class*="inputLabel"]
+    {
+      background: $color_elements_line_darker;
+
+      &::before
+      {
+        background: none;
+        border: none !important;
+      }
+    }
+  }
+}
+
+.shippingNameDiv
+{
+  @include RegulerReguler;
+}
+
+.shippingPrice
+{
+  @include RegulerReguler;
+  text-align: right;
+  color: $color_text_secondary;
+}
+
+.placeholderCustomerDetailContainer
+{
+  padding-top: 12px;
+  width: 100%;
+}
+
+.placeholderCustomerDetailList
+{
+  height: 20px;
+  width: 100%;
+  margin-bottom: 12px;
+  &:first-child
+  {
+    width: 30%;
+  }
+
+  &:nth-child(3)
+  {
+    width: 60%;
+  }
+  
+  &:last-child
+  {
+    width: 80%;
+  }
+}
+
+.placeholderList
+{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.warningPinPoint
+{
+  @include position(absolute, 1px, 16px);
+  color: $color_text_secondary;
+}
+
+.orderSummaryBoxContainer
+{
+  @include fixedWidth(100%);
+}
+
+@media screen and (max-width: #{$breakpoint_max_md}) 
+{
+  .section
+  {
+    @include grid-(1);
+    @include gap-x-(0px);
+    @include gap-y-(24px);
+  }
+}
+

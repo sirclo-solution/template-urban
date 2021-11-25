@@ -1,0 +1,121 @@
+@import '../utils/_variables.scss';
+@import '../components/Form.module.scss';
+@import '../components/Buttons.module.scss';
+
+.sectionBrand
+{
+  @include fixedWidth(50vw);
+  padding: 29px 99px 0;
+
+  img
+  {
+    max-width: 120px;
+    height: auto;
+  }
+}
+
+.section
+{
+  @include fixedWidth(50vw);
+  padding: 0 99px;
+}
+
+.container
+{
+  @include fixedWidth(100%);
+  margin-top: 24px;
+}
+
+.inputContainer
+{
+  position: relative;
+  margin-bottom: 12px;
+
+  label
+  {
+    @include SmallSmall;
+    @include position(absolute, 10px, auto, auto, 16px);
+    color: $color_text_secondary;
+    z-index: 2;
+  }
+}
+
+.passwordContainer
+{
+  position: relative;
+}
+
+.input,
+.passwordInput
+{
+  @extend .form_input;
+  @include fixedHeight(60px);
+  padding-top: 26px;
+  padding-left: 16px;
+}
+
+.input
+{
+  padding-left: 16px;
+}
+
+.passwordInput
+{
+  padding-left: 14px;
+}
+
+.passwordViewButton
+{
+  @include position(absolute, 25px, 10px);
+  @extend .btn_transparent;
+  padding: 0;
+  width: fit-content;
+}
+
+.button
+{
+  @extend .btn_primary;
+  @include fixedWidth(100%);
+  @include fixedHeight(52px);
+  margin-top: 24px;
+}
+
+.footer
+{
+  display: none;
+}
+
+.placeholderList
+{
+  height: 60px;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.forgotPassword
+{
+  @include RegulerReguler;
+  display: block;
+  margin: 26px auto 0;
+  width: fit-content;
+}
+
+@media screen and (max-width: #{$breakpoint_max_md}) 
+{
+  .section,
+  {
+    @include fixedWidth(100%);
+    padding: 0 18px;
+  }
+  
+  .sectionBrand
+  {
+    @include fixedWidth(100%);
+    padding: 29px 18px 0;
+  }
+
+  .widgetLogin
+  {
+    display: none;
+  }
+}

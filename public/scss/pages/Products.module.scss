@@ -1,0 +1,17 @@
+@import '../utils/_variables.scss';
+
+.products
+{
+  &_breadcumb
+  {
+    margin-bottom: 42px;
+  }
+
+  @media (max-width: #{$breakpoint_min_sm}) 
+  {
+    &_breadcumb
+    {
+      margin-bottom: 24px;
+    }
+  }
+}

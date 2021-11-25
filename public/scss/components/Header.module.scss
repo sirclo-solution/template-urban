@@ -1,0 +1,531 @@
+@import '../utils/variables';
+
+.container
+{
+    @include transition();
+    @include flex(column, stretch, flex-start);
+    @include fixedWidth(300px);
+    @include fixedHeight(100vh);
+    @extend .scrollbar_main;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 1048;
+    margin: 0;
+    padding: 100px 60px 60px;
+    background-color: $color_white;
+
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    & ~ main,
+    & ~ footer
+    {
+        @include transition();
+        @include fixedWidth(calc(100vw - 300px));
+        margin-left: 300px;
+    }
+}
+
+.item
+{
+    @include flex(row, center, flex-start);
+    position: relative;
+    margin: 0;
+    padding: 0;
+
+    &:last-child
+    {
+        margin-top: 140px;
+    }
+}
+
+.shortcuts
+{
+    @include flex(row, center, flex-start, true);
+    position: relative;
+    margin: 0 -8px;
+    padding: 0;
+
+    & + div
+    {
+        margin-top: 60px;
+    }
+
+    &_item
+    {
+        @include flex(row, center, center);
+        @include fixedSize(32px);
+        position: relative;
+        margin: 0 8px;
+        padding: 0;
+        cursor: pointer;
+    }
+
+    &_label
+    {
+        @include flex(row, center, flex-start);
+        @include typographyBuilder(500, 16, 24);
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        @media (min-width: #{$breakpoint_min_md})
+        {
+            display: none;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    &_badge
+    {
+        @include typographyBuilder(500, 12, 12);
+        position: absolute;
+        top: 0;
+        right: -2px;
+    }
+}
+
+.brand
+{
+    & ~ div[class*="shortcuts"]
+    {
+        margin-top: 60px;
+    }
+
+    a[data-identity="logo"]
+    {
+        @include flex(row, center, flex-start);
+        position: relative;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+        max-width: 100%;
+    }
+
+    &_image
+    {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        max-width: 100%;
+    }
+}
+
+.navigation
+{
+    @include flex(column, flex-start, flex-start);
+    position: relative;
+    flex-grow: 1;
+
+    ul,
+    ol
+    {
+        @include fixedWidth(100%);
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    &_parent
+    {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    &_item
+    {
+        @include flex(column, flex-start, flex-start);
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        ul,
+        ol
+        {
+            padding-left: 32px;
+        }
+    }
+
+    &_value
+    {
+        @include transition();
+        @include flex(row, center, flex-start);
+        @include fixedWidth(calc(100% - 32px));
+        @include typographyBuilder(500, 16, 24);
+        min-height: 44px;
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        color: $color_black;
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &:active
+        {
+            color: $color_black;
+            text-decoration: none;
+        }
+
+        &:hover
+        {
+            text-decoration: underline;
+        }
+
+        &Container
+        {
+            @include flex(row, center, flex-start);
+            @include fixedWidth(100%);
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &_dropdownIcon
+    {
+        @include transition();
+        @include flex(row, center, center);
+        @include fixedSize(32px);
+        cursor: pointer;
+    }
+}
+
+.mobile
+{
+    &_menu
+    {
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+}
+
+@media (max-width: #{$breakpoint_max_lg})
+{
+    .container
+    {
+        @include flex(row, stretch, flex-start, true);
+        @include fixedWidth(100%);
+        @include fixedHeight(70px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: auto;
+        padding: 70px 18px 0;
+    
+        overflow: hidden;
+        overflow-x: hidden;
+        overflow-y: hidden;
+
+        // Fix Safari issue
+        transform: translate3d(0, 0, 0);
+
+        & ~ main,
+        & ~ footer
+        {
+            @include fixedWidth(100vw);
+            margin-left: 0;
+        }
+
+        &::after
+        {
+            content: "";
+            display: block;
+            position: absolute;
+            top: 69px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 1px;
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+
+        &__open
+        {
+            @include fixedHeight(50vh);
+            overflow: auto;
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+    }
+
+    .item
+    {
+        @include fixedWidth(100%);
+
+        & + div
+        {
+            margin-top: 30px;
+        }
+    }
+
+    .shortcuts
+    {
+        @include flex(column, stretch, flex-start);
+        @include fixedWidth(100%);
+        border: none;
+
+        & + div
+        {
+            margin-top: 0;
+        }
+
+        &_item
+        {
+            @include fixedWidth(100%);
+            @include fixedHeight(44px);
+            @include flex(row, center, flex-start);
+            cursor: pointer;
+
+            svg
+            {
+                @include fixedSize(20px);
+                margin: 0 18px 0 0;
+            }
+
+            &__cart
+            {
+                display: none;
+                opacity: 0;
+                visibility: hidden;
+                pointer-events: none;
+            }
+            
+            & + div
+            {
+                border-bottom: solid 1px $color_elements;
+            }
+
+            &:hover
+            {
+                span[class*="label"]
+                {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .navigation
+    {
+        &::before,
+        &::after
+        {
+            content: "";
+            @include flex(row, center, flex-start);
+            position: relative;
+            margin: 0;
+            padding: 0;
+        }
+
+        &::before
+        {
+            @include fixedWidth(100%);
+            @include fixedHeight(24px);
+        }
+
+        &::after
+        {
+            @include fixedWidth(12px);
+            @include fixedHeight(2px);
+            @include position(absolute, 12px, auto, auto, 0);
+            background-color: $color_black;
+        }
+
+        & + div
+        {
+            margin-top: 30px;
+        }
+
+        &_item
+        {
+            @include flex(column, flex-start, flex-start);
+
+            &:not(:last-child),
+            &:not(:last-of-type)
+            {
+                &:not(:only-of-type),
+                &:not(:only-child)
+                {
+                    border-bottom: solid 1px $color_elements;
+                }
+            }
+        }
+
+        &_value
+        {
+            @include fixedWidth(calc(100% - 32px));
+
+            &Container
+            {
+                min-width: 100%;
+            }
+        }
+    }
+
+    .mobile
+    {
+        &_cart
+        {
+            @include flex(row, center, center);
+            @include fixedHeight(70px);
+            @include fixedWidth(48px);
+            position: relative;
+            margin: 0;
+            padding: 0;
+
+            svg
+            {
+                @include fixedSize(24px);
+            }
+
+            span
+            {
+                @include flex(row, center, center);
+                @include typographyBuilder(500, 12, 12);
+                @include absolute(calc(50% - 14px), calc(50% - 22px));
+                transform: translate3d(-50%, -50%, 0);
+                margin: 0;
+                padding: 0;
+            }
+        }
+
+        &_toggle
+        {
+            @include transition();
+            @include flex(row, center, center);
+            @include fixedSize(48px);
+            position: relative;
+            margin: 0;
+            padding: 0;
+
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            &,
+            &:hover,
+            &:active,
+            &:focus,
+            &:focus-visible,
+            &:focus-within,
+            &:visited
+            {
+                outline: none;
+                color: $color_black;
+                box-shadow: 0 0 0 transparent;
+                border: none;
+            }
+
+            svg
+            {
+                @include fixedSize(24px);
+            }
+
+            & > span
+            {
+                @include transition();
+                @include flex(row, center, center);
+                @include fixedSize(100%);
+                @include absolute(0, 0, 0, 0);
+                margin: 0;
+                padding: 0;
+
+                &:first-child,
+                &:first-of-type
+                {
+                    opacity: 1;
+                }
+
+                &:last-child,
+                &:last-of-type
+                {
+                    opacity: 0;
+                }
+            }
+
+            &__active
+            {
+                & > span
+                {
+                    &:first-child,
+                    &:first-of-type
+                    {
+                        opacity: 0;
+                    }
+
+                    &:last-child,
+                    &:last-of-type
+                    {
+                        opacity: 1;
+                    }
+                }
+            }
+        }
+
+        &_menu
+        {
+            @include flex(row, center, flex-end);
+            @include fixedHeight(70px);
+            @include fixedWidth(calc(100% - 100px));
+            @include position(fixed, 0, 0, auto, auto);
+            margin: 0;
+            padding: 0;
+            background-color: $color_white;
+            z-index: 2;
+
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+    }
+
+    .brand
+    {
+        @include fixedHeight(70px);
+        @include fixedWidth(100px);
+        @include position(fixed, 0, auto, auto, 0);
+        padding: 0 0 0 18px;
+        background-color: $color_white;
+        z-index: 2;
+
+        & + div
+        {
+            margin-top: 0;
+        }
+
+        & ~ div[class*="shortcuts"]
+        {
+            margin-top: 18px;
+        }
+    }
+}
+
+.placeholder
+{
+  width: 100%;
+  height: 200px;
+}
+
+.placeholderList
+{
+  width: 100%;
+  height: 20px;
+  margin: 8px 0;
+
+  &:nth-child(even)
+  {
+    width: 70%;
+  }
+}

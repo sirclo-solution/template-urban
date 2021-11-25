@@ -1,0 +1,241 @@
+@import '../utils/variables';
+@import '../components/Empty.module.scss';
+
+.wrapper
+{
+  position: relative;
+}
+
+.lookbook
+{
+    &,
+    &_row,
+    &_container,
+    &_image
+    {
+        @include fixedWidth(100%);
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+
+    &_container
+    {
+        margin-top: 24px;
+    }
+
+    &_placeholder
+    {
+        @include fixedHeight(48px);
+        margin-bottom: 12px;
+        
+        &Wrapper
+        {
+            display: block;
+            position: relative;
+            margin: 24px 0;
+        }
+    }
+
+    &_label
+    {
+        @include flex(row, center, center);
+        @include ExtraLargeReguler;
+        @include fixedWidth(100%);
+        margin: 0;
+        padding: 24px;
+        color: $color_white;
+
+
+        &Container
+        {
+            @include absolute(0, 0, 0, 0);
+            @include flex(column, center, flex-end);
+            @include fixedSize(100%);
+            z-index: 2;
+            margin: 0;
+            padding: 0;
+        }
+    }
+
+    &_link
+    {
+        @include flex(row, center, center);
+        @include fixedSize(100%);
+        @include absolute(0, 0, 0, 0);
+        font-size: 0;
+        text-decoration: none;
+
+        &:hover,
+        &:focus,
+        &:active
+        {
+            outline: none;
+            box-shadow: 0 0 0 transparent;
+            text-decoration: none;
+        }
+    }
+
+    &_nav
+    {
+        @include flex(row, center, flex-start);
+        @include fixedWidth(100%);
+        position: relative;
+        margin: 0;
+        padding: 0;
+
+        &Button
+        {
+            @include transition();
+            @include flex(row, center, flex-start);
+            @include RegulerSemiBold;
+            position: relative;
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+
+            &,
+            &:hover,
+            &:focus,
+            &:active
+            {
+                outline: none;
+                box-shadow: 0 0 0 transparent;
+                background-color: transparent;
+                border: none;
+                text-decoration: none;
+            }
+
+            &:hover
+            {
+                & > span
+                {
+                    &:last-child,
+                    &:last-of-type
+                    {
+                        text-decoration: underline;
+                    }
+                }
+            }
+
+            & > span
+            {
+                @include flex(row, center, flex-start);
+                position: relative;
+                margin: 0;
+                padding: 0;
+
+                &:first-child,
+                &:first-of-type
+                {
+                    @include fixedSize(24px);
+                }
+
+                &:last-child,
+                &:last-of-type
+                {
+                    padding: 0 0 0 12px;
+                }
+            }
+        }
+    }
+    
+    &Single
+    {
+        &_image
+        {
+            &,
+            & > img
+            {
+                @include fixedWidth(100%);
+                display: block;
+                position: relative;
+                margin: 0;
+                padding: 0;
+                border: none;
+            }
+
+            &
+            {
+                margin-top: 24px;
+            }
+        }
+    }
+}
+
+
+.sharer
+{
+    @include flex(row, center, space-between);
+    @include fixedWidth(100%);
+    position: relative;
+    margin: 24px 0;
+    padding: 24px 0;
+    border: none;
+    border-top: solid 1px $color_elements_line_darker;
+    border-bottom: solid 1px $color_elements_line_darker;
+
+    &_label,
+    &_items,
+    &_item
+    {
+        position: relative;
+        margin: 0;
+        padding: 0;
+    }
+
+    &_label
+    {
+        @include flex(row, center, flex-start);
+        @include SmallSemiBold;
+        color: $color_text;
+    }
+
+    &_items
+    {
+        @include flex(row, center, space-between);
+        @include fixedWidth(100%);
+    }
+
+    &_item
+    {
+        @include flex(row, center, center);
+        color: $color_placeholder;
+
+        button
+        {
+            @include transition();
+            @include flex(row, center, center);
+            @include fixedSize(32px);
+            position: relative;
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            border: none;
+            box-shadow: 0 0 0 transparent;
+            color: $color_placeholder;
+
+            svg
+            {
+                @include transition();
+                @include fixedSize(20px);
+            }
+
+            &:hover,
+            &:focus,
+            &:active
+            {
+                outline: none;
+                box-shadow: 0 0 0 transparent;
+                border: none;
+            }
+
+            &:hover
+            {
+                color: $color_black !important;
+            }
+        }
+    }
+}
