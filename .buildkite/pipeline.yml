@@ -9,7 +9,7 @@ steps:
       - id=$$(docker create $$dockerimage )
       - mkdir -p /tmp/$$dockerimage/static
       - docker cp $$id:/usr/src/app/.next/static /tmp/$$dockerimage/
-      - gsutil cp -r /tmp/$$dockerimage/static gs://sirclo-1152-templates/minimalio/_next/
+      - gsutil cp -r /tmp/$$dockerimage/static gs://sirclo-1152-templates/urban/_next/
       - docker rm -v $$id
       - deployer --build-from-pod  --docker-tag $$tag --use-helmfile
     agents:
@@ -27,7 +27,7 @@ steps:
       - id=$$(docker create $$dockerimage )
       - mkdir -p /tmp/$$dockerimage/static
       - docker cp $$id:/usr/src/app/.next/static /tmp/$$dockerimage/
-      - gsutil cp -r /tmp/$$dockerimage/static gs://sirclo-template/minimalio/_next/
+      - gsutil cp -r /tmp/$$dockerimage/static gs://sirclo-template/urban/_next/
       - docker rm -v $$id
       - deployer --build-from-pod --docker-tag $$tag --use-helmfile --project=sirclo-prod
     agents:
