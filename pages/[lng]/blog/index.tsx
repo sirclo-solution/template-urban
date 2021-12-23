@@ -73,7 +73,7 @@ const Blog: FC<any> = ({
     i18n, 
     lng,
     brand,
-    SEO: { title: `Blog` },
+    SEO: { title: `${i18n.t("blog.title")}` },
     withAllowed: { BlogAllowed }
   }
 

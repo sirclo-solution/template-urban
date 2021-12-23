@@ -51,7 +51,7 @@ const LookbookCategory: FC<any> = ({
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("lookbook.title")]
   const layoutProps = {
     lngDict, i18n, lng, brand,
-    SEO: { title: `lookbook` },
+    SEO: { title: `${i18n.t("lookbook.title")}` },
     withAllowed: LookbookAllowed
   }
 
