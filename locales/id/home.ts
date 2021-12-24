@@ -4,8 +4,8 @@ const locale = {
     "close": "Tutup",
     "featuredProducts": "Produk Unggulan",
     "loading": "Mohon Menunggu",
-    "productCategory": "Kategori produk",
     "later": "Nanti saja",
+    "productCategory": "Kategori produk",
     "showMore": "Lihat Selengkapnya",
     "title": "Beranda"
   }

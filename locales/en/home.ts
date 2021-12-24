@@ -4,8 +4,8 @@ const locale = {
     "close": "Close",
     "featuredProducts": "Featured Products",
     "loading": "Please Wait",
-    "productCategory": "Category products",
     "later": "Later",
+    "productCategory": "Category products",
     "showMore": "Show More",
     "title": "Home"
   }
