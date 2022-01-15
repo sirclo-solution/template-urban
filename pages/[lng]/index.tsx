@@ -16,7 +16,6 @@ import SecondAdvertisement from 'components/Widget/SecondAdvertisement'
 import ProductsComponent from 'components/Products/ProductsComponent'
 import ProductCategoryComponent from 'components/ProductCategoryComponent/ProductCategoryComponent'
 import Instafeed from 'components/Instafeed'
-import TestimonialSlider from 'components/Testimonial/TestimonialSlider'
 
 const Home: FC<any> = ({
   lng,
@@ -94,10 +93,6 @@ const Home: FC<any> = ({
           lng={lng}
           withSeeAll
         />
-      </section>
-
-      <section className="container">
-        <TestimonialSlider />
       </section>
 
       {brand?.socmedSetting?.instagramToken &&
