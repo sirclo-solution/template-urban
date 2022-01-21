@@ -1,4 +1,4 @@
-@import "../base/colors.scss";
+@import "../utils/_colors.scss";
 @import "../components/Button.module.scss";
 @import "../components/Form.module.scss";
 @import "../components/Placeholder.module.scss";
@@ -176,7 +176,7 @@
   &_icon
   {
     height: 1.2em;
-    color: $color_gray_text;
+    color: $color_line_black;
     cursor: pointer;
 
     &:hover
@@ -268,7 +268,7 @@
 .errorCart
 {
   background: $color_red_light;
-  border: 1px solid $color_red_error;
+  border: 1px solid $color_red_other;
   border-radius: 3px;
   padding: 15px;
   margin-bottom: 20px;
@@ -355,7 +355,7 @@
   &_discNote
   {
     font-size: 12px;
-    color: $color_red_error;
+    color: $color_red_other;
   }
 
   &_detailSummary
@@ -599,7 +599,7 @@
     right: 0;
     top: 0;
     background: transparent;
-    color: $color_gray_text;
+    color: $color_line_black;
     border: none;
     padding: .25rem .5rem;
     cursor: pointer;
@@ -737,7 +737,7 @@
       {
         font-size: 14px;
         line-height: 21px;
-        color: $color_gray_text;
+        color: $color_line_black;
       }
 
       &:last-child,
