@@ -12,5 +12,6 @@ npm-debug.log*
 .bin
 now.json
 package-lock.json
+yarn.lock
 .vscode/settings.json
 .history
