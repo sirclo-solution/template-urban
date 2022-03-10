@@ -18,7 +18,7 @@ const CategoriesPage: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   const i18n: any = useI18n()
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, i18n.t("home.productCategory")]
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("home.productCategory")]
   const layoutProps = {
     lngDict,
     i18n,
