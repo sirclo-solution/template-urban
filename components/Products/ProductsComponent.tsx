@@ -10,8 +10,6 @@ import {
 
 /* library component */
 import useProducts from './hooks/useProducts'
-import useInfiniteScroll from 'lib/useInfiniteScroll'
-
 
 /* component */
 import SideMenu from 'components/SideMenu/SideMenu'
@@ -101,6 +99,8 @@ const ProductsComponent: FC<iProps> = ({
 
   const {
     size,
+    setPageInfo,
+    pageInfo,
     categories,
     filterProduct,
     handleShowFilter,
@@ -110,41 +110,8 @@ const ProductsComponent: FC<iProps> = ({
     handleFilter,
     showSort,
     scrollToTop,
+    currPage
   } = useProducts({ lng, tagname })
-
-  const [currPage, setCurrPage] = useState(0);
-  const [pageInfo, setPageInfo] = useState({
-    pageNumber: 0,
-    itemPerPage: 8,
-    totalItems: 0,
-  });
-  const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage);
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
-
-  useEffect(() => {
-    setCurrPage(0);
-  }, [filterProduct, categories, tagname])
-
-  const handleScroll = () => {
-    const lastTestimonial = document.querySelector(
-      ".products_container:last-child"
-    ) as HTMLElement;
-
-    console.log(lastTestimonial)
-    
-    if (lastTestimonial) {
-      const lastTestimonialOffset = lastTestimonial.offsetTop + lastTestimonial.clientHeight;
-      const pageOffset = window.pageYOffset + window.innerHeight;
-      if (pageOffset > lastTestimonialOffset) {
-        if (currPage < totalPage - 1) setCurrPage(currPage + 1);
-      }
-    }
-  };
-
 
   const containerClasses = {
     "grid": `

@@ -90,13 +90,10 @@ const ProductsPage: FC<any> = ({
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [showSort, setShowSort] = useState<boolean>(false);
   const handleFilter = (selectedFilter: any) => setFilterProduct(selectedFilter)
-
   const resetFilter = () => Router.replace(`/${lng}/products`)
-
-
+  
   const [filterProduct, setFilterProduct] = useState({})
   const categories: string = useQuery('categories')
-
 
   const [currPage, setCurrPage] = useState(0);
   const [pageInfo, setPageInfo] = useState({
@@ -126,14 +123,12 @@ const ProductsPage: FC<any> = ({
   }, [filterProduct, categories]);
 
   const handleScroll = () => {
-    const lastTestimonial = document.querySelector(
+    const lastItem = document.querySelector(
       ".products_container:last-of-type"
     ) as HTMLElement;
 
-    console.log(lastTestimonial)
-
-    if (lastTestimonial) {
-      const lastTestimonialOffset = lastTestimonial.offsetTop + lastTestimonial.clientHeight;
+    if (lastItem) {
+      const lastTestimonialOffset = lastItem.offsetTop + lastItem.clientHeight;
       const pageOffset = window.pageYOffset + window.innerHeight;
       if (pageOffset > lastTestimonialOffset) {
         if (currPage < totalPage - 1) setCurrPage(currPage + 1);
@@ -222,10 +217,7 @@ const ProductsPage: FC<any> = ({
                     </button>
                   
                 </div>
-              </>
-
-
-              
+              </> 
                 <div
                   className={`${styles.productsComponent_grid} ${styles.productsRecomendation} ${styles.productsComponent_gridTree}
                  ${'mt-0 pt-0'}
