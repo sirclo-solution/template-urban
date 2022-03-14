@@ -1,7 +1,6 @@
 /* library package */
 import { FC, useState, useEffect } from 'react'
 import Router from 'next/router'
-import router from 'next/router'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import { Products, ProductSort, useI18n } from '@sirclo/nexus'
 import dynamic from 'next/dynamic'
@@ -12,14 +11,10 @@ import { useBrand } from 'lib/useBrand'
 import useQuery from 'lib/useQuery'
 import useWindowSize from 'lib/useWindowSize'
 
-
 /* component */
 import SideMenu from 'components/SideMenu/SideMenu'
-
 import Layout from 'components/Layout/Layout'
 import Placeholder from 'components/Placeholder'
-
-import ProductsComponent from 'components/Products/ProductsComponent'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductFilterComponent from 'components/ProductFilter'
 
@@ -27,11 +22,8 @@ const EmptyComponent = dynamic(() => import('components/EmptyComponent/EmptyComp
 
 /* styles */
 import styleProducts from 'public/scss/pages/Products.module.scss'
-/* styles */
 import styles from 'public/scss/components/ProductsComponent.module.scss'
 import stylesSort from 'public/scss/components/ProductSort.module.scss'
-
-
 
 /* locales */
 import locales from 'locales'
@@ -77,7 +69,7 @@ const ProductsPage: FC<any> = ({
   brand
 }) => {
   const i18n: any = useI18n()
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, i18n.t("product.products")]
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("product.products")]
   const layoutProps = {
     lngDict, i18n, lng, brand,
     SEO: { title: i18n.t("product.title") },
@@ -128,9 +120,9 @@ const ProductsPage: FC<any> = ({
     ) as HTMLElement;
 
     if (lastItem) {
-      const lastTestimonialOffset = lastItem.offsetTop + lastItem.clientHeight;
+      const lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
       const pageOffset = window.pageYOffset + window.innerHeight;
-      if (pageOffset > lastTestimonialOffset) {
+      if (pageOffset > lastItemOffset) {
         if (currPage < totalPage - 1) setCurrPage(currPage + 1);
       }
     }
@@ -164,8 +156,6 @@ const ProductsPage: FC<any> = ({
       ))
   }
 
-
-
   return (
     <Layout {...layoutProps}>
       <section className={styleProducts.products_breadcumb}>
@@ -173,16 +163,6 @@ const ProductsPage: FC<any> = ({
       </section>
 
       <LazyLoadComponent>
-        {/* <ProductsComponent
-          i18n={i18n}
-          lng={lng}
-          type="grid"
-          isLastSection
-          withEmptyComponent
-          withInfiniteScroll
-          withFilterSort
-
-        /> */}
         <>
           <section
             className={
