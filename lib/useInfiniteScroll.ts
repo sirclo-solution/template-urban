@@ -8,15 +8,12 @@ type TPageInfo = {
 
 const useInfiniteScroll = (pageInfo: TPageInfo, itemClass: string) => {
   const [currPage, setCurrPage] = useState(0)
-  
   const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage)
 
   const handleScroll = () => {
-    
     const lastElement = document.querySelector(
       `.${itemClass}:last-child`
     ) as HTMLElement
-
 
     if (lastElement) {
       const lastElementOffset = lastElement.offsetTop + lastElement.clientHeight
@@ -29,7 +26,6 @@ const useInfiniteScroll = (pageInfo: TPageInfo, itemClass: string) => {
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll)
-    
     return () => window.removeEventListener("scroll", handleScroll)
   })
 
