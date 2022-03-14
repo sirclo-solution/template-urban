@@ -1,8 +1,16 @@
 /* library package */
-import { FC, useState, useEffect } from 'react'
+import { 
+  FC, 
+  useState, 
+  useEffect 
+} from 'react'
 import Router from 'next/router'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
-import { Products, ProductSort, useI18n } from '@sirclo/nexus'
+import { 
+  Products, 
+  ProductSort, 
+  useI18n 
+} from '@sirclo/nexus'
 import dynamic from 'next/dynamic'
 
 /* library template */
