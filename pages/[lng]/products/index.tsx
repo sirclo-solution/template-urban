@@ -4,7 +4,7 @@ import {
   useState,
   useEffect
 } from 'react'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import {
   Products,
@@ -88,12 +88,13 @@ const ProductsPage: FC<any> = ({
     titleSeo: i18n.t("product.title")
   }
 
+  const router = useRouter()
   const size = useWindowSize();
 
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [showSort, setShowSort] = useState<boolean>(false);
   const handleFilter = (selectedFilter: any) => setFilterProduct(selectedFilter)
-  const resetFilter = () => Router.replace(`/${lng}/products`)
+  const resetFilter = () => router.replace(`/${lng}/products`)
 
   const [filterProduct, setFilterProduct] = useState({})
   const categories: string = useQuery('categories')
@@ -169,7 +170,7 @@ const ProductsPage: FC<any> = ({
   }
 
   propsProduct = { ...baseProductsProps }
-  
+
   return (
     <Layout {...layoutProps}>
       <section className={styleProducts.products_breadcumb}>
