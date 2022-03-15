@@ -144,7 +144,8 @@ const ProductsPage: FC<any> = ({
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  const propsProduct = {
+  let propsProduct: any
+  const baseProductsProps = {
     classes: classesProducts,
     getPageInfo: (pageInfo: any) => setPageInfo(pageInfo),
     fullPath: `product/{id}`,
@@ -167,6 +168,8 @@ const ProductsPage: FC<any> = ({
       ))
   }
 
+  propsProduct = { ...baseProductsProps }
+  
   return (
     <Layout {...layoutProps}>
       <section className={styleProducts.products_breadcumb}>
