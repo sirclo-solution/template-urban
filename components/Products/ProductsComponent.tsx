@@ -1,5 +1,5 @@
 /* library package */
-import { FC, useEffect, useState } from 'react'
+import { FC } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
