@@ -145,19 +145,7 @@ const ProductsPage: FC<any> = ({
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  let propsProduct: any
-  const baseProductsProps = {
-    classes: classesProducts,
-    getPageInfo: (pageInfo: any) => setPageInfo(pageInfo),
-    fullPath: `product/{id}`,
-    pathPrefix: `product`,
-    lazyLoadedImage: false,
-    thumborSetting: {
-      width: 512,
-      format: "webp",
-      quality: 85,
-    },
-    itemPerPage: 12,
+  const productsProps = {
     collectionSlug: categories,
     filter: filterProduct,
     withSeparatedVariant: true,
@@ -169,7 +157,20 @@ const ProductsPage: FC<any> = ({
       ))
   }
 
-  propsProduct = { ...baseProductsProps }
+  const baseProductsProps: any = {
+    ...productsProps,
+    classes: classesProducts,
+    getPageInfo: (pageInfo: any) => setPageInfo(pageInfo),
+    fullPath: `product/{id}`,
+    pathPrefix: `product`,
+    lazyLoadedImage: false,
+    thumborSetting: {
+      width: 512,
+      format: "webp",
+      quality: 85,
+    },
+    itemPerPage: 12
+  }
 
   return (
     <Layout {...layoutProps}>
@@ -224,7 +225,7 @@ const ProductsPage: FC<any> = ({
                   <Products
                     key={i}
                     pageNumber={i}
-                    {...propsProduct}
+                    {...baseProductsProps}
                   />
                 ))
                 }
