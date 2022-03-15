@@ -143,7 +143,7 @@ const ProductsPage: FC<any> = ({
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  type productsProps = {
+  type TProductsProps = {
     classes: any,
     getPageInfo: any,
     fullPath: string,
@@ -159,7 +159,7 @@ const ProductsPage: FC<any> = ({
 
   const productsLoadingComponent = [0, 1, 2, 3].map((_, i) => ( <div key={i}> <Placeholder classes={placeholder} withImage withList /> </div> ))
 
-  const baseProductsProps: productsProps = {
+  const baseProductsProps: TProductsProps = {
     classes: classesProducts,
     getPageInfo: (pageInfo: any) => setPageInfo(pageInfo),
     fullPath: `product/{id}`,
