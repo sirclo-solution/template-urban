@@ -143,20 +143,23 @@ const ProductsPage: FC<any> = ({
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
   }
 
-  const productsProps = {
-    collectionSlug: categories,
-    filter: filterProduct,
-    withSeparatedVariant: true,
-    loadingComponent:
-      [0, 1, 2, 3, 4, 5, 6, 7].map((_, i) => (
-        <div key={i}>
-          <Placeholder classes={placeholder} withImage withList />
-        </div>
-      ))
+  type productsProps = {
+    classes: any,
+    getPageInfo: any,
+    fullPath: string,
+    pathPrefix: string,
+    lazyLoadedImage: boolean,
+    thumborSetting: any,
+    itemPerPage: number,
+    collectionSlug: string,
+    filter: any,
+    withSeparatedVariant: boolean,
+    loadingComponent: any
   }
 
-  const baseProductsProps: any = {
-    ...productsProps,
+  const productsLoadingComponent = [0, 1, 2, 3].map((_, i) => ( <div key={i}> <Placeholder classes={placeholder} withImage withList /> </div> ))
+
+  const baseProductsProps: productsProps = {
     classes: classesProducts,
     getPageInfo: (pageInfo: any) => setPageInfo(pageInfo),
     fullPath: `product/{id}`,
@@ -167,7 +170,11 @@ const ProductsPage: FC<any> = ({
       format: "webp",
       quality: 85,
     },
-    itemPerPage: 12
+    itemPerPage: 12,
+    collectionSlug: categories,
+    filter: filterProduct,
+    withSeparatedVariant: true,
+    loadingComponent: productsLoadingComponent
   }
 
   return (
