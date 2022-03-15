@@ -79,7 +79,10 @@ const ProductsPage: FC<any> = ({
   const i18n: any = useI18n()
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("product.products")]
   const layoutProps = {
-    lngDict, i18n, lng, brand,
+    lngDict,
+    i18n,
+    lng,
+    brand,
     SEO: { title: i18n.t("product.title") },
     withBack: false,
     titleSeo: i18n.t("product.title")
@@ -167,7 +170,11 @@ const ProductsPage: FC<any> = ({
   return (
     <Layout {...layoutProps}>
       <section className={styleProducts.products_breadcumb}>
-        <Breadcrumb title={i18n.t("product.title")} links={linksBreadcrumb} lng={lng} />
+        <Breadcrumb
+          title={i18n.t("product.title")}
+          links={linksBreadcrumb}
+          lng={lng}
+        />
       </section>
 
       <LazyLoadComponent>
