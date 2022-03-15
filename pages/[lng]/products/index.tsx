@@ -134,9 +134,7 @@ const ProductsPage: FC<any> = ({
     if (lastItem) {
       const lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
       const pageOffset = window.pageYOffset + window.innerHeight;
-      if (pageOffset > lastItemOffset) {
-        if (currPage < totalPage - 1) setCurrPage(currPage + 1);
-      }
+      if (pageOffset > lastItemOffset && currPage < totalPage - 1) setCurrPage(currPage + 1);
     }
   };
 
