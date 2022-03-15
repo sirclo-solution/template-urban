@@ -205,8 +205,7 @@ const ProductsPage: FC<any> = ({
                 </div>
               </>
               <div
-                className={`${styles.productsComponent_grid} ${styles.productsRecomendation} ${styles.productsComponent_gridTree}
-                 ${'mt-0 pt-0'}
+                className={`${styles.productsComponent_grid} ${'mt-0 pt-0'}
                 ${pageInfo.totalItems === 0 && "pb-0"}    
               `}
               >
