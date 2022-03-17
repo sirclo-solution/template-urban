@@ -6,6 +6,7 @@ import { useI18n } from '@sirclo/nexus'
 import { useBrand } from 'lib/useBrand'
 /* components */
 import Layout from 'components/Layout/Layout'
+import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductCategoryComponent from 'components/ProductCategoryComponent/ProductCategoryComponent'
 /* locales */
 import locales from 'locales'
@@ -17,12 +18,13 @@ const CategoriesPage: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   const i18n: any = useI18n()
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("home.productCategory")]
   const layoutProps = {
-    lngDict, 
-    i18n, 
+    lngDict,
+    i18n,
     lng,
     brand,
-    SEO: { 
+    SEO: {
       title: i18n.t("product.categories")
     },
     titleHeader: i18n.t("product.categories")
@@ -30,7 +32,12 @@ const CategoriesPage: FC<any> = ({
 
   return (
     <Layout {...layoutProps}>
-      <section>
+      <Breadcrumb
+        lng={lng}
+        title={i18n.t("home.productCategory")}
+        links={linksBreadcrumb}
+      />
+      <section className="container">
         <ProductCategoryComponent
           i18n={i18n}
           lng={lng}
