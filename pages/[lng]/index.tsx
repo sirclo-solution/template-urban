@@ -92,6 +92,7 @@ const Home: FC<any> = ({
           withTitle
           lng={lng}
           withSeeAll
+          itemPerPage={5}
         />
       </section>
 
