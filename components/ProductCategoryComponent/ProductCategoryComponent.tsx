@@ -31,6 +31,7 @@ type ProductCategoryComponentPropType = {
   | 'list'
   withTitle?: boolean
   withSeeAll?: boolean
+  itemPerPage?: number
   getSelectedSlug?: () => void
 }
 
@@ -39,6 +40,7 @@ const ProductCategoryComponent: FC<ProductCategoryComponentPropType> = ({
   displayMode = 'normal',
   withTitle,
   withSeeAll,
+  itemPerPage,
   lng,
   getSelectedSlug
 }) => {
@@ -77,7 +79,7 @@ const ProductCategoryComponent: FC<ProductCategoryComponentPropType> = ({
       }
       <ProductCategory
         showCategoryNumber
-        itemPerPage={5}
+        itemPerPage={itemPerPage}
         classes={classes}
         showImages={displayMode !== 'list'}
         dropdownIcon={displayMode === 'list' && <div className="icon-chevronDown"></div>}
