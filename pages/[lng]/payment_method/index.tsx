@@ -3,6 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
+import { useRouter } from 'next/router'
 import {
   CustomerDetail,
   ListPaymentMethod,
@@ -97,6 +98,7 @@ type PrivateComponentPropsType = {
 }
 
 const PrivateRouteWrapper = ({ children }: PrivateComponentPropsType) => (
+  // @ts-ignore
   <PrivateRoute
     page="payment_method"
     loadingComponent={<LoaderPages />}
@@ -113,6 +115,7 @@ const PaymentMethods: FC<any> = ({
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
 
   const i18n: any = useI18n()
+  const router: any = useRouter()
   const size = useWindowSize()
   const { data } = useShippingMethod()
   const { data: notes } = useBuyerNotes()
@@ -162,7 +165,12 @@ const PaymentMethods: FC<any> = ({
             shippingInfoHeader={
               <div className={stylesCustomerDetail.headerContainer}>
                 <h3>{i18n.t("shipping.shipTo")}</h3>
-                <Link href="/[lng]/place_order" as={`/${lng}/place_order`}>
+                <Link 
+                  href={{
+                    pathname: "/[lng]/place_order",
+                    query: router.query
+                  }}
+                >
                   <a className={stylesCustomerDetail.change}>{i18n.t("shipping.change")}</a>
                 </Link>
               </div>
@@ -181,7 +189,12 @@ const PaymentMethods: FC<any> = ({
             <div className={`${stylesCustomerDetail.customerDetaiBoxShipping}`}>
               <div className={stylesCustomerDetail.headerContainer}>
                 <h3>{i18n.t("shipping.deliveryCourier")}</h3>
-                <Link href="/[lng]/shipping_method" as={`/${lng}/shipping_method`}>
+                <Link 
+                  href={{
+                    pathname: "/[lng]/shipping_method",
+                    query: router.query
+                  }}
+                >
                   <a className={stylesCustomerDetail.change} >{i18n.t("shipping.change")}</a>
                 </Link>
               </div>
@@ -202,7 +215,12 @@ const PaymentMethods: FC<any> = ({
               <div className={`${stylesCustomerDetail.customerDetaiBoxShipping}`}>
                 <div className={stylesCustomerDetail.headerContainer}>
                   <h3 className={stylesCustomerDetail.notesTitle}>{i18n.t("cart.noteToSeller")}</h3>
-                  <Link href="/[lng]/cart" as={`/${lng}/cart`}>
+                  <Link 
+                    href={{
+                      pathname: "/[lng]/cart",
+                      query: router.query
+                    }}
+                  >
                     <a className={stylesCustomerDetail.change} >{i18n.t("shipping.change")}</a>
                   </Link>
                 </div>

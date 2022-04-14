@@ -79,6 +79,7 @@ type PrivateComponentPropsType = {
 }
 
 const PrivateRouteWrapper = ({ children }: PrivateComponentPropsType) => (
+  // @ts-ignore
   <PrivateRoute
     page="shipping_method"
     loadingComponent={<LoaderPages />}
@@ -109,7 +110,10 @@ const ShippingMethodPage: FC<any> = ({
 
   let withButtonProps = {}
   if (size?.width > 767) withButtonProps = {
-    withButton: () => router.push("/[lng]/payment_method", `/${lng}/payment_method`)
+    withButton: () => router.push({
+      pathname: "/[lng]/payment_method",
+      query: router.query
+    })
   }
 
   return (
@@ -133,7 +137,12 @@ const ShippingMethodPage: FC<any> = ({
             shippingInfoHeader={
               <div className={stylesCustomerDetail.headerContainer}>
                 <h3>{i18n.t("shipping.shipTo")}</h3>
-                <Link href="/[lng]/place_order" as={`/${lng}/place_order`}>
+                <Link 
+                  href={{
+                    pathname: "/[lng]/place_order",
+                    query: router.query
+                  }}
+                >
                   <a className={stylesCustomerDetail.change}>{i18n.t("shipping.change")}</a>
                 </Link>
               </div>
