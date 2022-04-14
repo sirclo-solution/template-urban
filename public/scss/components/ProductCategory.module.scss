@@ -3,14 +3,27 @@
 .productCategory
 {
 
-  &_section
+  &_section,
+  &_sectionCategories
   {
-    @include flex(column, flex-start, flex-start);
     height: fit-content;
     position: relative;
     padding: 0;
     margin-top: 29px;
     color: $color_text;
+  }
+
+  &_section
+  {
+    @include flex(column, flex-start, flex-start);
+  }
+
+  &_sectionCategories
+  {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: repeat(5, 40px);
+    gap: 0 20px;
   }
 
   &_sectionList
@@ -20,9 +33,15 @@
     margin-bottom: 0;
   }
 
-  &_container
+  &_container,
+  &_containerCategories
   {
     margin: 24px 0 80px;
+  }
+
+  &_containerCategories
+  {
+    height: 400px;
   }
   
   h2
@@ -34,6 +53,7 @@
   &_link
   {
     @include flex(row-reverse, center, flex-end);
+    width: fit-content;
   }
   
   &_name
@@ -55,10 +75,12 @@
     }
   }
 
-  &_media
+  &_media,
+  &_mediaCategories
   {
     @include position(absolute, 0, auto, auto, 30%);
     width: 70%;
+    pointer-events: none;
     
     &:empty
     {
@@ -67,6 +89,18 @@
       width: 70%;
       height: 265px;
       background-image: url('../../images/image-category-placeholder.webp');
+    }
+  }
+
+  &_mediaCategories
+  {
+    @include position(absolute, 200px, 0, 0, 0);
+    width: 100%;
+    z-index: 2;
+
+    &:empty
+    {
+      width: 100%;
     }
   }
 
@@ -107,7 +141,8 @@
     height: 265px;
   }
 
-  &_item
+  &_item,
+  &_itemCategories
   {
     list-style: none;
     width: calc(30% - 24px);
@@ -135,6 +170,16 @@
     &:not(:first-child)
     {
       z-index: 2;
+    }
+  }
+
+  &_itemCategories
+  {
+    width: 100%;
+
+    &:last-child
+    {
+      border: none;
     }
   }
   
@@ -193,9 +238,19 @@
 
   @media (max-width: #{$breakpoint_min_sm}) 
   {
+    &_sectionCategories
+    {
+      @include flex(column, flex-start, flex-start);
+    }
+    
     &_container
     {
       margin: 24px 0 87px;
+    }
+
+    &_containerCategories
+    {
+      height: 100%;
     }
 
     &_item
@@ -203,7 +258,8 @@
       width: 100%;
     }
 
-    &_media
+    &_media,
+    &_mediaCategories
     {
       display: none;
     }

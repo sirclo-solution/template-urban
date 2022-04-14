@@ -88,6 +88,7 @@ const Home: FC<any> = ({
       <section className="container">
         <ProductCategoryComponent
           i18n={i18n}
+          page='homepage'
           displayMode='normal'
           withTitle
           lng={lng}

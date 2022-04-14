@@ -27,6 +27,7 @@ const classesPlaceholderCategory = {
 type ProductCategoryComponentPropType = {
   i18n: any
   lng: string
+  page?: 'homepage' | 'categories'
   displayMode?: 'normal'
   | 'list'
   withTitle?: boolean
@@ -38,6 +39,7 @@ type ProductCategoryComponentPropType = {
 const ProductCategoryComponent: FC<ProductCategoryComponentPropType> = ({
   i18n,
   displayMode = 'normal',
+  page,
   withTitle,
   withSeeAll,
   itemPerPage,
@@ -49,7 +51,6 @@ const ProductCategoryComponent: FC<ProductCategoryComponentPropType> = ({
   let classes: object
 
   switch (displayMode) {
-
     case 'list':
       classes = {
         ...classesProductCategory,
@@ -62,12 +63,31 @@ const ProductCategoryComponent: FC<ProductCategoryComponentPropType> = ({
       classes = classesProductCategory
   }
 
+  switch (page) {
+    case 'categories':
+      classes = {
+        ...classesProductCategory,
+        parentCategoryClassName: styles.productCategory_sectionCategories,
+        imgContainerClassName: styles.productCategory_mediaCategories,
+        categoryItemClassName: styles.productCategory_itemCategories,
+      }
+      break
+    default:
+        classes = classesProductCategory
+  }
+
+  let containerClassName: string
+  
+  if (displayMode === "list") {
+    containerClassName = `${styles.productCategory_containerList}`;
+  } else if (page === "categories"){
+    containerClassName = `${styles.productCategory_containerCategories}`;
+  } else {
+    containerClassName = `${styles.productCategory_container}`;
+  }
+
   return (
-    <div className={
-      displayMode === "normal"
-        ? styles.productCategory_container
-        : styles.productCategory_containerList
-    }>
+    <div className={containerClassName}>
       {withTitle &&
         <h2>
           {
