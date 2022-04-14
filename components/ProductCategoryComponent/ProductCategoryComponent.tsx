@@ -27,7 +27,7 @@ const classesPlaceholderCategory = {
 type ProductCategoryComponentPropType = {
   i18n: any
   lng: string
-  page?: 'homepage' | 'categories'
+  page?: 'homepage' | 'categories' | 'filter'
   displayMode?: 'normal'
   | 'list'
   withTitle?: boolean
@@ -48,42 +48,30 @@ const ProductCategoryComponent: FC<ProductCategoryComponentPropType> = ({
 }) => {
 
   const size: any = useWindowSize()
-  let classes: object
-
-  switch (displayMode) {
-    case 'list':
-      classes = {
-        ...classesProductCategory,
-        parentCategoryClassName: styles.productCategory_sectionList,
-        categoryItemClassName: styles.productCategory_itemList,
-        categoryNameClassName: styles.productCategory_nameList,
-      }
-      break
-    default:
-      classes = classesProductCategory
-  }
-
-  switch (page) {
-    case 'categories':
-      classes = {
-        ...classesProductCategory,
-        parentCategoryClassName: styles.productCategory_sectionCategories,
-        imgContainerClassName: styles.productCategory_mediaCategories,
-        categoryItemClassName: styles.productCategory_itemCategories,
-      }
-      break
-    default:
-        classes = classesProductCategory
-  }
 
   let containerClassName: string
-  
-  if (displayMode === "list") {
-    containerClassName = `${styles.productCategory_containerList}`;
-  } else if (page === "categories"){
-    containerClassName = `${styles.productCategory_containerCategories}`;
+  let classes: object
+
+  if (page === "filter") {
+    classes = {
+      ...classesProductCategory,
+      parentCategoryClassName: styles.productCategory_sectionList,
+      categoryItemClassName: styles.productCategory_itemList,
+      categoryNameClassName: styles.productCategory_nameList,
+      imgContainerClassName: styles.productCategory_mediaList,
+    }
+    containerClassName = `${styles.productCategory_containerList}`
+  } else if (page === "categories") {
+    classes = {
+      ...classesProductCategory,
+      parentCategoryClassName: styles.productCategory_sectionCategories,
+      imgContainerClassName: styles.productCategory_mediaCategories,
+      categoryItemClassName: styles.productCategory_itemCategories,
+    }
+    containerClassName = `${styles.productCategory_containerCategories}`
   } else {
-    containerClassName = `${styles.productCategory_container}`;
+    classes = classesProductCategory
+    containerClassName = `${styles.productCategory_container}`
   }
 
   return (

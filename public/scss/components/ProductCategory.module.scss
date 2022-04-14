@@ -104,6 +104,11 @@
     }
   }
 
+  &_mediaList
+  {
+    display: none;
+  }
+
   &_seeAll
   {
     @include flex(row, center, flex-start);
