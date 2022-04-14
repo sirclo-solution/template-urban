@@ -81,11 +81,13 @@ const customStyles = {
   }),
   singleValue: () => ({
     paddingLeft: '7px',
-    paddingTop: '12px'
+    paddingTop: '12px',
+    fontSize: '14px'
   }),
   input: () => ({
     paddingLeft: '7px',
-    paddingTop: '12px'
+    paddingTop: '12px',
+    fontSize: '14px'
   }),
   placeholder: () => ({
     color: 'hsl(0,0%,50%)',
@@ -119,6 +121,7 @@ type PrivateComponentPropsType = {
 }
 
 const PrivateRouteWrapper = ({ children }: PrivateComponentPropsType) => (
+  // @ts-ignore
   <PrivateRoute
     page="place_order"
     loadingComponent={<LoaderPages />}
@@ -147,7 +150,10 @@ const PlaceOrderPage: FC<any> = ({
 
   let withButtonProps = {}
   if (size.width > 767) withButtonProps = {
-    withButton: () => router.push("/[lng]/shipping_method", `/${lng}/shipping_method`)
+    withButton: () => router.push({
+      pathname: "/[lng]/shipping_method",
+      query: router.query
+    })
   }
 
   return (

@@ -1,13 +1,18 @@
-import { useRef, FC } from 'react'
+import { 
+  useRef, 
+  FC,
+  ReactNode
+} from 'react'
 import styles from 'public/scss/components/Popup.module.scss'
 import useOutsideClick from 'lib/useOutsideClick'
 
 export type PopupPropsType = {
-  withHeader?: boolean,
-  setPopup?: any,
+  withHeader?: boolean
+  setPopup?: any
   popupTitle?: string
-  mobileFull?: boolean,
+  mobileFull?: boolean
   classPopopBody?: boolean
+  children?: ReactNode
 }
 
 const Popup: FC<PopupPropsType> = ({

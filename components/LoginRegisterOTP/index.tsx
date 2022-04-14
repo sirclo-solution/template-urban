@@ -1,5 +1,9 @@
 /* Library Packages */
-import { FC, useState } from 'react'
+import { 
+  FC, 
+  useState,
+  ReactNode
+} from 'react'
 import { toast } from 'react-toastify'
 import { IncomingMessage } from 'http'
 import { useRouter } from 'next/router'
@@ -25,6 +29,7 @@ type LoginRegisterOTPPropsType = {
   type: "login" | "register"
   brand: any
   lng: string
+  children?: ReactNode
 }
 
 const formClasses = {
