@@ -60,7 +60,7 @@ const ProductFilterComponent: FC<any> = ({
       <ProductCategoryComponent
         lng={lng}
         i18n={i18n}
-        displayMode="list"
+        page="filter"
         getSelectedSlug={getSelectedCategory}
         withTitle
       />

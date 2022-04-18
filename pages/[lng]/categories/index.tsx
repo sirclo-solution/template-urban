@@ -41,6 +41,7 @@ const CategoriesPage: FC<any> = ({
         <ProductCategoryComponent
           i18n={i18n}
           lng={lng}
+          page='categories'
         />
       </section>
     </Layout>
