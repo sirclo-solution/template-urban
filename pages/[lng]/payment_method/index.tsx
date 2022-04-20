@@ -57,7 +57,13 @@ const classesListPaymentMethod = {
   shippingPriceClassName: styles.shippingPrice,
   shippingDiscountClassName: styles.shippingDiscount,
   checkmarkClassName: styles.checkmark,
-  paymentDetailsDeductionClassName: styles.paymentDetailsDeduction
+  paymentDetailsDeductionClassName: styles.paymentDetailsDeduction,
+  // traveloka paylater
+  travelokaPayLaterHeaderClassName: styles.travelokaPayLater_header,
+  travelokaPayLaterFooterClassName: styles.travelokaPayLater_footer,
+  travelokaPayLaterFooterTextClassName: styles.travelokaPayLater_footerText,
+  travelokaPayLaterFooterImgClassName: styles.travelokaPayLater_footerImg,
+  travelokaPayLaterFooterLinkClassName: styles.travelokaPayLater_footerLink
 }
 
 const classessOptWa = {

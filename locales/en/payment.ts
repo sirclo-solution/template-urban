@@ -3,6 +3,7 @@ const locale = {
     "agreement": "I agree to Terms of Use and Privacy Policy",
     "availCoupon": "Available Coupon",
     "availPoint": "Available Point",
+    "choosePayment": "Select Payment",
     "confirm": "Send Proof of Payment",
     "discountBundle": "Discount Bundle",
     "fee": "Fee",
@@ -14,10 +15,12 @@ const locale = {
     "title": "Payment",
     "to": "Destination of bank transfer",
     "total": "Total Bill",
+    "travelokaPayLaterHeader": "Recommended",
+    "travelokaPayLaterLink": "Activate your Traveloka PayLater now!",
+    "travelokaPayLaterText": "Turn your payments into installments via",
     "uniqueCode": "Unique Code",
     "voucher": "Voucher",
     "warning": "Unable to proceed transaction amount below 10,000",
-    "choosePayment": "Select Payment",
   }
 }
 
