@@ -12,7 +12,7 @@ import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import PageNotFound from 'components/PageNotFound'
 import SEOHead from 'components/SEO'
-import Newsletter from '../Newsletters'
+import Newsletter from 'components/Newsletters'
 
 /* Styles */
 import styles from 'public/scss/components/Layout.module.scss'

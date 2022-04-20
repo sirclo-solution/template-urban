@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from 'querystring'
-import { GRAPHQL_URI } from '../components/Constants'
+import { GRAPHQL_URI } from 'components/Constants'
 import { IncomingMessage } from 'http'
 import { getBrand } from '@sirclo/nexus'
 import locales from 'locales'

@@ -27,7 +27,9 @@ const Error404Page: FC<any> = () => {
   return (
     <div className={styles.error}>
       <div className={styles.error_container}>
-        <h2 className={styles.error_container__title}>{i18n.t("error.errorTitle")}</h2>
+        <h2 className={styles.error_container__title}>
+          {i18n.t("error.errorTitle")}
+        </h2>
         <Link href="/" as="/">
           <a className={`btn mt-2 ${styles.btn_primary} ${styles.btn_long}`}>
             {i18n.t("error.errorBackHome")}
