@@ -1,8 +1,7 @@
+/* library package */
 import { ShipmentTracker, useI18n } from '@sirclo/nexus'
-/* locales */
-import locale from 'locales'
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
@@ -21,7 +20,7 @@ const classesTrackerPage = {
   shipmentListWrapperClassName: styles.track_shipmentListWrapper,
   shipmentCloseIconClassName: styles.track_shipmentCloseIcon,
   shipmentTrackButtonClassName: `${styles.track_shipmentTrackButton} ${styles.track_shipmentTrackButtonGuest}`,
-};
+}
 
 const TrackerPage = ({ order_token, lngDict, lng, brand }) => {
 
@@ -49,19 +48,18 @@ const TrackerPage = ({ order_token, lngDict, lng, brand }) => {
   )
 }
 
-export async function getServerSideProps({ params, req }) {
-
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export async function getServerSideProps({ 
+  req,
+  params
+}) {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || "",
+      ...brand,
       order_token: params.token
     }
   }
 }
 
-export default TrackerPage;
+export default TrackerPage

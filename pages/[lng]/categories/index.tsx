@@ -2,14 +2,14 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useI18n } from '@sirclo/nexus'
+
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
+
 /* components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductCategoryComponent from 'components/ProductCategoryComponent/ProductCategoryComponent'
-/* locales */
-import locales from 'locales'
 
 const CategoriesPage: FC<any> = ({
   lng,
@@ -48,17 +48,15 @@ const CategoriesPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-
-  const lngDict = locales(params.lng) || {}
-
-  const brand = await useBrand(req);
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ''
+      ...brand
     }
   }
 }

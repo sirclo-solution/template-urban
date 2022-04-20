@@ -4,10 +4,8 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { useI18n } from '@sirclo/nexus'
 /* library template */
-import { parseCookies } from 'lib/parseCookies'
-import { useBrand, handleGetBanner } from 'lib/client'
-/* locale */
-import locale from "locales";
+import { handleGetBanner } from 'lib/client'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Banner from 'components/Banner'
@@ -118,29 +116,22 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }: any) => {
-
-  const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
+  const brand = await useBrandCommon(req, params)
+  const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico', "manifest", "sitemap.xml"]
 
   if (allowedUri.indexOf(params.lng.toString()) == -1) {
-    const cookies = parseCookies(req)
-
     res.writeHead(307, {
-      Location: cookies.ACTIVE_LNG ? '/' + cookies.ACTIVE_LNG + '/' + params.lng : '/id/' + params.lng
+      Location: `/${brand.lng}/` + params.lng
     })
-
     res.end()
   }
 
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req);
-  const dataBanners = await handleGetBanner(req);
+  const dataBanners = await handleGetBanner(req)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      dataBanners,
-      brand: brand || ''
+      ...brand,
+      dataBanners
     }
   }
 }

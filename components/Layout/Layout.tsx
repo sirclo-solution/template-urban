@@ -4,7 +4,6 @@ import {
   useEffect,
   useState
 } from 'react'
-
 import { withBrand } from '@sirclo/nexus'
 import { ToastContainer } from 'react-toastify'
 
@@ -13,7 +12,7 @@ import Header from 'components/Header/Header'
 import Footer from 'components/Footer/Footer'
 import PageNotFound from 'components/PageNotFound'
 import SEOHead from 'components/SEO'
-import Newsletter from '../Newsletters';
+import Newsletter from 'components/Newsletters'
 
 /* Styles */
 import styles from 'public/scss/components/Layout.module.scss'
@@ -43,31 +42,15 @@ const Layout: FC<LayoutPropType> = ({
   ...props
 }) => {
 
-  const SEOprops = {
-    hideFromSearchEngine: brand?.settings?.hideFromSearchEngine,
-    title: `${brand?.settings?.websiteTitle}${SEO?.title && ' - ' + SEO?.title}` || "",
-    description: SEO?.desc || brand?.settings?.websiteDescription,
-    image: SEO?.image || brand?.logoURL,
-    keywords: SEO?.keywords || ''
-  }
+  const [mobileMenuToggled, setMobileMenuToggled] = useState<boolean>(false)
 
   useEffect(() => {
-    i18n?.locale(lng, lngDict);
-  }, [lng, lngDict]);
+    i18n?.locale(lng, lngDict)
+  }, [lng, lngDict])
 
   useEffect(() => {
     if (brand?.googleAdsWebsiteMetaToken) getToken()
   }, [brand])
-
-  const getToken = (): string => {
-    const googleAdsWebsiteMetaToken = brand?.googleAdsWebsiteMetaToken
-    const token: string = googleAdsWebsiteMetaToken.replace(/.*content="([^"]*)".*/, "$1")
-    return token
-  }
-
-  const masterLayoutClassName = `${layoutClassNameMaster}`
-
-  const [mobileMenuToggled, setMobileMenuToggled] = useState<boolean>(false)
 
   useEffect(() => {
     if (mobileMenuToggled) {
@@ -76,6 +59,22 @@ const Layout: FC<LayoutPropType> = ({
       document.querySelector('body').classList.remove(styles.body__noOverflow)
     }
   }, [mobileMenuToggled])
+
+  const masterLayoutClassName = `${layoutClassNameMaster}`
+
+  const SEOprops = {
+    hideFromSearchEngine: brand?.settings?.hideFromSearchEngine,
+    title: `${brand?.settings?.websiteTitle}${SEO?.title && ' - ' + SEO?.title}` || "",
+    description: SEO?.desc || brand?.settings?.websiteDescription,
+    image: SEO?.image || brand?.logoURL,
+    keywords: SEO?.keywords || ''
+  }
+
+  const getToken = (): string => {
+    const googleAdsWebsiteMetaToken = brand?.googleAdsWebsiteMetaToken
+    const token: string = googleAdsWebsiteMetaToken.replace(/.*content="([^"]*)".*/, "$1")
+    return token
+  }
 
   return (
     <>

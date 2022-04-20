@@ -30,19 +30,13 @@ import {
   RiEyeCloseLine,
   RiEyeLine
 } from 'react-icons/ri'
-
 /* Library Template */
 import { parseCookies } from 'lib/parseCookies'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { useAuthMethod } from 'lib/client'
-
 /* Components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-
-/* Locales */
-import locale from 'locales'
-
 /* Styles */
 import styles from 'public/scss/pages/Account.module.scss'
 import stylesPopupConfirmationOrder from 'public/scss/components/popupConfirmationOrder.module.scss'
@@ -353,9 +347,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+  const brand = await useBrandCommon(req, params)
   const { hasOtp } = await useAuthMethod(req)
 
   if (res) {
@@ -363,8 +355,8 @@ export const getServerSideProps: GetServerSideProps = async ({
     const auth = cookies.AUTH_KEY
 
     if (!auth) {
-      res.writeHead(301, {
-        Location: `/${cookies.ACTIVE_LNG || "id"}/login`,
+      res.writeHead(307, {
+        Location: `/${brand?.lng}/login`
       })
       res.end()
     }
@@ -372,10 +364,8 @@ export const getServerSideProps: GetServerSideProps = async ({
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      hasOtp,
-      brand: brand || ""
+      ...brand,
+      hasOtp
     }
   }
 }

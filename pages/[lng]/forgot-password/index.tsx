@@ -6,7 +6,7 @@ import { toast } from 'react-toastify'
 /* library component */
 import { parseCookies } from 'lib/parseCookies'
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Loader from 'components/Loader/Loader'
@@ -14,8 +14,6 @@ import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import useWindowSize from 'lib/useWindowSize'
 /* styles */
 import styles from 'public/scss/pages/ForgotPassword.module.scss'
-/* locales */
-import locale from "locales";
 
 const classesResetPassword = {
   inputClassName: styles.input,
@@ -70,20 +68,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const lngDict = locale(params.lng);
+  const brand = await useBrandCommon(req, params)
 
-  const brand = await useBrand(req);
-
-  const cookies = parseCookies(req);
-  redirectIfAuthenticated(res, cookies, 'account');
+  const cookies = parseCookies(req)
+  redirectIfAuthenticated(res, cookies, brand, 'account')
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
-  };
+  }
 }
 
-export default ForgotPassword;
+export default ForgotPassword

@@ -12,12 +12,12 @@ import {
   useShippingMethod,
   useBuyerNotes
 } from '@sirclo/nexus'
-/* locales */
-import locale from 'locales'
+
 /* library component */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { useWhatsAppOTPSetting } from 'lib/client'
 import useWindowSize from 'lib/useWindowSize'
+
 /* copmonents */
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Layout from 'components/Layout/Layout'
@@ -58,7 +58,13 @@ const classesListPaymentMethod = {
   shippingPriceClassName: styles.shippingPrice,
   shippingDiscountClassName: styles.shippingDiscount,
   checkmarkClassName: styles.checkmark,
-  paymentDetailsDeductionClassName: styles.paymentDetailsDeduction
+  paymentDetailsDeductionClassName: styles.paymentDetailsDeduction,
+  // traveloka paylater
+  travelokaPayLaterHeaderClassName: styles.travelokaPayLater_header,
+  travelokaPayLaterFooterClassName: styles.travelokaPayLater_footer,
+  travelokaPayLaterFooterTextClassName: styles.travelokaPayLater_footerText,
+  travelokaPayLaterFooterImgClassName: styles.travelokaPayLater_footerImg,
+  travelokaPayLaterFooterLinkClassName: styles.travelokaPayLater_footerLink
 }
 
 const classessOptWa = {
@@ -282,20 +288,19 @@ const PaymentMethods: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
   const hasOtp = await useWhatsAppOTPSetting(req)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      hasOtp,
-      brand: brand || ""
+      ...brand,
+      hasOtp
     }
-  };
+  }
 }
 
 export default PaymentMethods

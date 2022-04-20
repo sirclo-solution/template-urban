@@ -4,15 +4,12 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { useI18n, usePaymentLink } from '@sirclo/nexus'
 /* library component */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 /* styles */
 import styles from 'public/scss/pages/PaymentStatus.module.scss'
-
-/* locales */
-import locale from 'locales'
 
 type TypePaymentStatus = {
   title?: string,
@@ -109,21 +106,20 @@ const PaymentStatus: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
   const [orderID, status] = params?.orderID as string[]
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || "",
+      ...brand,
       orderID: orderID || "",
       status: status || "",
     }
-  };
+  }
 }
 
-export default PaymentStatus;
+export default PaymentStatus

@@ -14,8 +14,7 @@ import {
 import dynamic from 'next/dynamic'
 
 /* library template */
-import { parseCookies } from 'lib/parseCookies'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import useQuery from 'lib/useQuery'
 import useWindowSize from 'lib/useWindowSize'
 
@@ -25,16 +24,12 @@ import Layout from 'components/Layout/Layout'
 import Placeholder from 'components/Placeholder'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductFilterComponent from 'components/ProductFilter'
-
 const EmptyComponent = dynamic(() => import('components/EmptyComponent/EmptyComponent'))
 
 /* styles */
 import styleProducts from 'public/scss/pages/Products.module.scss'
 import styles from 'public/scss/components/ProductsComponent.module.scss'
 import stylesSort from 'public/scss/components/ProductSort.module.scss'
-
-/* locales */
-import locales from 'locales'
 
 export const placeholder = {
   placeholderImage: styles.products_placeholder,
@@ -89,34 +84,23 @@ const ProductsPage: FC<any> = ({
   }
 
   const router = useRouter()
-  const size = useWindowSize();
+  const size = useWindowSize()
 
-  const [showFilter, setShowFilter] = useState<boolean>(false);
-  const [showSort, setShowSort] = useState<boolean>(false);
-  const handleFilter = (selectedFilter: any) => setFilterProduct(selectedFilter)
-  const resetFilter = () => router.replace(`/${lng}/products`)
-
+  const [showFilter, setShowFilter] = useState<boolean>(false)
+  const [showSort, setShowSort] = useState<boolean>(false)
+  
   const [filterProduct, setFilterProduct] = useState({})
   const categories: string = useQuery('categories')
-
+  
   const [currPage, setCurrPage] = useState(0);
   const [pageInfo, setPageInfo] = useState({
     pageNumber: 0,
     itemPerPage: 12,
     totalItems: 0,
-  });
-
-  const handleShowFilter = () => {
-    setShowFilter(!showFilter)
-    setShowSort(false)
-  }
-  const handleShowSort = () => {
-    setShowSort(!showSort)
-    setShowFilter(false)
-  }
-
+  })
+  
   const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage);
-
+  
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -125,6 +109,19 @@ const ProductsPage: FC<any> = ({
   useEffect(() => {
     setCurrPage(0);
   }, [filterProduct, categories]);
+
+  const handleFilter = (selectedFilter: any) => setFilterProduct(selectedFilter)
+  const resetFilter = () => router.replace(`/${lng}/products`)
+
+  const handleShowFilter = () => {
+    setShowFilter(!showFilter)
+    setShowSort(false)
+  }
+
+  const handleShowSort = () => {
+    setShowSort(!showSort)
+    setShowFilter(false)
+  }
 
   const handleScroll = () => {
     const lastItem = document.querySelector(
@@ -190,15 +187,13 @@ const ProductsPage: FC<any> = ({
       <LazyLoadComponent>
         <>
           <section
-            className={
-              `container my-2 
-          ${pageInfo.totalItems !== 0 ? 'pb-4' : ""}
-          ${pageInfo.totalItems !== 0 ? styles.productsComponent_lastSection : ""}      
-        `}
+            className={`
+              container my-2 
+              ${pageInfo.totalItems !== 0 ? 'pb-4' : ""}
+              ${pageInfo.totalItems !== 0 ? styles.productsComponent_lastSection : ""}      
+            `}
           >
-            <div className={`
-          ${pageInfo.totalItems === 0 && "mb-0"}    
-        `}>
+            <div className={`${pageInfo.totalItems === 0 && "mb-0"}`}>
               <>
                 <div className={styles.productsComponent_action}>
                   <button className={styles.productsComponent_actionItem} onClick={handleShowFilter}>
@@ -291,37 +286,19 @@ const ProductsPage: FC<any> = ({
         </>
       </LazyLoadComponent>
     </Layout>
-  );
-};
+  )
+}
 export const getServerSideProps = async ({
   req,
-  res,
   params
 }) => {
-
-  const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico'];
-
-  if (allowedUri.indexOf(params.lng.toString()) == -1) {
-    const cookies = parseCookies(req);
-
-    res.writeHead(307, {
-      Location: cookies.ACTIVE_LNG ? '/' + cookies.ACTIVE_LNG + '/' + params.lng : '/id/' + params.lng
-    });
-
-    res.end();
-  }
-
-  const lngDict = locales(params.lng) || {}
-
-  const brand = await useBrand(req);
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
-  };
+  }
 }
 
 export default ProductsPage

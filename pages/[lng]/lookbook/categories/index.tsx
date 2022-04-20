@@ -9,7 +9,7 @@ import {
 } from '@sirclo/nexus'
 
 /* Library Template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 
 /* Components */
@@ -18,9 +18,7 @@ import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
 import Icon from 'components/Icon/Icon'
 
-/* Locales */
-import locale from 'locales'
-
+/* Styles */
 import styles from 'public/scss/pages/Lookbook.module.scss'
 
 const classesLookbook = {
@@ -133,15 +131,15 @@ const LookbookCategory: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req,
+  params
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ''
+      ...brand
     }
   }
 }

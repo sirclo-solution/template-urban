@@ -1,16 +1,10 @@
 /* library package */
 import { FC } from 'react'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
-
-import {
-  useI18n, getProductDetail
-} from '@sirclo/nexus'
-
-/* locales */
-import locale from 'locales'
+import { useI18n, getProductDetail } from '@sirclo/nexus'
 
 /* library component */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* components */
 import SEO from 'components/SEO'
@@ -83,25 +77,23 @@ const Product: FC<any> = ({
   );
 };
 
-export async function getServerSideProps({ req, params }) {
-  const { slug } = params;
-  const data = await getProductDetail(GRAPHQL_URI(req), slug);
-  const brand = await useBrand(req);
-
-  const lngDict = locale(params.lng)
-
-  const urlSite = `https://${req.headers.host}/${params.lng}/product/${slug}`;
+export async function getServerSideProps({ 
+  req,
+  params
+}){
+  const { slug } = params
+  const data = await getProductDetail(GRAPHQL_URI(req), slug)
+  const brand = await useBrandCommon(req, params)
+  const urlSite = `https://${req.headers.host}/${params.lng}/product/${slug}`
 
   return {
     props: {
-      lng: params.lng,
+      ...brand,
       slug,
-      lngDict,
       data: data || null,
-      brand: brand || "",
-      urlSite: urlSite,
-    },
-  };
+      urlSite,
+    }
+  }
 }
 
-export default Product;
+export default Product

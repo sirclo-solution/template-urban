@@ -1,6 +1,7 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
+import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 import {
   PaymentConfirmation,
@@ -9,18 +10,17 @@ import {
 } from '@sirclo/nexus'
 /* library component */
 import useWindowSize from 'lib/useWindowSize'
-import { useBrand } from 'lib/useBrand'
-
+import { useBrandCommon } from 'lib/useBrand'
+/* components */
 import Layout from 'components/Layout/Layout'
-import Loader from 'components/Loader/Loader'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Icon from 'components/Icon/Icon'
 import BankAccount from 'components/BankAccount/BankAccount'
+const Loader = dynamic(() => import('components/Loader/Loader'))
+/* styles */
 import styles from 'public/scss/pages/PaymentNotif.module.scss'
 import stylesPopup from 'public/scss/components/CheckPaymentOrder.module.scss'
 import stylesBanks from 'public/scss/components/BanksAccount.module.scss'
-/* locales */
-import locale from 'locales'
 
 const classesPaymentNotif = {
   paymentConfirmationDivClassName: styles.paymentNotif_form,
@@ -94,7 +94,6 @@ const PaymentConfirmationPage: FC<any> = ({
   let orderID = ""
   if (router.query.orderID) orderID = router.query.orderID.toString();
 
-
   const linksBreadcrumb = [`${i18n.t("header.home")}`, i18n.t("paymentConfirm.heading")]
   const layoutProps = {
     lngDict, i18n, lng, brand,
@@ -157,18 +156,17 @@ const PaymentConfirmationPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-
-  const brand = await useBrand(req)
-  const lngDict = locale(params.lng)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
-  };
+  }
 }
 
 export default PaymentConfirmationPage

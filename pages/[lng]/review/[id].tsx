@@ -14,10 +14,7 @@ import { RiStarLine, RiStarFill } from 'react-icons/ri'
 
 /* Library Template */
 import useWindowSize from 'lib/useWindowSize'
-import { useBrand } from 'lib/useBrand'
-
-/* Locales */
-import locale from 'locales'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* Components */
 import Layout from 'components/Layout/Layout'
@@ -183,16 +180,15 @@ const ReviewPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req,
+  params
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ''
+      ...brand
     }
   }
 }

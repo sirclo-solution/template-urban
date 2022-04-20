@@ -11,10 +11,8 @@ import {
   useI18n,
   PrivateRoute
 } from '@sirclo/nexus'
-/* locales */
-import locale from 'locales'
 /* library component */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 /* copmonents */
 import Layout from 'components/Layout/Layout'
@@ -193,18 +191,17 @@ const ShippingMethodPage: FC<any> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
-  };
+  }
 }
 
-export default ShippingMethodPage;
+export default ShippingMethodPage

@@ -7,11 +7,9 @@ import {
   useI18n,
   Logo
 } from '@sirclo/nexus'
-/* locales */
-import locale from 'locales'
 /* library template */
 import { parseCookies } from 'lib/parseCookies'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { useAuthMethod } from 'lib/client'
 import redirectIfAuthenticated from 'lib/redirectIfAuthenticated'
 import useWindowSize from 'lib/useWindowSize'
@@ -109,20 +107,17 @@ export const getServerSideProps: GetServerSideProps = async ({
   params
 }) => {
 
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
-  const cookies = parseCookies(req)
+  const brand = await useBrandCommon(req, params)
   const { hasGoogleAuth, hasFacebookAuth, hasOtp } = await useAuthMethod(req)
-  redirectIfAuthenticated(res, cookies, 'account')
+  const cookies = parseCookies(req)
+  redirectIfAuthenticated(res, cookies, brand, 'account')
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
+      ...brand,
       hasGoogleAuth,
       hasFacebookAuth,
-      hasOtp,
-      brand: brand || ""
+      hasOtp
     }
   }
 }

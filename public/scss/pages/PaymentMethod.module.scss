@@ -24,6 +24,7 @@
 
 .paymentItemEnabled
 {
+  @include position(relative);
   margin-bottom: 12px;
   padding: 16px 16px 10px 16px;
   border: 1px solid $color_placeholder;
@@ -364,5 +365,65 @@
   .shippingPrice
   {
     display: block;
+  }
+}
+
+.travelokaPayLater
+{
+  &_header
+  {
+    background: $color_green;
+    color: $color_white;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0 !important;
+    margin-bottom: 20px;
+
+    p
+    {
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+
+    & ~ div[class*="paymentType"]
+    {
+      width: calc(100% - 90px);
+    }
+
+    & ~ div[class*="paymentImg"]
+    {
+      width: 90px;
+    }
+  }
+
+  &_footer
+  {
+    font-size: 12px;
+    background: $color_light;
+    width: 100%;
+    padding: 8px 10px !important;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  &_footerText
+  {
+    margin-bottom: 0;
+  }
+
+  &_footerImg
+  {
+    display: inline-block;
+
+    img
+    {
+      @include position(relative, -3px);
+      height: 14px;
+    }
+  }
+
+  &_footerLink
+  {
+    color: $color_blue;
   }
 }
