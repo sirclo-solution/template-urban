@@ -10,7 +10,7 @@ import {
 } from '@sirclo/nexus'
 
 /* Library Templates */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* Components */
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
@@ -18,9 +18,6 @@ import Layout from 'components/Layout/Layout'
 
 /* Styles */
 import styles from 'public/scss/pages/Contact.module.scss'
-
-/* Locales */
-import locale from 'locales'
 
 const classesContact = {
   containerClassName: styles.container,
@@ -83,15 +80,15 @@ const ContactPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand,
     }
   }
 }

@@ -13,16 +13,13 @@ import { RiQuestionFill } from 'react-icons/ri'
 
 /* Library Template */
 import useWindowSize from 'lib/useWindowSize'
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import { GRAPHQL_URI } from 'components/Constants'
 
 /* Components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
-
-/* Locales */
-import locale from 'locales'
 
 /* Styles */
 import styles from 'public/scss/pages/Blog.module.scss'
@@ -164,16 +161,13 @@ const Blog: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+  const brand = await useBrandCommon(req, params)
   const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req))
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      headerImage,
-      brand: brand || ""
+      ...brand,
+      headerImage
     }
   }
 }

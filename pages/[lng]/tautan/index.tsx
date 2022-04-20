@@ -4,17 +4,13 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { Links, useI18n } from '@sirclo/nexus'
 
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* component */
 import Layout from 'components/Layout/Layout'
 
 /* styles */
 import styles from 'public/scss/pages/Tautan.module.scss'
-
-/* locales */
-import locale from "locales";
-
 
 const classesLinks = {
   containerClassName: styles.tautan,
@@ -42,23 +38,23 @@ const TautanPage: FC<any> = ({
 
   return (
     <Layout {...layoutProps}>
-        <Links classes={classesLinks} />
+      <Links classes={classesLinks} />
     </Layout>
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const lngDict = locale(params.lng);
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
 
-  const brand = await useBrand(req);
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
-  };
+  }
 }
 
-export default TautanPage;
+export default TautanPage

@@ -12,15 +12,12 @@ import {
 import { FiArrowLeft } from 'react-icons/fi'
 
 /* Library Template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* Components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
-
-/* Locales */
-import locale from 'locales'
 
 /* Styles */
 import styles from 'public/scss/pages/Blog.module.scss'
@@ -216,18 +213,14 @@ const BlogSlug: FC<any> = ({
 export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
 
   const { slug } = params
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
-
+  const brand = await useBrandCommon(req, params)
   const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      slug: params.slug,
-      brand: brand || '',
-      urlSite: urlSite
+      ...brand,
+      slug,
+      urlSite
     }
   }
 }

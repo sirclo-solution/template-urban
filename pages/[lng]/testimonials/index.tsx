@@ -14,16 +14,13 @@ import {
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 
 /* Library Template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* Components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
 import Icon from 'components/Icon/Icon'
-
-/* Locales */
-import locale from 'locales'
 
 /* Styles */
 import styles from 'public/scss/pages/Testimonials.module.scss'
@@ -205,16 +202,15 @@ const TestimonialsPage: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  
-  const lngDict = locale(params.lng)
-  const brand = await useBrand(req)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
   }
 }

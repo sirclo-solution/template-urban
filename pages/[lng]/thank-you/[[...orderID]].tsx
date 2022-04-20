@@ -1,10 +1,11 @@
+/* library package */
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import { ThankYou, useI18n } from '@sirclo/nexus'
 import dynamic from 'next/dynamic'
 /* library component */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
@@ -14,8 +15,6 @@ const Placeholder = dynamic(() => import('components/Placeholder'))
 import styles from 'public/scss/pages/ThankYou.module.scss'
 import stylesBanks from 'public/scss/components/BanksAccount.module.scss'
 import stylesOrder from 'public/scss/pages/PaymentNotif.module.scss'
-/* locales */
-import locale from 'locales'
 
 const classesThankYouPage = {
   thankYouClassName: styles.thankyou_inner,
@@ -118,19 +117,18 @@ const ThankYouPage: FC<any> = ({
         </div>
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-
-  const brand = await useBrand(req)
-  const lngDict = locale(params.lng)
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
   }
 }

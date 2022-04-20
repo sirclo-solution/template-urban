@@ -8,15 +8,12 @@ import {
 } from '@sirclo/nexus'
 
 /* Library Template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* Components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
-
-/* Locales */
-import locale from "locales";
 
 /* Styles */
 import styles from 'public/scss/pages/Article.module.scss'
@@ -93,15 +90,13 @@ const ArticleDetail: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-	const lngDict = locale(params.lng)
-	const brand = await useBrand(req)
+	const { slug } = params
+  const brand = await useBrandCommon(req, params)
 
 	return {
 		props: {
-			lng: params.lng,
-			lngDict,
-			slug: params.slug,
-			brand: brand || ''
+			...brand,
+			slug,
 		}
 	}
 }

@@ -1,21 +1,20 @@
 /*library package */
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { SetNewPassword, useI18n } from '@sirclo/nexus'
+import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
-import Icon from 'components/Icon/Icon'
+import { SetNewPassword, useI18n } from '@sirclo/nexus'
 /* library component */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 /* library component */
 import Layout from 'components/Layout/Layout'
-import Loader from 'components/Loader/Loader'
+import Icon from 'components/Icon/Icon'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
+const Loader = dynamic(() => import('components/Loader/Loader'))
 /* styles */
 import styles from 'public/scss/pages/ResetPassword.module.scss'
 import stylesPasswordStrength from 'public/scss/components/PasswordStrength.module.scss'
-/* locales */
-import locale from "locales";
 
 const classesSetNewPassword = {
   containerClassName: styles.container,
@@ -65,21 +64,20 @@ const ResetPasswordPage: FC<any> = ({
         />
       </section>
     </Layout>
-  );
-};
+  )
+}
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
-  const lngDict = locale(params.lng);
-
-  const brand = await useBrand(req);
+export const getServerSideProps: GetServerSideProps = async ({ 
+  req, 
+  params 
+}) => {
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ""
+      ...brand
     }
-  };
+  }
 }
 
-export default ResetPasswordPage;
+export default ResetPasswordPage

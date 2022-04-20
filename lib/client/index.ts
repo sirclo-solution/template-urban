@@ -4,7 +4,6 @@ import {
   getFacebookAuth,
   getBlogHeaderImage,
   getWhatsAppOTPSetting,
-  getBrand,
   getBanner
 } from "@sirclo/nexus";
 
@@ -16,6 +15,13 @@ export const useWhatsAppOTPSetting = async (req: IncomingMessage) => {
   return await getWhatsAppOTPSetting(GRAPHQL_URI(req))
 }
 
+export const handleGetBlogHeaderImage = async (req: IncomingMessage) => {
+  return await getBlogHeaderImage(GRAPHQL_URI(req));
+}
+export const handleGetBanner = async (req: IncomingMessage) => {
+  return await getBanner(GRAPHQL_URI(req))
+}
+
 export const useAuthMethod = async (req: IncomingMessage) => {
   const hasGoogleAuth = await getGoogleAuth(GRAPHQL_URI(req));
   const hasFacebookAuth = await getFacebookAuth(GRAPHQL_URI(req));
@@ -25,20 +31,5 @@ export const useAuthMethod = async (req: IncomingMessage) => {
     hasGoogleAuth,
     hasFacebookAuth,
     hasOtp,
-  }
-}
-
-export const handleGetBlogHeaderImage = async (req: IncomingMessage) => {
-  return await getBlogHeaderImage(GRAPHQL_URI(req));
-}
-export const handleGetBanner = async (req: IncomingMessage) => {
-  return await getBanner(GRAPHQL_URI(req))
-}
-
-export const useBrand = async (req: IncomingMessage) => {
-  try {
-    return await getBrand(GRAPHQL_URI(req));
-  } catch (e) {
-    console.log('Error while request brand: ', e);
   }
 }

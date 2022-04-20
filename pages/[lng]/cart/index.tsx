@@ -13,11 +13,8 @@ import {
   useCart
 } from '@sirclo/nexus'
 
-/* locales */
-import locale from 'locales'
-
 /* library template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 
 /* components */
@@ -185,15 +182,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   params
 }) => {
-  const lngDict = locale(params.lng)
-
-  const brand = await useBrand(req)
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ''
+      ...brand
     }
   }
 }

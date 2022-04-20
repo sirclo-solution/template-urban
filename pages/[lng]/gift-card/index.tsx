@@ -4,14 +4,11 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { GiftCard, useI18n } from '@sirclo/nexus'
 
 /* Library Template */
-import { useBrand } from 'lib/useBrand'
+import { useBrandCommon } from 'lib/useBrand'
 
 /* Components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-
-/* Locales */
-import locale from 'locales'
 
 /* Styles */
 import styles from 'public/scss/pages/GiftCard.module.scss'
@@ -75,15 +72,11 @@ export const getServerSideProps: GetServerSideProps = async ({
   params,
   req
 }) => {
-  const lngDict = locale(params.lng)
-
-  const brand = await useBrand(req)
+  const brand = await useBrandCommon(req, params)
 
   return {
     props: {
-      lng: params.lng,
-      lngDict,
-      brand: brand || ''
+      ...brand
     }
   }
 }
