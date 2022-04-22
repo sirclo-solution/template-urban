@@ -1,9 +1,10 @@
-@import "../utils/_variables.scss";
-@import "./Placeholder.module.scss";
-@import "../components/Form.module.scss";
-@import "../components/Buttons.module.scss";
+@import '../utils/_variables.scss';
+@import './Placeholder.module.scss';
+@import '../components/Form.module.scss';
+@import '../components/Buttons.module.scss';
 
-.section {
+.section
+{
   border: 1px solid $color_elements_line_darker;
   padding: 16px;
   margin: 0 0 16px 0;
@@ -12,30 +13,36 @@
   overflow: hidden;
 }
 
-.container {
+.container
+{
   max-height: 300px;
 }
 
-.cartHeader {
+.cartHeader
+{
   display: none;
 }
 
-.header {
+.header
+{
   @include flex(row, center, space-between);
   margin-bottom: 12px;
 }
 
-.changeCart {
+.changeCart
+{
   @include SmallSmall;
   @include flex(row, center, flex-start);
   color: $color_blue;
   cursor: pointer;
 
-  &:hover {
-    opacity: 0.7;
+  &:hover
+  {
+    opacity: .7;
   }
 
-  &::before {
+  &::before
+  {
     content: "";
     @include fixedSize(12px);
     display: block;
@@ -45,7 +52,8 @@
   }
 }
 
-.cartBody {
+.cartBody
+{
   padding: 8px;
   background: $color_white;
   max-height: 168px;
@@ -53,7 +61,8 @@
   @extend .scrollbar_secondary;
 }
 
-.item {
+.item
+{
   position: relative;
   display: grid;
   grid-template-columns: 64px 64px auto;
@@ -63,74 +72,88 @@
   margin-bottom: 0;
 }
 
-.itemImage {
+.itemImage
+{
   width: 64px;
-  grid-row: 1 / span 4;
+  grid-row:  1 / span 4;
   border-radius: 2px;
 
-  img {
+  img
+  {
     width: 100%;
   }
 }
 
-.itemTitle {
+.itemTitle
+{
   @include RegulerReguler;
   @include col-span-(2);
   margin-bottom: 10px;
 }
 
-.title {
+.title
+{
   @include SmallSmall;
   margin-bottom: 0;
   display: inline-block;
 }
 
-.selectedVariantContainer {
+.selectedVariantContainer
+{
   @include flex(row, center, flex-start);
   @include SmallSmall;
   display: inline-block;
   text-transform: capitalize;
 
-  &::before {
+  &::before
+  {
     content: ",";
     margin-right: 4px;
   }
 }
 
-.selectedVariant {
+.selectedVariant
+{
   display: inline-block;
 }
 
-.itemRegularPrice {
+.itemRegularPrice
+{
   @include SmallSmall;
   color: $color_text_secondary;
 
-  &:not(:only-of-type) {
+  &:not(:only-of-type)
+  {
     @include typography_builder(400, 12, 12);
     text-decoration: line-through;
     color: $color_grey;
   }
 }
 
-.itemPrice {
-  @include grid-start-(3, 2);
+.itemPrice
+{
+  @include grid-start-(3,2);
   align-self: center;
 }
 
-.itemSalePrice {
+.itemSalePrice
+{
   @include SmallSemiBold;
   color: $color_error;
 }
 
-.itemQty {
+.itemQty
+{
   @include grid-start-(2, 2);
 }
 
-.qtyBox {
+.qtyBox
+{
   position: relative;
   @include removeArrowsFromInput;
 
-  input[type="number"] {
+  input[type="number"]
+  {
     @extend .form_input;
     border: 1px solid $color_placeholder;
     margin-bottom: 0;
@@ -139,22 +162,25 @@
   }
 }
 
-.changeQtyButton {
+.changeQtyButton
+{
   @extend .btn_transparent;
   border: none !important;
   outline: none !important;
   padding: 0;
   width: 10px;
 
-  &:first-child {
+  &:first-child
+  {
     @include position(absolute, auto, 10px, 8px);
     @include fontSize(0);
     @include fixedSize(12px, true);
     background-repeat: no-repeat;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M4.99984 5.99977L0.756836 1.75677L2.17184 0.342773L4.99984 3.17177L7.82784 0.342773L9.24284 1.75677L4.99984 5.99977Z' fill='%23222222'/%3E%3C/svg%3E");
   }
-
-  &:last-child {
+  
+  &:last-child
+  {
     @include position(absolute, 13px, 10px);
     @include fontSize(0);
     @include fixedSize(12px, true);
@@ -162,7 +188,8 @@
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M4.99984 2.828L2.17184 5.657L0.756836 4.243L4.99984 0L9.24284 4.243L7.82784 5.657L4.99984 2.828Z' fill='%23222222'/%3E%3C/svg%3E");
   }
 
-  &:disabled {
+  &:disabled
+  {
     pointer-events: none;
     cursor: not-allowed;
     border-color: $color_white !important;
@@ -170,7 +197,8 @@
   }
 }
 
-.itemNote {
+.itemNote
+{
   grid-row: 5;
   grid-column: 2/4;
 
@@ -180,21 +208,24 @@
   text-transform: none;
   color: $color_black;
 
-  button {
+  button
+  {
     @include fontSize(12);
     border: none;
     padding: 5px 0;
     width: fit-content;
     background-color: transparent;
 
-    span {
+    span
+    {
       vertical-align: top;
       color: $color_blue;
       display: inline-block;
     }
   }
 
-  input {
+  input
+  {
     border: 1px solid $color_light;
     padding: 10px 15px;
     margin-bottom: 3px;
@@ -202,7 +233,8 @@
   }
 }
 
-.itemEditNote {
+.itemEditNote
+{
   display: inline-block;
   width: 19px;
   height: 19px;
@@ -213,52 +245,61 @@
   background-repeat: no-repeat;
   background-position: center;
 
-  & ~ span {
+  & ~ span
+  {
     color: $color_black !important;
   }
 }
 
-.itemAmount {
+.itemAmount
+{
   @include grid-start-(2, 4);
   @include RegulerSemiBold;
   position: relative;
   margin-top: 8px;
 
-  &:before {
+  &:before
+  {
     content: "Total";
     @include SmallSmall;
     color: $color_text_secondary;
   }
 }
 
-.itemRemove {
+.itemRemove
+{
   @include absolute(auto, 0, 14px, auto);
 }
 
-.removeButton {
+.removeButton
+{
   @include fixedSize(40px);
   @include flex(row, center, center);
   cursor: pointer;
   background: $color_elements_line;
   border-radius: 2px;
 
-  &:hover {
-    opacity: 0.7;
+  &:hover
+  {
+    opacity: .7
   }
-
-  svg {
+  
+  svg
+  {
     @include fixedSize(14px);
     color: $color_black;
   }
 }
 
-.itemRegularAmount {
+.itemRegularAmount
+{
   @include SmallSemiBold;
   font-size: 14px;
   font-size: 1;
 }
 
-.placeholderContainer {
+.placeholderContainer
+{
   display: grid;
   grid-template-columns: 100px auto;
   grid-template-rows: 20px auto;
@@ -267,23 +308,27 @@
   margin-bottom: 8px;
 }
 
-.placeholderList {
+.placeholderList
+{
   @extend .placeholderItem;
   height: 20px;
   width: 100%;
 
-  &:nth-child(3) {
+  &:nth-child(3)
+  {
     width: 60%;
   }
-
-  &:last-child {
+  
+  &:last-child
+  {
     width: 80%;
   }
 }
 
-.placeholderImage {
+.placeholderImage
+{
   @extend .placeholderItem;
-  grid-row: 1 / span 3;
+  grid-row:  1 / span 3;
   height: 125px;
   width: 100%;
 }
