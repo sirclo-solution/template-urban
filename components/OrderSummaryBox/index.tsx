@@ -91,14 +91,21 @@ const classesCartDetails = {
   titleClassName: stylesCartDetails.title,
   selectedVariantClassName: stylesCartDetails.selectedVariant,
   itemRegularPriceClassName: stylesCartDetails.itemRegularPrice,
+  itemPriceClassName: stylesCartDetails.itemPrice,
   itemSalePriceClassName: stylesCartDetails.itemSalePrice,
-  qtyBoxClassName: `${stylesCartDetails.qtyBox} id`,
+  itemQtyClassName: stylesCartDetails.itemQty,
+  qtyBoxClassName: stylesCartDetails.qtyBox,
+  changeQtyButtonClassName: stylesCartDetails.changeQtyButton,
+  itemNoteClassName: stylesCartDetails.itemNote,
+  itemAmountClassName: stylesCartDetails.itemAmount,
   itemRegularAmountClassName: stylesCartDetails.itemRegularAmount,
+  itemRemoveClassName: stylesCartDetails.itemRemove,
   cartBodyClassName: stylesCartDetails.cartBody,
   selectedVariantContainerClassName: stylesCartDetails.selectedVariantContainer,
-  changeQtyButtonClassName: 'd-none',
-  removeButtonClassName: 'd-none',
-  cartFooterClassName: 'd-none',
+  removeButtonClassName: stylesCartDetails.removeButton,
+  // hidden
+  itemEditClassName: 'd-none',
+  cartFooterClassName: 'd-none'
 }
 
 const classesCartPlaceholder = {
@@ -165,14 +172,26 @@ const OrderSummaryBox: FC<iProps> = ({
           <CartDetails
             currency="IDR"
             withSeparatedVariant={true}
-            itemRedirectPathPrefix={`product`}
+            itemRedirectPathPrefix="product"
             onErrorMsg={(msg) => toast.error(msg)}
             classes={getNewclassesCartDetails()}
-            isEditable={false}
+            isEditable
+            withProductNote
+            removeIcon={<Icon.CartDetails.removeIcon />}
             thumborSetting={{
               width: 200,
               format: "webp",
               quality: 85,
+            }}
+            productNoteButtonElement={{
+              filled: <span>{i18n.t("cart.change")}</span>,
+              save: <span>{i18n.t("cart.save")}</span>,
+              empty: (
+                <>
+                  <span className={stylesCartDetails.itemEditNote} />
+                  <span>{i18n.t("cart.addNote")}</span>
+                </>
+              )
             }}
             loadingComponent={
               [0, 1].map((_, i) => (
