@@ -1,5 +1,7 @@
 @import '../utils/_variables.scss';
 @import './Placeholder.module.scss';
+@import '../components/Form.module.scss';
+@import '../components/Buttons.module.scss';
 
 .section
 {
@@ -61,8 +63,9 @@
 
 .item
 {
+  position: relative;
   display: grid;
-  grid-template-columns: 64px auto;
+  grid-template-columns: 64px 64px auto;
   column-gap: 16px;
   padding: 12px 0;
   border-bottom: 1px solid $color_elements;
@@ -83,13 +86,9 @@
 
 .itemTitle
 {
-  @include truncate(2);
-  cursor: pointer;
-
-  &:hover
-  {
-    opacity: .7;
-  }
+  @include RegulerReguler;
+  @include col-span-(2);
+  margin-bottom: 10px;
 }
 
 .title
@@ -131,41 +130,175 @@
   }
 }
 
+.itemPrice
+{
+  @include grid-start-(3,2);
+  align-self: center;
+}
+
 .itemSalePrice
 {
   @include SmallSemiBold;
-  color: $color_error
+  color: $color_error;
+}
+
+.itemQty
+{
+  @include grid-start-(2, 2);
 }
 
 .qtyBox
 {
-  @include SmallSmall;
-  display: flex;
-  align-items: center;
+  position: relative;
 
-  input
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="number"]
   {
+    @extend .form_input;
+    border: 1px solid $color_placeholder;
+    margin-bottom: 0;
     width: 100%;
+    height: 56px;
+  }
+}
+
+.changeQtyButton
+{
+  @extend .btn_transparent;
+  border: none !important;
+  outline: none !important;
+  padding: 0;
+  width: 10px;
+
+  &:first-child
+  {
+    @include position(absolute, auto, 10px, 8px);
+    font-size: 0;
+    @include fixedSize(12px, true);
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M4.99984 5.99977L0.756836 1.75677L2.17184 0.342773L4.99984 3.17177L7.82784 0.342773L9.24284 1.75677L4.99984 5.99977Z' fill='%23222222'/%3E%3C/svg%3E");
+  }
+  
+  &:last-child
+  {
+    @include position(absolute, 13px, 10px);
+    font-size: 0;
+    @include fixedSize(12px, true);
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6' fill='none'%3E%3Cpath d='M4.99984 2.828L2.17184 5.657L0.756836 4.243L4.99984 0L9.24284 4.243L7.82784 5.657L4.99984 2.828Z' fill='%23222222'/%3E%3C/svg%3E");
+  }
+
+  &:disabled
+  {
+    pointer-events: none;
+    cursor: not-allowed;
+    border-color: $color_white !important;
+    outline: none !important;
+  }
+}
+
+.itemNote
+{
+  grid-row: 5;
+  grid-column: 2/4;
+
+  @include flex(column, left, left);
+  @include typographyBuilder(600, 12, 16);
+  margin: 10px 25% 0 0;
+  text-transform: none;
+  color: $color_black;
+
+  button
+  {
+    @include fontSize(12);
     border: none;
-    outline: none;
+    padding: 5px 0;
+    width: fit-content;
+    background-color: transparent;
 
-    -moz-appearance:textfield;
-
-    &::-webkit-outer-spin-button,
-    &::-webkit-inner-spin-button 
+    span
     {
-        -webkit-appearance: none;
+      vertical-align: top;
+      color: $color_blue;
+      display: inline-block;
     }
   }
 
-  &[class$="id"]::before
+  input
   {
-    content: "Jumlah:";
+    border: 1px solid $color_light;
+    padding: 10px 15px;
+    margin-bottom: 3px;
+    outline: none;
   }
+}
 
-  &[class$="en"]::before
+.itemEditNote
+{
+  display: inline-block;
+  width: 19px;
+  height: 19px;
+  margin: -2px 5px 0 0;
+  background-color: $color_red_light;
+  border-radius: 3px;
+  background-image: url("data:image/svg+xml,%3Csvg width='9' height='9' viewBox='0 0 9 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4.95 1.91439L7.071 4.03589L2.121 8.98539H0V6.86389L4.95 1.91389V1.91439ZM5.657 1.20739L6.7175 0.146393C6.81126 0.0526573 6.93842 -4.76837e-07 7.071 -4.76837e-07C7.20358 -4.76837e-07 7.33074 0.0526573 7.4245 0.146393L8.839 1.56089C8.93274 1.65466 8.98539 1.78181 8.98539 1.91439C8.98539 2.04698 8.93274 2.17413 8.839 2.26789L7.778 3.32839L5.657 1.20739Z' fill='%23F62805'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: center;
+
+  & ~ span
   {
-    content: "Qty:";
+    color: $color_black !important;
+  }
+}
+
+.itemAmount
+{
+  @include grid-start-(2, 4);
+  @include RegulerSemiBold;
+  position: relative;
+  margin-top: 8px;
+
+  &:before
+  {
+    content: "Total";
+    @include SmallSmall;
+    color: $color_text_secondary;
+  }
+}
+
+.itemRemove
+{
+  @include absolute(auto, 0, 14px, auto);
+}
+
+.removeButton
+{
+  @include fixedSize(40px);
+  @include flex(row, center, center);
+  cursor: pointer;
+  background: $color_elements_line;
+  border-radius: 2px;
+
+  &:hover
+  {
+    opacity: .7
+  }
+  
+  svg
+  {
+    @include fixedSize(14px);
+    color: $color_black;
   }
 }
 

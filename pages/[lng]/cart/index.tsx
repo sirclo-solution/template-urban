@@ -1,12 +1,10 @@
 /* library package */
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import Link from 'next/link'
+import dynamic from 'next/dynamic'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import { toast } from 'react-toastify'
-import Link from 'next/link'
-// import Router from 'next/router'
-import dynamic from 'next/dynamic'
-import Icon from 'components/Icon/Icon'
 import {
   CartDetails,
   useI18n,
@@ -18,6 +16,7 @@ import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
 
 /* components */
+import Icon from 'components/Icon/Icon'
 import Layout from 'components/Layout/Layout'
 import ProductRecomendation from 'components/ProductRecomendation'
 import OrderSummaryBox from 'components/OrderSummaryBox'
@@ -39,6 +38,7 @@ const classesCartDetails = {
   itemDiscountNoteClassName: styles.itemDiscountNote,
   itemQtyClassName: styles.itemQty,
   qtyBoxClassName: styles.qtyBox,
+  itemNoteClassName: styles.itemNote,
   itemAmountClassName: styles.itemAmount,
   itemRemoveClassName: styles.itemRemove,
   cartFooterClassName: styles.cartFooter,
@@ -113,10 +113,21 @@ const Cart: FC<any> = ({
                 getSKU={(SKUs: any) => setSKUs(SKUs)}
                 classes={classesCartDetails}
                 itemRedirectPathPrefix="product"
-                isEditable={true}
+                isEditable
+                withProductNote
                 removeIcon={<Icon.CartDetails.removeIcon />}
                 onErrorMsg={(msg) => toast.error(msg)}
                 onInvalidMsg={(msg) => setInvalidMsg(msg)}
+                productNoteButtonElement={{
+                  filled: <span>{i18n.t("cart.change")}</span>,
+                  save: <span>{i18n.t("cart.save")}</span>,
+                  empty: (
+                    <>
+                      <span className={styles.itemEditNote} />
+                      <span>{i18n.t("cart.addNote")}</span>
+                    </>
+                  )
+                }}
                 thumborSetting={{
                   width: size.width < 768 ? 200 : 400,
                   format: "webp",
