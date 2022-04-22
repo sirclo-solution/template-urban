@@ -283,8 +283,7 @@
 .itemEditNote
 {
   display: inline-block;
-  width: 19px;
-  height: 19px;
+  @include fixedSize(19);
   margin: -2px 5px 0 0;
   background-color: $color_red_light;
   border-radius: 3px;
