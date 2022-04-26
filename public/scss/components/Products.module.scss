@@ -1,5 +1,12 @@
+@import '../utils/variables';
+
 .products
 {
+  &_listContainer
+  {
+    padding: 0 !important;
+  }
+
   &_productContainer
   {
     position: relative;

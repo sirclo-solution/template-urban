@@ -1,5 +1,5 @@
 /* Library Package */
-import { FC } from 'react'
+import { FC, useState } from 'react'
 import { toast } from 'react-toastify'
 import {
   useI18n,
@@ -33,72 +33,84 @@ const Footer: FC<any> = ({
   const i18n: any = useI18n()
   const size: any = useWindowSize()
   const allowedCopyright = isCopyrightAllowed()
+  const [widgetFoot1, setWidgetFoot1] = useState<number | null>(null)
+  const [widgetFoot2, setWidgetFoot2] = useState<number | null>(null)
+  const [widgetFoot3, setWidgetFoot3] = useState<number | null>(null)
 
   return (
     <footer className={`${styles.footer}`}>
 
       <div className="container-fluid">
         <div className={`${styles.footer_top} row`}>
-          <div className="col-12 col-md-3">
-            <div className={styles.footerItem}>
-              <FooterWidget collapsible={false}>
-                <Widget
-                  pos="footer-1"
-                  widgetClassName={`${styles.footerItem_content}`}
-                  loadingComponent={
-                    <p className={styles.footer_loading}>
-                      {i18n.t("global.loading")}
-                    </p>
-                  }
-                  thumborSetting={{
-                    width: size.width < 992 ? 270 : 480,
-                    format: "webp",
-                    quality: 85
-                  }}
-                />
-              </FooterWidget>
+          {widgetFoot1 > 0 &&
+            <div className="col-12 col-md-3">
+              <div className={styles.footerItem}>
+                <FooterWidget collapsible={false}>
+                  <Widget
+                    pos="footer-1"
+                    getItemCount={(total: number) => setWidgetFoot1(total)}
+                    widgetClassName={`${styles.footerItem_content}`}
+                    loadingComponent={
+                      <p className={styles.footer_loading}>
+                        {i18n.t("global.loading")}
+                      </p>
+                    }
+                    thumborSetting={{
+                      width: size.width < 992 ? 270 : 480,
+                      format: "webp",
+                      quality: 85
+                    }}
+                  />
+                </FooterWidget>
+              </div>
             </div>
-          </div>
-          <div className="col-12 col-md-3">
-            <div className={styles.footerItem}>
-              <FooterWidget>
-                <Widget
-                  pos="footer-2"
-                  widgetClassName={styles.footerItem_content}
-                  loadingComponent={
-                    <p className={styles.footer_loading}>
-                      {i18n.t("global.loading")}
-                    </p>
-                  }
-                  thumborSetting={{
-                    width: size.width < 992 ? 270 : 480,
-                    format: "webp",
-                    quality: 85
-                  }}
-                />
-              </FooterWidget>
+          }
+          {widgetFoot2 > 0 &&
+            <div className="col-12 col-md-3">
+              <div className={styles.footerItem}>
+                <FooterWidget>
+                  <Widget
+                    pos="footer-2"
+                    getItemCount={(total: number) => setWidgetFoot2(total)}
+                    widgetClassName={styles.footerItem_content}
+                    loadingComponent={
+                      <p className={styles.footer_loading}>
+                        {i18n.t("global.loading")}
+                      </p>
+                    }
+                    thumborSetting={{
+                      width: size.width < 992 ? 270 : 480,
+                      format: "webp",
+                      quality: 85
+                    }}
+                  />
+                </FooterWidget>
+              </div>
             </div>
-          </div>
-          <div className="col-12 col-md-3">
-            <div className={styles.footerItem}>
-              <FooterWidget>
-                <Widget
-                  pos="footer-3"
-                  widgetClassName={styles.footerItem_content}
-                  loadingComponent={
-                    <p className={styles.footer_loading}>
-                      {i18n.t("global.loading")}
-                    </p>
-                  }
-                  thumborSetting={{
-                    width: size.width < 992 ? 270 : 480,
-                    format: "webp",
-                    quality: 85
-                  }}
-                />
-              </FooterWidget>
+          }
+          {widgetFoot3 > 0 &&
+            <div className="col-12 col-md-3">
+              <div className={styles.footerItem}>
+                <FooterWidget>
+                  <Widget
+                    pos="footer-3"
+                    getItemCount={(total: number) => setWidgetFoot3(total)}
+                    widgetClassName={styles.footerItem_content}
+                    loadingComponent={
+                      <p className={styles.footer_loading}>
+                        {i18n.t("global.loading")}
+                      </p>
+                    }
+                    thumborSetting={{
+                      width: size.width < 992 ? 270 : 480,
+                      format: "webp",
+                      quality: 85
+                    }}
+                  />
+                </FooterWidget>
+              </div>
             </div>
-          </div>
+          }
           <div className="col-12 col-md-3">
             <div className={styles.footerItem}>
               <FooterWidget title={i18n.t("newsletter.title")} collapsible={false}>
@@ -139,67 +151,6 @@ const Footer: FC<any> = ({
       </div>
     </footer>
   )
-
-  /*
-  return (
-    <>
-      <div className={styles.widgetFooter}>
-        <div className="container">
-          <div className="row">
-            <div className="col-12 col-lg-8 offset-lg-2">
-              <Widget
-                pos="footer-1"
-                containerClassName="row"
-                widgetClassName="col-12 col-lg-4"
-                loadingComponent={
-                  <div className="row">
-                    <div className="col-12">
-                      <Placeholder
-                        classes={classesPlaceholderWidget}
-                        withList
-                        listMany={4}
-                      />
-                    </div>
-                  </div>
-                }
-                thumborSetting={{
-                  width: size.width < 768 ? 576 : 1200,
-                  format: "webp",
-                  quality: 85
-                }}
-              />
-              <hr className={styles.footer_line} />
-              <SocialMediaIcons
-                socialMediaIcons={socialMediaIcons}
-                classes={classesMediaSocial}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-      <footer className={styles.footer}>
-        <div className={`container ${styles.footer_bottom} uppercase`}>
-          {allowedCopyright ?
-            <>
-              {brand?.settings?.websiteTitle || ""}
-              {(brand?.settings?.websiteTitle && allowedCopyright) && ` - `}
-              POWERED BY&nbsp;<a href="https://store.sirclo.com" target="_blank">SIRCLO</a>
-            </>
-            : 
-            <Widget 
-              pos="copyright-and-policy" 
-              thumborSetting={{
-                width: 1,
-                format: 'webp',
-                quality: 5,
-              }}
-            />
-          }
-        </div>
-      </footer>
-    </>
-  )
-  */
 }
 
 export default Footer
