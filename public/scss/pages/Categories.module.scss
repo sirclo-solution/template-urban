@@ -1,0 +1,92 @@
+@import '../utils/variables';
+
+$this: &;
+
+.productCategory
+{
+  margin-bottom: 214px;
+
+  @media (max-width: #{$breakpoint_max_md})
+  {
+    margin-bottom: 75px;
+  }
+}
+
+.productsListCategoryHeaderTitle
+{
+  @include typography_builder(700, 32, 43);
+  margin: 0;
+
+  @media (max-width: #{$breakpoint_max_md})
+  {
+    @include typography_builder(700, 24, 32);
+    margin-bottom: 12px;
+  }
+}
+
+.productsListCategoryHeader
+{
+  @include flex(row, center, space-between);
+  margin-bottom: 4px;
+
+  @media (max-width: #{$breakpoint_max_md})
+  {
+    display: unset;
+  }  
+}
+
+.productsListCategoryHeaderLink
+{
+  @include typography_builder(400, 16, 24);
+  color: $color_black;
+
+  &:hover
+  {
+    color: $color_black;
+  }
+}
+
+.productsListCategoryContainer
+{
+  margin: 40px 0;
+}
+
+.productsListContainer
+{
+  @include flex(row, flex-start, flex-start);
+  width: 100%;
+  overflow: auto;
+  padding-bottom: 20px;
+}
+
+.productContainer
+{
+  width: calc((100% - (30px * 5)) / 6);
+  max-width: calc((100% - (30px * 5)) / 6);
+  min-width: 150px;
+  margin-right: 30px;
+  position: relative;
+  padding: 0;
+  background-color: $color_white;
+
+  &:nth-child(6n+0) 
+  {
+    margin-right: 0;
+  }
+
+  &:hover,
+  &:focus
+  {
+    #{$this}_button
+    {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+  }
+}
+
+.loader
+{
+  @include flex(row, center, center);
+}
