@@ -4,8 +4,10 @@ const locale = {
     "code": "COUPON CODE:",
     "couponPlaceholder": "Input your coupon",
     "discount": "Discount",
+    "empty": "No coupon yet",
     "enough": "You can get discount",
     "header": "Choose available coupon",
+    "invalidTitle": "Coupon that still can't be used",
     "max": "Max",
     "minPoints": "Minimal points to redeem is",
     "minPurchase": "With Minimum Purchase",
@@ -17,6 +19,7 @@ const locale = {
     "redeem": "Redeem",
     "use": "Use",
     "valid": "Valid Until",
+    "validTitle": "Available Coupons",
     "youHave": "You Have"
   }
 }

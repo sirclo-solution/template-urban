@@ -97,7 +97,7 @@ const Cart: FC<any> = ({
                       {i18n.t("cart.item")}
                     </p>
                   }
-                  <Link href="lng/products" as={`${lng}/products`}>
+                  <Link href="/[lng]/products" as={`/${lng}/products`}>
                     <p>
                       {i18n.t("cart.shoppingAgain")}
                     </p>

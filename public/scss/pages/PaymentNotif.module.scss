@@ -290,4 +290,30 @@
     color: $color_error;
     margin-top: 6px;
   }
+
+  &_uploadedImage
+  {
+    @extend .form_input;
+    @include fixedHeight(60px);
+    padding-left: 10px;
+    padding-top: 10px;
+    position: relative;
+  }
+
+  &_uploadedName
+  {
+    @include fixedHeight(60px);
+    padding-left: 6px;
+    padding-top: 16px;
+  }
+
+  &_uploadedRemove
+  {
+    @include absolute(50%, 16px);
+    transform: translate(0%, -50%);
+    background: $color_elements;
+    padding: 12px;
+    border-radius: 2px;
+    cursor: pointer;
+  }
 }

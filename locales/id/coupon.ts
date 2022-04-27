@@ -4,8 +4,10 @@ const locale = {
     "code": "KODE KUPON:",
     "couponPlaceholder": "Masukkan kode kupon",
     "discount": "Diskon",
+    "empty": "Belum ada kupon",
     "enough": "Anda mendapat potongan sebesar",
     "header": "Pilih kupon yang tersedia",
+    "invalidTitle": "Kupon yang masih belum bisa digunakan",
     "max": "Maks",
     "minPoints": "Minimal poin yang ditukarkan adalah",
     "minPurchase": "Dengan minimal pembelian",
@@ -17,6 +19,7 @@ const locale = {
     "redeem": "Tukarkan",
     "use": "Gunakan",
     "valid": "Dapat digunakan hingga",
+    "validTitle": "Kupon Tersedia",
     "youHave": "Anda Punya"
   },
 }
