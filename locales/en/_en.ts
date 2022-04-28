@@ -24,6 +24,7 @@ import header from './header'
 import giftCard from './giftCard'
 import login from './login'
 import lookbook from './lookbook'
+import map from './map'
 import membership from './membership'
 import newsletter from './newsletter'
 import orderHistory from './orderHistory'
@@ -66,6 +67,7 @@ const en = {
   ...giftCard,
   ...login,
   ...lookbook,
+  ...map,
   ...membership,
   ...newsletter,
   ...orderHistory,

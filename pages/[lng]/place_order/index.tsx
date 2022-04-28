@@ -63,6 +63,7 @@ const mapClasses = {
   mapLabelAddressClassName: stylesMap.mapLabelAddress,
   mapCenterButtonClassName: stylesMap.mapCenterButton,
   mapButtonFooterClassName: stylesMap.mapButtonFooter,
+  mapPinPointIconClassName: stylesMap.mapPinPointIcon
 }
 
 const customStyles = {
