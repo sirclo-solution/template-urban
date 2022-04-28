@@ -51,6 +51,9 @@ const classesPaymentConfirmation = {
   detailHeaderDropdownClassName: styles.paymentConfirmation_detailHeaderDropdown,
   detailBodyDropdownClassName: styles.paymentConfirmation_detailBodyDropdown,
   labelClassName: styles.paymentConfirmation_label,
+  uploadedImageClassName: styles.paymentConfirmation_uploadedImage,
+  uploadedNameImageClassName: styles.paymentConfirmation_uploadedName,
+  uploadedRemoveImageClassName: styles.paymentConfirmation_uploadedRemove
 }
 
 const classesBanks = {
@@ -123,6 +126,7 @@ const PaymentConfirmationPage: FC<any> = ({
                   chevronUp: <Icon.chevronUp />,
                   chevronDown: <Icon.chevronDown />,
                 }}
+                removeIcon={<Icon.CartDetails.removeIcon size={20} />}
                 onErrorMsg={(msg) => toast.error(msg)}
                 onSuccessMsg={(msg) => toast.success(msg)}
                 loadingComponent={

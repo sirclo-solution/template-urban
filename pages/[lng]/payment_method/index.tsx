@@ -136,6 +136,8 @@ const PaymentMethods: FC<any> = ({
     removePointIcon: <Icon.orderSummary.voucherRemoved />,
     voucherAppliedIcon: <Icon.orderSummary.voucherApplied />,
     pointAppliedIcon: <Icon.orderSummary.voucherRemoved />,
+    expand: <Icon.orderSummary.expand size={20} />,
+    collapse: <Icon.orderSummary.collapse size={20} />
   }
 
   const layoutProps = {
@@ -249,6 +251,7 @@ const PaymentMethods: FC<any> = ({
               onErrorMsg={(msg) => toast.error(msg)}
               withNotificationOptInModal={hasOtp}
               onErrorMsgCoupon={(msg) => toast.error(msg)}
+              isCouponAccordion
               loadingComponent={
                 <Placeholder
                   classes={placeholderClasses}

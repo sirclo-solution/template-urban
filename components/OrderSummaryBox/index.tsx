@@ -60,7 +60,10 @@ export const classesOrderSummary = {
   /* Voucher  up */
   voucherSubmitButtonClassName: stylesPopup.voucherFormSubmit,
   voucherListClassName: stylesPopup.voucherList,
+  voucherValidListClassName: stylesPopup.voucherValidList,
+  voucherInalidListClassName: stylesPopup.voucherInvalidList,
   voucherListHeaderClassName: stylesPopup.voucherListHeader,
+  voucherListItemsClassName: stylesPopup.voucherListItems,
   voucherClassName: stylesPopup.voucher,
   voucherDetailClassName: stylesPopup.voucherDetail,
   voucherDetailHeaderClassName: stylesPopup.voucherDetailHeader,
@@ -69,6 +72,9 @@ export const classesOrderSummary = {
   voucherDetailDescClassName: stylesPopup.voucherDetailDesc,
   voucherDetailEstimateClassName: stylesPopup.voucherDetailEstimate,
   voucherDetailEstimateDescClassName: stylesPopup.voucherDetailEstimateDesc,
+  voucherListHeaderIconClassName: stylesPopup.voucherListHeaderIcon,
+  voucherDetailInvalidClassName: stylesPopup.voucherDetailInvalid,
+  voucherTitleClassName: stylesPopup.voucherTitle,
   /* point Pop-up */
   totalPointsClassName: stylesPopup.totalPoints,
   pointsFormContainerClassName: styles.pointsFormContainer,
@@ -136,8 +142,8 @@ const OrderSummaryBox: FC<iProps> = ({
   const toogleErrorAddToCart = () => setShowModalErrorAddToCart(!showModalErrorAddToCart)
 
   const icons = {
-    expand: <Icon.orderSummary.expand />,
-    collapse: <Icon.orderSummary.collapse />,
+    expand: <Icon.orderSummary.expand size={20} />,
+    collapse: <Icon.orderSummary.collapse size={20} />,
     voucher: <Icon.orderSummary.voucher />,
     voucherApplied: <Icon.orderSummary.voucherApplied />,
     voucherRemoved: <Icon.orderSummary.voucherRemoved />,
@@ -229,6 +235,14 @@ const OrderSummaryBox: FC<iProps> = ({
           onErrorMsgCoupon={(msg) => toast.error(msg)}
           onAddressInvalid={(e) => toast.error(e)}
           icons={icons}
+          isCouponAccordion
+          withCouponTitle
+          emptyComponentCoupon={
+            <div className={stylesPopup.voucherEmpty}>
+              <span className={stylesPopup.voucherEmptyIcon}></span>
+              <p>{i18n.t("coupon.empty")}</p>
+            </div>
+          }
           couponLoadingComponent={
             <p className="m-0 p-0">{i18n.t("global.loading")}</p>
           }

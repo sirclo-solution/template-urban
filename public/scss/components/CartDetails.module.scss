@@ -235,7 +235,7 @@
 
 .itemEditNote
 {
-  @include fixedSize(19);
+  @include fixedSize(19px);
   display: inline-block;
   margin: -2px 5px 0 0;
   background-color: $color_red_light;
