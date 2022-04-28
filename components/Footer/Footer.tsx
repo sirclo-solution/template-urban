@@ -42,7 +42,7 @@ const Footer: FC<any> = ({
 
       <div className="container-fluid">
         <div className={`${styles.footer_top} row`}>
-          {widgetFoot1 > 0 &&
+          {(widgetFoot1 > 0 || widgetFoot1 === null) &&
             <div className="col-12 col-md-3">
               <div className={styles.footerItem}>
                 <FooterWidget collapsible={false}>
@@ -65,7 +65,7 @@ const Footer: FC<any> = ({
               </div>
             </div>
           }
-          {widgetFoot2 > 0 &&
+          {(widgetFoot2 > 0 || widgetFoot2 === null) &&
             <div className="col-12 col-md-3">
               <div className={styles.footerItem}>
                 <FooterWidget>
@@ -88,7 +88,7 @@ const Footer: FC<any> = ({
               </div>
             </div>
           }
-          {widgetFoot3 > 0 &&
+          {(widgetFoot3 > 0 || widgetFoot3 === null) &&
             <div className="col-12 col-md-3">
               <div className={styles.footerItem}>
                 <FooterWidget>
