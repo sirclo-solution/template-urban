@@ -61,7 +61,8 @@ const mapClasses = {
   mapHeaderNoteClassName: stylesMap.mapHeaderNote,
   mapLabelAddressClassName: stylesMap.mapLabelAddress,
   mapCenterButtonClassName: stylesMap.mapCenterButton,
-  mapButtonFooterClassName: stylesMap.mapButtonFooter,
+  mapPinPointIconClassName: stylesMap.mapPinPointIcon,
+  mapButtonFooterClassName: stylesMap.mapButtonFooter
 }
 
 const placeholderClasses = {
@@ -135,7 +136,7 @@ const ShippingMethodPage: FC<any> = ({
             shippingInfoHeader={
               <div className={stylesCustomerDetail.headerContainer}>
                 <h3>{i18n.t("shipping.shipTo")}</h3>
-                <Link 
+                <Link
                   href={{
                     pathname: "/[lng]/place_order",
                     query: router.query
@@ -191,9 +192,9 @@ const ShippingMethodPage: FC<any> = ({
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
-  params 
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  params
 }) => {
   const brand = await useBrandCommon(req, params)
 
