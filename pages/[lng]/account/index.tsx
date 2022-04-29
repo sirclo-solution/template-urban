@@ -139,6 +139,7 @@ const classesAccount = {
   mapLabelAddressClassName: stylesMap.mapLabelAddress,
   mapCenterButtonClassName: stylesMap.mapCenterButton,
   mapButtonFooterClassName: stylesMap.mapButtonFooter,
+  mapPinPointIconClassName: stylesMap.mapPinPointIcon,
 
   // Shipment Tracking
   shipmentHeaderClassName: styles.account_shipmentHeader,

@@ -92,8 +92,6 @@
     z-index: 2;
     border-radius: 2px;
     height: 34px;
-    color: $color_placeholder;
-
   }
 }
 
@@ -171,6 +169,14 @@
   {
     margin-right: 0;
   }
+}
+
+.mapPinPointIcon
+{
+  @include absolute(50%, auto, auto, 50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .mapButtonFooter

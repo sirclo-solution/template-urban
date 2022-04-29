@@ -33,8 +33,7 @@
   cursor: pointer;
   background: $color_white !important;
 
-  &::after
-  {
+  &::after {
     @include flex(row, center, center);
     content: "";
     width: 15px;
@@ -44,7 +43,8 @@
     right: 20px;
     background-size: 10px auto;
     background-repeat: no-repeat;
-    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.00305 3.0605L1.5478 9.51575L0.487305 8.45525L6.9418 2H1.25305V0.5H9.50305V8.75H8.00305V3.0605Z' fill='%23666666'/%3E%3C/svg%3E%0A");  }
+    background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M8.00305 3.0605L1.5478 9.51575L0.487305 8.45525L6.9418 2H1.25305V0.5H9.50305V8.75H8.00305V3.0605Z' fill='%23666666'/%3E%3C/svg%3E%0A");
+  }
 }
 
 .pointEarnedBanner
@@ -81,7 +81,7 @@
   z-index: 2;
 }
 
-.voucherButtonRemove,
+.voucherButtonRemove
 {
   @include position(absolute, auto, 20px);
   color: $color_error;
@@ -128,7 +128,18 @@
   @extend .voucherButton;
   position: relative;
 
-  & > div:last-child
+  &[data-identity="ordersummary-points-btn"]
+  {
+    .voucherAppliedText
+    {
+      &::after
+      {
+        content: "Poin"
+      }
+    }
+  }
+
+  &>div:last-child
   {
     @include position(absolute, auto, 20px);
     color: $color_error;
@@ -136,7 +147,7 @@
 
   &::after
   {
-    background-image: none;    
+    background-image: none;
   }
 }
 
@@ -159,11 +170,6 @@
   @include truncate(1);
   max-width: 60%;
   color: $color_black;
-
-  &::after
-  {
-    content: "Poin"
-  }
 }
 
 .registerNow
@@ -180,7 +186,7 @@
   }
 }
 
-@media screen and (max-width: #{$breakpoint_max_md}) 
+@media screen and (max-width: #{$breakpoint_max_md})
 {
   .container
   {
@@ -233,7 +239,7 @@
   {
     width: 100%;
   }
-    
+
   .footer
   {
     @include flex(row, center, flex-end);
