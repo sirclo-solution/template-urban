@@ -76,7 +76,8 @@
     {
       @include fixedWidth(100%);
 
-      &[src$="/"] {
+      &[src$="/"]
+      {
         display: none;
       }
     }
