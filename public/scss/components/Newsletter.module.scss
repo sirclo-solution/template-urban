@@ -53,6 +53,7 @@
 
   &_contentContainer
   {
+    @include fixedWidth(100%);
     order: 2;
 
     & > button
@@ -74,6 +75,10 @@
     img
     {
       @include fixedWidth(100%);
+
+      &[src$="/"] {
+        display: none;
+      }
     }
   }
 
