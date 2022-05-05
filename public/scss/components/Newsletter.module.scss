@@ -8,7 +8,7 @@
 {
   &_popupContainer
   {
-    @include position(fixed, auto, 42px, -600px);
+    @include position(fixed, auto, 42px, -450px);
     @include transition();
     border-radius: 2px;
     z-index: 30;
@@ -16,12 +16,18 @@
     height: fit-content;
     max-height: 336px;
     animation: animateUp 2s ease forwards;
+
+    @media (max-width: #{$breakpoint_max_md})
+    {
+      bottom: -400px !important;
+    }
   }
   
   &_popupInner
   {
+    @include flex(column, center, center);
     position: relative;
-    padding: 24px 24px 88px 24px;
+    padding: 24px;
     background-color: $color_white;
     max-width: 340px;
     overflow-y: auto;
@@ -29,18 +35,45 @@
     h1,h2,h3,h4,h5,h6
     {
       @include typography_builder(400, 25, 40);
+      margin-top: 16px;
       margin-bottom: 12px;
-    }
-
-    img
-    {
-      display: none;
     }
 
     p
     {
       @include typography_builder(400, 12, 16);
       margin-bottom: 0;
+    }
+  }
+
+  &_content
+  {
+    @include typography_builder(400, 12, 16);
+  }
+
+  &_contentContainer
+  {
+    order: 2;
+
+    & > button
+    {
+      @include typography_builder(400, 16, 24);
+      width: 100%;
+      height: 48px;
+      margin-top: 16px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+    }
+  }
+
+  &_imageContainer
+  {
+    order: 1;
+
+    img
+    {
+      @include fixedWidth(100%);
     }
   }
 
@@ -62,17 +95,6 @@
   &_label
   {
     display: none;
-  }
-
-  &_close
-  {
-    @include position(absolute, auto, 0, 24px, 0);
-    @include typography_builder(400, 16, 24);
-    width: 100%;
-    height: 48px;
-    background-color: transparent;
-    border: none;
-    outline: none;
   }
   
   @media (max-width: #{$breakpoint_min_sm})
