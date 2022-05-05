@@ -15,6 +15,8 @@ import MaintenanceMode from "@sirclo/nexus/lib/component/MaintenanceMode";
 
 const classesMaintenance = {
   maintenanceContainerClassName: 'maintenance__container',
+  maintenanceTitleClassName: 'maintenance__title',
+  maintenanceInfoClassName: 'maintenance__info',
   imageContainerClassName: 'maintenance__container--images',
   imageClassName: 'maintenance__container--images-img',
 }

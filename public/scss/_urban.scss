@@ -38,6 +38,38 @@ h3
   @include typographyBuilder(700, 28, 40);
 }
 
+.maintenance
+{
+  &__container
+  {
+    @include flex(column, center, center);
+    @include fixedWidth(100vw);
+    @include fixedHeight(100vh);
+    padding: 2em 2em 10em 2em !important;
+
+    &--images
+    {
+      text-align: center;
+
+      &-img
+      {
+        margin: 3em auto !important;
+      }
+    }
+  }
+
+  &__title
+  {
+    @include typographyBuilder(600, 24, 36);
+  }
+
+  &__info
+  {
+    @include typographyBuilder(400, 16, 20);
+    max-width: 70% !important;
+  }
+}
+
 @media (max-width: #{$breakpoint_min_sm}) 
 {
   .container
