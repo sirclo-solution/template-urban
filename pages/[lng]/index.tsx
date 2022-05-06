@@ -83,7 +83,7 @@ const Home: FC<any> = ({
         </LazyLoadComponent>
       </section>
 
-      <section className="container">
+      <section className="container productCategoryHomepage">
         <ProductCategoryComponent
           i18n={i18n}
           page='homepage'
