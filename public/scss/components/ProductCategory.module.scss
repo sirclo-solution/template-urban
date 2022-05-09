@@ -2,7 +2,6 @@
 
 .productCategory
 {
-
   &_section,
   &_sectionCategories
   {
@@ -37,6 +36,14 @@
   &_containerCategories
   {
     margin: 24px 0 80px;
+  }
+
+  &_container
+  {
+    @media (min-width: #{$breakpoint_min_md})
+    {
+      min-height: 300px;
+    }
   }
 
   &_containerCategories
