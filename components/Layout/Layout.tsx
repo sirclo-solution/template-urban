@@ -6,7 +6,6 @@ import {
 } from 'react'
 import { withBrand } from '@sirclo/nexus'
 import { ToastContainer } from 'react-toastify'
-import { GTMProvider } from '@elgorditosalsero/react-gtm-hook'
 
 /* Component */
 import Header from 'components/Header/Header'
@@ -14,6 +13,7 @@ import Footer from 'components/Footer/Footer'
 import PageNotFound from 'components/PageNotFound'
 import SEOHead from 'components/SEO'
 import Newsletter from 'components/Newsletters'
+import GoogleTagManager from 'components/GoogleTagManager'
 
 /* Styles */
 import styles from 'public/scss/components/Layout.module.scss'
@@ -78,9 +78,7 @@ const Layout: FC<LayoutPropType> = ({
   }
 
   return (
-    <GTMProvider state={{
-      id: brand?.settings?.googleTagManager?.specs?.containerId || ''
-    }}>
+    <GoogleTagManager brand={brand}>
       <SEOHead {...SEOprops}>
         <title>{brand?.settings?.websiteTitle} {SEO?.title && "-"} {SEO?.title}</title>
         {brand?.settings?.hideFromSearchEngine && (
@@ -116,7 +114,7 @@ const Layout: FC<LayoutPropType> = ({
       </section>
       <ToastContainer />
       <Newsletter i18n={i18n} />
-    </GTMProvider>
+    </GoogleTagManager>
   )
 }
 
