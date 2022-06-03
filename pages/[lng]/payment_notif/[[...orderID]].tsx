@@ -1,7 +1,6 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 import {
   PaymentConfirmation,
@@ -16,7 +15,7 @@ import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Icon from 'components/Icon/Icon'
 import BankAccount from 'components/BankAccount/BankAccount'
-const Loader = dynamic(() => import('components/Loader/Loader'))
+import Loader from 'components/Loader/Loader'
 /* styles */
 import styles from 'public/scss/pages/PaymentNotif.module.scss'
 import stylesPopup from 'public/scss/components/CheckPaymentOrder.module.scss'
@@ -130,6 +129,7 @@ const PaymentConfirmationPage: FC<any> = ({
                 onErrorMsg={(msg) => toast.error(msg)}
                 onSuccessMsg={(msg) => toast.success(msg)}
                 loadingComponent={
+                  // @ts-ignore
                   <Loader color="text-light" />
                 }
                 withOrderDetails

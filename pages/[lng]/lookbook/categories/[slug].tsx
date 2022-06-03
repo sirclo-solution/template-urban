@@ -2,7 +2,6 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import {
   isLookbookAllowed,
   LookbookSingle,
@@ -18,11 +17,10 @@ import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
 import Icon from 'components/Icon/Icon'
+import SocialShare from 'components/SocialShare'
 
 /* Styles */
 import styles from 'public/scss/pages/Lookbook.module.scss'
-
-const SocialShare = dynamic(() => import("components/SocialShare"))
 
 const classesLookbookSingle = {
   containerClassName: styles.lookbook,

@@ -1,11 +1,10 @@
 /* library package */
 import { useState } from 'react'
-import dynamic from 'next/dynamic'
+import Router from 'next/router'
 import { formatPrice } from '@sirclo/nexus'
 
 /* components */
-const Popup = dynamic(() => import('components/Popup/Popup'))
-import Router from 'next/router'
+import Popup from 'components/Popup/Popup'
 
 /* styles */
 import stylesSuccessAddToCart from 'public/scss/components/SuccessAddToCart.module.scss'

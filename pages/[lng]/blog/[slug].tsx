@@ -2,7 +2,6 @@
 import { FC, useState, useEffect} from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import {
   BlogSingle,
   BlogCategories,
@@ -18,11 +17,10 @@ import { useBrandCommon } from 'lib/useBrand'
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
+import SocialShare from 'components/SocialShare'
 
 /* Styles */
 import styles from 'public/scss/pages/Blog.module.scss'
-
-const SocialShare = dynamic(() => import("components/SocialShare"))
 
 const classesBlogSingle = {
   blogContainerClassName: styles.single,

@@ -1,18 +1,20 @@
 /* library package */
 import { FC, useState } from 'react'
-import { toast } from 'react-toastify'
-import { OrderSummary, CartDetails } from '@sirclo/nexus'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
+import { toast } from 'react-toastify'
+import { 
+  OrderSummary, 
+  CartDetails,
+  PrivateComponent
+} from '@sirclo/nexus'
 
 /* library component */
 import useWindowSize from 'lib/useWindowSize'
 
 /* component */
 import Placeholder from 'components/Placeholder'
-import Icon from '../Icon/Icon'
-const Popup = dynamic(() => import('components/Popup/Popup'))
-const PrivateComponent = dynamic(() => import("@sirclo/nexus").then((mod) => mod.PrivateComponent))
+import Popup from 'components/Popup/Popup'
+import Icon from 'components/Icon/Icon'
 
 /* styles */
 import styles from 'public/scss/components/OrderSummary.module.scss'

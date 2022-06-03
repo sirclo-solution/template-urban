@@ -1,27 +1,36 @@
-import { FC, useState, useRef } from "react";
-import dynamic from "next/dynamic";
-import Router from "next/router";
+/* Library Packages */
+import { 
+  FC, 
+  useState, 
+  useRef 
+} from 'react'
+import { toast } from 'react-toastify'
+import Router from 'next/router'
 import {
   OrderSummary,
   CartDetails,
   isProductRecommendationAllowed,
-  useI18n
-} from "@sirclo/nexus";
-import EmptyComponent from "../EmptyComponent/EmptyComponent";
-import useOutsideClick from "lib/useOutsideClick";
-import useWindowSize from "lib/useWindowSize";
+  useI18n,
+  Products
+} from '@sirclo/nexus'
 import {
   X,
   Trash,
   ArrowLeftCircle,
   ArrowRightCircle
-} from "react-feather";
-import { toast } from "react-toastify";
-import styles from "public/scss/components/Popup.module.scss";
+} from 'react-feather'
 
-const Popup = dynamic(() => import("components/Popup/Popup"));
-const Products = dynamic(() => import("@sirclo/nexus/lib/component/products"));
-const Placeholder = dynamic(() => import("components/Placeholder"));
+/* Library Templates */
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import useOutsideClick from 'lib/useOutsideClick'
+import useWindowSize from 'lib/useWindowSize'
+
+/* Components */
+import Popup from 'components/Popup/Popup'
+import Placeholder from 'components/Placeholder'
+
+/* Styles */
+import styles from 'public/scss/components/Popup.module.scss'
 
 const classesCartDetails = {
   className: styles.cart,
@@ -83,7 +92,7 @@ const classesOrderSummary = {
   voucherAppliedIconClassName: `${styles.sumamrycart_headerFeatures__icon} mr-2`,
   voucherAppliedTextClassName: styles.summarycart_headerFeatures__label,
   voucherButtonRemoveClassName: styles.summarycart_voucherRemove
-};
+}
 
 const classesCrosselProducts = {
   productContainerClassName: `col-6 mb-0 products_list ${styles.product}`,
@@ -101,11 +110,11 @@ const classesCrosselProducts = {
   productPriceClassName: styles.product_labelPrice,
   salePriceClassName: styles.product_labelPrice__sale,
   priceClassName: styles.product_labelPrice__price,
-};
+}
 
 const classesPlaceholderProduct = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_product__card}`,
-};
+}
 
 const classesEmptyComponent = {
   emptyContainer: styles.cart_empty,
@@ -114,7 +123,7 @@ const classesEmptyComponent = {
 
 const classesPlaceholderCart = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_product__cart}`
-};
+}
 
 const classesPlaceholderOrderSummary = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_product__orderSummary}`
@@ -136,21 +145,21 @@ const PopupCart: FC<PopupPropsType> = ({
   popupTitle,
   lng
 }) => {
-  const i18n: any = useI18n();
-  const size: any = useWindowSize();
+  const i18n: any = useI18n()
+  const size: any = useWindowSize()
 
-  const cartOuterDiv = useRef<HTMLDivElement>(null);
-  const [showModalErrorAddToCart, setShowModalErrorAddToCart] = useState<boolean>(false);
-  const allowedProductRecommendation = isProductRecommendationAllowed();
-  const [invalidMsg, setInvalidMsg] = useState<string>("");
-  const [SKUs, setSKUs] = useState<Array<string>>(null);
+  const cartOuterDiv = useRef<HTMLDivElement>(null)
+  const [showModalErrorAddToCart, setShowModalErrorAddToCart] = useState<boolean>(false)
+  const allowedProductRecommendation = isProductRecommendationAllowed()
+  const [invalidMsg, setInvalidMsg] = useState<string>("")
+  const [SKUs, setSKUs] = useState<Array<string>>(null)
   const [pageInfo, setPageInfo] = useState({
     totalItems: null,
   })
 
-  const toogleErrorAddToCart = () => setShowModalErrorAddToCart(!showModalErrorAddToCart);
+  const toogleErrorAddToCart = () => setShowModalErrorAddToCart(!showModalErrorAddToCart)
 
-  useOutsideClick(cartOuterDiv, () => setPopup(false));
+  useOutsideClick(cartOuterDiv, () => setPopup(false))
 
   return (
     <>
@@ -305,4 +314,4 @@ const PopupCart: FC<PopupPropsType> = ({
   )
 }
 
-export default PopupCart;
+export default PopupCart

@@ -3,7 +3,6 @@ import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import {
   PlaceOrderForm,
   useI18n,
@@ -19,7 +18,7 @@ import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Icon from 'components/Icon/Icon'
 import Stepper from 'components/Stepper'
 import LoaderPages from 'components/Loader/LoaderPages'
-const Placeholder = dynamic(() => import('components/Placeholder'));
+import Placeholder from 'components/Placeholder'
 /* styles */
 import styles from 'public/scss/pages/Placeorder.module.scss'
 import stylesPasswordStrength from 'public/scss/components/PasswordStrength.module.scss'
@@ -178,7 +177,8 @@ const PlaceOrderPage: FC<any> = ({
               ...passwordStrengthClasses,
               ...mapClasses,
             }}
-            logistixStyles={customStyles}
+            /* @ts-ignore */
+            logistixStyles={customStyles} 
             onErrorMsg={(msg) => toast.error(msg)}
             passwordViewIcon={<Icon.setNewPassword.passwordViewIcon />}
             passwordHideIcon={<Icon.setNewPassword.passwordHideIcon />}

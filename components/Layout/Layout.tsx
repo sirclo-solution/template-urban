@@ -112,6 +112,7 @@ const Layout: FC<LayoutPropType> = ({
         }
 
       </section>
+      {/* @ts-ignore */}
       <ToastContainer />
       <Newsletter i18n={i18n} />
     </GoogleTagManager>

@@ -3,14 +3,13 @@ import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import { ThankYou, useI18n } from '@sirclo/nexus'
-import dynamic from 'next/dynamic'
 /* library component */
 import { useBrandCommon } from 'lib/useBrand'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Icon from 'components/Icon/Icon'
-const Placeholder = dynamic(() => import('components/Placeholder'))
+import Placeholder from 'components/Placeholder'
 /* styles */
 import styles from 'public/scss/pages/ThankYou.module.scss'
 import stylesBanks from 'public/scss/components/BanksAccount.module.scss'
