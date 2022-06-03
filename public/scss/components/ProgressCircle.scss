@@ -109,10 +109,10 @@ Due to the split circle of progress-left and progress right, we must use the ani
 	@if $i > math.div($howManySteps, 2)  {  
 		.progress-circle[data-percentage="#{$stepName}"] {
 			.progress-circle-right .progress-circle-bar {
-				animation: loading-#{($howManySteps/2)} $animationTime linear forwards;
+				animation: loading-#{math.div($howManySteps, 2)} $animationTime linear forwards;
 			}
 			.progress-circle-left .progress-circle-bar {
-        animation: loading-#{$i - ($howManySteps/2)} $animationTime linear forwards $animationTime;
+        animation: loading-#{$i - math.div($howManySteps, 2)} $animationTime linear forwards $animationTime;
       }
 		}
 	}
