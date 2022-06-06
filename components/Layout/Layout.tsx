@@ -13,6 +13,7 @@ import Footer from 'components/Footer/Footer'
 import PageNotFound from 'components/PageNotFound'
 import SEOHead from 'components/SEO'
 import Newsletter from 'components/Newsletters'
+import GoogleTagManager from 'components/GoogleTagManager'
 
 /* Styles */
 import styles from 'public/scss/components/Layout.module.scss'
@@ -77,7 +78,7 @@ const Layout: FC<LayoutPropType> = ({
   }
 
   return (
-    <>
+    <GoogleTagManager brand={brand}>
       <SEOHead {...SEOprops}>
         <title>{brand?.settings?.websiteTitle} {SEO?.title && "-"} {SEO?.title}</title>
         {brand?.settings?.hideFromSearchEngine && (
@@ -111,9 +112,10 @@ const Layout: FC<LayoutPropType> = ({
         }
 
       </section>
+      {/* @ts-ignore */}
       <ToastContainer />
       <Newsletter i18n={i18n} />
-    </>
+    </GoogleTagManager>
   )
 }
 

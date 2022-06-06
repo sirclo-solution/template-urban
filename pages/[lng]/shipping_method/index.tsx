@@ -4,7 +4,6 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import {
   CustomerDetail,
   ShippingMethods,
@@ -21,7 +20,7 @@ import Icon from 'components/Icon/Icon'
 import OrderSummaryBox from 'components/OrderSummaryBox'
 import Stepper from 'components/Stepper'
 import LoaderPages from 'components/Loader/LoaderPages'
-const Placeholder = dynamic(() => import("components/Placeholder"));
+import Placeholder from 'components/Placeholder'
 /* styles */
 import styles from 'public/scss/pages/ShippingMethod.module.scss'
 import stylesMap from 'public/scss/components/Map.module.scss'

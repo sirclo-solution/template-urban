@@ -7,7 +7,6 @@ import {
 import { toast } from 'react-toastify'
 import { IncomingMessage } from 'http'
 import { useRouter } from 'next/router'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import {
   SingleSignOn,
@@ -17,7 +16,7 @@ import {
 } from '@sirclo/nexus'
 /* component */
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-const Placeholder = dynamic(() => import('components/Placeholder'))
+import Placeholder from 'components/Placeholder'
 /* styles */
 import styles from 'public/scss/components/whatsappOTP/LoginRegisterOTP.module.scss'
 

@@ -1,7 +1,6 @@
 /* library package */
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { useI18n, ProductListByCategory } from '@sirclo/nexus'
 /* library template */
@@ -11,8 +10,8 @@ import useInfiniteScroll from 'lib/useInfiniteScroll'
 /* components */
 import Layout from 'components/Layout/Layout'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-const EmptyComponent = dynamic(() => import('components/EmptyComponent/EmptyComponent'))
-const Placeholder = dynamic(() => import('components/Placeholder'))
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
+import Placeholder from 'components/Placeholder'
 /* styles */
 import styles from 'public/scss/pages/Categories.module.scss'
 import styleProducts from 'public/scss/components/Products.module.scss'

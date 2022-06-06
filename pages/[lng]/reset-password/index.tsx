@@ -1,7 +1,6 @@
 /*library package */
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import dynamic from 'next/dynamic'
 import { toast } from 'react-toastify'
 import { SetNewPassword, useI18n } from '@sirclo/nexus'
 /* library component */
@@ -11,7 +10,7 @@ import useWindowSize from 'lib/useWindowSize'
 import Layout from 'components/Layout/Layout'
 import Icon from 'components/Icon/Icon'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-const Loader = dynamic(() => import('components/Loader/Loader'))
+import Loader from 'components/Loader/Loader'
 /* styles */
 import styles from 'public/scss/pages/ResetPassword.module.scss'
 import stylesPasswordStrength from 'public/scss/components/PasswordStrength.module.scss'

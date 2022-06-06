@@ -2,7 +2,6 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import { toast } from 'react-toastify'
 import {
@@ -22,7 +21,7 @@ import ProductRecomendation from 'components/ProductRecomendation'
 import OrderSummaryBox from 'components/OrderSummaryBox'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
-const EmptyComponent = dynamic(() => import('components/EmptyComponent/EmptyComponent'))
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 /* styles */
 import styles from 'public/scss/pages/Cart.module.scss'

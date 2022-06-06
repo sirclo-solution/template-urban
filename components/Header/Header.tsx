@@ -1,6 +1,5 @@
 /* Library Package */
 import { FC, useState } from 'react'
-import dynamic from 'next/dynamic'
 import Link from 'next/link'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import {
@@ -15,7 +14,9 @@ import {
 import {
   Logo,
   useI18n,
-  useCart
+  useCart,
+  CollapsibleNav,
+  PrivateComponent
 } from '@sirclo/nexus'
 
 /* Library Template */
@@ -30,9 +31,6 @@ import Search from './Search'
 /* Styles */
 import styles from 'public/scss/components/Header.module.scss'
 import styleSearch from 'public/scss/components/Search.module.scss'
-
-const CollapsibleNav = dynamic(() => import("@sirclo/nexus").then((mod) => mod.CollapsibleNav))
-const PrivateComponent = dynamic(() => import("@sirclo/nexus").then((mod) => mod.PrivateComponent))
 
 const classesPlaceholderLogo = {
   placeholderImage: `${styles.placeholderItem} ${styles.placeholderItem_header__logo}`

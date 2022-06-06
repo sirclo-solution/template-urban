@@ -2,11 +2,7 @@
 import { FC } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import dynamic from 'next/dynamic'
-import {
-  Products,
-  ProductSort
-} from '@sirclo/nexus'
+import { Products, ProductSort } from '@sirclo/nexus'
 
 /* library component */
 import useProducts from './hooks/useProducts'
@@ -15,8 +11,7 @@ import useProducts from './hooks/useProducts'
 import SideMenu from 'components/SideMenu/SideMenu'
 import Placeholder from 'components/Placeholder'
 import ProductFilterComponent from 'components/ProductFilter'
-
-const EmptyComponent = dynamic(() => import('components/EmptyComponent/EmptyComponent'))
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 /* styles */
 import styles from 'public/scss/components/ProductsComponent.module.scss'

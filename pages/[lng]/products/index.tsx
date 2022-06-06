@@ -11,7 +11,6 @@ import {
   ProductSort,
   useI18n
 } from '@sirclo/nexus'
-import dynamic from 'next/dynamic'
 
 /* library template */
 import { useBrandCommon } from 'lib/useBrand'
@@ -24,7 +23,7 @@ import Layout from 'components/Layout/Layout'
 import Placeholder from 'components/Placeholder'
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import ProductFilterComponent from 'components/ProductFilter'
-const EmptyComponent = dynamic(() => import('components/EmptyComponent/EmptyComponent'))
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 /* styles */
 import styleProducts from 'public/scss/pages/Products.module.scss'
