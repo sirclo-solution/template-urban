@@ -169,11 +169,9 @@
 {
   @extend .voucherText;
   @include RegulerSemiBold;
-  @include truncate(1);
   max-width: 65%;
   color: $color_black;
   display: block;
-  word-wrap: break-word;
   word-break: break-all;
 }
 

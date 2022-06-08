@@ -216,6 +216,7 @@
 .voucherDetailTitle
 {
   @include SmallSemiBold;
+  word-break: break-all;
   margin: 2px 0;
 }
 

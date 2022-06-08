@@ -211,6 +211,9 @@
 {
   @extend .voucherButton;
 
+  height: fit-content;
+  padding: 10px 16px;
+
   & > svg
   {
     margin-right: 16px;
