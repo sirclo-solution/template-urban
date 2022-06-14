@@ -166,6 +166,11 @@ const classesAccount = {
   membershipProgressClassName: styles.membershipStatus_progress,
   membershipPromptClassName: styles.membershipStatus_prompt,
 
+  // Membership Group
+  membershipGroupStatusClassName: styles.membershipGroupStatus,
+  membershipGroupClassName: styles.membershipGroup,
+  totalGroupPointsClassName: styles.totalGroupPoints,
+
   // Membership History
   linkContinueClassName: styles.membershipHistory_linkContinue,
   membershipHistoryClassName: styles.membershipHistory,
