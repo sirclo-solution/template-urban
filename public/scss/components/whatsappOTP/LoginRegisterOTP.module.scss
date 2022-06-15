@@ -200,6 +200,19 @@
 .formWAContainer
 {
   @include flex(column, flex-start, flex-start);
+
+  [class*="disclaimerMessageContainerClassName"]
+  {
+    @include flex(row, center, center);
+    @include typographyBuilder(400, 12, 16);
+    position: relative;
+    margin: 12px 0;
+    padding: 10px;
+    text-align: center;
+    border: none;
+    border-radius: 2px;
+    background-color: $color_elements;
+  }
 }
 
 .inputFormTitle

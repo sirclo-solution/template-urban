@@ -1,7 +1,7 @@
 const locale = {
   "login": {
     "chooseAnyAccountToLogin": "Anda memiliki beberapa akun yang terdaftar, silakan pilih salah satu untuk masuk",
-    "clickHere": "Klik disini",
+    "clickHere": "Klik di sini",
     "dontHaveAccount": "Belum punya akun?",
     "email": "Email",
     "disclaimer": "Dengan klik 'Masuk' berarti anda setuju menerima pemberitahuan melalui Whatsapp dan mengetahui",

@@ -109,6 +109,12 @@
   border-top: none;
   padding: 0;
   width: 100%;
+
+  [class*="disclaimerMessage-containerClassName"]
+  {
+    display: none;
+  }
+
 }
 
 .submitButton
