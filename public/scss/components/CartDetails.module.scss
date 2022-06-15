@@ -155,6 +155,7 @@
   input[type="number"]
   {
     @extend .form_input;
+    @include removeArrowsFromInput;
     border: 1px solid $color_placeholder;
     margin-bottom: 0;
     width: 100%;
