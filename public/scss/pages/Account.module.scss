@@ -270,16 +270,19 @@
   padding: 0;
 }
 
-.totalGroupPoints
+.membershipGroup
 {
-  &::before
+  & + .totalGroupPoints
   {
-    content: "\25CF";
-
-    @include flex(row, center, flex-start);
-    position: relative;
-    padding: 0;
-    margin: 0px 6px;
+    &::before
+    {
+      content: "\25CF";
+  
+      @include flex(row, center, flex-start);
+      position: relative;
+      padding: 0;
+      margin: 0px 6px;
+    }
   }
 }
 
