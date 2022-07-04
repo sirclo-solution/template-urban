@@ -135,6 +135,7 @@ const ProductsComponent: FC<iProps> = ({
     fullPath: `product/{id}`,
     pathPrefix: `product`,
     lazyLoadedImage: false,
+    isFlipImage: true,
     thumborSetting: {
       width: 512,
       format: "webp",
