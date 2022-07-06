@@ -62,6 +62,7 @@ const ProductRecomendation: FC<Iprops> = ({
           buttonPrev={<Icon.arrowLeft />}
           fullPath={`product/{slug}`}
           pathPrefix={`product`}
+          isFlipImage
           thumborSetting={{
             width: size.width < 768 ? 512 : 800,
             format: "webp",

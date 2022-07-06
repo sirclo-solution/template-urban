@@ -150,7 +150,8 @@ const ProductsPage: FC<any> = ({
     collectionSlug: string,
     filter: any,
     withSeparatedVariant: boolean,
-    loadingComponent: any
+    loadingComponent: any,
+    isFlipImage: boolean
   }
 
   const productsLoadingComponent = [0, 1, 2, 3].map((_, i) => ( <div key={i}> <Placeholder classes={placeholder} withImage withList /> </div> ))
@@ -170,7 +171,8 @@ const ProductsPage: FC<any> = ({
     collectionSlug: categories,
     filter: filterProduct,
     withSeparatedVariant: true,
-    loadingComponent: productsLoadingComponent
+    loadingComponent: productsLoadingComponent,
+    isFlipImage: true,
   }
 
   return (
