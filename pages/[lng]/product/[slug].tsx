@@ -61,6 +61,7 @@ const Product: FC<any> = ({
           data={data}
           i18n={i18n}
           slug={slug}
+          brand={brand}
           urlSite={urlSite}
         />
       </LazyLoadComponent>
