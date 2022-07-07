@@ -146,9 +146,10 @@ const classesReviewPlaceholder = {
 }
 
 type IProps = {
-  lng: string,
-  i18n: any,
-  data: any,
+  lng: string
+  i18n: any
+  data: any
+  brand: any
   slug: string
   urlSite?: string
 }
@@ -158,6 +159,7 @@ const ProductDetailComponent: FC<IProps> = ({
   i18n,
   slug,
   data,
+  brand,
   urlSite
 }) => {
 
@@ -261,57 +263,59 @@ const ProductDetailComponent: FC<IProps> = ({
                 classes={socialShareClasses}
               />
             </div>
-            <div className={`${stylesReview.reviewRatingContainer}`}>
-              <div onClick={toogleShowReview}  className={`${stylesReview.reviewRatingHeader}`}>
-                <p>{i18n.t("product.review")}</p>
-                {showReview
-                  ? <Icon.RiCloseFill size=".8em" />
-                  : <Icon.productDetail.accordionIcon size=".8em" />
+            {brand?.settings?.reviewsAndRatingEnabled &&            
+              <div className={`${stylesReview.reviewRatingContainer}`}>
+                <div onClick={toogleShowReview}  className={`${stylesReview.reviewRatingHeader}`}>
+                  <p>{i18n.t("product.review")}</p>
+                  {showReview
+                    ? <Icon.RiCloseFill size=".8em" />
+                    : <Icon.productDetail.accordionIcon size=".8em" />
+                  }
+                </div>
+                <div className={stylesReview.totalAllReview}>
+                  <p>{totalReviews}{" "}{i18n.t("product.review")}</p>
+                  <div className={stylesReview.iconStarReview}></div>
+                </div>
+                {showReview && 
+                  <ProductReviews
+                    productID={productId}
+                    productName={slug}
+                    classes={getClassReview()}
+                    reviewsPaginationClasses={classesPagination}
+                    itemPerPageOptions={[5, 10, 25, 50]}
+                    iconClose={<Icon.RiCloseFill />}
+                    iconLeft={<Icon.chevronLeft />}
+                    iconRight={<Icon.chevronRight />}
+                    reviewsNextLabel={<Icon.arrowRight />}
+                    reviewsPrevLabel={<Icon.arrowLeft />}
+                  getTotalAllReviews={(total: number) => setTotalReviews(total)}
+                    loadingComponent={
+                      <div className={stylesReview.placeholderContainer}>
+                        <Placeholder
+                          classes={classesReviewPlaceholder}
+                          withImage
+                          withList
+                          listMany={3}
+                        />
+                      </div>
+                    }
+                    thumborSetting={{
+                      width: 500,
+                      format: 'webp',
+                      quality: 85,
+                    }}
+                    customEmptyComponentReviewsByAdmin={<></>}
+                    customEmptyComponentReviews={
+                      <div className={stylesReview.emptyContainer}>
+                        <h5 className={stylesReview.emptyTitle}>
+                          {i18n.t("testimonial.isEmpty")}
+                        </h5>
+                      </div>
+                    }
+                  />
                 }
               </div>
-              <div className={stylesReview.totalAllReview}>
-                <p>{totalReviews}{" "}{i18n.t("product.review")}</p>
-                <div className={stylesReview.iconStarReview}></div>
-              </div>
-              {showReview &&
-                <ProductReviews
-                  productID={productId}
-                  productName={slug}
-                  classes={getClassReview()}
-                  reviewsPaginationClasses={classesPagination}
-                  itemPerPageOptions={[5, 10, 25, 50]}
-                  iconClose={<Icon.RiCloseFill />}
-                  iconLeft={<Icon.chevronLeft />}
-                  iconRight={<Icon.chevronRight />}
-                  reviewsNextLabel={<Icon.arrowRight />}
-                  reviewsPrevLabel={<Icon.arrowLeft />}
-                getTotalAllReviews={(total: number) => setTotalReviews(total)}
-                  loadingComponent={
-                    <div className={stylesReview.placeholderContainer}>
-                      <Placeholder
-                        classes={classesReviewPlaceholder}
-                        withImage
-                        withList
-                        listMany={3}
-                      />
-                    </div>
-                  }
-                  thumborSetting={{
-                    width: 500,
-                    format: 'webp',
-                    quality: 85,
-                  }}
-                  customEmptyComponentReviewsByAdmin={<></>}
-                  customEmptyComponentReviews={
-                    <div className={stylesReview.emptyContainer}>
-                      <h5 className={stylesReview.emptyTitle}>
-                        {i18n.t("testimonial.isEmpty")}
-                      </h5>
-                    </div>
-                  }
-                />
-              }
-            </div>
+            }
           </>
         }
         loadingComponent={
