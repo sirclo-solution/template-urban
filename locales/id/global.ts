@@ -5,6 +5,7 @@ const locale = {
     "continueShopping": "Lanjutkan Berbelanja",
     "day": "hari",
     "days": "hari",
+    "emailInvalid": "Email tidak valid, silakan cek penulisannya.",
     "empty": "Tidak ada data untuk ditampilkan",
     "error": "Terjadi kesalahan",
     "hours": "jam",
