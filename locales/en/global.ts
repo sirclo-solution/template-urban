@@ -5,6 +5,7 @@ const locale = {
     "continueShopping": "Continue Shopping",
     "day": "day",
     "days": "days",
+    "emailInvalid": "Email is invalid, please check the spelling.",
     "empty": "There are no data to show",
     "error": "Error",
     "hours": "hours",
