@@ -1,5 +1,6 @@
 /* library package */
 import { FC, useState } from 'react'
+import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import { ProductDetail, ProductReviews } from '@sirclo/nexus'
 
@@ -173,7 +174,6 @@ const ProductDetailComponent: FC<IProps> = ({
     errorNotify,
     successNotify,
     toogleErrorAddToCart,
-    toogleErrorNotify,
     toogleSuccessNotify,
     IS_PROD,
     toogleSuccessAddToCart,
@@ -237,7 +237,7 @@ const ProductDetailComponent: FC<IProps> = ({
           }}
         onCompleteMsg={toogleSuccessNotify}
         onError={toogleErrorAddToCart}
-        onErrorMsg={(msg) => msg && toogleErrorNotify()}
+        onErrorMsg={(msg) => msg && toast.error(msg)}
         withEstimateShipping={IS_PROD === "false" ? true : false}
         prevIcon={<Icon.productDetail.prevIcon />}
         nextIcon={<Icon.productDetail.nextIcon />}
