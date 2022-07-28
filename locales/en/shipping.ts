@@ -27,7 +27,8 @@ const locale = {
     "title": "Shipping Method",
     "track": "Track your order",
     "trackDriver": "Track Driver",
-    "updatePinpoint": "Change Location Pin"
+    "updatePinpoint": "Change Location Pin",
+    "moreShipping": "Choose Other Shipping Method"
   }
 }
 

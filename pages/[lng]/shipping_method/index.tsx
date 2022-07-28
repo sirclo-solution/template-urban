@@ -45,6 +45,7 @@ const classesShippingMethod = {
   warningPinPointClassName: styles.warningPinPoint,
   inputLabel: styles.inputLabel,
   submitButtonClassName: styles.submitButton,
+  moreShippingClassName: styles.moreShipping,
 }
 
 const mapClasses = {

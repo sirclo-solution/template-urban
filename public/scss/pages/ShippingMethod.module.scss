@@ -10,6 +10,24 @@
   margin: 24px auto 100px;
 }
 
+.container 
+{
+  @include flex(column, inherit, normal);
+
+  & > div:not([class])
+  {
+    order: 3
+  }
+}
+  
+.moreShipping
+{
+  cursor: pointer;
+  order: 2;
+  padding: 18px 16px;
+  border: 1px solid $color_placeholder
+}
+
 .shippingTitle
 {
   @include RegulerSemiBold;
@@ -28,6 +46,7 @@
   border-radius: 2px;
   margin-bottom: 12px;
   cursor: pointer;
+  order: 1;
 
   &:hover
   {

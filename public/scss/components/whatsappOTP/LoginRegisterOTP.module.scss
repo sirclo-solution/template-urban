@@ -440,7 +440,7 @@
 
 @media screen and (max-width: #{$breakpoint_max_md}) 
 {
-  .ssoContainer,
+  .ssoContainer
   {
     @include fixedWidth(100%);
     padding: 0 18px 142px;
@@ -465,4 +465,6 @@
   {
     @include fixedWidth(100%);
   }
+
+
 }

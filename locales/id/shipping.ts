@@ -27,7 +27,8 @@ const locale = {
     "title": "Metode Pengiriman",
     "track": "Lacak Pesanan",
     "trackDriver": "Lacak kurir",
-    "updatePinpoint": "Ubah Pin Lokasi"
+    "updatePinpoint": "Ubah Pin Lokasi",
+    "moreShipping": "Pilih Methode Pengiriman Lainnya"
   }
 }
 

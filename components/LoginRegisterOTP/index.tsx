@@ -195,17 +195,12 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
               }
               <div className={styles.ssoButtonContainer}>
                 <SingleSignOn
-                  className={styles.ssoButton}
-                  buttonText={i18n.t("login.sso")}
-                  onErrorMsg={(msg: string) => toast.error(msg)}
-                  loadingComponent={
-                    <div className="text-center">
-                      <span className="spinner-border text-dark" role="status" />
-                      <p>
-                        {i18n.t("global.loading")}
-                      </p>
-                    </div>
-                  }
+                  className={styles.loginWithGoogle}
+                  googleButtonSize={'large'}
+                  googleButtonType={'icon'}
+                  googleButtonTheme={'outline'}
+                  googleButtonShape={'rectangular'}
+                  googleButtonLogoAlignment={'center'}
                 />
                 {hasOtp &&
                   <button
