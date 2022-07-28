@@ -173,6 +173,12 @@
     @extend .ssoGmailButton;
   }
 
+  & > div 
+  {
+    padding: 0 10px;
+    margin: 0 12px;
+  }
+
   & > span
   {
     @extend .ssoFbButton;
