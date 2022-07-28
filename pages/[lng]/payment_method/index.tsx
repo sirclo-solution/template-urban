@@ -25,7 +25,7 @@ import Icon from 'components/Icon/Icon'
 import OrderSummaryBox, { classesOrderSummary } from 'components/OrderSummaryBox'
 import LoaderPages from 'components/Loader/LoaderPages'
 import Placeholder from 'components/Placeholder'
-import Loader from "components/Loader/Loader"
+import Loader from 'components/Loader/Loader'
 
 /* styles */
 import styles from 'public/scss/pages/PaymentMethod.module.scss'

@@ -10,6 +10,7 @@ const locale = {
     "deliveryCourier": "Kurir Pengiriman",
     "inDelivery": "Kurir dalam perjalanan menuju pembeli",
     "inTransit": "Pesanan tiba di",
+    "moreShipping": "Pilih Methode Pengiriman Lainnya",
     "noDriver": "Gagal menemukan kurir",
     "noShipping": "Tidak ada pengiriman tersedia",
     "notCoverage": "Lokasi anda tidak terjangkau",
@@ -27,8 +28,7 @@ const locale = {
     "title": "Metode Pengiriman",
     "track": "Lacak Pesanan",
     "trackDriver": "Lacak kurir",
-    "updatePinpoint": "Ubah Pin Lokasi",
-    "moreShipping": "Pilih Methode Pengiriman Lainnya"
+    "updatePinpoint": "Ubah Pin Lokasi"
   }
 }
 

@@ -15,7 +15,7 @@ import useWindowSize from 'lib/useWindowSize'
 import Placeholder from 'components/Placeholder'
 import Popup from 'components/Popup/Popup'
 import Icon from 'components/Icon/Icon'
-import Loader from "components/Loader/Loader"
+import Loader from 'components/Loader/Loader'
 
 /* styles */
 import styles from 'public/scss/components/OrderSummary.module.scss'

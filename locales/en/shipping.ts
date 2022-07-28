@@ -10,6 +10,7 @@ const locale = {
     "deliveryCourier": "Delivery Courier",
     "inDelivery": "Driver is on the way to send your order",
     "inTransit": "Order in transit",
+    "moreShipping": "Choose Other Shipping Method",
     "noDriver": "Failed to find the driver",
     "noShipping": "No shipping method available",
     "notCoverage": "Your area is not on our coverage",
@@ -27,8 +28,7 @@ const locale = {
     "title": "Shipping Method",
     "track": "Track your order",
     "trackDriver": "Track Driver",
-    "updatePinpoint": "Change Location Pin",
-    "moreShipping": "Choose Other Shipping Method"
+    "updatePinpoint": "Change Location Pin"
   }
 }
 
