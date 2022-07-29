@@ -104,15 +104,14 @@
 
 .ssoFbButton
 {
-  display: block;
+  @include flex();
   background: $color_white;
-  padding: 8px 16px 16px 16px;
-
+  padding: 8px;
   
   [class*="metro"]
   {
     content: "";
-    @include fixedSize(20px);
+    @include fixedSize(21px);
     background-repeat: no-repeat;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 22 22' fill='none'%3E%3Cg clip-path='url(%23clip0)'%3E%3Cpath d='M20.0072 0.875H1.99185C1.37495 0.875309 0.874846 1.37572 0.875 1.99277V20.0082C0.875309 20.6251 1.37572 21.1252 1.99277 21.125H20.0072C20.6244 21.1252 21.1248 20.6249 21.125 20.0077C21.125 20.0075 21.125 20.0074 21.125 20.0072V1.99185C21.1247 1.37495 20.6243 0.874846 20.0072 0.875Z' fill='%234267B2'/%3E%3Cpath d='M14.8562 21.1249V13.2938H17.4962L17.8917 10.2286H14.8562V8.27643C14.8562 7.39102 15.102 6.78771 16.3716 6.78771H17.9807V4.05361C17.7008 4.01638 16.7403 3.93311 15.6227 3.93311C13.2892 3.93311 11.6921 5.35693 11.6921 7.97285V10.2286H9.06201V13.2938H11.6921V21.1249H14.8562Z' fill='white'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0'%3E%3Crect width='20.25' height='20.25' fill='white' transform='translate(0.875 0.875)'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E");
     font-size: 0;
@@ -129,10 +128,10 @@
 .buttonWaEmail
 {
   width: fit-content;
-  border: none;
-  outline: none;
+  border: 1px solid $color_border_sso;
+  border-radius: 4px;
   background: transparent;
-  padding: 16px;
+  padding: 8px;
   margin: 0 12px;
 }
 
@@ -173,10 +172,17 @@
     @extend .ssoGmailButton;
   }
 
+  & > div 
+  {
+    margin: 0 12px;
+  }
+
   & > span
   {
     @extend .ssoFbButton;
     margin: 0 12px;
+    border: 1px solid $color_border_sso;
+    border-radius: 4px;
   }
 
   [class*="email"]
@@ -440,7 +446,7 @@
 
 @media screen and (max-width: #{$breakpoint_max_md}) 
 {
-  .ssoContainer,
+  .ssoContainer
   {
     @include fixedWidth(100%);
     padding: 0 18px 142px;

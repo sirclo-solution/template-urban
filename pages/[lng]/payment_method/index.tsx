@@ -25,6 +25,7 @@ import Icon from 'components/Icon/Icon'
 import OrderSummaryBox, { classesOrderSummary } from 'components/OrderSummaryBox'
 import LoaderPages from 'components/Loader/LoaderPages'
 import Placeholder from 'components/Placeholder'
+import Loader from 'components/Loader/Loader'
 
 /* styles */
 import styles from 'public/scss/pages/PaymentMethod.module.scss'
@@ -251,6 +252,11 @@ const PaymentMethods: FC<any> = ({
               withNotificationOptInModal={hasOtp}
               onErrorMsgCoupon={(msg) => toast.error(msg)}
               isCouponAccordion
+              couponLoadingComponent={
+                <div>
+                  <Loader color='text-dark'/>
+                </div>
+              }
               loadingComponent={
                 <Placeholder
                   classes={placeholderClasses}

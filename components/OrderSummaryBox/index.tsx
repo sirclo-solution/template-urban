@@ -15,6 +15,7 @@ import useWindowSize from 'lib/useWindowSize'
 import Placeholder from 'components/Placeholder'
 import Popup from 'components/Popup/Popup'
 import Icon from 'components/Icon/Icon'
+import Loader from 'components/Loader/Loader'
 
 /* styles */
 import styles from 'public/scss/components/OrderSummary.module.scss'
@@ -77,6 +78,8 @@ export const classesOrderSummary = {
   voucherListHeaderIconClassName: stylesPopup.voucherListHeaderIcon,
   voucherDetailInvalidClassName: stylesPopup.voucherDetailInvalid,
   voucherTitleClassName: stylesPopup.voucherTitle,
+  voucherBankLogoContainerClassName: stylesPopup.voucherBankLogoContainer,
+  voucherBankLogoImageClassName: stylesPopup.voucherBankLogoImage,
   /* point Pop-up */
   totalPointsClassName: stylesPopup.totalPoints,
   pointsFormContainerClassName: styles.pointsFormContainer,
@@ -246,7 +249,10 @@ const OrderSummaryBox: FC<iProps> = ({
             </div>
           }
           couponLoadingComponent={
-            <p className="m-0 p-0">{i18n.t("global.loading")}</p>
+            <div className={stylesPopup.voucherLoading}>
+              <Loader color="text-dark" />
+              <p>{i18n.t("global.loading")}</p>
+            </div>
           }
           pointsLoadingComponent={
             <p className="m-0 p-0">{i18n.t("global.loading")}</p>

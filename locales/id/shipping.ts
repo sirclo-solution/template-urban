@@ -10,6 +10,7 @@ const locale = {
     "deliveryCourier": "Kurir Pengiriman",
     "inDelivery": "Kurir dalam perjalanan menuju pembeli",
     "inTransit": "Pesanan tiba di",
+    "moreShipping": "Pilih Metode Pengiriman Lainnya",
     "noDriver": "Gagal menemukan kurir",
     "noShipping": "Tidak ada pengiriman tersedia",
     "notCoverage": "Lokasi anda tidak terjangkau",
