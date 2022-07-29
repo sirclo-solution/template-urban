@@ -196,7 +196,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
               <div className={styles.ssoButtonContainer}>
                 <SingleSignOn
                   className={styles.loginWithGoogle}
-                  googleButtonSize={'medium'}
+                  googleButtonSize={'large'}
                   googleButtonType={'icon'}
                   googleButtonTheme={'outline'}
                   googleButtonShape={'rectangular'}
