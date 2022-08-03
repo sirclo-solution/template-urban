@@ -1,5 +1,5 @@
 /* library package */
-import { FC } from 'react'
+import { FC, useRef } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import {
@@ -43,6 +43,7 @@ const LoginPage: FC<any> = ({
 
   const i18n: any = useI18n()
   const size = useWindowSize()
+  const recaptchaRef = useRef<any>()
 
   const icons = {
     passwordViewIcon: <Icon.register.passwordViewIcon />,
