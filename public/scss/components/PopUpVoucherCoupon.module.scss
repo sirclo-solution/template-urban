@@ -243,7 +243,7 @@
 .voucher
 {
   @include flex(row, center, space-between);
-  @include fixedWidth(100%);
+  @include fixedWidth(305px);
   position: relative;
   margin: 0 0 10px;
   padding-top: 8px;
@@ -433,17 +433,18 @@
 {
   display: inline-flex;
   flex-wrap: wrap;
-  gap: 10px;
+  column-gap: 8px;
+  row-gap: 4px;
 }
 
 .voucherShipperLogoContainer
 {
-  padding: 8px 12px 8px 5px;
+  padding: 4px 12px 8px 5px;
 }
 
 .voucherBankLogoContainer
 {
-  padding: 8px 5px 8px 12px;
+  padding: 4px 5px 0 12px;
 }
 
 .voucherBankLogoImage,
