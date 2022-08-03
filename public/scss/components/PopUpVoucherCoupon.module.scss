@@ -190,7 +190,7 @@
   width: 100%;
   border-bottom: 1px dashed $color_placeholder;
   padding: 0 12px 8px 12px;
-  background-color: $color_white
+  background-color: $color_white;
 }
 
 .voucherDetailCode
@@ -229,8 +229,8 @@
 
 .voucherDetailEstimate
 {
-  padding: 8px 12px 9px 12px;
-  background-color: $color_white
+  padding: 8px 12px 9px;
+  background-color: $color_white;
 }
 
 .voucherDetailEstimateDesc
