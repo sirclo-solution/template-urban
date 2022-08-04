@@ -80,6 +80,8 @@ export const classesOrderSummary = {
   voucherTitleClassName: stylesPopup.voucherTitle,
   voucherBankLogoContainerClassName: stylesPopup.voucherBankLogoContainer,
   voucherBankLogoImageClassName: stylesPopup.voucherBankLogoImage,
+  voucherShipperLogoContainerClassName: stylesPopup.voucherShipperLogoContainer,
+  voucherShipperLogoImageClassName: stylesPopup.voucherShipperLogoImage,
   /* point Pop-up */
   totalPointsClassName: stylesPopup.totalPoints,
   pointsFormContainerClassName: styles.pointsFormContainer,

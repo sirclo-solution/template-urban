@@ -2,7 +2,8 @@
 import { 
   FC, 
   useState,
-  ReactNode
+  ReactNode,
+  useRef
 } from 'react'
 import { toast } from 'react-toastify'
 import { IncomingMessage } from 'http'
@@ -14,9 +15,11 @@ import {
   useI18n,
   WhatsAppOTPInput
 } from '@sirclo/nexus'
+import ReCAPTCHA from 'react-google-recaptcha'
 /* component */
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Placeholder from 'components/Placeholder'
+import Loader from 'components/Loader/Loader'
 /* styles */
 import styles from 'public/scss/components/whatsappOTP/LoginRegisterOTP.module.scss'
 
@@ -89,11 +92,19 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   const i18n: any = useI18n()
   const router: any = useRouter()
   const query = router?.query || {}
+  const recaptchaRef = useRef<any>()
 
   const steps = {
     email: "email",
     wa: "whatsapp-input"
   }
+
+  const getReCAPTCHAToken = async () => {
+    const token = await recaptchaRef.current.executeAsync()
+    recaptchaRef.current.reset()
+    return token
+  }
+  
   const [step, setStep] = useState<string>(steps.wa)
 
   const brandName = (brand: string): string => {
@@ -134,6 +145,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
         children
         :
         <WhatsAppOTPInput
+        getReCAPTCHAToken={getReCAPTCHAToken}
           brandName={brandName(brand?.name)}
           onStepChange={setStep}
           classes={{
@@ -195,12 +207,15 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
               }
               <div className={styles.ssoButtonContainer}>
                 <SingleSignOn
-                  className={styles.loginWithGoogle}
+                  className={""}
                   googleButtonSize={'large'}
                   googleButtonType={'icon'}
                   googleButtonTheme={'outline'}
                   googleButtonShape={'rectangular'}
                   googleButtonLogoAlignment={'center'}
+                  loadingComponent={
+                    <Loader color='text-dark' />
+                  }
                 />
                 {hasOtp &&
                   <button
@@ -215,6 +230,11 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           }
         </>
       }
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA}
+        size='invisible'
+      />
     </>
   )
 }
