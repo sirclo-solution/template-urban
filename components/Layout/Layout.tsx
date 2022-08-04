@@ -84,13 +84,17 @@ const Layout: FC<LayoutPropType> = ({
         {brand?.settings?.hideFromSearchEngine && (
           <meta name="robots" content="noindex, nofollow" />
         )}
-
+        {brand?.settings?.googleSearchConsole?.metaTagCode && (
+          <meta
+            name="google-site-verification"
+            content={brand?.settings?.googleSearchConsole?.metaTagCode}
+          />
+        )}
         <link
           rel="shortcut icon"
           href={brand?.settings?.faviconURL}
           type="image/x-icon"
         />
-
       </SEOHead>
 
       <section className={masterLayoutClassName}>
