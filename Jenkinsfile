@@ -99,6 +99,7 @@ pipeline {
                                 gsutil cp -r /tmp/\$dockerimage/static gs://sirclo-template/urban/_next/ && \
                                 docker rm -v \$id"
                             sh "deployer --build-from-pod --use-helmfile --use-jenkins-agent --project=sirclo-prod --docker-tag=${GIT_COMMIT}-${BUILD_NUMBER}"
+                            sh 'curl -X POST --data-urlencode "payload={\"channel\": \"#template-deployment\", \"username\": \"webhookbot\", \"text\": \"template Urban released to production\", \"icon_emoji\": \":rocket:\"}" https://hooks.slack.com/services/T02FRP3AM/B02T9N2HMEF/aMi6zFE3PqhmPbZMVKMh6lZ'
                         }
                     }
                 }
