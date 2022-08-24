@@ -27,7 +27,7 @@ const MainAdvertisement: FC = () => {
           </div>
         }
         thumborSetting={{
-          width: size.width < 575 ? 800 : 400,
+          width: size.width < 575 ? 400 : 800,
           format: "webp",
           quality: 95,
         }}
