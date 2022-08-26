@@ -77,9 +77,9 @@ const Breadcrumb: FC<BreadcrumbPropType> = ({
           }
         </ol>
         {withTitle &&
-          <h1 className={`${titleClassName} ${titleMiddle ? styles.breadcrumb_titleMiddle : ''}`}>
+          <h3 className={`${titleClassName} ${titleMiddle ? styles.breadcrumb_titleMiddle : ''}`}>
             {title}
-          </h1>
+          </h3>
         }
       </div>
     </section>
