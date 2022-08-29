@@ -1,0 +1,76 @@
+@import '../utils/_variables.scss';
+@import "../components/Placeholder.module.scss";
+
+.wrapper
+{
+    margin-top: 24px;
+}
+
+.legal
+{
+    @include fontPrimary(400);
+}
+
+.title
+{
+    @include h2;
+    margin-bottom: 24px;
+}
+
+.categories
+{
+
+	&Title
+	{
+		@include RegulerReguler;
+	}
+}
+  
+.categoriesOrder
+{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &List
+    {
+        @include RegulerReguler;
+        margin-bottom: 8px;
+        cursor: pointer;
+        color: $color_black;
+      
+        &:hover
+        {
+            text-decoration: underline;
+            color: $color_black;
+        }
+
+        &Active
+        {
+            @include RegulerBold;
+
+            &:hover
+            {
+                text-decoration: underline;
+                color: $color_black
+            }
+        }
+    }
+}
+
+@media (max-width: #{$breakpoint_max_md})
+{
+  .sidebar
+  {
+    li
+    {
+      &:first-child,
+      &:first-of-type
+      {
+        margin-top: 24px;
+        padding-top: 24px;
+        border-top: solid 1px $color_elements_line_darker;
+      }
+    }
+  }
+}
