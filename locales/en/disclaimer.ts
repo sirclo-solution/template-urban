@@ -5,7 +5,7 @@ const locale = {
         "privacyPolicy": "Privacy Policy",
         "registerByEmail": "By clicking 'Register', I acknowledge and agree to the {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}.",
         "shippingMethod": "By clicking 'Order', I acknowledge and agree to the {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}.",
-        "termsAndCondition": "Terms & Conditions",
+        "termsAndConditions": "Terms & Conditions",
         "whatsappOTP": "By clicking 'Login/Register', I agree to receive notifications via WhatsApp and acknowledge the {TERMS_AND_CONDITIONS} and {PRIVACY_POLICY} of {BRAND_NAME}."
     }
 }
