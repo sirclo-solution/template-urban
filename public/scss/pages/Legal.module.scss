@@ -70,17 +70,17 @@
 
 @media (max-width: #{$breakpoint_max_md})
 {
-  .sidebar
-  {
-    li
+    .sidebar
     {
-      &:first-child,
-      &:first-of-type
-      {
-        margin-top: 24px;
-        padding-top: 24px;
-        border-top: solid 1px $color_elements_line_darker;
-      }
+        li
+        {
+            &:first-child,
+            &:first-of-type
+            {
+                margin-top: 24px;
+                padding-top: 24px;
+                border-top: solid 1px $color_elements_line_darker;
+            }
+        }
     }
-  }
 }
