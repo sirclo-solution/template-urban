@@ -28,10 +28,6 @@ const classesLegalCategories = {
     legalCategoriesItemActiveClassName: styles.categoriesOrderListActive
 }
 
-const classesPlaceholder = {
-    placeholderList: styles.placeholder
-}
-
 const LegalPage: FC<any> = ({
     lng,
     lngDict,
