@@ -29,7 +29,7 @@ const classesLegalCategories = {
 }
 
 const classesPlaceholder = {
-    placeholderList: `${styles.placeholderItem} ${styles.placeholderItem_legal}`,
+    placeholderList: styles.placeholder
 }
 
 const LegalPage: FC<any> = ({
@@ -69,9 +69,14 @@ const LegalPage: FC<any> = ({
                                     legalKey={slug.toString()}
                                     getData={(data: TDataLegal) => setData(data)}
                                     loadingComponent={
-                                        <>
-                                            <Placeholder classes={classesPlaceholder} withList listMany={5} />
-                                        </>
+                                        <Placeholder 
+                                            withList
+                                            withImage
+                                            listMany={5}
+                                            classes={{
+                                                placeholderList: styles.placeholder
+                                            }}
+                                        />
                                     }
                                 />
                             </div>

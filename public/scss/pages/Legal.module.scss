@@ -58,6 +58,16 @@
     }
 }
 
+.placeholder
+{
+    height: 32px;
+
+    & + [class*="placeholder"]
+    {
+        margin-top: 12px;
+    }
+}
+
 @media (max-width: #{$breakpoint_max_md})
 {
   .sidebar
