@@ -25,7 +25,7 @@ const Breadcrumb: FC<BreadcrumbPropType> = ({
   fluidContainer = false,
   bgBlack,
   titleClassName = '',
-  withTitle
+  withTitle = true
 }) => {
 
   const redirectLinks = [
