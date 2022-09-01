@@ -25,7 +25,7 @@ const Breadcrumb: FC<BreadcrumbPropType> = ({
   fluidContainer = false,
   bgBlack,
   titleClassName = '',
-  withTitle = true
+  withTitle
 }) => {
 
   const redirectLinks = [
@@ -77,9 +77,9 @@ const Breadcrumb: FC<BreadcrumbPropType> = ({
           }
         </ol>
         {withTitle &&
-          <h3 className={`${titleClassName} ${titleMiddle ? styles.breadcrumb_titleMiddle : ''}`}>
+          <h1 className={`${titleClassName} ${titleMiddle ? styles.breadcrumb_titleMiddle : ''}`}>
             {title}
-          </h3>
+          </h1>
         }
       </div>
     </section>
