@@ -51,6 +51,7 @@ const Product: FC<any> = ({
           <Breadcrumb
             links={linksBreadcrumb}
             lng={lng}
+            withTitle={false}
           />
         </LazyLoadComponent>
       )}
@@ -78,10 +79,10 @@ const Product: FC<any> = ({
   );
 };
 
-export async function getServerSideProps({ 
+export async function getServerSideProps({
   req,
   params
-}){
+}) {
   const { slug } = params
   const data = await getProductDetail(GRAPHQL_URI(req), slug)
   const brand = await useBrandCommon(req, params)
