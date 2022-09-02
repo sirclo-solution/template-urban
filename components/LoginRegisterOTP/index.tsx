@@ -164,14 +164,6 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
       <Widget
         widgetClassName={styles.widgetLogin}
         pos="login-image"
-        loadingComponent={
-          <Placeholder
-            classes={{
-              placeholderImage: styles.widgetLogin
-            }}
-            withImage
-          />
-        }
       />
 
       {((step === steps.email || step === steps.wa) || type === "register") &&
