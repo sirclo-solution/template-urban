@@ -18,7 +18,6 @@ import {
 import ReCAPTCHA from 'react-google-recaptcha'
 /* component */
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
-import Placeholder from 'components/Placeholder'
 import Loader from 'components/Loader/Loader'
 /* styles */
 import styles from 'public/scss/components/whatsappOTP/LoginRegisterOTP.module.scss'
@@ -164,14 +163,6 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
       <Widget
         widgetClassName={styles.widgetLogin}
         pos="login-image"
-        loadingComponent={
-          <Placeholder
-            classes={{
-              placeholderImage: styles.widgetLogin
-            }}
-            withImage
-          />
-        }
       />
 
       {((step === steps.email || step === steps.wa) || type === "register") &&

@@ -8,6 +8,7 @@ import useWindowSize from 'lib/useWindowSize'
 
 /* component */
 import Placeholder from 'components/Placeholder'
+import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 /* styles */
 import styles from 'public/scss/components/InstaFeed.module.scss'
@@ -39,32 +40,32 @@ const Instafeed: FC<InstafeedType> = ({
   withFollowButton = false,
   followButtonText = i18n.t("instagram.cta")
 }) => {
-
   const size: any = useWindowSize()
   const [totalPost, setTotalPost] = useState(null)
   const handleFollowButton = () => window.open(brand?.socmedSetting?.socmedLink?.instagram);
 
   return (
     <>
-      {title && totalPost &&
+      {title && totalPost ? (
         <div className={styles.instagramFeed_titleContainer}>
-          <h2 className={styles.instagramFeed_title}>
-            @{title}
-          </h2>
-          {withFollowButton &&
+          <h2 className={styles.instagramFeed_title}>@{title}</h2>
+          {withFollowButton && (
             <span
               className={styles.instagramFeed_followUs}
               onClick={handleFollowButton}
             >
               {followButtonText}
             </span>
-          }
+          )}
         </div>
-      }
+      ) : (
+        <></>
+      )}
       <InstagramFeed
         postLimit={6}
         classes={classesInstagramFeed}
         Carousel={size.width <= 765 && Carousel}
+        emptyStateComponent={EmptyComponent}
         getReturnedMediaCount={(mediaCount: number) => setTotalPost(mediaCount)}
         loadingComponent={
           <div className={styles.instagramFeed_placeholderWrapper}>
