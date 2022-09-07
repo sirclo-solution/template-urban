@@ -5,7 +5,6 @@ import {
   useEffect
 } from 'react'
 import { Banner } from '@sirclo/nexus'
-// import Carousel from '@brainhubeu/react-carousel'
 import Slider from 'react-slick'
 /* component library */
 import useWindowSize from 'lib/useWindowSize'
@@ -49,7 +48,7 @@ const BannerComponent: FC<any> = ({ dataBanners }) => {
         thumborSetting={{
           width: useBannerSize(size.width),
           format: "webp",
-          quality: 85,
+          quality: 95,
         }}
         loadingComponent={
           <Placeholder classes={placeholder} withImage />

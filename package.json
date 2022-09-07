@@ -9,7 +9,6 @@
     "build:staging": "env-cmd -f .env.staging next build"
   },
   "dependencies": {
-    "@brainhubeu/react-carousel": "^1.19.26",
     "@elgorditosalsero/react-gtm-hook": "^2.4.0",
     "@sirclo/nexus": "2.14.4",
     "bootstrap": "^4.5.0",

@@ -1,7 +1,6 @@
 /* library package */
 import { FC, useState } from 'react'
 import { InstagramFeed } from '@sirclo/nexus'
-// import Carousel from '@brainhubeu/react-carousel'
 import Slider from 'react-slick'
 
 /* library template */
@@ -13,6 +12,7 @@ import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 /* styles */
 import styles from 'public/scss/components/InstaFeed.module.scss'
+import { useBannerSize } from 'lib/useBannerSize'
 
 const classesInstagramFeed = {
   containerClassName: styles.instagramFeed,
@@ -78,9 +78,9 @@ const Instafeed: FC<InstafeedType> = ({
           </div>
         }
         thumborSetting={{
-          width: size.width < 575 ? 250 : 400,
+          width: useBannerSize(size.width),
           format: 'webp',
-          quality: 85,
+          quality: 95,
         }}
       />
     </>
