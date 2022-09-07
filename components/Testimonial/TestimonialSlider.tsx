@@ -1,6 +1,7 @@
 import { FC, useState } from 'react'
 import { Testimonials, isTestimonialAllowed } from '@sirclo/nexus'
-import Carousel from '@brainhubeu/react-carousel'
+// import Carousel from '@brainhubeu/react-carousel'
+import Slider from 'react-slick'
 import Placeholder from 'components/Placeholder'
 
 /* style */
@@ -34,7 +35,7 @@ const TestimonialSlider: FC<any> = () => {
       {(pageInfo.totalItems === null || pageInfo.totalItems > 0) &&
         testimonialAllowed &&
         <Testimonials
-          Carousel={Carousel}
+          Carousel={Slider}
           classes={classesTestimonials}
           arrowLeft={<div className={style.arrowLeft}></div>}
           arrowRight={<div className={style.arrowRight}></div>}

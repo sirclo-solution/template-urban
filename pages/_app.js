@@ -1,6 +1,8 @@
-import "@brainhubeu/react-carousel/lib/style.css";
+// import "@brainhubeu/react-carousel/lib/style.css";
 import "react-toastify/dist/ReactToastify.css";
 import "public/scss/main.scss";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
 import { useState, useEffect } from "react";
 import {

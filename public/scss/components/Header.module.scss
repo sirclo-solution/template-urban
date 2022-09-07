@@ -20,13 +20,24 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    & ~ main,
+    & ~ main
+    {
+        @include transition();
+        @include fixedWidth(calc(100vw - 280px));
+        margin-left: 280px;
+        min-height: calc(100vh - 310px); // ditambah sama margin footer
+    }
     & ~ footer
     {
         @include transition();
-        @include fixedWidth(calc(100vw - 300px));
+        @include fixedWidth(calc(100vw - 280px));
+        min-height: 260px;
         margin-left: 280px;
+        z-index: 3;
+        bottom: 0;
+        position: relative;
     }
+    
 }
 
 .item

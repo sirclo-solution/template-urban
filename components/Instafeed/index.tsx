@@ -1,7 +1,8 @@
 /* library package */
 import { FC, useState } from 'react'
 import { InstagramFeed } from '@sirclo/nexus'
-import Carousel from '@brainhubeu/react-carousel'
+// import Carousel from '@brainhubeu/react-carousel'
+import Slider from 'react-slick'
 
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
@@ -64,7 +65,7 @@ const Instafeed: FC<InstafeedType> = ({
       <InstagramFeed
         postLimit={6}
         classes={classesInstagramFeed}
-        Carousel={size.width <= 765 && Carousel}
+        Carousel={size.width <= 765 && Slider}
         emptyStateComponent={EmptyComponent}
         getReturnedMediaCount={(mediaCount: number) => setTotalPost(mediaCount)}
         loadingComponent={
