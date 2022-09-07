@@ -25,13 +25,14 @@
         @include transition();
         @include fixedWidth(calc(100vw - 280px));
         margin-left: 280px;
-        min-height: calc(100vh - 310px); // ditambah sama margin footer
+        min-height: calc(100vh - 280px);
+        padding-bottom: 58px; 
     }
     & ~ footer
     {
         @include transition();
         @include fixedWidth(calc(100vw - 280px));
-        min-height: 260px;
+        min-height: 280px;
         margin-left: 280px;
         z-index: 3;
         bottom: 0;

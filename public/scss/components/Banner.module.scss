@@ -1,23 +1,35 @@
 @import '../utils/_variables.scss';
 
-.bannerCarousel {
-  a
-  {
-      width: 100%;
+.container
+{
+  position: relative
+}
+
+.bannerCarousel
+{
+  &_header {
+    flex: 0 0 100%;
+    text-align: center;
+    cursor: pointer;
   }
 
-  &__header
-  {
-      flex: 0 0 100%;
-      text-align: center;
-      cursor: pointer;
+  &_link {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  &__image
-  {
-      width: 100%;
+  &_image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
+  &_placeholder
+  {
+    height: 100vh;
+  }
+  
   .slick-slider,
   .slick-list
   {
@@ -36,13 +48,14 @@
           }
       }
   }
+
 }
+
 
 @media (max-width: #{$breakpoint_min_sm}) 
 {
-  .bannerCarousel
+  .container
   {
     margin-top: 70px;
   }
 }
-

@@ -32,7 +32,7 @@ const BannerComponent: FC<any> = ({ dataBanners }) => {
   }, [isReady])
 
   return (
-    <div className={styleBanner.bannerCarousel}>
+    <div className={styleBanner.container}>
       <Banner
         data={dataBanners?.data}
         Carousel={Slider}
