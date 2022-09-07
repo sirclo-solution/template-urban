@@ -1,6 +1,6 @@
 @import '../utils/_variables.scss';
 
-.banner-carousel{
+.bannerCarousel {
   a
   {
       width: 100%;
@@ -37,3 +37,12 @@
       }
   }
 }
+
+@media (max-width: #{$breakpoint_min_sm}) 
+{
+  .bannerCarousel
+  {
+    margin-top: 70px;
+  }
+}
+
