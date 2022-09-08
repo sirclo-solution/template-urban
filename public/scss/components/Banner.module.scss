@@ -2,7 +2,15 @@
 
 .container
 {
-  position: relative
+  position: relative;
+
+  & > [class*="slick-slider"]
+    {
+        @include fixedWidth(100%);
+        @include flex(row, center, flex-start);
+        position: relative;
+        display: block !important;
+    }
 }
 
 .bannerCarousel
