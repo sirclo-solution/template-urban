@@ -47,7 +47,7 @@ const BannerComponent: FC<any> = ({ dataBanners }) => {
         adaptiveHeight={true}
         thumborSetting={{
           width: useBannerSize(size.width),
-          format: "webp",
+          format: 'webp',
           quality: 95,
         }}
         loadingComponent={
