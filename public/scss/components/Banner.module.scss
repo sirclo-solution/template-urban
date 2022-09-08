@@ -32,30 +32,6 @@
   {
     height: 100vh;
   }
-  
-  .slick-slider,
-  .slick-list
-  {
-    @include fixedWidth(100%);
-    @include fixedHeight(100%);
-  }
-
-  .slick-dots
-  {
-      bottom: 25px;
-  }
-
-  .slick-active
-  {
-      button
-      {
-          &::before
-          {
-              color: $color-white;
-          }
-      }
-  }
-
 }
 
 
