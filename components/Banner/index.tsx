@@ -5,7 +5,7 @@ import {
   useEffect
 } from 'react'
 import { Banner } from '@sirclo/nexus'
-import Carousel from '@brainhubeu/react-carousel'
+import Slider from 'react-slick'
 /* component library */
 import useWindowSize from 'lib/useWindowSize'
 import { useBannerSize } from 'lib/useBannerSize'
@@ -34,15 +34,21 @@ const BannerComponent: FC<any> = ({ dataBanners }) => {
   return (
     <div className={styleBanner.container}>
       <Banner
-        Carousel={Carousel}
-        autoPlay={isReady ? 5000 : null}
         data={dataBanners?.data}
-        infinite
+        Carousel={Slider}
         classes={classesBanner}
+        lazyLoadedImage={false}
+        autoplay={true}
+        autoplaySpeed={5000}
+        arrows={false}
+        infinite={true}
+        slidesToShow={1}
+        slidesToScroll={1}
+        adaptiveHeight={true}
         thumborSetting={{
           width: useBannerSize(size.width),
           format: 'webp',
-          quality: 95
+          quality: 95,
         }}
         loadingComponent={
           <Placeholder classes={placeholder} withImage />

@@ -7,19 +7,22 @@
 
 .bannerCarousel
 {
-  &_header {
+  &_header
+  {
     flex: 0 0 100%;
     text-align: center;
     cursor: pointer;
   }
 
-  &_link {
+  &_link
+  {
     display: block;
     width: 100%;
     height: auto;
   }
 
-  &_image {
+  &_image
+  {
     width: 100%;
     height: auto;
     object-fit: cover;
@@ -29,6 +32,30 @@
   {
     height: 100vh;
   }
+  
+  .slick-slider,
+  .slick-list
+  {
+    @include fixedWidth(100%);
+    @include fixedHeight(100%);
+  }
+
+  .slick-dots
+  {
+      bottom: 25px;
+  }
+
+  .slick-active
+  {
+      button
+      {
+          &::before
+          {
+              color: $color-white;
+          }
+      }
+  }
+
 }
 
 

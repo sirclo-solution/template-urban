@@ -20,13 +20,25 @@
     overflow-x: hidden;
     overflow-y: auto;
 
-    & ~ main,
+    & ~ main
+    {
+        @include transition();
+        @include fixedWidth(calc(100vw - 280px));
+        margin-left: 280px;
+        min-height: calc(100vh - 280px);
+        padding-bottom: 58px; 
+    }
     & ~ footer
     {
         @include transition();
-        @include fixedWidth(calc(100vw - 300px));
+        @include fixedWidth(calc(100vw - 280px));
+        min-height: 280px;
         margin-left: 280px;
+        z-index: 3;
+        bottom: 0;
+        position: relative;
     }
+    
 }
 
 .item

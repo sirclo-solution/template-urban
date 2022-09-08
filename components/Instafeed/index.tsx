@@ -1,7 +1,7 @@
 /* library package */
 import { FC, useState } from 'react'
 import { InstagramFeed } from '@sirclo/nexus'
-import Carousel from '@brainhubeu/react-carousel'
+import Slider from 'react-slick'
 
 /* library template */
 import useWindowSize from 'lib/useWindowSize'
@@ -12,6 +12,7 @@ import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 
 /* styles */
 import styles from 'public/scss/components/InstaFeed.module.scss'
+import { useBannerSize } from 'lib/useBannerSize'
 
 const classesInstagramFeed = {
   containerClassName: styles.instagramFeed,
@@ -64,7 +65,7 @@ const Instafeed: FC<InstafeedType> = ({
       <InstagramFeed
         postLimit={6}
         classes={classesInstagramFeed}
-        Carousel={size.width <= 765 && Carousel}
+        Carousel={size.width <= 765 && Slider}
         emptyStateComponent={EmptyComponent}
         getReturnedMediaCount={(mediaCount: number) => setTotalPost(mediaCount)}
         loadingComponent={
@@ -77,9 +78,9 @@ const Instafeed: FC<InstafeedType> = ({
           </div>
         }
         thumborSetting={{
-          width: size.width < 575 ? 250 : 400,
+          width: useBannerSize(size.width),
           format: 'webp',
-          quality: 85,
+          quality: 95,
         }}
       />
     </>
