@@ -8,9 +8,7 @@ export const useBannerSize = (width: number): number => {
   else if ((width > 991) && (width < 1200)) output = 1296
   else if ((width > 767) && (width < 992)) output = 1080
   else if ((width > 575) && (width < 768)) output = 900
-  else if ((width > 479) && (width < 576)) output = 720
-  else if ((width > 375) && (width < 480)) output = 540
-  else if ((width < 375)) output = width
+  else if (width < 576) output = 720
 
   return output
 }
