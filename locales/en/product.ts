@@ -4,7 +4,7 @@ const locale = {
     "additionalInfo": "Additional Info",
     "adjust": "Adjust",
     "all": "All",
-    "title": "Semua Produk",
+    "title": "All Products",
     "back": "Back",
     "backToHome": "Back to Home",
     "buyNow": "Buy Now",
