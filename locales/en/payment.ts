@@ -19,7 +19,7 @@ const locale = {
     "travelokaPayLaterLink": "Activate your Traveloka PayLater now!",
     "travelokaPayLaterText": "Turn your payments into installments via",
     "uniqueCode": "Unique Code",
-    "voucher": "Voucher",
+    "voucher": "Coupon",
     "warning": "Unable to proceed transaction amount below 10,000",
   }
 }
