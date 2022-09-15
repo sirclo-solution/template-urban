@@ -38,6 +38,7 @@ const classesRegister = {
   verificationContainerClassName: styles.verificationContainer,
   passwordViewButtonClassName: styles.passwordViewButton,
   labelRequiredClassName: styles.labelRequired,
+  disclaimerMessageContainerClassName: styles.disclaimer
 }
 
 const passwordStrengthClasses = {

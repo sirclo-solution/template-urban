@@ -36,6 +36,7 @@ const loginClasses = {
   footerClassName: styles.footer,
   forgotPasswordClass: styles.forgotPassword,
   passwordViewButtonClassName: styles.passwordViewButton,
+  disclaimerMessageContainerClassName: styles.disclaimer
 }
 
 const LoginPage: FC<any> = ({
