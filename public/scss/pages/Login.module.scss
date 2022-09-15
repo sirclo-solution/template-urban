@@ -18,19 +18,6 @@
 {
   @include fixedWidth(50vw);
   padding: 0 99px;
-
-  [class*="disclaimerMessage-containerClassName"]
-  {
-    @include flex(row, center, center);
-    @include typographyBuilder(400, 12, 16);
-    position: relative;
-    margin: 12px 0 0;
-    padding: 10px;
-    text-align: center;
-    border: none;
-    border-radius: 2px;
-    background-color: $color_elements;
-  }
 }
 
 .container
@@ -118,9 +105,22 @@
   @include debug;
 }
 
+.disclaimer
+{
+  @include flex(row, center, center);
+  @include typographyBuilder(400, 12, 16);
+  position: relative;
+  margin: 12px 0 0;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  background-color: $color_elements;
+}
+
 @media screen and (max-width: #{$breakpoint_max_md}) 
 {
-  .section,
+  .section
   {
     @include fixedWidth(100%);
     padding: 0 18px;

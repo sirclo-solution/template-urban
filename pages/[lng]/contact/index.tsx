@@ -30,7 +30,8 @@ const classesContact = {
   buttonContainerClassName: styles.buttonContainer,
   buttonClassName: styles.button,
   widgetClassName: styles.widget,
-  mapAddressDetail: styles.mapAddressDetail
+  mapAddressDetail: styles.mapAddressDetail,
+  disclaimerMessageContainerClassName: styles.disclaimer
 }
 
 const ContactPage: FC<any> = ({

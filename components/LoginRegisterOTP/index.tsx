@@ -41,6 +41,7 @@ const formClasses = {
   inputFormDescriptionClassName: styles.inputFormDescription,
   btnSubmitClassName: styles.btnSubmit,
   inputDescriptionClassName: styles.inputDescription,
+  disclaimerMessageContainerClassName: styles.disclaimer
 }
 
 const confirmationClasses = {
