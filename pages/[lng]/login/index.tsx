@@ -1,6 +1,12 @@
 /* library package */
-import { FC } from 'react'
+import {
+  FC,
+  useEffect,
+  useRef
+} from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
+import { useRouter } from 'next/router'
+import ReCAPTCHA from 'react-google-recaptcha'
 import { toast } from 'react-toastify'
 import {
   Login,
@@ -43,6 +49,27 @@ const LoginPage: FC<any> = ({
 
   const i18n: any = useI18n()
   const size = useWindowSize()
+
+  const recaptchaRef = useRef<any>()
+  const router: any = useRouter()
+
+  useEffect(() => {
+    if (!document.body.classList.contains("auth")){
+      document.body.classList.add("auth")
+    }
+  }, [])
+
+  useEffect(() => {
+    const removeAuthClassName = () => {
+      document.body.classList.remove("auth")
+    }
+
+    router.events.on('routeChangeComplete', removeAuthClassName)
+
+    return () => {
+      router.events.off('routeChangeComplete', removeAuthClassName)
+    }
+  }, [])
 
   const icons = {
     passwordViewIcon: <Icon.register.passwordViewIcon />,
@@ -97,6 +124,12 @@ const LoginPage: FC<any> = ({
           />
         </section>
       </LoginRegisterOTP>
+
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA_INVISIBLE}
+        size='invisible'
+      />
     </Layout>
   )
 }

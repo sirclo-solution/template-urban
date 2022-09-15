@@ -15,7 +15,6 @@ import {
   useI18n,
   WhatsAppOTPInput
 } from '@sirclo/nexus'
-import ReCAPTCHA from 'react-google-recaptcha'
 /* component */
 import Breadcrumb from 'components/Breadcrumb/Breadcrumb'
 import Loader from 'components/Loader/Loader'
@@ -221,11 +220,6 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
           }
         </>
       }
-      <ReCAPTCHA
-        ref={recaptchaRef}
-        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA}
-        size='invisible'
-      />
     </>
   )
 }
