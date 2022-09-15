@@ -22,10 +22,10 @@
   
 .moreShipping
 {
+  @include typographyBuilder(400, 12, 16);
+  color: $color_blue;
   cursor: pointer;
   order: 2;
-  padding: 18px 16px;
-  border: 1px solid $color_placeholder
 }
 
 .shippingTitle
