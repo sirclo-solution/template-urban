@@ -11,9 +11,9 @@ const locale = {
     "subTotal": "Subtotal",
     "total": "Total",
     "usePoints": "Use point",
-    "useVoucher": "Use voucher",
+    "useVoucher": "Use coupon",
     "viewCart": "View Cart",
-    "voucherApplied": "Voucher applied",
+    "voucherApplied": "Coupon applied",
     "changeCart": "Change Cart"
   }
 }

@@ -19,7 +19,7 @@ const locale = {
     "travelokaPayLaterLink": "Aktifkan Traveloka PayLater-mu sekarang!",
     "travelokaPayLaterText": "Ubah pembayaranmu jadi cicilan melalui Aplikasi",
     "uniqueCode": "Kode Unik",
-    "voucher": "Voucher",
+    "voucher": "Kupon",
     "warning": "Transaksi di bawah 10,000 tidak dapat diproses",
   }
 }

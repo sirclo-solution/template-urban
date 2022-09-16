@@ -11,9 +11,9 @@ const locale = {
     "subTotal": "Subtotal",
     "total": "Total",
     "usePoints": "Gunakan poin",
-    "useVoucher": "Gunakan voucher",
+    "useVoucher": "Gunakan kupon",
     "viewCart": "Lihat Keranjang",
-    "voucherApplied": "Voucher digunakan",
+    "voucherApplied": "Kupon digunakan",
     "changeCart": "Ubah Keranjang"
   }
 }

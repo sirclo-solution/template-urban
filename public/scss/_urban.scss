@@ -38,6 +38,28 @@ h3
   @include typographyBuilder(700, 28, 40);
 }
 
+[class*="auth"]
+{
+  [id*="gb-widget-"]
+  {
+    bottom: calc(14px + 60px + 12px) !important;
+  }
+
+  @media (max-width: #{$breakpoint_min_lg}) 
+  {
+    [id*="gb-widget-"]
+    {
+      bottom: calc(14px + 60px + 12px + 56px) !important;
+    }
+
+    [class*="grecaptcha-badge"]
+    {
+      bottom: calc(14px + 56px) !important;
+      z-index: 2;
+    }
+  }
+}
+
 .maintenance
 {
   &__container
@@ -68,11 +90,6 @@ h3
     @include typographyBuilder(400, 16, 20);
     max-width: 70% !important;
   }
-}
-
-[id*="gb-widget-"]
-{
-  bottom: 100px !important;
 }
 
 @media (max-width: #{$breakpoint_min_sm}) 

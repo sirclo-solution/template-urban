@@ -82,9 +82,22 @@
   margin-bottom: 12px;
 }
 
+.disclaimer
+{
+  @include flex(row, center, center);
+  @include typographyBuilder(400, 12, 16);
+  position: relative;
+  margin: 12px 0 0;
+  padding: 10px;
+  text-align: center;
+  border: none;
+  border-radius: 2px;
+  background-color: $color_elements;
+}
+
 @media screen and (max-width: #{$breakpoint_max_md}) 
 {
-  .section,
+  .section
   {
     @include fixedWidth(100%);
     padding: 0 18px;

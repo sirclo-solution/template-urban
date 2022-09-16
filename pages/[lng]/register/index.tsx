@@ -1,8 +1,13 @@
 /* library package */
-import { FC, useState } from 'react'
+import {
+  FC,
+  useEffect,
+  useRef,
+  useState
+} from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
-import Router from 'next/router'
+import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
   Register,
@@ -33,6 +38,7 @@ const classesRegister = {
   verificationContainerClassName: styles.verificationContainer,
   passwordViewButtonClassName: styles.passwordViewButton,
   labelRequiredClassName: styles.labelRequired,
+  disclaimerMessageContainerClassName: styles.disclaimer
 }
 
 const passwordStrengthClasses = {
@@ -55,6 +61,27 @@ const RegisterPage: FC<any> = ({
   const size = useWindowSize()
 
   const [isVerified, setIsVerified] = useState<boolean>(false)
+
+  const recaptchaRef = useRef<any>()
+  const router: any = useRouter()
+
+  useEffect(() => {
+    if (!document.body.classList.contains("auth")){
+      document.body.classList.add("auth")
+    }
+  }, [])
+
+  useEffect(() => {
+    const removeAuthClassName = () => {
+      document.body.classList.remove("auth")
+    }
+
+    router.events.on('routeChangeComplete', removeAuthClassName)
+
+    return () => {
+      router.events.off('routeChangeComplete', removeAuthClassName)
+    }
+  }, [])
 
   const icons = {
     passwordViewIcon: <Icon.register.passwordViewIcon />,
@@ -108,7 +135,7 @@ const RegisterPage: FC<any> = ({
             withHeaderLabel={true}
             onErrorMsg={(msg) => toast.error(msg)}
             onSuccessMsg={(msg) => toast.success(msg)}
-            redirectPage={() => Router.push(`/[lng]/login`, `/${lng}/login`)}
+            redirectPage={() => router.push(`/[lng]/login`, `/${lng}/login`)}
             withVerification={true}
             isVerified={isVerified}
             loadingComponent={
@@ -126,6 +153,11 @@ const RegisterPage: FC<any> = ({
           />
         </section>
       </LoginRegisterOTP>
+      <ReCAPTCHA
+        ref={recaptchaRef}
+        sitekey={process.env.NEXT_PUBLIC_SITEKEY_RECAPTCHA_INVISIBLE}
+        size='invisible'
+      />
     </Layout>
   )
 }
