@@ -7,7 +7,7 @@ import {
 } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
-import Router, { useRouter } from 'next/router'
+import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
   Register,
@@ -135,7 +135,7 @@ const RegisterPage: FC<any> = ({
             withHeaderLabel={true}
             onErrorMsg={(msg) => toast.error(msg)}
             onSuccessMsg={(msg) => toast.success(msg)}
-            redirectPage={() => Router.push(`/[lng]/login`, `/${lng}/login`)}
+            redirectPage={() => router.push(`/[lng]/login`, `/${lng}/login`)}
             withVerification={true}
             isVerified={isVerified}
             loadingComponent={
