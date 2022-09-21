@@ -47,6 +47,7 @@ const locale = {
     "mobilePhone": "Mobile Phone",
     "mobilePhonePlaceholer": "Mobile Phone",
     "myAccount": "My Account",
+    "needReview": "Need Review",
     "newPassword": "New Password",
     "noOrder": "You have no order yet.",
     "oldPassword": "Old Password",

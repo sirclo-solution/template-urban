@@ -47,6 +47,7 @@ const locale = {
     "mobilePhone": "Telepon Genggam",
     "mobilePhonePlaceholer": "Telepon Genggam",
     "myAccount": "Akun Saya",
+    "needReview": "Butuh Ulasan",
     "newPassword": "Password Baru",
     "noOrder": "Belum ada order saat ini",
     "oldPassword": "Password Lama",
