@@ -3,6 +3,7 @@ import { FC } from 'react'
 import { Widget } from '@sirclo/nexus'
 /* component library */
 import useWindowSize from 'lib/useWindowSize'
+import { useBannerSize } from 'lib/useBannerSize'
 /* component */
 import Placeholder from '../Placeholder'
 import styles from 'public/scss/components/SecondAdvertisement.module.scss'
@@ -22,9 +23,9 @@ const SecondAdvertisement: FC = () => {
         widgetClassName={styles.secondAdvertisement_item}
         loadingComponent={<Placeholder classes={placeholder} withImage />}
         thumborSetting={{
-          width: size.width < 575 ? 1000 : 400,
-          format: "webp",
-          quality: 85,
+          width: useBannerSize(size.width),
+          format: 'webp',
+          quality: 95,
         }}
       />
     </div>
