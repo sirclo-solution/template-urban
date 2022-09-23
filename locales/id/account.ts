@@ -66,6 +66,7 @@ const locale = {
     "postalCode": "Kode Pos",
     "postalCodePlaceholder": "Kode Pos",
     "readyToShip": "Pesanan Dikemas",
+    "rejected": "Ditolak",
     "returned": "Dikembalikan",
     "save": "Simpan Perubahan",
     "searchHere": "Cari disini",
