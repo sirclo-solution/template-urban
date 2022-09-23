@@ -26,9 +26,7 @@ const classesNewsletter = {
   buttonClassName: styles.footerNewsletter_button
 }
 
-const Footer: FC<any> = ({ 
-  brand 
-}) => {
+const Footer: FC<any> = () => {
 
   const i18n: any = useI18n()
   const size: any = useWindowSize()
