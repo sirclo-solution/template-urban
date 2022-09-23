@@ -33,6 +33,14 @@
     margin: 0;
     padding: 12px 0;
     color: $color_white;
+
+    a
+    {
+      &::before
+      {
+        content: '\00a0';
+      }
+    }
   }
 
   &Item

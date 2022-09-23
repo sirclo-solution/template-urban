@@ -3,7 +3,7 @@ import { FC, useState } from 'react'
 import { toast } from 'react-toastify'
 import {
   useI18n,
-  isCopyrightAllowed,
+  Copyright,
   Widget,
   NewsletterForm
 } from "@sirclo/nexus";
@@ -26,13 +26,10 @@ const classesNewsletter = {
   buttonClassName: styles.footerNewsletter_button
 }
 
-const Footer: FC<any> = ({ 
-  brand 
-}) => {
+const Footer: FC<any> = () => {
 
   const i18n: any = useI18n()
   const size: any = useWindowSize()
-  const allowedCopyright = isCopyrightAllowed()
   const [widgetFoot1, setWidgetFoot1] = useState<number | null>(null)
   const [widgetFoot2, setWidgetFoot2] = useState<number | null>(null)
   const [widgetFoot3, setWidgetFoot3] = useState<number | null>(null)
@@ -129,13 +126,7 @@ const Footer: FC<any> = ({
         <div className={`${styles.footer_bottom} row`}>
           <div className="col-12">
             <div className={styles.footer_copyright}>
-              {allowedCopyright ?
-                <>
-                  {brand?.settings?.websiteTitle || ""}
-                  {(brand?.settings?.websiteTitle && allowedCopyright) && ` - `}
-                  POWERED BY&nbsp;<a href="https://store.sirclo.com" target="_blank">SIRCLO</a>
-                </>
-                : 
+              <Copyright>
                 <Widget 
                   pos="copyright-and-policy" 
                   thumborSetting={{
@@ -144,7 +135,7 @@ const Footer: FC<any> = ({
                     quality: 5,
                   }}
                 />
-              }
+              </Copyright>
             </div>
           </div>
         </div>
