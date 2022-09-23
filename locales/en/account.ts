@@ -66,6 +66,7 @@ const locale = {
     "postalCode": "Postal Code",
     "postalCodePlaceholder": "00000",
     "readyToShip": "Ready to Ship",
+    "rejected": "Rejected",
     "returned": "Returned",
     "save": "Save Changes",
     "searchHere": "Search here",
