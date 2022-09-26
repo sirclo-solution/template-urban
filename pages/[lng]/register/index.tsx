@@ -65,6 +65,12 @@ const RegisterPage: FC<any> = ({
   const recaptchaRef = useRef<any>()
   const router: any = useRouter()
 
+  const getReCAPTCHAToken = async() => {
+    const token = await recaptchaRef.current.executeAsync()
+    recaptchaRef.current.reset()
+    return token
+  }
+
   useEffect(() => {
     if (!document.body.classList.contains("auth")){
       document.body.classList.add("auth")
@@ -125,6 +131,7 @@ const RegisterPage: FC<any> = ({
         hasGoogleAuth={hasGoogleAuth}
         hasFacebookAuth={hasFacebookAuth}
         lng={lng}
+        getReCAPTCHAToken={getReCAPTCHAToken}
       >
         <section className={styles.section}>
           <Register

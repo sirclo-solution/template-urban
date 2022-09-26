@@ -2,8 +2,7 @@
 import { 
   FC, 
   useState,
-  ReactNode,
-  useRef
+  ReactNode
 } from 'react'
 import { toast } from 'react-toastify'
 import { IncomingMessage } from 'http'
@@ -30,6 +29,7 @@ type LoginRegisterOTPPropsType = {
   brand: any
   lng: string
   children?: ReactNode
+  getReCAPTCHAToken?: () => Promise<string>
 }
 
 const formClasses = {
@@ -86,22 +86,16 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
   title,
   hasGoogleAuth,
   hasFacebookAuth,
-  lng
+  lng,
+  getReCAPTCHAToken
 }) => {
   const i18n: any = useI18n()
   const router: any = useRouter()
   const query = router?.query || {}
-  const recaptchaRef = useRef<any>()
 
   const steps = {
     email: "email",
     wa: "whatsapp-input"
-  }
-
-  const getReCAPTCHAToken = async () => {
-    const token = await recaptchaRef.current.executeAsync()
-    recaptchaRef.current.reset()
-    return token
   }
   
   const [step, setStep] = useState<string>(steps.wa)
@@ -144,7 +138,7 @@ const LoginRegisterOTP: FC<LoginRegisterOTPPropsType> = ({
         children
         :
         <WhatsAppOTPInput
-        getReCAPTCHAToken={getReCAPTCHAToken}
+          getReCAPTCHAToken={getReCAPTCHAToken}
           brandName={brandName(brand?.name)}
           onStepChange={setStep}
           classes={{
