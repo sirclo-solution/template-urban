@@ -72,6 +72,12 @@ const LoginPage: FC<any> = ({
     }
   }, [])
 
+  const getReCAPTCHAToken = async() => {
+    const token = await recaptchaRef.current.executeAsync()
+    recaptchaRef.current.reset()
+    return token
+  }
+
   const icons = {
     passwordViewIcon: <Icon.register.passwordViewIcon />,
     passwordHideIcon: <Icon.register.passwordHideIcon />,
@@ -110,6 +116,7 @@ const LoginPage: FC<any> = ({
         hasGoogleAuth={hasGoogleAuth}
         hasFacebookAuth={hasFacebookAuth}
         lng={lng}
+        getReCAPTCHAToken={getReCAPTCHAToken}
       >
         <section className={styles.section}>
           <Login
