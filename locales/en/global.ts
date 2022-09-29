@@ -12,8 +12,8 @@ const locale = {
     "loading": "Loading",
     "notImplemented": "Not implemented yet",
     "pageNotFound": "Page not found",
+    "save": "Save",
     "tautanTitle": "Link",
-    "save": "Save"
   }
 }
 

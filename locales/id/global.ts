@@ -12,8 +12,8 @@ const locale = {
     "loading": "Memuat",
     "notImplemented": "Belum tersedia",
     "pageNotFound": "Halaman Tidak Ditemukan",
+    "save": "Simpan",
     "tautanTitle": "Tautan",
-    "save": "Simpan"
   }
 }
 
