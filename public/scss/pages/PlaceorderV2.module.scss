@@ -19,19 +19,20 @@
 .addressMapButtonMapLabel
 {
   @include flex(row, center, flex-start);
+  @include fontSize(12);
   display: inline;
   position: relative;
   margin: 0 4px 0 0;
   padding: 0;
   white-space: normal;
   word-break: break-all;
-  font-size: 12px;
 }
 
 .addressMapButtonMapButton,
 .mapButtonInputManualButton
 {
   @include transition;
+  @include typographyBuilder(500, 12, 16);
   display: inline-block;
   background: none;
   position: relative;
@@ -43,9 +44,6 @@
   border: none;
   box-shadow: none;
   color: $color_blue;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 16px;
 
   &:hover,
   &:focus,
@@ -161,10 +159,10 @@
 
 .map
 {
+  @include fixedHeight(360px);
   position: relative;
   margin: 0;
   padding: 0;
-  @include fixedHeight(360px);
   flex-grow: 1;
 }
 
@@ -307,7 +305,6 @@
     border: solid 1px $color_black;
     box-shadow: none;
   }
-
 }
 
 .mapCenterButtonContainer
@@ -389,9 +386,7 @@
 
 .mapDistrictLabel
 {
-  @include fontPrimary(400);
-  @include fontSize(16);
-  @include lineHeight(24);
+  @include typographyBuilder(400, 16, 24);
   padding: 0 20px;
   margin: 17px 0 0;
 }
@@ -404,15 +399,13 @@
 
   position: relative;
   margin: 0;
-  padding: 8px 20px 0 20px;
+  padding: 8px 20px 0;
   text-transform: none;
 }
 
 .mapChangeAddressButton
 {
-  @include fontPrimary(400);
-  @include fontSize(14);
-  @include lineHeight(24);
+  @include typographyBuilder(400, 14, 24);
   border: none;
   background: transparent;
   padding: 0;
@@ -431,14 +424,12 @@
 
     @media screen and (max-width: 479px)
     {
-      @include fixedWidth(100px);
-      @include fixedHeight(100px);
+      @include fixedSize(100px);
     }
 
     @media (max-width: #{$breakpoint_max_md})
     {
-      @include fixedWidth(133px);
-      @include fixedHeight(133px);
+      @include fixedSize(133px);
     }
   }
 }
@@ -448,11 +439,12 @@
   & > div
   {
     border: none !important;
+    padding: 15px;
 
     & > div
     {
-      height: 133px !important;
-      width: 133px !important;
+      height: 103px !important;
+      width: 103px !important;
     }
   }
 }

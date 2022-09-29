@@ -39,7 +39,7 @@ const locale = {
     "male": "Pria",
     "mapHeader": "Tentukan Lokasi",
     "mapHeaderNote": "Pastikan lokasi yang Anda tandai sesuai dengan alamat Anda",
-    "mapSelectLocation": "Gunakan lokasi ini",
+    "mapSelectLocation": "Gunakan Lokasi",
     "marked": "Kolom yang ditandai dengan",
     "mobilePhone": "Telepon Genggam",
     "mobilePhonePlaceholder": "Masukan nomor telepon genggam anda",
