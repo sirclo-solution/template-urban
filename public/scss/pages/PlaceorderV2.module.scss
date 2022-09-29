@@ -1,0 +1,487 @@
+@import '../utils/_variables.scss';
+@import '../components/Buttons.module.scss';
+
+.addressMapButtonMapContainer
+{
+  @include flex(column, flex-start, flex-start);
+  position: relative;
+  margin: 0 0 16px;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 3px;
+  overflow: hidden;
+  background-color: $color_lighter_blue;
+  background-repeat: no-repeat;
+  background-position: top right;
+  background-image: url("data:image/svg+xml,%3Csvg width='42' height='42' viewBox='0 0 35 36' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cg opacity='0.5'%3E%3Cpath d='M35.9628 23.0047L23.5 35.4675L11.0372 23.0047C8.5723 20.5398 6.8937 17.3993 6.21365 13.9804C5.5336 10.5615 5.88265 7.01768 7.21665 3.79715C8.55065 0.576612 10.8097 -2.17602 13.7081 -4.11267C16.6065 -6.04932 20.0141 -7.08301 23.5 -7.08301C26.9859 -7.08301 30.3935 -6.04932 33.2919 -4.11267C36.1903 -2.17602 38.4494 0.576612 39.7834 3.79715C41.1174 7.01768 41.4664 10.5615 40.7864 13.9804C40.1063 17.3993 38.4277 20.5398 35.9628 23.0047V23.0047ZM23.5 14.4585C24.5388 14.4585 25.535 14.0459 26.2695 13.3113C27.004 12.5768 27.4167 11.5806 27.4167 10.5418C27.4167 9.50308 27.004 8.50686 26.2695 7.77234C25.535 7.03782 24.5388 6.62517 23.5 6.62517C22.4612 6.62517 21.465 7.03782 20.7305 7.77234C19.996 8.50686 19.5833 9.50308 19.5833 10.5418C19.5833 11.5806 19.996 12.5768 20.7305 13.3113C21.465 14.0459 22.4612 14.4585 23.5 14.4585Z' fill='%2381CDE9'/%3E%3C/g%3E%3C/svg%3E%0A");
+}
+
+.addressMapButtonMapLabel
+{
+  @include flex(row, center, flex-start);
+  display: inline;
+  position: relative;
+  margin: 0 4px 0 0;
+  padding: 0;
+  white-space: normal;
+  word-break: break-all;
+  font-size: 12px;
+}
+
+.addressMapButtonMapButton,
+.mapButtonInputManualButton
+{
+  @include transition;
+  display: inline-block;
+  background: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  white-space: normal;
+  word-break: break-all;
+  border: none;
+  box-shadow: none;
+  color: $color_blue;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+
+  &:hover,
+  &:focus,
+  &:focus-visible
+  {
+    outline: none;
+    border: none;
+    box-shadow: none;
+    color: $color_black;
+  }
+}
+
+.mapPopup
+{
+  @include flex(row, center, center);
+  position: fixed;
+  z-index: 30;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba($color_black, 0.5);
+}
+
+.mapPopupBackground,
+.shippingAreaPopupBackground
+{
+  @include flex(column, stretch, flex-start);
+  @include fixedWidth(32vw);
+  min-height: initial;
+  height: fit-content;
+  max-width: 75vh;
+  border: none;
+  position: relative;
+  background: $color_white;
+  border-radius: 3px;
+  padding: 0;
+  overflow: hidden;
+  overflow-y: auto;
+  display: flex;
+
+  @media screen and (max-width: 991px)
+  {
+    @include fixedWidth(100vw);
+    @include fixedHeight(100vh);
+  }
+}
+
+.shippingAreaPopupHeader
+{
+  @include flex(row, center, space-between);
+  position: relative;
+  margin: 0;
+  padding: 0 20px;
+  min-height: 52px;
+  background-color: $color_white;
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+  border: none;
+
+  & + form
+  {
+    padding: 24px 20px 52px;
+    flex-grow: 1;
+    overflow-x: hidden;
+    overflow: auto;
+  }
+}
+
+.shippingAreaTitle
+{
+  @include flex(row, center, center);
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+}
+
+.shippingAreaCloseButton,
+.mapSearchCloseButton
+{
+  @include transition;
+  @include flex(row, center, center);
+  @include fixedSize(48px);
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  border: none;
+  background: transparent;
+  box-shadow: none;
+
+  &::before
+  {
+    content: "";
+    @include fixedSize(18px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M9.00005 7.93955L12.7126 4.22705L13.7731 5.28755L10.0606 9.00005L13.7731 12.7126L12.7126 13.7731L9.00005 10.0606L5.28755 13.7731L4.22705 12.7126L7.93955 9.00005L4.22705 5.28755L5.28755 4.22705L9.00005 7.93955Z' fill='%232A2A2A'/%3E%3C/svg%3E%0A");
+  }
+
+  & > svg
+  {
+    display: none;
+  }
+
+  &:hover,
+  &:focus-visible
+  {
+    opacity: 0.6;
+  }
+}
+
+.map
+{
+  position: relative;
+  margin: 0;
+  padding: 0;
+  @include fixedHeight(360px);
+  flex-grow: 1;
+}
+
+.mapButtonInputManualContainer
+{
+  @include flex(column, center, center);
+  position: relative;
+  margin: 0;
+  padding: 16px;
+}
+
+.mapButtonInputManualTitle
+{
+  position: relative;
+  color: $color_black;
+}
+
+.mapButtonInputManualButton
+{
+  @include flex(row, center, center);
+}
+
+.mapSearchCloseButton
+{
+  @include fixedSize(52px);
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+
+  &::before
+  {
+    @include fixedSize(24px);
+    background-size: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.828 10.9999H20V12.9999H7.828L13.192 18.3639L11.778 19.7779L4 11.9999L11.778 4.22192L13.192 5.63592L7.828 10.9999Z' fill='%232A2A2A'/%3E%3C/svg%3E%0A");
+  }
+}
+
+.mapSearchBarContainer
+{
+  @include flex(row, center, flex-start);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  min-height: 80px;
+
+  [class="autocomplete-dropdown-container"]
+  {
+    @include transition;
+    @include fixedSize(calc(100% - (52px + 20px)));
+    position: absolute;
+    top: calc(100% - 14px);
+    right: 16px;
+    left: 52px;
+    flex-grow: 1;
+    z-index: 3;
+
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    background-color: $color_white;
+
+    &:empty
+    {
+      opacity: 0;
+    }
+
+    div
+    {
+      @include transition;
+      @include flex(row, center, flex-start);
+      position: relative;
+      padding: 16px !important;
+      background-color: $color_white;
+      cursor: pointer;
+
+      &:not(:last-child),
+      &:not(:last-of-type),
+      &:only-child,
+      &:only-of-type
+      {
+        border-bottom: solid 1px $color_grey;
+      }
+    }
+
+    [class="suggestion-item"]
+    {
+      & > span
+      {
+        display: block;
+        position: relative;
+        margin: 0;
+        padding: 0;
+      }
+
+      &:hover,
+      &:focus-visible
+      {
+        background-color: rgba(247, 190, 22, 0.1);
+      }
+    }
+  }
+}
+
+.mapSearchBar
+{
+  @include flex(row, center, flex-start);
+  @include fixedWidth(calc(100% - (52px + 20px)));
+  position: relative;
+  margin: 0;
+  min-height: 52px;
+
+  & > span
+  {
+    display: none;
+  }
+}
+
+.mapSearchBarInput
+{
+  @include transition;
+  @include fixedHeight(52px);
+  @include typographyBuilder(400, 16, 24);
+  flex-grow: 1;
+  margin: 0;
+  padding: 0 20px 0 calc((16px * 2) + 8px) !important;
+
+  border: solid 1px $color_black;
+  box-shadow: none;
+  background-color: $color_white;
+  background-repeat: no-repeat;
+  background-position: 16px center;
+  background-image: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.0208 11.0779L14.8762 13.9326L13.9328 14.8759L11.0782 12.0206C10.016 12.8721 8.69483 13.3352 7.3335 13.3332C4.0215 13.3332 1.3335 10.6452 1.3335 7.33325C1.3335 4.02125 4.0215 1.33325 7.3335 1.33325C10.6455 1.33325 13.3335 4.02125 13.3335 7.33325C13.3354 8.69458 12.8723 10.0157 12.0208 11.0779ZM10.6835 10.5832C11.5296 9.71317 12.0021 8.54687 12.0002 7.33325C12.0002 4.75458 9.9115 2.66658 7.3335 2.66658C4.75483 2.66658 2.66683 4.75458 2.66683 7.33325C2.66683 9.91125 4.75483 11.9999 7.3335 11.9999C8.54712 12.0018 9.71342 11.5293 10.5835 10.6832L10.6835 10.5832Z' fill='%232A2A2A'/%3E%3C/svg%3E%0A");
+
+  &:hover,
+  &:focus,
+  &:focus-visible,
+  &:active
+  {
+    outline: none;
+    border: solid 1px $color_black;
+    box-shadow: none;
+  }
+
+}
+
+.mapCenterButtonContainer
+{
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 20px;
+  z-index: 2;
+}
+
+.mapCenterIcon
+{
+  color: $color_text_secondary;
+  height: 20px;
+  width: 20px;
+}
+
+.mapPopupCenterButton
+{
+  @include transition;
+  @include flex(row, center, center);
+  @include typographyBuilder(400, 16, 24);
+  position: relative;
+  margin: 0;
+  padding: 0 10px;
+  border: none;
+  box-shadow: none;
+  background-color: $color_white;
+  color: $color_black;
+  min-height: 40px;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+
+  &:hover,
+  &:focus-visible
+  {
+    background-color: $color_grey;
+  }
+}
+
+.mapFormAddress
+{
+  position: relative;
+  padding: 16px 20px 0;
+}
+
+.mapFooterContainer
+{
+  margin-top: 72px;
+
+  @media screen and (max-width: 479px)
+  {
+    margin-top: 0;
+    padding-top: 72px;
+  }
+
+  -moz-box-flex: 1;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.mapButtonFooterContainer
+{
+  width: 100%;
+  position: relative;
+}
+
+.mapButtonFooter
+{
+  @extend .btn_primary;
+  width: 100%;
+  height: 52px;
+  background-color: $color_black !important;
+  
+  &:hover
+  {
+    background-color: $color_black !important;
+  }
+}
+
+.mapDistrictLabel
+{
+  @include fontPrimary(400);
+  @include fontSize(16);
+  @include lineHeight(24);
+  padding: 0 20px;
+  margin: 17px 0 0;
+}
+
+.mapLabelAddress
+{
+  @include flex(row, center, flex-start);
+  @include fixedWidth(100%);
+  @include typographyBuilder(400, 11, 16);
+
+  position: relative;
+  margin: 0;
+  padding: 8px 20px 0 20px;
+  text-transform: none;
+}
+
+.mapChangeAddressButton
+{
+  @include fontPrimary(400);
+  @include fontSize(14);
+  @include lineHeight(24);
+  border: none;
+  background: transparent;
+  padding: 0;
+  color: $color_blue;
+}
+
+.mapContainer
+{
+  @include flex(row-reverse, center, space-between);
+  border: solid 1px $color_elements_placeholder;
+  border-radius: 2px;
+
+  [class*="mapArea"]
+  {
+    @include fixedSize(133px);
+
+    @media screen and (max-width: 479px)
+    {
+      @include fixedWidth(100px);
+      @include fixedHeight(100px);
+    }
+
+    @media (max-width: #{$breakpoint_max_md})
+    {
+      @include fixedWidth(133px);
+      @include fixedHeight(133px);
+    }
+  }
+}
+
+.mapArea
+{
+  & > div
+  {
+    border: none !important;
+
+    & > div
+    {
+      height: 133px !important;
+      width: 133px !important;
+    }
+  }
+}
+
+.mapAddressContainer
+{
+  margin-left: 16px;
+  margin-top: 24px;
+
+  p
+  {
+    margin-bottom: 4px;
+  }
+
+  &:only-child
+  {
+    width: 100%;
+    margin: 20px 16px 0 16px;
+  }
+}
+
+.mapFullAddress 
+{
+  @include typographyBuilder(400, 16, 24);
+}
+
+.mapCity,
+.mapPostCode
+{
+  @include typographyBuilder(400, 12, 16);
+  color: $color_text_secondary;
+}
