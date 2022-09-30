@@ -33,15 +33,14 @@
   position: relative;
   margin-bottom: 12px;
 
-  // NOTE: IF applied to street will effect country & address detail label, but I can't find a way to apply this to country only
-  // label[for="street"]
-  // {
-  //   margin-left: 42px;
-  // }
-
   input[id="postalCode"]
   {
-    @include fixedWidth(45%);
+    @include fixedWidth(167px);
+  }
+
+  input[name="street"]
+  {
+    @include fixedHeight(84px);
   }
   
   label
@@ -69,10 +68,8 @@
 
   &[class$="-SingleValue"] 
   {
+    @include textOverflow();
     padding-top: 18px;
-    white-space: nowrap;
-    word-break: keep-all;
-    text-overflow: ellipsis;
   }
 
   input
@@ -116,6 +113,7 @@
     {
       border: none;
       box-shadow: none;
+
       &::before
       {
         content: "";
