@@ -350,16 +350,15 @@
 .mapFooterContainer
 {
   margin-top: 72px;
-
+  -moz-box-flex: 1;
+  flex-grow: 1;
+  overflow: auto;
+  
   @media screen and (max-width: 479px)
   {
     margin-top: 0;
     padding-top: 72px;
   }
-
-  -moz-box-flex: 1;
-  flex-grow: 1;
-  overflow: auto;
 }
 
 .mapButtonFooterContainer
@@ -441,7 +440,7 @@
 
     & > div
     {
-      @include fixedSize(103px !important);
+      @include fixedSize(103px, true);
     }
   }
 }
@@ -459,7 +458,7 @@
   &:only-child
   {
     width: 100%;
-    margin: 20px 16px 0 16px;
+    margin: 20px 16px 0;
   }
 }
 
