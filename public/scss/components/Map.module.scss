@@ -93,8 +93,8 @@
     [class="autocomplete-dropdown-container"]
     {
       @include transition;
-      @include fixedSize(calc(100% - (52px + 20px)));
-      @include absolute(calc(100% - 14px), 16px, auto, 52px);
+      @include fixedSize(100%);
+      @include absolute(calc(100% - 14px), 16px, auto, auto);
       flex-grow: 1;
       z-index: 3;
   
