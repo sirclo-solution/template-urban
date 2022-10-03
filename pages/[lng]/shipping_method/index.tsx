@@ -25,6 +25,7 @@ import Placeholder from 'components/Placeholder'
 import styles from 'public/scss/pages/ShippingMethod.module.scss'
 import stylesMap from 'public/scss/components/Map.module.scss'
 import stylesCustomerDetail from 'public/scss/components/CustomerDetail.module.scss'
+import stylesMapV2 from "public/scss/pages/PlaceorderV2.module.scss";
 
 
 const classesCustomerDetail = {
@@ -52,17 +53,24 @@ const mapClasses = {
   mapNoteClassName: stylesMap.mapNote,
   mapSelectAreaClassName: stylesMap.mapSelectArea,
   mapAreaClassName: stylesMap.mapArea,
-  mapPopupClassName: stylesMap.mapPopup,
   mapPopupBackgroundClassName: stylesMap.mapPopupBackground,
-  mapClassName: stylesMap.map,
   mapHeaderWrapperClassName: stylesMap.mapHeaderWrapper,
   mapHeaderTitleClassName: stylesMap.mapHeaderTitle,
   mapHeaderCloseButtonClassName: stylesMap.mapHeaderCloseButton,
   mapHeaderNoteClassName: stylesMap.mapHeaderNote,
   mapLabelAddressClassName: stylesMap.mapLabelAddress,
-  mapCenterButtonClassName: stylesMap.mapCenterButton,
   mapPinPointIconClassName: stylesMap.mapPinPointIcon,
-  mapButtonFooterClassName: stylesMap.mapButtonFooter
+  // V2
+  mapClassName: stylesMapV2.map,
+  mapPopupClassName: stylesMapV2.mapPopup,
+  mapSearchBarContainerClassName: stylesMapV2.mapSearchBarContainer,
+  mapSearchBarClassName: stylesMapV2.mapSearchBar,
+  mapSearchBarInputClassName: `${styles.formInput} ${stylesMapV2.mapSearchBarInput}`,
+  mapSearchCloseButtonClassName: stylesMapV2.mapSearchCloseButton,
+  mapFooterContainerClassName: `${stylesMapV2.mapFooterContainer} mt-2`,
+  mapButtonFooterClassName: `${stylesMapV2.mapButtonFooter}`,
+  mapCenterButtonContainerClassName: stylesMapV2.mapCenterButtonContainer,
+  mapCenterButtonClassName: stylesMapV2.mapPopupCenterButton,
 }
 
 const placeholderClasses = {
@@ -168,6 +176,7 @@ const ShippingMethodPage: FC<any> = ({
               onErrorMsg={(msg) => toast.error(msg)}
               mapCenterIcon={<Icon.mapCenterIcon />}
               mapButtonCloseIcon={<Icon.RiCloseFill />}
+              mapBackIcon={<Icon.RiCloseFill />}
               loadingComponent={
                 <Placeholder
                   classes={placeholderClasses}

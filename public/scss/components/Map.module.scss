@@ -54,31 +54,6 @@
 .mapPopup
 {
   @extend .popup_overlay;
-
-  & [class*="autocomplete-dropdown-container"]
-  {
-    @include position(absolute, 50px, auto, auto, 24px);
-    z-index: 1;
-    width: calc(100% - 35px);
-    border: 1px solid $color_elements_line_darker;
-    background: $color_white;
-    text-align: left;
-
-    div 
-    {
-      padding: 10px;
-    }
-
-    div:nth-child(odd) 
-    {
-      background-color: $color_white !important;
-    }
-
-    div:nth-child(even) 
-    {
-      background-color: $color_elements_line !important;
-    }
-  }
 }
 
 .mapPopupBackground
@@ -95,32 +70,111 @@
   input
   {
     @include SmallSmall;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    width: 100% !important;
+    box-shadow: none !important;
     padding: 0 12px;
     width: 277px;
-    border: none;
+    border: none !important;
     outline: none;
     z-index: 2;
+    z-index: 1;
     border-radius: 2px;
     height: 34px;
+    position: relative;
+  }
+
+  [class="map-mapSearchBarContainerClassName"]
+  {
+    @include flex(row, center, flex-start);
+    position: relative;
+    margin: 0;
+    padding: 0;
+  
+    [class="autocomplete-dropdown-container"]
+    {
+      @include transition;
+      @include fixedSize(calc(100% - (52px + 20px)));
+      @include absolute(calc(100% - 14px), 16px, auto, 52px);
+      flex-grow: 1;
+      z-index: 3;
+  
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+      background-color: $color_white;
+  
+      &:empty
+      {
+        opacity: 0;
+      }
+  
+      div
+      {
+        @include transition;
+        @include flex(row, center, flex-start);
+        position: relative;
+        padding: 16px !important;
+        background-color: $color_white;
+        cursor: pointer;
+  
+        &[class^="suggestion-item"]
+        {
+          & > span
+          {
+            display: block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+          }
+  
+          &:hover,
+          &:focus,
+          &:focus-visible,
+          &:active
+          {
+            background-color: $color_elements !important;
+          }
+        }
+  
+        &:not(:last-child),
+        &:not(:last-of-type),
+        &:only-child,
+        &:only-of-type
+        {
+          border-bottom: solid 1px $color_grey;
+        }
+      }
+    }
+  }
+
+  [class="map-mapSearchCloseButtonClassName"]
+  {
+    display: none;
+  }
+
+  [class="map-mapSearchBarClassName"]
+  {
+    @include flex(row, center, flex-start);
+    @include fixedWidth(100%);
+    position: relative;
+    margin: 4px 0;
+    min-height: 52px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+  
+    & > span
+    {
+      display: none;
+    }
   }
 }
 
 .mapHeaderWrapper
 {
   @include flex(row, center, center);
-  @include fixedWidth(100%);
   position: relative;
-  width: 100%;
-  padding: 0 18px;
-  height: 48px;
 }
 
 .mapHeaderTitle
 {
-  @include RegulerReguler;
-  width: fit-content;
-  margin: 0 auto;
+  display: none;
 }
 
 .mapHeaderCloseButton
@@ -153,11 +207,17 @@
   padding: 8px 16px;
   height: fit-content;
   border-bottom: 1px solid $color_elements_line_darker;
+  margin-top: 48px;
+
+  @media screen and (max-width: #{$breakpoint_max_md})
+  {
+    padding: 8px 2px;
+  }
 }
 
 .mapCenterButton
 {
-  @include position(absolute, 12px , 12px);
+  @include position(absolute, 24px , 12px);
   @include fixedSize(34px);
   @extend .btn_transparent;
   background-color: $color_white;
@@ -168,6 +228,7 @@
   background: $color_white;
   color: $color_black;
   border: none;
+  margin-top: 48px;
 
   &:hover
   {
@@ -208,7 +269,7 @@
 {
   .map
   {
-    @include fixedHeight(calc(100vh - 164px))
+    @include fixedHeight(320px)
   }
 
   .mapPopupBackground
