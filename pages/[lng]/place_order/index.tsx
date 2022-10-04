@@ -4,9 +4,9 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import {
-  PlaceOrderForm,
+  PlaceOrderFormv2,
   useI18n,
-  PrivateRoute
+  PrivateRoute,
 } from '@sirclo/nexus'
 /* library component */
 import { useBrandCommon } from 'lib/useBrand'
@@ -24,12 +24,11 @@ import styles from 'public/scss/pages/Placeorder.module.scss'
 import stylesPasswordStrength from 'public/scss/components/PasswordStrength.module.scss'
 import stylesMap from 'public/scss/components/Map.module.scss'
 import stylesDatePicker from 'public/scss/components/DatePicker.module.scss'
+import stylesV2 from "public/scss/pages/PlaceorderV2.module.scss";
 
 const placeOrderClasses = {
   placeOrderClassName: styles.placeOrder,
   formClassName: styles.form,
-  formGroupClassName: styles.formGroup,
-  inputClassName: styles.input,
   loginLabelClassName: styles.loginLabel,
   submitButtonClassName: styles.submitButton,
   billingAddressContainerClassName: styles.billingAddressContainer,
@@ -40,6 +39,20 @@ const placeOrderClasses = {
   passwordViewButtonClassName: styles.passwordViewButton,
   datePickerInputClassName: stylesDatePicker.datePicker__input,
   datePickerCalendarClassName: stylesDatePicker.datePicker__calendar,
+  // V2
+  formGroupClassName: styles.formGroup,
+  inputClassName: `${styles.input} w-100`,
+  labelClassName: stylesV2.label,
+  billingAddressLabelClassName: stylesV2.billingAddressLabel,
+  shippingAreaPopupClassName: stylesV2.mapPopup,
+  shippingAreaPopupBackgroundClassName: stylesV2.shippingAreaPopupBackground,
+  shippingAreaTitleClassName: stylesV2.shippingAreaTitle,
+  shippingAreaCloseButtonClassName: stylesV2.shippingAreaCloseButton,
+  shippingAreaPopupHeaderClassName: stylesV2.shippingAreaPopupHeader,
+  addressMapButtonMapContainerClassName: stylesV2.addressMapButtonMapContainer,
+  addressMapButtonMapLabelClassName: stylesV2.addressMapButtonMapLabel,
+  addressMapButtonMapButtonClassName: stylesV2.addressMapButtonMapButton,
+  addressPopupButtonClassName: stylesV2.mapButtonFooter,
 }
 
 const passwordStrengthClasses = {
@@ -50,19 +63,39 @@ const passwordStrengthClasses = {
 
 const mapClasses = {
   mapNoteClassName: stylesMap.mapNote,
-  mapSelectAreaClassName: stylesMap.mapSelectArea,
-  mapAreaClassName: stylesMap.mapArea,
-  mapPopupClassName: stylesMap.mapPopup,
-  mapPopupBackgroundClassName: stylesMap.mapPopupBackground,
-  mapClassName: stylesMap.map,
   mapHeaderWrapperClassName: stylesMap.mapHeaderWrapper,
   mapHeaderTitleClassName: stylesMap.mapHeaderTitle,
   mapHeaderCloseButtonClassName: stylesMap.mapHeaderCloseButton,
   mapHeaderNoteClassName: stylesMap.mapHeaderNote,
-  mapLabelAddressClassName: stylesMap.mapLabelAddress,
-  mapCenterButtonClassName: stylesMap.mapCenterButton,
-  mapButtonFooterClassName: stylesMap.mapButtonFooter,
-  mapPinPointIconClassName: stylesMap.mapPinPointIcon
+  // V2
+  mapContainerClassName: stylesV2.mapContainer,
+  mapAreaClassName: stylesV2.mapArea,
+  mapAddressContainerClassName: stylesV2.mapAddressContainer,
+  mapFullAddressClassName: stylesV2.mapFullAddress,
+  mapCityClassName: stylesV2.mapCity, 
+  mapPinPointIconClassName: stylesMap.mapPinPointIcon,
+  mapPostCodeClassName: stylesV2.mapPostCode,
+  mapPopupClassName: stylesV2.mapPopup,
+  mapPopupBackgroundClassName: stylesV2.mapPopupBackground,
+  mapClassName: stylesV2.map,
+  mapSearchBarContainerClassName: stylesV2.mapSearchBarContainer,
+  mapSearchBarClassName: stylesV2.mapSearchBar,
+  mapSearchBarInputClassName: `${styles.formInput} ${stylesV2.mapSearchBarInput}`,
+  mapFormAddressClassName: stylesV2.mapFormAddress,
+  mapChangeAddressButtonClassName: stylesV2.mapChangeAddressButton,
+  mapSearchCloseButtonClassName: stylesV2.mapSearchCloseButton,
+  mapButtonInputManualContainerClassName: stylesV2.mapButtonInputManualContainer,
+  mapButtonInputManualTitleClassName: stylesV2.mapButtonInputManualTitle,
+  mapButtonInputManualButtonClassName: stylesV2.mapButtonInputManualButton,
+  mapFooterContainerClassName: stylesV2.mapFooterContainer,
+  mapDistrictLabelClassName: stylesV2.mapDistrictLabel,
+  mapButtonFooterContainerClassName: stylesV2.mapButtonFooterContainer,
+  mapLabelAddressClassName: stylesV2.mapLabelAddress,
+  mapButtonFooterClassName: stylesV2.mapButtonFooter,
+  mapSelectAreaClassName: stylesMap.mapSelectArea,
+  mapSelectAreaSpanClassName: stylesMap.mapSelectAreaSpan,
+  mapCenterButtonContainerClassName: stylesV2.mapCenterButtonContainer,
+  mapCenterButtonClassName: stylesV2.mapPopupCenterButton,
 }
 
 const customStyles = {
@@ -171,13 +204,12 @@ const PlaceOrderPage: FC<any> = ({
         />
 
         <section className={`container ${styles.section}`}>
-          <PlaceOrderForm
+          <PlaceOrderFormv2
             classes={{
               ...placeOrderClasses,
               ...passwordStrengthClasses,
               ...mapClasses,
             }}
-            /* @ts-ignore */
             logistixStyles={customStyles} 
             onErrorMsg={(msg) => toast.error(msg)}
             passwordViewIcon={<Icon.setNewPassword.passwordViewIcon />}

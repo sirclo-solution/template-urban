@@ -10,17 +10,29 @@
 
 .mapSelectArea
 {
-  @extend .btn_transparent;
-  @include SmallSemiBold;
-  height: 103px;
+  @include flex(row, center, flex-start);
+  padding: 28px 18px 10px !important;
   border: 1px solid $color_placeholder;
-  color: $color_text_secondary;
   background-color: $color_white;
-  
-  &:hover
+  width: 100%;
+}
+
+.mapSelectAreaSpan
+{
+  @include flex(row, center, center);
+  @include RegulerReguler;
+  color: $color_text_grey;
+  white-space: nowrap;
+  word-break: keep-all;
+
+  &::before
   {
-    border: 1px solid $color_placeholder;
-    background-color: $color_white;
+    content: "";
+    @include fixedSize(18px);
+    display: block;
+    margin-right: 4px;
+    background-repeat: no-repeat;
+    background-image: url("data:image/svg+xml,%3Csvg width='18' height='18' viewBox='0 0 18 18' fill='black' xmlns='http://www.w3.org/2000/svg'%3E%3Cg clip-path='url(%23clip0_3229_14475)'%3E%3Cpath d='M7 16.7959L2.227 12.0229C1.28301 11.0789 0.64014 9.8762 0.379696 8.56683C0.119253 7.25746 0.25293 5.90026 0.763824 4.66687C1.27472 3.43347 2.13988 2.37927 3.24991 1.63757C4.35994 0.895878 5.66498 0.5 7 0.5C8.33502 0.5 9.64006 0.895878 10.7501 1.63757C11.8601 2.37927 12.7253 3.43347 13.2362 4.66687C13.7471 5.90026 13.8808 7.25746 13.6203 8.56683C13.3599 9.8762 12.717 11.0789 11.773 12.0229L7 16.7959ZM10.7125 10.9624C11.4467 10.2282 11.9466 9.29273 12.1492 8.27435C12.3517 7.25596 12.2477 6.20039 11.8503 5.24111C11.4529 4.28183 10.78 3.46192 9.91669 2.88507C9.05334 2.30821 8.03833 2.00032 7 2.00032C5.96167 2.00032 4.94666 2.30821 4.08332 2.88507C3.21997 3.46192 2.54706 4.28183 2.14969 5.24111C1.75231 6.20039 1.64831 7.25596 1.85084 8.27435C2.05337 9.29273 2.55333 10.2282 3.2875 10.9624L7 14.6749L10.7125 10.9624ZM7 8.74994C6.60218 8.74994 6.22065 8.59191 5.93934 8.3106C5.65804 8.0293 5.5 7.64777 5.5 7.24994C5.5 6.85212 5.65804 6.47059 5.93934 6.18928C6.22065 5.90798 6.60218 5.74994 7 5.74994C7.39783 5.74994 7.77936 5.90798 8.06066 6.18928C8.34197 6.47059 8.5 6.85212 8.5 7.24994C8.5 7.64777 8.34197 8.0293 8.06066 8.3106C7.77936 8.59191 7.39783 8.74994 7 8.74994Z' fill='%23A2A2A2'/%3E%3C/g%3E%3Cdefs%3E%3CclipPath id='clip0_3229_14475'%3E%3Crect width='18' height='18' fill='black'/%3E%3C/clipPath%3E%3C/defs%3E%3C/svg%3E%0A");;
   }
 }
 
@@ -42,31 +54,6 @@
 .mapPopup
 {
   @extend .popup_overlay;
-
-  & [class*="autocomplete-dropdown-container"]
-  {
-    @include position(absolute, 50px, auto, auto, 24px);
-    z-index: 1;
-    width: calc(100% - 35px);
-    border: 1px solid $color_elements_line_darker;
-    background: $color_white;
-    text-align: left;
-
-    div 
-    {
-      padding: 10px;
-    }
-
-    div:nth-child(odd) 
-    {
-      background-color: $color_white !important;
-    }
-
-    div:nth-child(even) 
-    {
-      background-color: $color_elements_line !important;
-    }
-  }
 }
 
 .mapPopupBackground
@@ -82,34 +69,111 @@
 
   input
   {
-    @include position(absolute, 12px, auto, auto, 24px);
     @include SmallSmall;
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.2);
+    width: 100% !important;
+    box-shadow: none !important;
     padding: 0 12px;
     width: 277px;
-    border: none;
+    border: none !important;
     outline: none;
-    z-index: 2;
+    z-index: 1;
     border-radius: 2px;
     height: 34px;
+    position: relative;
+  }
+
+  [class="map-mapSearchBarContainerClassName"]
+  {
+    @include flex(row, center, flex-start);
+    position: relative;
+    margin: 0;
+    padding: 0;
+  
+    [class="autocomplete-dropdown-container"]
+    {
+      @include transition;
+      @include fixedSize(100%);
+      @include absolute(calc(100% - 14px), 16px, auto, auto);
+      flex-grow: 1;
+      z-index: 3;
+  
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+      background-color: $color_white;
+  
+      &:empty
+      {
+        opacity: 0;
+      }
+  
+      div
+      {
+        @include transition;
+        @include flex(row, center, flex-start);
+        position: relative;
+        padding: 16px !important;
+        background-color: $color_white;
+        cursor: pointer;
+  
+        &[class^="suggestion-item"]
+        {
+          & > span
+          {
+            display: block;
+            position: relative;
+            margin: 0;
+            padding: 0;
+          }
+  
+          &:hover,
+          &:focus,
+          &:focus-visible,
+          &:active
+          {
+            background-color: $color_elements !important;
+          }
+        }
+  
+        &:not(:last-child),
+        &:not(:last-of-type),
+        &:only-child,
+        &:only-of-type
+        {
+          border-bottom: solid 1px $color_grey;
+        }
+      }
+    }
+  }
+
+  [class="map-mapSearchCloseButtonClassName"]
+  {
+    display: none;
+  }
+
+  [class="map-mapSearchBarClassName"]
+  {
+    @include flex(row, center, flex-start);
+    @include fixedWidth(calc(100% - 4px));
+    position: relative;
+    margin: 2px;
+    min-height: 52px;
+    border: 1px solid $color_placeholder;
+  
+    & > span
+    {
+      display: none;
+    }
   }
 }
 
 .mapHeaderWrapper
 {
   @include flex(row, center, center);
-  @include fixedWidth(100%);
   position: relative;
-  width: 100%;
-  padding: 0 18px;
-  height: 48px;
 }
 
 .mapHeaderTitle
 {
-  @include RegulerReguler;
-  width: fit-content;
-  margin: 0 auto;
+  display: none;
 }
 
 .mapHeaderCloseButton
@@ -142,11 +206,17 @@
   padding: 8px 16px;
   height: fit-content;
   border-bottom: 1px solid $color_elements_line_darker;
+  margin-top: 48px;
+
+  @media screen and (max-width: #{$breakpoint_max_md})
+  {
+    padding: 8px 2px;
+  }
 }
 
 .mapCenterButton
 {
-  @include position(absolute, 12px , 12px);
+  @include position(absolute, 24px , 12px);
   @include fixedSize(34px);
   @extend .btn_transparent;
   background-color: $color_white;
@@ -157,6 +227,7 @@
   background: $color_white;
   color: $color_black;
   border: none;
+  margin-top: 48px;
 
   &:hover
   {
@@ -197,7 +268,7 @@
 {
   .map
   {
-    @include fixedHeight(calc(100vh - 164px))
+    @include fixedHeight(320px)
   }
 
   .mapPopupBackground

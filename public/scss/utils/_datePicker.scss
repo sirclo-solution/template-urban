@@ -159,6 +159,12 @@
     {
       display: none;
     }
+
+    &--open
+    {
+      z-index: 3;
+      margin-top: -45px;
+    }
   }
 
   .react-calendar
