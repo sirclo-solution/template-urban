@@ -58,8 +58,9 @@ const mapClasses = {
   mapHeaderTitleClassName: stylesMap.mapHeaderTitle,
   mapHeaderCloseButtonClassName: stylesMap.mapHeaderCloseButton,
   mapHeaderNoteClassName: stylesMap.mapHeaderNote,
-  mapLabelAddressClassName: stylesMap.mapLabelAddress,
+  mapLabelAddressClassName: `${stylesMap.mapLabelAddress} ml-2 mr-2`,
   mapPinPointIconClassName: stylesMap.mapPinPointIcon,
+  mapButtonFooterClassName: `${stylesMap.mapButtonFooter}`,
   // V2
   mapClassName: stylesMapV2.map,
   mapPopupClassName: stylesMapV2.mapPopup,
@@ -67,8 +68,7 @@ const mapClasses = {
   mapSearchBarClassName: stylesMapV2.mapSearchBar,
   mapSearchBarInputClassName: `${styles.formInput} ${stylesMapV2.mapSearchBarInput}`,
   mapSearchCloseButtonClassName: stylesMapV2.mapSearchCloseButton,
-  mapFooterContainerClassName: `${stylesMapV2.mapFooterContainer} mt-2`,
-  mapButtonFooterClassName: `${stylesMapV2.mapButtonFooter}`,
+  mapFooterContainerClassName: `${stylesMapV2.mapFooterContainer} mt-2 pt-2`,
   mapCenterButtonContainerClassName: stylesMapV2.mapCenterButtonContainer,
   mapCenterButtonClassName: stylesMapV2.mapPopupCenterButton,
 }

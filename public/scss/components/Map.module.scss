@@ -153,11 +153,11 @@
   [class="map-mapSearchBarClassName"]
   {
     @include flex(row, center, flex-start);
-    @include fixedWidth(100%);
+    @include fixedWidth(calc(100% - 4px));
     position: relative;
-    margin: 4px 0;
+    margin: 2px;
     min-height: 52px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.05);
+    border: 1px solid $color_placeholder;
   
     & > span
     {

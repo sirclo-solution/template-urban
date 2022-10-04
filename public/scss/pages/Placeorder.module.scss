@@ -146,6 +146,15 @@
           display: none;
         }
       }
+      & > div
+      {
+        &[class^=" css-"][class$="-loadingIndicator"]
+        {
+          @include position(absolute, auto, auto, 18px, auto);
+          z-index: 3;
+          background-color: $color_white;
+        }
+      }
     }
   }
 }
