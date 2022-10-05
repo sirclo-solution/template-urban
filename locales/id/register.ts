@@ -1,7 +1,7 @@
 const locale = {
   "register": {
     "address": "Alamat",
-    "addressPlaceholder": "Masukan alamat anda",
+    "addressPlaceholder": "Tulis nama jalan, nomor, gedung, dsb",
     "basicInfo": "Informasi Kontak",
     "birthDate": "Tanggal Lahir",
     "birthDatePlaceholder": "Masukan tanggal lahir",

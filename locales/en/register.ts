@@ -1,7 +1,7 @@
 const locale = {
   "register": {
     "address": "Address",
-    "addressPlaceholder": "Input your address",
+    "addressPlaceholder": "Type the name of the street, number, building, etc.",
     "basicInfo": "Contact Information",
     "birthDate": "Birthdate",
     "birthDatePlaceholder": "Input your birthday",
