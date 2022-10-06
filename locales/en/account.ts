@@ -64,7 +64,7 @@ const locale = {
     "point": "Points",
     "points": "Points",
     "postalCode": "Postal Code",
-    "postalCodePlaceholder": "Postal Code",
+    "postalCodePlaceholder": "00000",
     "readyToShip": "Ready to Ship",
     "rejected": "Rejected",
     "returned": "Returned",

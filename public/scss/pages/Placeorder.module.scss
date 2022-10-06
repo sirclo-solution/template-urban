@@ -105,12 +105,19 @@
     @include removeArrowsFromInput();
   }
 
+  & > div:first-of-type
+  {
+    border: none;
+    margin-top: -12px;
+  }
+
   & > div
   {
     &[class^=" css-"][class$="-control"]
     {
       border: none;
       box-shadow: none;
+      margin-top: 0;
 
       &::before
       {
@@ -129,12 +136,6 @@
     {
       margin-top: 2px;
       z-index: 3;
-    }
-
-    &[class^=" css-"][class$="-Control"]
-    {
-      border: none;
-      margin-top: -12px;
     }
     
     & > div

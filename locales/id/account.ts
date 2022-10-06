@@ -64,7 +64,7 @@ const locale = {
     "point": "Poin",
     "points": "Points",
     "postalCode": "Kode Pos",
-    "postalCodePlaceholder": "Kode Pos",
+    "postalCodePlaceholder": "00000",
     "readyToShip": "Pesanan Dikemas",
     "rejected": "Ditolak",
     "returned": "Dikembalikan",
