@@ -7,7 +7,7 @@ const locale = {
     "birthDatePlaceholder": "Masukan tanggal lahir",
     "chooseAnyAccountToLogin": "Nomor anda sudah teregister di sistem kami, silakan pilih salah satu untuk masuk",
     "city": "Kecamatan/wilayah",
-    "cityPlaceholder": "Ketik nama kecamatan/wilayah Anda",
+    "cityPlaceholder": "Tulis nama kecamatan/wilayah",
     "confPassword": "Konfirmasi Kata Sandi",
     "confPasswordPlaceholder": "Masukan konfirmasi kata sandi",
     "noOptionsMessage": "Silahkan ketik keyword lain",

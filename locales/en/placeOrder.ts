@@ -3,7 +3,7 @@ const locale = {
     "address": "Delivery Address",
     "addressBilling": "Billing address",
     "addressDetail": "Detail address",
-    "addressPlaceholder": "Input your address",
+    "addressPlaceholder": "Input Your address",
     "addressPopupTitle": "Your address",
     "addressSendTo": "Order Delivery Destination",
     "billingEmailInvalid": "Billing Email is invalid, please check the spelling.",
