@@ -1,13 +1,13 @@
 const locale = {
   "register": {
     "address": "Alamat",
-    "addressPlaceholder": "Masukan alamat anda",
+    "addressPlaceholder": "Tulis nama jalan, nomor, gedung, dsb",
     "basicInfo": "Informasi Kontak",
     "birthDate": "Tanggal Lahir",
     "birthDatePlaceholder": "Masukan tanggal lahir",
     "chooseAnyAccountToLogin": "Nomor anda sudah teregister di sistem kami, silakan pilih salah satu untuk masuk",
-    "city": "Provinsi",
-    "cityPlaceholder": "Ketik nama kecamatan/wilayah Anda",
+    "city": "Kecamatan/wilayah",
+    "cityPlaceholder": "Tulis nama kecamatan/wilayah",
     "confPassword": "Konfirmasi Kata Sandi",
     "confPasswordPlaceholder": "Masukan konfirmasi kata sandi",
     "noOptionsMessage": "Silahkan ketik keyword lain",
