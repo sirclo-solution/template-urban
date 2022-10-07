@@ -316,6 +316,7 @@
 {
   @include flex(row, flex-start, space-between);
   @include fixedWidth(100%);
+  height: max-content;
   position: relative;
   margin: 0;
   cursor: pointer;
@@ -577,9 +578,9 @@
 
 .voucherDetailPopUpBody
 {
+  @include flex(column, flex-start, flex-start);
   @include fixed(auto, auto, 0);
   z-index: 1;
-  @include flex(column, flex-start, flex-start);
   margin: 0;
   background-color: $color_white;
   border-radius: 2px;
