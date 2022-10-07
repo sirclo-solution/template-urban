@@ -92,11 +92,7 @@
   &::after
   {
     content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    @include absolute(0, 0, 0, 0);
     pointer-events: none;
   }
 
@@ -139,13 +135,13 @@
 
 .voucherContainer
 {
+  @include fixedWidth(100%);
+  @include fixedHeight(100vh);
   position: relative;
   margin: 0;
   padding: 16px;
   background-color: $color_white;
   border-radius: 2px;
-  @include fixedWidth(100%);
-  @include fixedHeight(100vh);
   overflow-y: auto;
 
   @media screen and (min-width: #{$breakpoint_min_md})
@@ -281,13 +277,13 @@
 .voucherDetailViewDetails
 {
   @extend .btn;
+  @include ExtraSmallReguler;
+  @include absolute(8px, 12px);
+  z-index: 1;
   padding: 0;
   border: none;
   background-color: transparent;
   color: $color_blue;
-  @include ExtraSmallReguler;
-  @include absolute(8px, 12px);
-  z-index: 1;
 
   &:hover,
   &:active,
@@ -309,13 +305,8 @@
     &::after
     {
       content: "";
+      @include fixedSize(14px);
       display: block;
-      width: 14px;
-      min-width: 14px;
-      max-width: 14px;
-      height: 14px;
-      min-height: 14px;
-      max-height: 14px;
       background-image: url("data:image/svg+xml,%0A%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M6.99992 13.6667C3.31792 13.6667 0.333252 10.682 0.333252 7.00004C0.333252 3.31804 3.31792 0.333374 6.99992 0.333374C10.6819 0.333374 13.6666 3.31804 13.6666 7.00004C13.6666 10.682 10.6819 13.6667 6.99992 13.6667ZM6.33525 9.66671L11.0486 4.95271L10.1059 4.01004L6.33525 7.78137L4.44925 5.89537L3.50659 6.83804L6.33525 9.66671Z' fill='%232296CB'/%3E%3C/svg%3E%0A");
     }
   }
@@ -667,12 +658,7 @@
   &::before
   {
     content: "";
-    width: 13px;
-    min-width: 13px;
-    max-width: 13px;
-    height: 13px;
-    min-height: 13px;
-    max-height: 13px;
+    @include fixedSize(13px);
     display: inline-block;
     margin-right: 8px;
     background-image: url("data:image/svg+xml,%0A%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M7.0001 13.4C8.69748 13.4 10.3253 12.7257 11.5256 11.5255C12.7258 10.3252 13.4001 8.69736 13.4001 6.99998C13.4001 5.30259 12.7258 3.67472 11.5256 2.47449C10.3253 1.27426 8.69748 0.599976 7.0001 0.599976C5.30271 0.599976 3.67485 1.27426 2.47461 2.47449C1.27438 3.67472 0.600098 5.30259 0.600098 6.99998C0.600098 8.69736 1.27438 10.3252 2.47461 11.5255C3.67485 12.7257 5.30271 13.4 7.0001 13.4ZM7.8001 3.79998C7.8001 3.5878 7.71581 3.38432 7.56578 3.23429C7.41575 3.08426 7.21227 2.99998 7.0001 2.99998C6.78792 2.99998 6.58444 3.08426 6.43441 3.23429C6.28438 3.38432 6.2001 3.5878 6.2001 3.79998V6.99998C6.20014 7.21213 6.28446 7.41558 6.4345 7.56558L8.6969 9.82878C8.77123 9.9031 8.85947 9.96206 8.95658 10.0023C9.05369 10.0425 9.15778 10.0632 9.2629 10.0632C9.36801 10.0632 9.4721 10.0425 9.56921 10.0023C9.66633 9.96206 9.75457 9.9031 9.8289 9.82878C9.90323 9.75445 9.96219 9.66621 10.0024 9.56909C10.0426 9.47198 10.0633 9.36789 10.0633 9.26277C10.0633 9.15766 10.0426 9.05357 10.0024 8.95646C9.96219 8.85934 9.90323 8.7711 9.8289 8.69678L7.8001 6.66878V3.79998Z' fill='%23F44444'/%3E%3C/svg%3E%0A");
