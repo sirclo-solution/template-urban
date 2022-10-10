@@ -67,7 +67,7 @@ const Icon: any = {
     estimateIconClose: RiCloseFill,
     accordionIcon: GoPlus,
   },
-  socialShare:{
+  socialShare: {
     FacebookIcon: RiFacebookFill,
     TwitterIcon: RiTwitterFill,
     LinkedinIcon: RiLinkedinBoxFill,
