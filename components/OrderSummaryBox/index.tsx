@@ -2,8 +2,8 @@
 import { FC, useState } from 'react'
 import Link from 'next/link'
 import { toast } from 'react-toastify'
-import { 
-  OrderSummary, 
+import {
+  OrderSummary,
   CartDetails,
   PrivateComponent
 } from '@sirclo/nexus'
@@ -56,18 +56,27 @@ export const classesOrderSummary = {
   popupClassName: stylesPopup.popup,
   closeButtonClassName: stylesPopup.closeButton,
   voucherContainerClassName: stylesPopup.voucherContainer,
-  pointsContainerClassName: `${stylesPopup.voucherContainer} ${stylesPopup.voucherContainer__noGradient}`,
+  pointsContainerClassName: `${stylesPopup.pointsContainer} ${stylesPopup.pointsContainer__noGradient}`,
   voucherFormContainerClassName: stylesPopup.voucherFormContainer,
   voucherFormClassName: `${stylesPopup.voucherForm}`,
   voucherInputClassName: "form-control",
   /* Voucher  up */
+  voucherTitleInputClassName: stylesPopup.voucherTitleInput,
+  voucherSubTitleInputClassName: stylesPopup.voucherSubTitleInput,
+  voucherInputContainerClassName: stylesPopup.voucherInputContainer,
   voucherSubmitButtonClassName: stylesPopup.voucherFormSubmit,
   voucherListClassName: stylesPopup.voucherList,
   voucherValidListClassName: stylesPopup.voucherValidList,
-  voucherInalidListClassName: stylesPopup.voucherInvalidList,
+  voucherInvalidListClassName: stylesPopup.voucherInvalidList,
   voucherListHeaderClassName: stylesPopup.voucherListHeader,
   voucherListItemsClassName: stylesPopup.voucherListItems,
   voucherClassName: stylesPopup.voucher,
+  voucherListHeaderIconClassName: stylesPopup.voucherListHeaderIcon,
+  voucherTitleClassName: stylesPopup.voucherTitle,
+  voucherBankLogoContainerClassName: stylesPopup.voucherBankLogoContainer,
+  voucherBankLogoImageClassName: stylesPopup.voucherBankLogoImage,
+  voucherShipperLogoContainerClassName: stylesPopup.voucherShipperLogoContainer,
+  voucherShipperLogoImageClassName: stylesPopup.voucherShipperLogoImage,
   voucherDetailClassName: stylesPopup.voucherDetail,
   voucherDetailHeaderClassName: stylesPopup.voucherDetailHeader,
   voucherDetailCodeClassName: stylesPopup.voucherDetailCode,
@@ -75,13 +84,27 @@ export const classesOrderSummary = {
   voucherDetailDescClassName: stylesPopup.voucherDetailDesc,
   voucherDetailEstimateClassName: stylesPopup.voucherDetailEstimate,
   voucherDetailEstimateDescClassName: stylesPopup.voucherDetailEstimateDesc,
-  voucherListHeaderIconClassName: stylesPopup.voucherListHeaderIcon,
+  voucherDetailViewDetailsClassName: stylesPopup.voucherDetailViewDetails,
+  voucherDetailApplyedClassName: stylesPopup.voucherDetailApplied,
   voucherDetailInvalidClassName: stylesPopup.voucherDetailInvalid,
-  voucherTitleClassName: stylesPopup.voucherTitle,
-  voucherBankLogoContainerClassName: stylesPopup.voucherBankLogoContainer,
-  voucherBankLogoImageClassName: stylesPopup.voucherBankLogoImage,
-  voucherShipperLogoContainerClassName: stylesPopup.voucherShipperLogoContainer,
-  voucherShipperLogoImageClassName: stylesPopup.voucherShipperLogoImage,
+  voucherShowMoreContainerClassName: stylesPopup.voucherShowMoreContainer,
+  voucherShowMoreButtonClassName: stylesPopup.voucherShowMoreButton,
+  voucherDetailPopUpContainerClassName: stylesPopup.voucherDetailPopUpContainer,
+  voucherDetailPopUpBodyClassName: stylesPopup.voucherDetailPopUpBody,
+  voucherDetailPopUpHeaderClassName: stylesPopup.voucherDetailPopUpHeader,
+  voucherDetailPopUpHeaderTitleClassName: stylesPopup.voucherDetailPopUpHeaderTitle,
+  voucherDetailPopUpCloseClassName: stylesPopup.voucherDetailPopUpClose,
+  voucherDetailPopUpDescContainerClassName: stylesPopup.voucherDetailPopUpDescContainer,
+  voucherDetailPopUpTermsTitleClassName: stylesPopup.voucherDetailPopUpTermsTitle,
+  voucherDetailPopUpTermsContainerClassName: stylesPopup.voucherDetailPopUpTermsContainer,
+  voucherDetailPopUpDescDateClassName: stylesPopup.voucherDetailPopUpDescDate,
+  voucherDetailPopUpCodeContainerClassName: stylesPopup.voucherDetailPopUpCodeContainer,
+  voucherDetailPopUpCodeTitleClassName: stylesPopup.voucherDetailPopUpCodeTitle,
+  voucherDetailPopUpCodeCopyContainerClassName: stylesPopup.voucherDetailPopUpCodeCopyContainer,
+  voucherDetailPopUpCodeCopyTitleClassName: stylesPopup.voucherDetailPopUpCodeCopyTitle,
+  voucherDetailPopUpCodeCopyButtonClassName: stylesPopup.voucherDetailPopUpCodeCopyButton,
+  voucherDetailPopUpUseCouponClassName: stylesPopup.voucherDetailPopUpUseCoupon,
+
   /* point Pop-up */
   totalPointsClassName: stylesPopup.totalPoints,
   pointsFormContainerClassName: styles.pointsFormContainer,
@@ -156,7 +179,8 @@ const OrderSummaryBox: FC<iProps> = ({
     voucherRemoved: <Icon.orderSummary.voucherRemoved />,
     points: <Icon.orderSummary.points />,
     pointsApplied: <Icon.orderSummary.pointsApplied />,
-    close: <Icon.orderSummary.close />
+    close: <Icon.orderSummary.close size={20} />,
+    copyIcon: <Icon.thankYou.copy />
   }
 
   const getNewclassesCartDetails = () => {
@@ -176,11 +200,11 @@ const OrderSummaryBox: FC<iProps> = ({
             <h2 className={stylesCartDetails.title}>
               {i18n.t("cart.title")}
             </h2>
-          <Link href="/lng/cart" as={`/${lng}/cart`}>
+            <Link href="/lng/cart" as={`/${lng}/cart`}>
               <p className={stylesCartDetails.changeCart}>
                 {i18n.t("orderSummary.changeCart")}
               </p>
-          </Link>
+            </Link>
           </div>
           <CartDetails
             currency="IDR"
@@ -226,53 +250,52 @@ const OrderSummaryBox: FC<iProps> = ({
 
       {withOrderSummary &&
         <>
-        <OrderSummary
-          isAccordion
-          classes={{
-            ...classesOrderSummary,
-            footerClassName: page !== "cart" && size.width > 767
-              ? "d-none"
-              : classesOrderSummary.footerClassName,
-            containerClassName: page === "cart" ? styles.containerRelative : styles.container
-          }}
-          currency="IDR"
-          submitButtonLabel={i18n.t("orderSummary.placeOrder")}
-          page={page}
-          onErrorMsg={() => toast.error(i18n.t("global.error"))}
-          onErrorMsgCoupon={(msg) => toast.error(msg)}
-          onAddressInvalid={(e) => toast.error(e)}
-          icons={icons}
-          isCouponAccordion
-          withCouponTitle
-          emptyComponentCoupon={
-            <div className={stylesPopup.voucherEmpty}>
-              <span className={stylesPopup.voucherEmptyIcon}></span>
-              <p>{i18n.t("coupon.empty")}</p>
-            </div>
-          }
-          couponLoadingComponent={
-            <div className={stylesPopup.voucherLoading}>
-              <Loader color="text-dark" />
-              <p>{i18n.t("global.loading")}</p>
-            </div>
-          }
-          pointsLoadingComponent={
-            <p className="m-0 p-0">{i18n.t("global.loading")}</p>
-          }
-        />
-        {page === "cart" &&
-          <PrivateComponent
-            Auth={<></>}
-            NoAuth={
-              <Link href="/[lng]/login" as={`/${lng}/login`}>
-                <p className={styles.registerNow}>
-                  {i18n.t("cart.registerNow")}
-                </p>
-              </Link>
+          <OrderSummary
+            isAccordion
+            classes={{
+              ...classesOrderSummary,
+              footerClassName: page !== "cart" && size.width > 767
+                ? "d-none"
+                : classesOrderSummary.footerClassName,
+              containerClassName: page === "cart" ? styles.containerRelative : styles.container
+            }}
+            currency="IDR"
+            submitButtonLabel={i18n.t("orderSummary.placeOrder")}
+            page={page}
+            onSuccessCopyCodeCoupon={() => toast.success(i18n.t('coupon.successCopyCode'))}
+            onErrorMsg={() => toast.error(i18n.t("global.error"))}
+            onErrorMsgCoupon={(msg) => toast.error(msg)}
+            onAddressInvalid={(e) => toast.error(e)}
+            icons={icons}
+            emptyComponentCoupon={
+              <div className={stylesPopup.voucherEmpty}>
+                <span className={stylesPopup.voucherEmptyIcon}></span>
+                <p>{i18n.t("coupon.empty")}</p>
+              </div>
+            }
+            couponLoadingComponent={
+              <div className={stylesPopup.voucherLoading}>
+                <Loader color="text-dark" />
+                <p>{i18n.t("global.loading")}</p>
+              </div>
+            }
+            pointsLoadingComponent={
+              <p className="m-0 p-0">{i18n.t("global.loading")}</p>
             }
           />
-        }
-      </>
+          {page === "cart" &&
+            <PrivateComponent
+              Auth={<></>}
+              NoAuth={
+                <Link href="/[lng]/login" as={`/${lng}/login`}>
+                  <p className={styles.registerNow}>
+                    {i18n.t("cart.registerNow")}
+                  </p>
+                </Link>
+              }
+            />
+          }
+        </>
       }
       {showModalErrorAddToCart &&
         <Popup
