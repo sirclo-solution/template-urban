@@ -223,29 +223,13 @@
 {
   width: 100%;
   border-bottom: 1px dashed $color_placeholder;
-  padding: 3px 12px 8px;
+  padding: 6px 12px 8px;
   background-color: $color_white;
 }
 
 .voucherDetailCode
 {
-  @include ExtraSmallReguler;
-  display: inline-block;
-  color: $color_text_secondary;
-  
-  & > span
-  {
-    @include SmallSmall;
-    color: $color_blue;
-    margin-left: 5px;
-    word-break: break-all;
-
-    svg
-    {
-      margin: 0 5px 1px 0;
-    }
-  }
-
+  display: none;
 }
 
 .voucherDetailTitle
