@@ -1,7 +1,7 @@
 const locale = {
   "register": {
     "address": "Address",
-    "addressPlaceholder": "Input your address",
+    "addressPlaceholder": "Type the name of the street, number, building, etc.",
     "basicInfo": "Contact Information",
     "birthDate": "Birthdate",
     "birthDatePlaceholder": "Input your birthday",
@@ -56,7 +56,7 @@ const locale = {
     "passwordStrengthStrongLabel": "Strong",
     "passwordStrengthWeakLabel": "Your password is too weak",
     "postalCode": "Postal Code",
-    "postalCodePlaceholder": "Input your postal code",
+    "postalCodePlaceholder": "00000",
     "promo": "Enter your credentials to log in",
     "register": "Register",
     "required": "are required",
