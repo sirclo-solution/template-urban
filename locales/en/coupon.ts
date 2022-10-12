@@ -8,9 +8,9 @@ const locale = {
     "enough": "You can get discount",
     "header": "Choose available coupon",
     "invalidTitle": "Coupon that still can't be used",
-    "max": "Max",
+    "max": "Maximum discount",
     "minPoints": "Minimal points to redeem is",
-    "minPurchase": "With Minimum Purchase",
+    "minPurchase": "minimum purchase",
     "notEnough": "Not Enough Points",
     "notValid": "Invalid coupon",
     "pay": "Pay Only",
@@ -18,7 +18,8 @@ const locale = {
     "pointsPlaceHolder": "Input point number",
     "redeem": "Redeem",
     "use": "Use",
-    "valid": "Valid Until",
+    "valid": "End in",
+    "validMember": "Valid for",
     "validTitle": "Available Coupons",
     "youHave": "You Have"
   }

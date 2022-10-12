@@ -126,7 +126,7 @@ const PaymentMethods: FC<any> = ({
   const { data } = useShippingMethod()
   const { data: notes } = useBuyerNotes()
 
-  const linksBreadcrumb = [`${i18n.t("header.home")}`, i18n.t("placeOrder.checkOrder")]
+  const linksBreadcrumb = [i18n.t("header.home"), i18n.t("placeOrder.checkOrder")]
 
   const icons = {
     closeButtonIcon: <Icon.orderSummary.close />,
