@@ -254,8 +254,9 @@ const PaymentMethods: FC<any> = ({
               onErrorMsg={(msg) => toast.error(msg)}
               onErrorMsgCoupon={(msg) => toast.error(msg)}
               couponLoadingComponent={
-                <div>
-                  <Loader color='text-dark' />
+                <div className={styles.voucherLoading}>
+                  <Loader color="text-dark" />
+                  <p>{i18n.t("global.loading")}</p>
                 </div>
               }
               loadingComponent={
