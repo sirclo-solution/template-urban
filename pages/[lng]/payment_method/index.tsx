@@ -129,6 +129,8 @@ const PaymentMethods: FC<any> = ({
   const linksBreadcrumb = [i18n.t("header.home"), i18n.t("placeOrder.checkOrder")]
 
   const icons = {
+    expand: <Icon.orderSummary.expand size={20} />,
+    collapse: <Icon.orderSummary.collapse size={20} />,
     closeButtonIcon: <Icon.orderSummary.close />,
     voucherIcon: <Icon.orderSummary.voucher />,
     pointIcon: <Icon.orderSummary.points />,
@@ -136,19 +138,18 @@ const PaymentMethods: FC<any> = ({
     removePointIcon: <Icon.orderSummary.voucherRemoved />,
     voucherAppliedIcon: <Icon.orderSummary.voucherApplied />,
     pointAppliedIcon: <Icon.orderSummary.voucherRemoved />,
-    expand: <Icon.orderSummary.expand size={20} />,
-    collapse: <Icon.orderSummary.collapse size={20} />
+    copyIcon: <Icon.thankYou.copy />
   }
 
   const layoutProps = {
-    lngDict, 
-    i18n, 
-    lng, 
+    lngDict,
+    i18n,
+    lng,
     brand,
     withFooter: false,
     withHeader: false,
-    SEO: { 
-      title: `${i18n.t("payment.title")}` 
+    SEO: {
+      title: `${i18n.t("payment.title")}`
     }
   }
 
@@ -173,7 +174,7 @@ const PaymentMethods: FC<any> = ({
             shippingInfoHeader={
               <div className={stylesCustomerDetail.headerContainer}>
                 <h3>{i18n.t("shipping.shipTo")}</h3>
-                <Link 
+                <Link
                   href={{
                     pathname: "/[lng]/place_order",
                     query: router.query
@@ -197,7 +198,7 @@ const PaymentMethods: FC<any> = ({
             <div className={`${stylesCustomerDetail.customerDetaiBoxShipping}`}>
               <div className={stylesCustomerDetail.headerContainer}>
                 <h3>{i18n.t("shipping.deliveryCourier")}</h3>
-                <Link 
+                <Link
                   href={{
                     pathname: "/[lng]/shipping_method",
                     query: router.query
@@ -223,7 +224,7 @@ const PaymentMethods: FC<any> = ({
               <div className={`${stylesCustomerDetail.customerDetaiBoxShipping}`}>
                 <div className={stylesCustomerDetail.headerContainer}>
                   <h3 className={stylesCustomerDetail.notesTitle}>{i18n.t("cart.noteToSeller")}</h3>
-                  <Link 
+                  <Link
                     href={{
                       pathname: "/[lng]/cart",
                       query: router.query
@@ -248,13 +249,13 @@ const PaymentMethods: FC<any> = ({
                 ...classesOrderSummary,
                 ...classessOptWa
               }}
-              onErrorMsg={(msg) => toast.error(msg)}
               withNotificationOptInModal={hasOtp}
+              onSuccessCopyCodeCoupon={() => toast.success(i18n.t('coupon.successCopyCode'))}
+              onErrorMsg={(msg) => toast.error(msg)}
               onErrorMsgCoupon={(msg) => toast.error(msg)}
-              isCouponAccordion
               couponLoadingComponent={
                 <div>
-                  <Loader color='text-dark'/>
+                  <Loader color='text-dark' />
                 </div>
               }
               loadingComponent={
@@ -296,9 +297,9 @@ const PaymentMethods: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
-  params 
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  params
 }) => {
   const brand = await useBrandCommon(req, params)
   const hasOtp = await useWhatsAppOTPSetting(req)
