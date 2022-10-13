@@ -318,6 +318,17 @@
   color: $color_red_other;
 }
 
+.voucherLoading
+{
+  @include flex(row, center, center);
+  padding: 10px;
+
+  p 
+  {
+    margin-left: 10px;
+  }
+}
+
 .placeholderList
 {
   height: 30px;
