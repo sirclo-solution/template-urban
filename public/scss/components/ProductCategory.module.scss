@@ -180,11 +180,6 @@
         visibility: visible;
       }
     }
-
-    &:not(:first-child)
-    {
-      z-index: 2;
-    }
   }
 
   &_itemCategories
@@ -264,6 +259,31 @@
     background-repeat: no-repeat;
     background-position: right center;
     background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.00005 3.879L8.71255 0.166504L9.77305 1.227L5.00005 6L0.227051 1.227L1.28755 0.166504L5.00005 3.879Z' fill='%23222222'/%3E%3C/svg%3E%0A");
+    cursor: pointer;
+  }
+
+  &_childCategory,
+  &_subChildCategory
+  {
+    @include flex(column, flex-start, flex-start);
+    position: relative;
+    background-color: $color_white;
+    animation: fade .1s linear forwards;
+
+    [class*="productCategory_item"]
+    {
+      width: 100%;
+    }
+  }
+
+  @keyframes fade
+  {
+    from {
+      opacity: 0;
+    }
+    to { 
+      opacity: 1;
+    }
   }
 
   &_childCategory > [class*="_itemList"]:last-child,
