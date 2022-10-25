@@ -276,16 +276,6 @@
     }
   }
 
-  @keyframes fade
-  {
-    from {
-      opacity: 0;
-    }
-    to { 
-      opacity: 1;
-    }
-  }
-
   &_childCategory > [class*="_itemList"]:last-child,
   &_subChildCategory > [class*="_itemList"]:last-child
   {
