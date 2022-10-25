@@ -16,7 +16,7 @@ const classesProductCategory = {
   imgContainerClassName: styles.productCategory_media,
   imgClassName: styles.productCategory_image,
   categoryNameClassName: styles.productCategory_name,
-  dropdownIconClassName: styles.productCategory_dropdown,
+  dropdownIconClassName: "d-none",
   childCategoryClassName: `${styles.productCategory_childCategory} mt-3 pl-3`,
   subChildCategoryClassName: `${styles.productCategory_subChildCategory} mt-3 pl-3`,
   selectedCategoryClassName: styles.productCategory_selectedCategory
