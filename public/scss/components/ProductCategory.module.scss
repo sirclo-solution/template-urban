@@ -262,20 +262,6 @@
     cursor: pointer;
   }
 
-  &_childCategory,
-  &_subChildCategory
-  {
-    @include flex(column, flex-start, flex-start);
-    position: relative;
-    background-color: $color_white;
-    animation: fade .1s linear forwards;
-
-    [class*="productCategory_item"]
-    {
-      width: 100%;
-    }
-  }
-
   &_childCategory > [class*="_itemList"]:last-child,
   &_subChildCategory > [class*="_itemList"]:last-child
   {
