@@ -60,14 +60,21 @@
   &_link
   {
     @include flex(row-reverse, center, flex-end);
-    width: fit-content;
+    width: calc(100% + 24px);
+
+    @media screen and (max-width: #{$breakpoint_max_md})
+    {
+      width: calc(100%);
+    }
   }
   
   &_name
   {
     @include typography_builder(500, 20, 24);
+    @include truncate();
     width: 100%;
     color: $color_text;
+    position: relative;
 
     &:hover
     {
@@ -76,9 +83,9 @@
     
     span
     {
-      display: inline-block;
       @include typographyBuilder(400, 12, 16);
-      margin-left: 8px;
+      @include position(absolute, 6px, 0, auto, auto);
+      display: inline-block;
     }
   }
 
@@ -159,7 +166,7 @@
   &_itemCategories
   {
     list-style: none;
-    width: calc(30% - 24px);
+    width: calc(30% - 32px);
     height: 24px;
     margin-bottom: 20px;
 
@@ -234,6 +241,14 @@
   &_valueContainer
   {
     @include flex(row, center, space-between);
+
+    @media (max-width: #{$breakpoint_min_sm})
+    {
+      & > div
+      {
+        width: 100%;
+      }
+    }
   }
   
   &_selectedCategory
