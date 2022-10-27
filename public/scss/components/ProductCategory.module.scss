@@ -60,6 +60,12 @@
   &_link
   {
     @include flex(row-reverse, center, flex-end);
+    width: calc(100% + 24px);
+
+    @media screen and (max-width: #{$breakpoint_max_md})
+    {
+      width: calc(100%);
+    }
   }
   
   &_name
@@ -162,7 +168,7 @@
   &_itemCategories
   {
     list-style: none;
-    width: calc(30% - 8px);
+    width: calc(30% - 32px);
     height: 24px;
     margin-bottom: 20px;
 
@@ -237,9 +243,13 @@
   &_valueContainer
   {
     @include flex(row, center, space-between);
-    & > div
+
+    @media (max-width: #{$breakpoint_min_sm})
     {
-      width: 100%;
+      & > div
+      {
+        width: 100%;
+      }
     }
   }
   
