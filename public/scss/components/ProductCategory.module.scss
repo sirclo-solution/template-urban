@@ -60,14 +60,15 @@
   &_link
   {
     @include flex(row-reverse, center, flex-end);
-    width: fit-content;
   }
   
   &_name
   {
     @include typography_builder(500, 20, 24);
+    @include truncate();
     width: 100%;
     color: $color_text;
+    position: relative;
 
     &:hover
     {
@@ -76,9 +77,11 @@
     
     span
     {
-      display: inline-block;
       @include typographyBuilder(400, 12, 16);
-      margin-left: 8px;
+      display: inline-block;
+      position: absolute;
+      right: 0;
+      top: 6px;
     }
   }
 
@@ -159,7 +162,7 @@
   &_itemCategories
   {
     list-style: none;
-    width: calc(30% - 24px);
+    width: calc(30% - 8px);
     height: 24px;
     margin-bottom: 20px;
 
@@ -234,6 +237,10 @@
   &_valueContainer
   {
     @include flex(row, center, space-between);
+    & > div
+    {
+      width: 100%;
+    }
   }
   
   &_selectedCategory
