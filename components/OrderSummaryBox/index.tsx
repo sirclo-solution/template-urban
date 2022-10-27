@@ -254,9 +254,6 @@ const OrderSummaryBox: FC<iProps> = ({
             isAccordion
             classes={{
               ...classesOrderSummary,
-              footerClassName: page !== "cart" && size.width > 767
-                ? "d-none"
-                : classesOrderSummary.footerClassName,
               containerClassName: page === "cart" ? styles.containerRelative : styles.container
             }}
             currency="IDR"
