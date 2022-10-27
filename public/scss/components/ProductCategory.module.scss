@@ -84,10 +84,8 @@
     span
     {
       @include typographyBuilder(400, 12, 16);
+      @include position(absolute, 6px, 0, auto, auto);
       display: inline-block;
-      position: absolute;
-      right: 0;
-      top: 6px;
     }
   }
 
