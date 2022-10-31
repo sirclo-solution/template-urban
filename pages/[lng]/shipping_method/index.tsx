@@ -115,14 +115,6 @@ const ShippingMethodPage: FC<any> = ({
     SEO: { title: `${i18n.t("shipping.title")}` }
   }
 
-  let withButtonProps = {}
-  if (size?.width > 767) withButtonProps = {
-    withButton: () => router.push({
-      pathname: "/[lng]/payment_method",
-      query: router.query
-    })
-  }
-
   return (
     <PrivateRouteWrapper>
       <Layout {...layoutProps} >
@@ -184,7 +176,6 @@ const ShippingMethodPage: FC<any> = ({
                   listMany={9}
                 />
               }
-              {...withButtonProps}
             />
           </div>
           <div className={styles.orderSummaryBoxContainer}>

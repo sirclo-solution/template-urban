@@ -8,9 +8,6 @@ import {
   PrivateComponent
 } from '@sirclo/nexus'
 
-/* library component */
-import useWindowSize from 'lib/useWindowSize'
-
 /* component */
 import Placeholder from 'components/Placeholder'
 import Popup from 'components/Popup/Popup'
@@ -167,7 +164,6 @@ const OrderSummaryBox: FC<iProps> = ({
   withOrderSummary = true
 }) => {
 
-  const size = useWindowSize()
   const [showModalErrorAddToCart, setShowModalErrorAddToCart] = useState<boolean>(false)
   const toogleErrorAddToCart = () => setShowModalErrorAddToCart(!showModalErrorAddToCart)
 
@@ -254,9 +250,6 @@ const OrderSummaryBox: FC<iProps> = ({
             isAccordion
             classes={{
               ...classesOrderSummary,
-              footerClassName: page !== "cart" && size.width > 767
-                ? "d-none"
-                : classesOrderSummary.footerClassName,
               containerClassName: page === "cart" ? styles.containerRelative : styles.container
             }}
             currency="IDR"
