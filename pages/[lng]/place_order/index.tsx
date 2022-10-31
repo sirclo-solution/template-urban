@@ -2,7 +2,6 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
-import { useRouter } from 'next/router'
 import {
   PlaceOrderFormv2,
   useI18n,
@@ -170,21 +169,12 @@ const PlaceOrderPage: FC<any> = ({
 
   const i18n: any = useI18n()
   const size = useWindowSize()
-  const router = useRouter()
   const linksBreadcrumb = [`${i18n.t("header.home")}`, i18n.t("placeOrder.checkOrder")]
   const layoutProps = {
     lngDict, i18n, lng, brand,
     withFooter: false,
     withHeader: false,
     SEO: { title: `${i18n.t("orderSummary.placeOrder")}` }
-  }
-
-  let withButtonProps = {}
-  if (size.width > 767) withButtonProps = {
-    withButton: () => router.push({
-      pathname: "/[lng]/shipping_method",
-      query: router.query
-    })
   }
 
   return (
@@ -238,7 +228,6 @@ const PlaceOrderPage: FC<any> = ({
             }
             mapCenterIcon={<Icon.mapCenterIcon />}
             mapButtonCloseIcon={<Icon.RiCloseFill />}
-            {...withButtonProps}
           />
           <div className={styles.orderSummaryBoxContainer}>
             <OrderSummaryBox
