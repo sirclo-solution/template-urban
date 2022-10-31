@@ -67,7 +67,7 @@
     }
   }
 
-  &[class*=disabled]
+  &[class*="disabled"]
   {
     opacity: .5;
     pointer-events: none;
