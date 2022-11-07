@@ -45,7 +45,6 @@ import stylesPopupCheckPaymentOrder from 'public/scss/components/CheckPaymentOrd
 import stylesPopup from 'public/scss/components/Popup.module.scss'
 import stylesMap from 'public/scss/components/Map.module.scss'
 import stylesPasswordStrength from 'public/scss/components/PasswordStrength.module.scss'
-import { promises } from 'fs'
 
 const ACTIVE_CURRENCY = "IDR"
 
