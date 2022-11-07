@@ -2,10 +2,10 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
-	Article,
-	ArticleCategories,
+  Article,
+  ArticleCategories,
   useAuthToken,
-	useI18n
+  useI18n
 } from '@sirclo/nexus'
 
 /* Library Template */
