@@ -23,17 +23,17 @@
     & ~ main
     {
         @include transition();
-        @include fixedWidth(calc(100vw - 280px));
-        margin-left: 280px;
-        min-height: calc(100vh - 280px);
+        width: auto;
+        margin-left: 300px;
+        min-height: calc(100vh - 300px);
         padding-bottom: 58px; 
     }
     & ~ footer
     {
         @include transition();
-        @include fixedWidth(calc(100vw - 280px));
-        min-height: 280px;
-        margin-left: 280px;
+        width: auto;
+        min-height: 300px;
+        margin-left: 300px;
         z-index: 3;
         bottom: 0;
         position: relative;
@@ -245,7 +245,7 @@
         & ~ main,
         & ~ footer
         {
-            @include fixedWidth(100vw);
+            width: auto;
             margin-left: 0;
         }
 
