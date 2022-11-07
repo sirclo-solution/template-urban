@@ -2,7 +2,11 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
-import { ThankYou, useI18n } from '@sirclo/nexus'
+import {
+  ThankYou,
+  useAuthToken,
+  useI18n
+} from '@sirclo/nexus'
 /* library component */
 import { useBrandCommon } from 'lib/useBrand'
 /* component */
@@ -120,10 +124,14 @@ const ThankYouPage: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
+  req,
+  res,
   params 
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

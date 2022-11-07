@@ -2,7 +2,11 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { toast } from 'react-toastify'
-import { SetNewPassword, useI18n } from '@sirclo/nexus'
+import {
+  SetNewPassword,
+  useAuthToken,
+  useI18n
+} from '@sirclo/nexus'
 /* library component */
 import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
@@ -67,10 +71,14 @@ const ResetPasswordPage: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
+  req,
+  res,
   params 
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

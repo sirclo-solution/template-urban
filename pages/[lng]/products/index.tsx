@@ -9,6 +9,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import {
   Products,
   ProductSort,
+  useAuthToken,
   useI18n
 } from '@sirclo/nexus'
 
@@ -291,9 +292,13 @@ const ProductsPage: FC<any> = ({
 }
 export const getServerSideProps = async ({
   req,
+  res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

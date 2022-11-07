@@ -10,6 +10,7 @@ import ReCAPTCHA from 'react-google-recaptcha'
 import { toast } from 'react-toastify'
 import {
   Login,
+  useAuthToken,
   useI18n,
   Logo
 } from '@sirclo/nexus'
@@ -147,9 +148,15 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
+  const [
+    brand,
+    { hasGoogleAuth, hasFacebookAuth, hasOtp }
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthMethod(req),
+    useAuthToken({req, res, env: process.env})
+  ])
 
-  const brand = await useBrandCommon(req, params)
-  const { hasGoogleAuth, hasFacebookAuth, hasOtp } = await useAuthMethod(req)
   const cookies = parseCookies(req)
   redirectIfAuthenticated(res, cookies, brand, 'account')
 

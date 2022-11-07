@@ -7,6 +7,7 @@ import {
   CustomerDetail,
   ListPaymentMethod,
   PrivateRoute,
+  useAuthToken,
   useI18n,
   useShippingMethod,
   useBuyerNotes
@@ -300,10 +301,17 @@ const PaymentMethods: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
-  const hasOtp = await useWhatsAppOTPSetting(req)
+  const [
+    brand,
+    hasOtp
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    useWhatsAppOTPSetting(req),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

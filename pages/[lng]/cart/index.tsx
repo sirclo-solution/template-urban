@@ -6,6 +6,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import { toast } from 'react-toastify'
 import {
   CartDetails,
+  useAuthToken,
   useI18n,
   useCart
 } from '@sirclo/nexus'
@@ -190,9 +191,13 @@ const Cart: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {
