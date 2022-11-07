@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import {
   BlogSingle,
   BlogCategories,
+  useAuthToken,
   useI18n,
   BlogRecent
 } from '@sirclo/nexus'
@@ -208,10 +209,17 @@ const BlogSlug: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+  params
+}) => {
 
   const { slug } = params
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
   const urlSite = `https://${req.headers.host}/${params.lng}/blog/${slug}`
 
   return {

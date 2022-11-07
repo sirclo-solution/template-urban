@@ -2,7 +2,11 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
-import { OrderReview, useI18n } from '@sirclo/nexus'
+import {
+  OrderReview,
+  useAuthToken,
+  useI18n
+} from '@sirclo/nexus'
 import { toast } from 'react-toastify'
 import { 
   FiChevronDown, 
@@ -182,9 +186,13 @@ const ReviewPage: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ 
   req,
+  res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

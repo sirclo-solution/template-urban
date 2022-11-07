@@ -7,6 +7,7 @@ import Link from 'next/link'
 import {
   CustomerDetail,
   ShippingMethods,
+  useAuthToken,
   useI18n,
   PrivateRoute
 } from '@sirclo/nexus'
@@ -203,9 +204,13 @@ const ShippingMethodPage: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
+  res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

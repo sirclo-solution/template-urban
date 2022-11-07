@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import { useRouter } from 'next/router'
 import {
   PlaceOrderFormv2,
+  useAuthToken,
   useI18n,
   PrivateRoute,
 } from '@sirclo/nexus'
@@ -256,9 +257,13 @@ const PlaceOrderPage: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ 
   req,
+  res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

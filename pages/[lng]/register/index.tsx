@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
   Register,
+  useAuthToken,
   useI18n,
   Logo
 } from '@sirclo/nexus'
@@ -174,9 +175,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [
+    brand,
+    { hasGoogleAuth, hasFacebookAuth, hasOtp }
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthMethod(req),
+    useAuthToken({req, res, env: process.env})
+  ])
+
   const cookies = parseCookies(req)
-  const { hasGoogleAuth, hasFacebookAuth, hasOtp } = await useAuthMethod(req)
   redirectIfAuthenticated(res, cookies, brand, 'account')
 
   return {
