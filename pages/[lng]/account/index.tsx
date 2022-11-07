@@ -3,6 +3,7 @@ import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
   Account,
+  useAuthToken,
   useI18n
 } from '@sirclo/nexus'
 import { toast } from 'react-toastify'
@@ -353,8 +354,14 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
-  const { hasOtp } = await useAuthMethod(req)
+  const [
+    brand,
+    { hasOtp }
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthMethod(req),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   if (res) {
     const cookies = parseCookies(req)

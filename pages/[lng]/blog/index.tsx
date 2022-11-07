@@ -2,6 +2,7 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
+  useAuthToken,
   useI18n,
   Blogs,
   BlogCategories,
@@ -160,9 +161,19 @@ const Blog: FC<any> = ({
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, req }) => {
-  const brand = await useBrandCommon(req, params)
-  const headerImage = await getBlogHeaderImage(GRAPHQL_URI(req))
+export const getServerSideProps: GetServerSideProps = async ({
+  req,
+  res,
+  params
+}) => {
+  const [
+    brand,
+    headerImage
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    getBlogHeaderImage(GRAPHQL_URI(req)),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

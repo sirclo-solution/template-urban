@@ -2,7 +2,7 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import { useI18n } from '@sirclo/nexus'
+import { useAuthToken, useI18n } from '@sirclo/nexus'
 /* library template */
 import { handleGetBanner } from 'lib/client'
 import { useBrandCommon } from 'lib/useBrand'
@@ -116,7 +116,15 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }: any) => {
-  const brand = await useBrandCommon(req, params)
+  const [
+    brand,
+    dataBanners
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    handleGetBanner(req),
+    useAuthToken({req, res, env: process.env})
+  ])
+
   const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico', "manifest", "sitemap.xml"]
 
   if (allowedUri.indexOf(params.lng.toString()) == -1) {
@@ -125,8 +133,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     })
     res.end()
   }
-
-  const dataBanners = await handleGetBanner(req)
 
   return {
     props: {

@@ -1,7 +1,11 @@
 /* library package */
 import { FC } from 'react'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
-import { useI18n, getProductDetail } from '@sirclo/nexus'
+import {
+  useAuthToken,
+  useI18n,
+  getProductDetail
+} from '@sirclo/nexus'
 
 /* library component */
 import { useBrandCommon } from 'lib/useBrand'
@@ -81,11 +85,18 @@ const Product: FC<any> = ({
 
 export async function getServerSideProps({
   req,
+  res,
   params
 }) {
   const { slug } = params
-  const data = await getProductDetail(GRAPHQL_URI(req), slug)
-  const brand = await useBrandCommon(req, params)
+  const [
+    brand,
+    data
+  ] = await Promise.all([
+    useBrandCommon(req, params),
+    getProductDetail(GRAPHQL_URI(req), slug),
+    useAuthToken({req, res, env: process.env})
+  ])
   const urlSite = `https://${req.headers.host}/${params.lng}/product/${slug}`
 
   return {

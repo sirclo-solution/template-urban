@@ -1,5 +1,9 @@
 /* library package */
-import { ShipmentTracker, useI18n } from '@sirclo/nexus'
+import {
+  ShipmentTracker,
+  useAuthToken,
+  useI18n
+} from '@sirclo/nexus'
 /* library template */
 import { useBrandCommon } from 'lib/useBrand'
 /* component */
@@ -50,9 +54,13 @@ const TrackerPage = ({ order_token, lngDict, lng, brand }) => {
 
 export async function getServerSideProps({ 
   req,
+  res,
   params
 }) {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

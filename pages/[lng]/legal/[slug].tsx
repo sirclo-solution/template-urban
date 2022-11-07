@@ -3,6 +3,7 @@ import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import {
     Legal,
     LegalCategories,
+    useAuthToken,
     useI18n
 } from '@sirclo/nexus'
 import { useRouter } from 'next/router'
@@ -91,9 +92,16 @@ const LegalPage: FC<any> = ({
     );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({ req, params }) => {
+export const getServerSideProps: GetServerSideProps = async ({
+    req,
+    res,
+    params
+}) => {
     const { slug } = params
-    const brand = await useBrandCommon(req, params)
+    const [ brand ] = await Promise.all([
+        useBrandCommon(req, params),
+        useAuthToken({req, res, env: process.env})
+    ])
 
     return {
         props: {
