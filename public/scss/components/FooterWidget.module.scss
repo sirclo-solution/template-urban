@@ -80,6 +80,11 @@
     {
         @include transition();
         position: relative;
+
+        @media screen and (max-width: #{$breakpoint_max_md})
+        {
+            pointer-events: none;
+        }
     }
     
     &_toggle

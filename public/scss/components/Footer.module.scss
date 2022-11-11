@@ -43,6 +43,15 @@
     }
   }
 
+  &_newsletterTitle
+  {
+    @include flex(row, center, flex-start);
+    @include typographyBuilder(700, 16, 24);
+    position: relative;
+    margin-bottom: 16px;
+    color: $color_white;
+  }
+
   &Item
   {
     @include typographyBuilder(400, 12, 16);
@@ -202,6 +211,12 @@
 {
   .footer
   {
+    &_newsletterTitle
+    {
+      min-height: 72px;
+      margin: 0;
+    }
+
     &Item
     {
       padding: 0 3px;
