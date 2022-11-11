@@ -110,16 +110,15 @@ const Footer: FC<any> = () => {
           }
           <div className="col-12 col-md-3">
             <div className={styles.footerItem}>
-              <FooterWidget title={i18n.t("newsletter.title")} collapsible={false}>
-                <NewsletterForm
-                  classes={classesNewsletter}
-                  onComplete={() => toast.success(i18n.t("newsletter.submitSuccess"))}
-                  onError={() => toast.error(i18n.t("newsletter.submitError"))}
-                  buttonComponent={
-                    <FaArrowRight />
-                  }
-                />
-              </FooterWidget>
+              <h3 className={styles.footerNewsletter_title}>{i18n.t("newsletter.title")}</h3>
+              <NewsletterForm
+                classes={classesNewsletter}
+                onComplete={() => toast.success(i18n.t("newsletter.submitSuccess"))}
+                onError={() => toast.error(i18n.t("newsletter.submitError"))}
+                buttonComponent={
+                  <FaArrowRight />
+                }
+              />
             </div>
           </div>
         </div>
