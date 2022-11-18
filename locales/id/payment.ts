@@ -6,6 +6,7 @@ const locale = {
     "choosePayment": "Pilih Pembayaran",
     "confirm": "Kirim Bukti Pembayaran",
     "discountBundle": "Paket Diskon",
+    "errorPaymentMethodByCoupon": "Maaf, kupon tidak berlaku pada metode pembayaran yang di pilih",
     "fee": "Biaya",
     "generateLinkFailed": "Gagal menggunakan metode pembayaran",
     "isEmpty": "Tidak Ada Metode Pembayaran yang Tersedia",
