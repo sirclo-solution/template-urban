@@ -6,6 +6,7 @@ const locale = {
     "choosePayment": "Select Payment",
     "confirm": "Send Proof of Payment",
     "discountBundle": "Discount Bundle",
+    "errorPaymentMethodByCoupon": "Sorry, the coupon is not valid on the selected payment method",
     "fee": "Fee",
     "generateLinkFailed": "Failed to use this payment method",
     "isEmpty": "No Available Payment Method",
