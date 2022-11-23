@@ -540,3 +540,11 @@
       background: $color_foreground;
     }
 }
+
+@mixin textOverflow()
+{
+    white-space: nowrap;
+    word-break: keep-all;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}

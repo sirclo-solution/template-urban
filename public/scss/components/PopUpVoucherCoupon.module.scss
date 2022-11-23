@@ -607,6 +607,8 @@
   border: none;
   background-color: transparent;
   color: $color_black;
+  min-height: 24px;
+  min-width: 24px;
 
   &:hover,
   &:active,
@@ -681,6 +683,7 @@
 .voucherDetailPopUpCodeCopyTitle
 {
   @include typographyBuilder(500, 12, 16);
+  @include textOverflow();
   margin: 0;
 }
 
