@@ -663,6 +663,7 @@
   @include fixedWidth(100%);
   padding: 16px;
   border-top: 1px dashed $color_placeholder;
+  word-wrap: anywhere;
 }
 
 .voucherDetailPopUpCodeTitle
@@ -683,7 +684,6 @@
 .voucherDetailPopUpCodeCopyTitle
 {
   @include typographyBuilder(500, 12, 16);
-  @include textOverflow();
   margin: 0;
 }
 
