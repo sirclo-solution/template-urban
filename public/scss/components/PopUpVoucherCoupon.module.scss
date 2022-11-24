@@ -607,6 +607,8 @@
   border: none;
   background-color: transparent;
   color: $color_black;
+  min-height: 24px;
+  min-width: 24px;
 
   &:hover,
   &:active,
@@ -661,6 +663,7 @@
   @include fixedWidth(100%);
   padding: 16px;
   border-top: 1px dashed $color_placeholder;
+  word-wrap: anywhere;
 }
 
 .voucherDetailPopUpCodeTitle
