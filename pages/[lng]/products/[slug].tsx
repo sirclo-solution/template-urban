@@ -108,7 +108,11 @@ const ProductsHighlightPage: FC<any> = ({
     itemPerPage: number,
     withSeparatedVariant: boolean,
     loadingComponent: any,
+    emptyStateComponent: any,
     isFlipImage: boolean,
+    getTitleProductSection: any,
+    slug: string,
+    isProductSectionHighlight: boolean,
   }
 
   const productsLoadingComponent = [0, 1, 2, 3].map((_, i) => ( <div key={i}> <Placeholder classes={placeholder} withImage withList /> </div> ))
@@ -127,7 +131,17 @@ const ProductsHighlightPage: FC<any> = ({
     itemPerPage: 12,
     withSeparatedVariant: true,
     loadingComponent: productsLoadingComponent,
+    emptyStateComponent: (
+      <EmptyComponent
+        logo={<div className={styles.products_iconEmpty} />}
+        classes={{ emptyContainer: styles.products_emptyContainer }}
+        desc={i18n.t("product.isEmpty")}
+      />
+    ),
     isFlipImage: true,
+    getTitleProductSection: (values: string) => setTitleProductSection(values),
+    slug: slugSection,
+    isProductSectionHighlight: true,
   }
 
   return (
@@ -166,10 +180,7 @@ const ProductsHighlightPage: FC<any> = ({
                   <Products
                     key={i}
                     pageNumber={i}
-                    {...baseProductsProps}
-                    getTitleProductSection={(values: string) => setTitleProductSection(values)}
-                    slug={slugSection}
-                    isProductSectionHighlight
+                    {...baseProductsProps}                    
                   />
                 ))
                 }
@@ -179,13 +190,6 @@ const ProductsHighlightPage: FC<any> = ({
               </div>
             </div>
           </section >
-          {pageInfo.totalItems === 0 &&
-            <EmptyComponent
-              logo={<div className={styles.products_iconEmpty} />}
-              classes={{ emptyContainer: styles.products_emptyContainer }}
-              desc={i18n.t("product.isEmpty")}
-            />
-          }
         </>
       </LazyLoadComponent>
     </Layout>
