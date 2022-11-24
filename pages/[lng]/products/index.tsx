@@ -215,7 +215,6 @@ const ProductsPage: FC<any> = ({
                   <button className={`${styles.productsComponent_reset}`} onClick={resetFilter}>
                     {i18n.t("product.reset")}
                   </button>
-
                 </div>
               </>
               <div
