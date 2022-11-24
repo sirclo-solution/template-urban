@@ -146,7 +146,7 @@ const ProductsHighlightPage: FC<any> = ({
 
   return (
     <Layout {...layoutProps}>
-      <section className={styleProducts.productsHighlight_breadcumb}>
+      <section className={styleProducts.productsHighlight_breadcrumb}>
         <Breadcrumb
           title={titleProductSection}
           links={linksBreadcrumb}

@@ -178,7 +178,7 @@ const ProductsPage: FC<any> = ({
 
   return (
     <Layout {...layoutProps}>
-      <section className={styleProducts.products_breadcumb}>
+      <section className={styleProducts.products_breadcrumb}>
         <Breadcrumb
           title={i18n.t("product.title")}
           links={linksBreadcrumb}
