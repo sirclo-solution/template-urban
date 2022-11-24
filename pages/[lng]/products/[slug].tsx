@@ -62,7 +62,7 @@ const ProductsHighlightPage: FC<any> = ({
     i18n,
     lng,
     brand,
-    SEO: { title: titleProductSection },
+    SEO: { titleProductSection },
     withBack: false,
     titleSeo: titleProductSection
   }
