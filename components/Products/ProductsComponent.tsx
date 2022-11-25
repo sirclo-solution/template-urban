@@ -2,7 +2,11 @@
 import { FC } from 'react'
 import Router from 'next/router'
 import Link from 'next/link'
-import { Products, ProductSort } from '@sirclo/nexus'
+import {
+  ProductHighlights, 
+  Products, 
+  ProductSort 
+} from '@sirclo/nexus'
 
 /* library component */
 import useProducts from './hooks/useProducts'
@@ -29,6 +33,11 @@ const placeholderSort = {
 }
 
 export const classesProducts = {
+  productHighlightContainerClassName: 'container my-2',
+  productHighlightTitleContainerClassName: styles.productsComponent_titleContainer,
+  productHighlightTitleClassName: styles.products_productHighlight_title,
+  productSectionContainerClassName: styles.productsComponent_grid,
+  productHighlightSeeAllClassName: styles.productsComponent_seeAll,
   productContainerClassName: `products_container ${styles.products_productContainer}`,
   stickerContainerClassName: styles.products_stickerContainer,
   outOfStockLabelClassName: `${styles.products_label} ${styles.products_outOfStockLabel}`,
@@ -72,8 +81,9 @@ type iProps = {
   withInfiniteScroll?: boolean
   withTitle?: TWithTitle
   withEmptyComponent?: boolean
+  ishomepageProductHighlights?: boolean
   isLastSection?: boolean
-  withSeeAllBtn?: boolean
+  dispaly?: 'Display1'|'Display2'
   [otherProp: string]: any
 }
 
@@ -88,6 +98,8 @@ const ProductsComponent: FC<iProps> = ({
   withEmptyComponent,
   withTitle,
   isLastSection,
+  ishomepageProductHighlights,
+  dispaly,
   withSeeAllBtn,
   ...props
 }) => {
@@ -174,147 +186,190 @@ const ProductsComponent: FC<iProps> = ({
 
   return (
     <>
-      <section
-        className={
-          `container my-2 
-          ${withFilterSort && pageInfo.totalItems !== 0 ? 'pb-4' : ""}
-          ${isLastSection && pageInfo.totalItems !== 0 ? styles.productsComponent_lastSection : ""}
-          ${sectionClasses[type] || ""}
-        `}
-      >
-        <div className={`
-          ${pageInfo.totalItems === 0 && "mb-0"}
-          ${props.item === "tree" && "position-relative"}
-        `}>
-          {withFilterSort &&
-            <>
-              <div className={styles.productsComponent_action}>
-                <button className={styles.productsComponent_actionItem} onClick={handleShowFilter}>
-                  {i18n.t("product.filter")}
-                </button>
-                <button className={`${styles.productsComponent_actionItem}`} onClick={handleShowSort}>
-                  {i18n.t("product.sort")}
-                </button>
-              </div>
-              <div className={styles.productsComponent_showResetContainer}>
-                <p className={styles.productsComponent_show}>
-                  {i18n.t("product.show")}
-                  {" "}{pageInfo.totalItems}{" "}
-                  {i18n.t("product.result")}
-                </p>
-              {Object.keys(router.query).length > 1 &&
-                <button className={`${styles.productsComponent_reset}`} onClick={resetFilter}>
-                  {i18n.t("product.reset")}
-                </button>
-              }
-              </div>
-            </>
-          }
-          {withTitle &&
-            <div className={`${styles.productsComponent_titleContainer} ${withTitle.type}`}>
-              <h2 className={styles.productsComponent_title}>
-                {withTitle?.title}
-              </h2>
-              {withTitle?.withSeeAll &&
-                <Link
-                  href={`/[lng]/products${tagname ? `?tagname=${tagname}` : ""}`}
-                  as={`/${lng}/products${tagname ? `?tagname=${tagname}` : ""}`}
-                >
-                  <span className={`${styles.productsComponent_seeAll}`}>
-                    {i18n.t("product.seeAll")}
-                  </span>
-                </Link>
-              }
-            </div>
-          }
-          {withInfiniteScroll ?
+      {ishomepageProductHighlights ? (
+        <ProductHighlights 
+          item={4}
+          sectionProductHighlight={dispaly}
+          seeAllButtonPosition="Top"
+          classes={{
+            ...classesProducts,
+            productContainerClassName:
+              styles.products_productHighlight_productContainer,
+          }}
+          fullPath={`product/{id}`}
+          pathPrefix={`product`}
+          lazyLoadedImage={false}
+          emptyStateComponent={
             <div
-              className={`
-                ${containerClasses[type]} ${withFilterSort && 'mt-0 pt-0'}
-                ${pageInfo.totalItems === 0 && "pb-0"}    
-              `}
-            >
-              {Array.from(Array(currPage + 1)).map((_, i) => (
-                <Products
-                  key={i}
-                  pageNumber={i}
-                  {...propsProduct}
-                />
-              ))
+              className={
+                isLastSection ? styles.productsComponent_lastSection : ""
               }
-
-              <button onClick={scrollToTop} className={styles.productsComponent_goToTop}>
-                <div className={styles.productsComponent_arrowUp}></div>
-              </button>
+            ></div>
+          }
+          loadingComponent={
+            <div className={styles.products_placholderContainer}>
+              {[0, 1, 2, 3].map((_, i) => (
+                <div key={i} className="ml-2">
+                  <Placeholder
+                    classes={{
+                      placeholderImage: styles.products_placeholderFlexNoWrap,
+                      placeholderList: styles.products_placeholderList,
+                    }}
+                    withImage
+                    withList
+                  />
+                </div>
+              ))}
             </div>
-            :
-            <>
-              <div className={`${containerClasses[type]}`}>
-                <Products {...propsProduct} />
-              </div>
-
-              {(withSeeAllBtn && (pageInfo.totalItems > 4)) &&
-                <div className={` ${styles.productsComponent_seeAllProducts}`}>
-                  <button
-                    className={`${styles.productsComponent_actionItem}`}
-                    onClick={() => Router.push("/[lng]/products", `/${lng}/products`)}
-                  >
-                    {i18n.t("product.seaAllProducts")}
-                  </button>
+          }
+        />
+      ) : (
+        <>
+          <section
+            className={
+              `container my-2 
+              ${withFilterSort && pageInfo.totalItems !== 0 ? 'pb-4' : ""}
+              ${isLastSection && pageInfo.totalItems !== 0 ? styles.productsComponent_lastSection : ""}
+              ${sectionClasses[type] || ""}
+            `}
+          >
+            <div className={`
+              ${pageInfo.totalItems === 0 && "mb-0"}
+              ${props.item === "tree" && "position-relative"}
+            `}>
+              {withFilterSort &&
+                <>
+                  <div className={styles.productsComponent_action}>
+                    <button className={styles.productsComponent_actionItem} onClick={handleShowFilter}>
+                      {i18n.t("product.filter")}
+                    </button>
+                    <button className={`${styles.productsComponent_actionItem}`} onClick={handleShowSort}>
+                      {i18n.t("product.sort")}
+                    </button>
+                  </div>
+                  <div className={styles.productsComponent_showResetContainer}>
+                    <p className={styles.productsComponent_show}>
+                      {i18n.t("product.show")}
+                      {" "}{pageInfo.totalItems}{" "}
+                      {i18n.t("product.result")}
+                    </p>
+                  {Object.keys(router.query).length > 1 &&
+                    <button className={`${styles.productsComponent_reset}`} onClick={resetFilter}>
+                      {i18n.t("product.reset")}
+                    </button>
+                  }
+                  </div>
+                </>
+              }
+              {withTitle &&
+                <div className={`${styles.productsComponent_titleContainer} ${withTitle.type}`}>
+                  <h2 className={styles.productsComponent_title}>
+                    {withTitle?.title}
+                  </h2>
+                  {withTitle?.withSeeAll &&
+                    <Link
+                      href={`/[lng]/products${tagname ? `?tagname=${tagname}` : ""}`}
+                      as={`/${lng}/products${tagname ? `?tagname=${tagname}` : ""}`}
+                    >
+                      <span className={`${styles.productsComponent_seeAll}`}>
+                        {i18n.t("product.seeAll")}
+                      </span>
+                    </Link>
+                  }
                 </div>
               }
-            </>
-          }
-          {showFilter &&
-            <SideMenu
-              withClose
-              withTitle
-              title={i18n.t("product.filter")}
-              openSide={showFilter}
-              toogleSide={handleShowFilter}
-              positionSide={size.width < 765 ? 'left' : 'right'}
-            >
-              <ProductFilterComponent
-                lng={lng}
-                i18n={i18n}
-                handleFilter={handleFilter}
-                withApply
-              />
-            </SideMenu>
-          }
-          {showSort &&
-            <SideMenu
-              withClose
-              withTitle
-              title={i18n.t("product.sort")}
-              openSide={showSort}
-              toogleSide={handleShowSort}
-              positionSide={size.width < 765 ? 'left' : 'right'}
-            >
-              <ProductSort
-                classes={classesProductSort}
-                errorComponent={<p>{i18n.t("global.error")}</p>}
-                loadingComponent={
-                  <div className={stylesSort.sort} >
-                    {
-                      [0, 1, 2, 3].map((_, i) => (
-                        <Placeholder key={i} classes={placeholderSort} withList />
-                      ))
-                    }
+              {withInfiniteScroll ?
+                <div
+                  className={`
+                    ${containerClasses[type]} ${withFilterSort && 'mt-0 pt-0'}
+                    ${pageInfo.totalItems === 0 && "pb-0"}    
+                  `}
+                >
+                  {Array.from(Array(currPage + 1)).map((_, i) => (
+                    <Products
+                      key={i}
+                      pageNumber={i}
+                      {...propsProduct}
+                    />
+                  ))
+                  }
+
+                  <button onClick={scrollToTop} className={styles.productsComponent_goToTop}>
+                    <div className={styles.productsComponent_arrowUp}></div>
+                  </button>
+                </div>
+                :
+                <>
+                  <div className={`${containerClasses[type]}`}>
+                    <Products {...propsProduct} />
                   </div>
-                }
-              />
-            </SideMenu>
+
+                  {(withSeeAllBtn && (pageInfo.totalItems > 4)) &&
+                    <div className={` ${styles.productsComponent_seeAllProducts}`}>
+                      <button
+                        className={`${styles.productsComponent_actionItem}`}
+                        onClick={() => Router.push("/[lng]/products", `/${lng}/products`)}
+                      >
+                        {i18n.t("product.seaAllProducts")}
+                      </button>
+                    </div>
+                  }
+                </>
+              }
+              {showFilter &&
+                <SideMenu
+                  withClose
+                  withTitle
+                  title={i18n.t("product.filter")}
+                  openSide={showFilter}
+                  toogleSide={handleShowFilter}
+                  positionSide={size.width < 765 ? 'left' : 'right'}
+                >
+                  <ProductFilterComponent
+                    lng={lng}
+                    i18n={i18n}
+                    handleFilter={handleFilter}
+                    withApply
+                  />
+                </SideMenu>
+              }
+              {showSort &&
+                <SideMenu
+                  withClose
+                  withTitle
+                  title={i18n.t("product.sort")}
+                  openSide={showSort}
+                  toogleSide={handleShowSort}
+                  positionSide={size.width < 765 ? 'left' : 'right'}
+                >
+                  <ProductSort
+                    classes={classesProductSort}
+                    errorComponent={<p>{i18n.t("global.error")}</p>}
+                    loadingComponent={
+                      <div className={stylesSort.sort} >
+                        {
+                          [0, 1, 2, 3].map((_, i) => (
+                            <Placeholder key={i} classes={placeholderSort} withList />
+                          ))
+                        }
+                      </div>
+                    }
+                  />
+                </SideMenu>
+              }
+            </div >
+          </section >
+          {pageInfo.totalItems === 0 && withEmptyComponent &&
+            <EmptyComponent
+              logo={<div className={styles.products_iconEmpty} />}
+              classes={{ emptyContainer: styles.products_emptyContainer }}
+              desc={i18n.t("product.isEmpty")}
+            />
           }
-        </div >
-      </section >
-      {pageInfo.totalItems === 0 && withEmptyComponent &&
-        <EmptyComponent
-          logo={<div className={styles.products_iconEmpty} />}
-          classes={{ emptyContainer: styles.products_emptyContainer }}
-          desc={i18n.t("product.isEmpty")}
-        />
-      }
+
+        </>
+      )
+    }
     </>
   )
 }
