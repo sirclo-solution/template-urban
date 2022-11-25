@@ -2,7 +2,11 @@
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import Link from 'next/link'
-import { useI18n, ProductListByCategory } from '@sirclo/nexus'
+import {
+  useAuthToken,
+  useI18n,
+  ProductListByCategory
+} from '@sirclo/nexus'
 /* library template */
 import { useBrandCommon } from 'lib/useBrand'
 import useWindowSize from 'lib/useWindowSize'
@@ -116,9 +120,13 @@ const CategoriesPage: FC<any> = ({
 
 export const getServerSideProps: GetServerSideProps = async ({ 
   req, 
+  res,
   params 
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

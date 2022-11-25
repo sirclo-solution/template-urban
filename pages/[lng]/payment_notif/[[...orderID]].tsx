@@ -5,6 +5,7 @@ import { toast } from 'react-toastify'
 import {
   PaymentConfirmation,
   CheckPaymentOrder,
+  useAuthToken,
   useI18n
 } from '@sirclo/nexus'
 /* library component */
@@ -161,10 +162,14 @@ const PaymentConfirmationPage: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
+  req,
+  res,
   params 
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

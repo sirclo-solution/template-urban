@@ -2,7 +2,11 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { useRouter } from 'next/router'
-import { useI18n, usePaymentLink } from '@sirclo/nexus'
+import { 
+  useAuthToken,
+  useI18n,
+  usePaymentLink
+} from '@sirclo/nexus'
 /* library component */
 import { useBrandCommon } from 'lib/useBrand'
 /* component */
@@ -107,10 +111,14 @@ const PaymentStatus: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
+  req,
+  res,
   params 
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
   const [orderID, status] = params?.orderID as string[]
 
   return {

@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { toast } from 'react-toastify'
 import ReCAPTCHA from 'react-google-recaptcha'
 import {
+  useAuthToken,
   useI18n,
   Testimonials,
   isTestimonialAllowed,
@@ -203,10 +204,14 @@ const TestimonialsPage: FC<any> = ({
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ 
-  req, 
+  req,
+  res,
   params 
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   return {
     props: {

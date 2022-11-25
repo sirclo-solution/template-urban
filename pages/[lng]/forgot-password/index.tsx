@@ -1,7 +1,11 @@
 /*library package */
 import { FC, useState } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { ResetPassword, useI18n } from '@sirclo/nexus'
+import {
+  ResetPassword,
+  useAuthToken,
+  useI18n
+} from '@sirclo/nexus'
 import { toast } from 'react-toastify'
 /* library component */
 import { parseCookies } from 'lib/parseCookies'
@@ -68,7 +72,10 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }) => {
-  const brand = await useBrandCommon(req, params)
+  const [ brand ] = await Promise.all([
+    useBrandCommon(req, params),
+    useAuthToken({req, res, env: process.env})
+  ])
 
   const cookies = parseCookies(req)
   redirectIfAuthenticated(res, cookies, brand, 'account')
