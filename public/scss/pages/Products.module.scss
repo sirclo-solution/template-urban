@@ -2,16 +2,24 @@
 
 .products
 {
-  &_breadcumb
+  &_breadcrumb
   {
     margin-bottom: 42px;
   }
 
   @media (max-width: #{$breakpoint_min_sm}) 
   {
-    &_breadcumb
+    &_breadcrumb
     {
       margin-bottom: 24px;
     }
+  }
+}
+
+.productsHighlight
+{
+  &_breadcrumb
+  {
+    margin-bottom: 24px;
   }
 }

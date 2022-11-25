@@ -175,6 +175,12 @@
   &_showResetContainer
   {
     display: none;
+
+    &--productsHighlight
+    {
+      display: block;
+      margin-bottom: 42px;
+    }
   }
 
 
