@@ -67,35 +67,35 @@ const ProductsHighlightPage: FC<any> = ({
     titleSeo: titleProductSection
   }
   
-  const [currPage, setCurrPage] = useState(0);
+  const [currPage, setCurrPage] = useState(0)
   const [pageInfo, setPageInfo] = useState({
     pageNumber: 0,
     itemPerPage: 12,
     totalItems: 0,
   })
   
-  const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage);
+  const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage)
   
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  })
 
   const handleScroll = () => {
     const lastItem = document.querySelector(
       ".products_container:last-of-type"
-    ) as HTMLElement;
+    ) as HTMLElement
 
     if (lastItem) {
-      const lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
-      const pageOffset = window.pageYOffset + window.innerHeight;
-      if (pageOffset > lastItemOffset && currPage < totalPage - 1) setCurrPage(currPage + 1);
+      const lastItemOffset = lastItem.offsetTop + lastItem.clientHeight
+      const pageOffset = window.pageYOffset + window.innerHeight
+      if (pageOffset > lastItemOffset && currPage < totalPage - 1) setCurrPage(currPage + 1)
     }
-  };
+  }
 
   const scrollToTop = () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0 // For Safari
+    document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
   }
 
   type TProductsProps = {
