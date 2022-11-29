@@ -33,10 +33,10 @@ const placeholderSort = {
 }
 
 export const classesProducts = {
-  productHighlightContainerClassName: 'container my-2',
-  productHighlightTitleContainerClassName: styles.productsComponent_titleContainer,
-  productHighlightTitleClassName: styles.products_productHighlight_title,
-  productSectionContainerClassName: styles.productsComponent_grid,
+  productHighlightContainerClassName: `container ${styles.products_highlightContainer}`,
+  productHighlightTitleContainerClassName: styles.products_highlightTitleContainer,
+  productHighlightTitleClassName: styles.productsComponent_title,
+  productSectionContainerClassName: styles.products_highlightSectionContainer,
   productHighlightSeeAllClassName: styles.productsComponent_seeAll,
   productContainerClassName: `products_container ${styles.products_productContainer}`,
   stickerContainerClassName: styles.products_stickerContainer,
@@ -147,7 +147,6 @@ const ProductsComponent: FC<iProps> = ({
     fullPath: `product/{id}`,
     pathPrefix: `product`,
     lazyLoadedImage: false,
-    isFlipImage: true,
     thumborSetting: {
       width: 512,
       format: "webp",
@@ -183,7 +182,7 @@ const ProductsComponent: FC<iProps> = ({
   }
 
   if (pageInfo.totalItems === 0 && !withEmptyComponent) return <></>
-
+  
   return (
     <>
       {ishomepageProductHighlights ? (
@@ -194,30 +193,28 @@ const ProductsComponent: FC<iProps> = ({
           classes={{
             ...classesProducts,
             productContainerClassName:
-              styles.products_productHighlight_productContainer,
+            styles.products_highlightProductContainer,
           }}
           fullPath={`product/{id}`}
           pathPrefix={`product`}
           lazyLoadedImage={false}
+          isFlipImage
           emptyStateComponent={
             <div
               className={
                 isLastSection ? styles.productsComponent_lastSection : ""
               }
-            ></div>
+            />
           }
           loadingComponent={
-            <div className={styles.products_placholderContainer}>
+            <div className={`container my-2 ${styles.products_highlightEmpty}`}>
               {[0, 1, 2, 3].map((_, i) => (
-                <div key={i} className="ml-2">
-                  <Placeholder
-                    classes={{
-                      placeholderImage: styles.products_placeholderFlexNoWrap,
-                      placeholderList: styles.products_placeholderList,
-                    }}
-                    withImage
-                    withList
-                  />
+                <div key={i} className={styles.products_highlightProductContainer}>
+                    <Placeholder 
+                      classes={placeholder} 
+                      withImage 
+                      withList 
+                    />
                 </div>
               ))}
             </div>
