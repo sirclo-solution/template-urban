@@ -86,6 +86,12 @@
     @include flex(row, center, center);
     cursor: pointer;
 
+    a
+    {
+      color: $color_black;
+      text-decoration: none;
+    }
+
     &:hover
     {
       opacity: 0.6;
@@ -234,6 +240,11 @@
       @include flex(column, flex-start, center);
     }
 
+    &_seeAll
+    {
+      padding-top: 12px;
+    }
+
     &_action
     {
       @include position(relative);
@@ -253,5 +264,4 @@
       margin: 24px 0 24px 0;
     }
   }
-
 }

@@ -15,6 +15,9 @@ import ProductsComponent from 'components/Products/ProductsComponent'
 import ProductCategoryComponent from 'components/ProductCategoryComponent/ProductCategoryComponent'
 import Instafeed from 'components/Instafeed'
 
+/* styles */
+import styles from 'public/scss/components/ProductsComponent.module.scss'
+
 const Home: FC<any> = ({
   lng,
   lngDict,
@@ -41,21 +44,17 @@ const Home: FC<any> = ({
         />
       </div>
 
-      <div id="featuredProduct">
+      <section className={styles.products_display1}>        
         <LazyLoadComponent>
           <ProductsComponent
             i18n={i18n}
             lng={lng}
             type='grid'
-            tagname='featured'
-            withTitle={{
-              type: 'left',
-              title: i18n.t('home.featuredProducts'),
-              withSeeAll: true
-            }}
+            ishomepageProductHighlights
+            display="Display1"
           />
         </LazyLoadComponent>
-      </div>
+      </section>
 
       <section className="container">
         <LazyLoadComponent>
@@ -63,19 +62,17 @@ const Home: FC<any> = ({
         </LazyLoadComponent>
       </section>
 
+    <section>
       <LazyLoadComponent>
         <ProductsComponent
           i18n={i18n}
           lng={lng}
           type='grid'
-          tagname='new-arrivals'
-          withTitle={{
-            type: 'left',
-            title: i18n.t('home.arrivalsProducts'),
-            withSeeAll: true
-          }}
+          ishomepageProductHighlights
+          display="Display2"
         />
       </LazyLoadComponent>
+    </section>
 
       <section className="container">
         <LazyLoadComponent>
