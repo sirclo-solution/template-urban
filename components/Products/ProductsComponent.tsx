@@ -83,7 +83,7 @@ type iProps = {
   withEmptyComponent?: boolean
   ishomepageProductHighlights?: boolean
   isLastSection?: boolean
-  dispaly?: 'Display1'|'Display2'
+  display?: 'Display1'|'Display2'
   [otherProp: string]: any
 }
 
@@ -99,7 +99,7 @@ const ProductsComponent: FC<iProps> = ({
   withTitle,
   isLastSection,
   ishomepageProductHighlights,
-  dispaly,
+  display,
   withSeeAllBtn,
   ...props
 }) => {
@@ -188,7 +188,7 @@ const ProductsComponent: FC<iProps> = ({
       {ishomepageProductHighlights ? (
         <ProductHighlights 
           item={4}
-          sectionProductHighlight={dispaly}
+          sectionProductHighlight={display}
           seeAllButtonPosition="Top"
           classes={{
             ...classesProducts,
@@ -240,7 +240,7 @@ const ProductsComponent: FC<iProps> = ({
                     <button className={styles.productsComponent_actionItem} onClick={handleShowFilter}>
                       {i18n.t("product.filter")}
                     </button>
-                    <button className={`${styles.productsComponent_actionItem}`} onClick={handleShowSort}>
+                    <button className={styles.productsComponent_actionItem} onClick={handleShowSort}>
                       {i18n.t("product.sort")}
                     </button>
                   </div>
@@ -251,7 +251,7 @@ const ProductsComponent: FC<iProps> = ({
                       {i18n.t("product.result")}
                     </p>
                   {Object.keys(router.query).length > 1 &&
-                    <button className={`${styles.productsComponent_reset}`} onClick={resetFilter}>
+                    <button className={styles.productsComponent_reset} onClick={resetFilter}>
                       {i18n.t("product.reset")}
                     </button>
                   }
@@ -268,7 +268,7 @@ const ProductsComponent: FC<iProps> = ({
                       href={`/[lng]/products${tagname ? `?tagname=${tagname}` : ""}`}
                       as={`/${lng}/products${tagname ? `?tagname=${tagname}` : ""}`}
                     >
-                      <span className={`${styles.productsComponent_seeAll}`}>
+                      <span className={styles.productsComponent_seeAll}>
                         {i18n.t("product.seeAll")}
                       </span>
                     </Link>
@@ -302,9 +302,9 @@ const ProductsComponent: FC<iProps> = ({
                   </div>
 
                   {(withSeeAllBtn && (pageInfo.totalItems > 4)) &&
-                    <div className={` ${styles.productsComponent_seeAllProducts}`}>
+                    <div className={styles.productsComponent_seeAllProducts}>
                       <button
-                        className={`${styles.productsComponent_actionItem}`}
+                        className={styles.productsComponent_actionItem}
                         onClick={() => Router.push("/[lng]/products", `/${lng}/products`)}
                       >
                         {i18n.t("product.seaAllProducts")}
