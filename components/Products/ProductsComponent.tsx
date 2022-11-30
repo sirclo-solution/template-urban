@@ -343,7 +343,7 @@ const ProductsComponent: FC<iProps> = ({
                     classes={classesProductSort}
                     errorComponent={<p>{i18n.t("global.error")}</p>}
                     loadingComponent={
-                      <div className={stylesSort.sort} >
+                      <div className={stylesSort.sort}>
                         {
                           [0, 1, 2, 3].map((_, i) => (
                             <Placeholder key={i} classes={placeholderSort} withList />
@@ -363,7 +363,6 @@ const ProductsComponent: FC<iProps> = ({
               desc={i18n.t("product.isEmpty")}
             />
           }
-
         </>
       )
     }

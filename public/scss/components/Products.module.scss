@@ -227,21 +227,20 @@
         @include position(relative);
         @include flex(row, center, flex-start);
         width: calc(100% - 36px);
-      }
 
-      &_actionItem
-      {
-        width: fit-content;
+        &Item
+        {
+          width: fit-content;
+        }
       }
 
       &_showResetContainer
       {
         @include typographyBuilder(400, 16, 24);
         @include flex(row, flex-start, space-between);
-        margin: 24px 0 24px 0;
+        margin: 24px 0;
       }
     }
-
   }
 
   @media (max-width: #{$breakpoint_min_sm}) 

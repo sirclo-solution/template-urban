@@ -51,7 +51,7 @@ const Home: FC<any> = ({
             lng={lng}
             type='grid'
             ishomepageProductHighlights
-            dispaly="Display1"
+            display="Display1"
           />
         </LazyLoadComponent>
       </section>
@@ -62,14 +62,14 @@ const Home: FC<any> = ({
         </LazyLoadComponent>
       </section>
 
-    <section className="display2">
+    <section>
       <LazyLoadComponent>
         <ProductsComponent
           i18n={i18n}
           lng={lng}
           type='grid'
           ishomepageProductHighlights
-          dispaly="Display2"
+          display="Display2"
         />
       </LazyLoadComponent>
     </section>
