@@ -56,7 +56,7 @@ const locale = {
     "reviewer": "Name",
     "reviewsPerPage": "Reviews",
     "sale": "Sale",
-    "seeAll": "See All",
+    "seeAll": "See all",
     "share": "Share",
     "shareProduct": "Share Product",
     "shop": "Shop",
