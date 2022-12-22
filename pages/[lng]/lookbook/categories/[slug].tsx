@@ -153,6 +153,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       ...brand,
+      slug,
       urlSite
     }
   }
