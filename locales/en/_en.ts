@@ -31,6 +31,7 @@ import pageHeader from './pageHeader'
 import pageStepper from './pageStepper'
 import payment from './payment'
 import paymentConfirm from './paymentConfirm'
+import PaymentMethod from './paymentMethod'
 import paymentStatus from './paymentStatus'
 import placeOrder from './placeOrder'
 import product from './product'
@@ -80,6 +81,7 @@ const en = {
   ...pageStepper,
   ...payment,
   ...paymentConfirm,
+  ...PaymentMethod,
   ...paymentStatus,
   ...placeOrder,
   ...product,

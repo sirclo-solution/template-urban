@@ -74,12 +74,11 @@ const locale = {
     "settingNotification": "Notifikasi",
     "shipped": "Dikirim",
     "shippingDetail": "Detil pengiriman",
-    "shippingDetails": "Detil Pengiriman",
+    "shippingDetails": "Alamat pengiriman",
     "shippingMethod": "Metode Pengiriman",
-    "total": "Jumlah",
-    "unpaid": "Belum Dibayar",
+    "total": "Total :",
+    "unpaid": "Menunggu pembayaran",
     "viewInvoice": "Lihat Tagihan",
-    "youGot": "Anda punya",
     "youHave": "Anda memiliki"
   }
 }

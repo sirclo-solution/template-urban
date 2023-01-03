@@ -1063,13 +1063,18 @@
     padding: 0;
   }
 
+  &_shippingMethodValue
+  {
+    color: $color_black !important;
+  }
+
   &_orderItem
   {
     @include fixedWidth(100%);
+    @include flex(column, normal);
     position: relative;
     margin: 0 0 12px;
     padding: 0;
-
     border: solid 1px $color_elements_line_darker;
     background-color: $color_white;
 
@@ -1121,13 +1126,13 @@
 
   &_orderHeader
   {
+    order: 1;
     padding: 16px;
   }
 
   &_orderInnerHeader
   {
     @include flex(column, stretch, flex-start);
-
     [class*="orderTitle"],
     [class*="paymentStatus"]
     {
@@ -1195,6 +1200,7 @@
   &_orderBody
   {
     @include fixedWidth(100%);
+    order: 3;
     position: relative;
     margin: 0;
     padding: 0;
@@ -1442,8 +1448,7 @@
 
   &_buyerNoteContainer,
   &_shippingDetails,
-  &_shippingMethodContainer,
-  &_paymentMethodContainer
+  &_shippingMethodContainer
   {
     @include fixedWidth(100%);
     @include SmallSmall;
@@ -1479,7 +1484,7 @@
 
     span
     {
-      @include SmallSemiBold;
+      @include SmallSmall;
       color: $color_text_secondary;
 
       & + p
@@ -1491,6 +1496,47 @@
 
   &_paymentMethodContainer
   {
+    @include fixedWidth(100%);
+    @include SmallSmall;
+    position: relative;
+    margin: 0;
+    padding: 16px 16px 0;
+
+    border: none;
+    background: $color_elements;
+    color: $color_text;
+
+    &::after
+    {
+      content: "";
+      display: block;
+      position: relative;
+      margin: 16px auto 0;
+      @include fixedWidth(100%);
+      @include fixedHeight(1px);
+      background-color: $color_elements_line_darker;
+    }
+
+    span,
+    p
+    {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    span
+    {
+      @include SmallSemiBold;
+      color: $color_text_secondary;
+
+      & + p
+      {
+        margin-top: 6px;
+      }
+    }
+  
+    overflow: auto;
     padding-bottom: 16px;
     &::after
     {
@@ -1504,6 +1550,7 @@
   &_orderFooter
   {
     @include flex(row, center, space-between);
+    order: 2;
     position: relative;
     margin: 16px;
     padding: 8px 10px;
@@ -1884,11 +1931,6 @@
       @include fixedWidth(calc(100% - (16px + 10px)));
       margin-left: auto !important;
       margin-right: 0 !important;
-
-      &:nth-child(2)
-      {
-        // @extend .account_shipmentNote;
-      }
     }
   }
 
@@ -1919,5 +1961,230 @@
   &_shipmentTrackButton
   {
     position: relative;
+  }
+}
+
+.paymentMethod 
+{
+  &_detail 
+  {
+    &_wrapper 
+    {
+      flex-direction: column;
+    }
+
+    &_container 
+    {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    &_option 
+    {
+      @include flex(row, center, flex-start);
+    }
+
+    &_text,
+    &_textTable {
+      @include fontSize(12);
+      font-weight: 400;
+      line-height: 20px;
+      color: $color_black;
+
+      a 
+      {
+        text-decoration: none;
+        color: $color_curious_blue;
+
+        &:hover 
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &_card 
+    {
+      float: left;
+      background-color: $color_white;
+      border: 1px solid $color_geyser;
+      border-radius: 4px;
+
+      [class*="_instruction"]:nth-child(3)
+      {
+        width: 180px;
+      }
+    
+    }
+
+    &_code 
+    {
+      @include fontSize(16);
+      font-weight: 700;
+      line-height: 24px;
+      text-align: center;
+      color: $color_oxford_blue;
+      margin: 8px auto;
+    }
+
+    &_copyCodeButton 
+    {
+      background: none;
+      border: none;
+
+      svg 
+      {
+        width: 12px;
+        height: 12px;
+        color: $color_teal_blue;
+        margin-left: 6px;
+      }
+    }
+
+    &_instruction 
+    {
+      &_container 
+      {
+        @include flex(row, center);
+        width: 100%;
+        background: $color_lighter_low_blue;
+        padding: 8px 8px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        svg 
+        {
+          color: $color_teal_blue;
+          width: 12px;
+          height: 12px;
+          margin-right: 6px;
+        }
+      }
+
+      &_text 
+      {
+        width: 100%;
+        color: $color_teal_blue;
+
+        span 
+        {
+          color: $color_teal_blue;
+        }
+      }
+    }
+
+    &_seeMore 
+    {
+      margin-top: 8px;
+
+      &_text 
+      {
+        @include SmallSmall;
+        color: $color_gray_darker;
+      }
+
+      &_link 
+      {
+        color: $color_deep_sky_blue;
+
+        &:hover 
+        {
+          color: $color_deep_sky_blue;
+        }
+      }
+    }
+
+    &_bankList 
+    {
+      width: 100%;
+      float: left;
+      padding: 0;
+      margin: 0;
+
+      li 
+      {
+        @include flex(row, center, space-between);
+        padding: 12px;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+
+        p 
+        {
+          margin: 0;
+          padding: 0;
+        }
+
+        &:last-child 
+        {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &_bankInfo 
+    {
+      color: $color_gray_light;
+    }
+
+    &_qr 
+    {
+      @include flex(row, center, space-between);
+      width: 180px;
+
+      img 
+      {
+        position: relative;
+        width: inherit;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &_downloadBtn 
+      {
+        @include flex(row, center);
+        @include fontSize(16);
+        width: 180px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: transparent;
+        color: $color_tiktok;
+
+        svg 
+        {
+          width: 14px;
+          height: 14px;
+          margin-right: 6px;
+        }
+      }
+    }
+
+    &_expiry 
+    {
+      color: $color_gray_darker;
+      background: rgba(255, 152, 0, 0.1);
+      padding: 4px 6px;
+      border-radius: 4px;
+      
+      svg 
+      {
+        color: $color_orange;
+        width: 15px;
+        height: 15px;
+        margin-right: 6px;
+      }
+
+      &_date 
+      {
+        font-weight: 400 !important;
+        font-size: 12px !important;
+        padding-left: 3px !important;
+      }
+
+      &_warning
+      {
+        font-weight: 400 !important;
+        font-size: 12px !important;
+      }
+    }
   }
 }
