@@ -1,5 +1,6 @@
 const locale = {
     "paymentMethod": {
+      "continuePayment": "Continue to Payment",
       "copySuccess": "Copy success",
       "counterInstruction": "Show this barcode to",
       "downloadQrSuccess": "Image Downloaded Successfully",
@@ -9,8 +10,7 @@ const locale = {
       "page": "Payment page",
       "qrDownload": "Download QR Code",
       "qrInstruction": "Scan QR Code using e-wallet or m-banking app that supports QRIS payment",
-      "seeMore": "For more info, see",
-      "continuePayment": "Continue to Payment"
+      "seeMore": "For more info, see"
     }
   }
   

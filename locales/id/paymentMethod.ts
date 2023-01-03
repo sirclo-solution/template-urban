@@ -1,5 +1,6 @@
 const locale = {
     "paymentMethod": {
+      "continuePayment": "Lanjutkan pembayaran",
       "copySuccess": "Berhasil tersalin",
       "counterInstruction": "Tunjukkan barcode ini ke kasir",
       "downloadQrSuccess": "Berhasil Mengunduh Gambar",
@@ -10,8 +11,7 @@ const locale = {
       "page": "halaman pembayaran",
       "qrDownload": "Unduh QR Code",
       "qrInstruction": "Scan kode QR melalui aplikasi e-wallet atau m-banking yang mendukung pembayaran QRIS",
-      "seeMore": "Lihat info lengkap di",
-      "continuePayment": "Lanjutkan pembayaran"
+      "seeMore": "Lihat info lengkap di"
     }
   }
   

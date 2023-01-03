@@ -7,7 +7,11 @@ import {
   useI18n
 } from '@sirclo/nexus'
 import { toast } from 'react-toastify'
-import { CheckCircle, Copy, Download } from 'react-feather'
+import { 
+  CheckCircle,
+  Copy, 
+  Download
+} from 'react-feather'
 import { FaMapMarkedAlt, FaMapMarkerAlt } from 'react-icons/fa'
 import { GoAlert } from 'react-icons/go'
 import { 
