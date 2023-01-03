@@ -1987,7 +1987,7 @@
     &_text,
     &_textTable {
       @include fontSize(12);
-      font-weight: 400;
+      @include fontPrimary(400);
       line-height: 20px;
       color: $color_black;
 
@@ -2034,8 +2034,7 @@
 
       svg 
       {
-        width: 12px;
-        height: 12px;
+        @include fixedSize(12px);
         color: $color_teal_blue;
         margin-left: 6px;
       }
@@ -2054,9 +2053,8 @@
 
         svg 
         {
+          @include fixedSize(12px);
           color: $color_teal_blue;
-          width: 12px;
-          height: 12px;
           margin-right: 6px;
         }
       }
@@ -2105,7 +2103,7 @@
       {
         @include flex(row, center, space-between);
         padding: 12px;
-        width: 100%;
+        width: 180px;
         border-bottom: 1px solid #ccc;
 
         p 
@@ -2151,8 +2149,7 @@
 
         svg 
         {
-          width: 14px;
-          height: 14px;
+          @include fixedSize(14px);
           margin-right: 6px;
         }
       }
@@ -2167,9 +2164,8 @@
       
       svg 
       {
+        @include fixedSize(15px);
         color: $color_orange;
-        width: 15px;
-        height: 15px;
         margin-right: 6px;
       }
 
