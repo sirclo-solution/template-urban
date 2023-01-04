@@ -7,10 +7,14 @@ import {
   useI18n
 } from '@sirclo/nexus'
 import { toast } from 'react-toastify'
-import { CheckCircle } from 'react-feather'
-import { FaMapMarkedAlt, FaMapMarkerAlt } from 'react-icons/fa'
 import { 
-  FiAlertCircle,
+  CheckCircle,
+  Copy, 
+  Download
+} from 'react-feather'
+import { FaMapMarkedAlt, FaMapMarkerAlt } from 'react-icons/fa'
+import { GoAlert } from 'react-icons/go'
+import { 
   FiCrosshair,
   FiX,
   FiChevronRight, 
@@ -29,7 +33,8 @@ import {
   RiTelegramFill,
   RiLineFill,
   RiEyeCloseLine,
-  RiEyeLine
+  RiEyeLine,
+  RiInformationFill
 } from 'react-icons/ri'
 /* Library Template */
 import { parseCookies } from 'lib/parseCookies'
@@ -108,6 +113,27 @@ const classesAccount = {
   paymentMethodContainerClassName: styles.orderHistory_paymentMethodContainer,
   orderFooterClassName: styles.orderHistory_orderFooter,
   totalCostClassName: styles.orderHistory_totalCost,
+
+  // Payment Method
+  paymentMethodDetailContainerClassName: styles.paymentMethod_detail_container,
+  paymentMethodDetailOptionClassName: styles.paymentMethod_detail_option,
+  paymentMethodDetailTextClassName: styles.paymentMethod_detail_textTable,
+  paymentMethodDetailCardClassName: styles.paymentMethod_detail_card,
+  paymentMethodDetailCodeClassName: styles.paymentMethod_detail_code,
+  paymentMethodDetailInstructionContainerClassName: styles.paymentMethod_detail_instruction_container,
+  paymentMethodDetailInstructionTextClassName: styles.paymentMethod_detail_instruction_text,
+  paymentMethodDetailSeeMoreContainerClassName: styles.paymentMethod_detail_seeMore,
+  paymentMethodDetailSeeMoreTextClassName: styles.paymentMethod_detail_seeMore_text,
+  paymentMethodDetailSeeMoreLinkClassName: styles.paymentMethod_detail_seeMore_link,
+  paymentMethodDetailQrClassName: styles.paymentMethod_detail_qr,
+  paymentMethodDetailQrDownloadBtnClassName: styles.paymentMethod_detail_qr_downloadBtn,
+  paymentMethodDetailBankListClassName: styles.paymentMethod_detail_bankList,
+  paymentMethodDetailBankInfoClassName: styles.paymentMethod_detail_bankInfo,
+  paymentMethodDetailCopyCodeButtonClassName: styles.paymentMethod_detail_copyCodeButton,
+  paymentMethodDetailWrapperClassName: styles.paymentMethod_detail_wrapper,
+  paymentMethodDetailExpiryDateClassName: styles.paymentMethod_detail_expiry_date,
+  paymentMethodDetailExpiryContainerClassName: styles.paymentMethod_detail_expiry,
+  paymentMethodDetailExpiryWarningTextClassName: styles.paymentMethod_detail_expiry_warning,
   
   // Payment Status
   paymentStatusCancelledClassName: `${styles.orderHistory_paymentStatus} cancelled`,
@@ -157,6 +183,7 @@ const classesAccount = {
   shipmentCloseIconClassName: styles.account_shipmentCloseIcon,
   shipmentTrackButtonClassName: styles.account_shipmentTrackButton,
   shippingTrackerButton: styles.orderHistory_shippingTrackerButton,
+  shippingMethodValueClassName: styles.orderHistory_shippingMethodValue,
 
   // Membership Status
   membershipStatusClassName: styles.membershipStatus,
@@ -305,6 +332,8 @@ const AccountsPage: FC<any> = ({
                 onErrorMsg={onError}
                 onSuccessMsg={onSuccess}
                 onSuccessChPass={onSuccessChPass}
+                onSuccessCopyPaymentNumber={() => toast.success(i18n.t('paymentMethod.copySuccess'))}
+                onSuccessQrDownload={() => toast.success(i18n.t('paymentMethod.downloadQrSuccess'))}
                 showSettingNotification={hasOtp}
                 paymentHrefPrefix="payment_notif"
                 passwordViewIcon={<RiEyeCloseLine />}
@@ -317,7 +346,7 @@ const AccountsPage: FC<any> = ({
                 icons={{
                   accordionIcon: <RiArrowDownSLine />,
                   closeIcon: <FiX />,
-                  infoIcon: <FiAlertCircle />,
+                  infoIcon: <RiInformationFill />,
                   iconTracker: <FaMapMarkerAlt />,
                   myAccount: <RiUser3Line />,
                   orderHistory: <RiShoppingBag2Line />,
@@ -329,7 +358,10 @@ const AccountsPage: FC<any> = ({
                   email: <RiMailUnreadFill />,
                   whatsApp: <RiWhatsappFill />,
                   line: <RiLineFill />,
-                  telegram: <RiTelegramFill />
+                  telegram: <RiTelegramFill />,
+                  downloadIcon: <Download />,
+                  copyIcon: <Copy />,
+                  warningIcon: <GoAlert />
                 }}
                 loadingComponent={
                   <p>{i18n.t("global.loading")}</p>
