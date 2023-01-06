@@ -10,7 +10,8 @@ import {
   ApolloProvider,
   PackageFeatureProvider,
   Widget,
-  I18n
+  I18n,
+  TemplateFeatureFlag
 } from "@sirclo/nexus";
 import { PageTransition } from "next-page-transitions";
 import MaintenanceMode from "@sirclo/nexus/lib/component/MaintenanceMode";
@@ -47,12 +48,14 @@ function MyApp({ Component, pageProps, router }) {
     >
       <ApolloProvider client={apolloClient} key={router.route}>
         <PackageFeatureProvider>
-          <MaintenanceMode classes={classesMaintenance}>
-            <I18n lngDict={pageProps.lngDict} locale={pageProps.lng}>
-              <Component {...pageProps} />
-              <Widget pos="script" hash={hash} />
-            </I18n>
-          </MaintenanceMode>
+          <TemplateFeatureFlag>
+            <MaintenanceMode classes={classesMaintenance}>
+              <I18n lngDict={pageProps.lngDict} locale={pageProps.lng}>
+                <Component {...pageProps} />
+                <Widget pos="script" hash={hash} />
+              </I18n>
+            </MaintenanceMode>
+          </TemplateFeatureFlag>
         </PackageFeatureProvider>
       </ApolloProvider>
     </PageTransition>

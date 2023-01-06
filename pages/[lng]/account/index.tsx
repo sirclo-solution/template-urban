@@ -330,6 +330,7 @@ const AccountsPage: FC<any> = ({
                 currency={ACTIVE_CURRENCY}
                 onFetchCompleted={onFetchCompleted}
                 onErrorMsg={onError}
+                onInvalidMsg={(msg: string) => toast.error(msg)}
                 onSuccessMsg={onSuccess}
                 onSuccessChPass={onSuccessChPass}
                 onSuccessCopyPaymentNumber={() => toast.success(i18n.t('paymentMethod.copySuccess'))}
