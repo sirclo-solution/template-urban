@@ -2,7 +2,12 @@
 import { FC } from 'react'
 import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import { useAuthToken, useI18n } from '@sirclo/nexus'
+import { 
+  useAuthToken, 
+  useI18n,
+  TemplateFeatures,
+  FeaturesType
+ } from '@sirclo/nexus'
 /* library template */
 import { handleGetBanner } from 'lib/client'
 import { useBrandCommon } from 'lib/useBrand'
@@ -44,35 +49,78 @@ const Home: FC<any> = ({
         />
       </div>
 
-      <section className={styles.products_display1}>        
-        <LazyLoadComponent>
-          <ProductsComponent
-            i18n={i18n}
-            lng={lng}
-            type='grid'
-            ishomepageProductHighlights
-            display="Display1"
-          />
-        </LazyLoadComponent>
-      </section>
+      <TemplateFeatures
+        id={FeaturesType.PRODUCT_HIGHLIGHT}
+        defaultChildren={
+          <>
+            <div id="featuredProduct">
+              <LazyLoadComponent>
+                <ProductsComponent
+                  i18n={i18n}
+                  lng={lng}
+                  type='grid'
+                  tagname='featured'
+                  withTitle={{
+                    type: 'left',
+                    title: i18n.t('home.featuredProducts'),
+                    withSeeAll: true
+                  }}
+                />
+              </LazyLoadComponent>
+            </div>
+                
+            <section className="container">
+              <LazyLoadComponent>
+                <MainAdvertisement />
+              </LazyLoadComponent>
+            </section>
+                
+            <LazyLoadComponent>
+              <ProductsComponent
+                i18n={i18n}
+                lng={lng}
+                type='grid'
+                tagname='new-arrivals'
+                withTitle={{
+                  type: 'left',
+                  title: i18n.t('home.arrivalsProducts'),
+                  withSeeAll: true
+                }}
+              />
+            </LazyLoadComponent>
+          </>
+        }
+      >
+        <section className={styles.products_display1}>        
+          <LazyLoadComponent>
+            <ProductsComponent
+              i18n={i18n}
+              lng={lng}
+              type='grid'
+              ishomepageProductHighlights
+              display="Display1"
+            />
+          </LazyLoadComponent>
+        </section>
 
-      <section className="container">
-        <LazyLoadComponent>
-          <MainAdvertisement />
-        </LazyLoadComponent>
-      </section>
+        <section className="container">
+          <LazyLoadComponent>
+            <MainAdvertisement />
+          </LazyLoadComponent>
+        </section>
 
-    <section>
-      <LazyLoadComponent>
-        <ProductsComponent
-          i18n={i18n}
-          lng={lng}
-          type='grid'
-          ishomepageProductHighlights
-          display="Display2"
-        />
-      </LazyLoadComponent>
-    </section>
+        <section>
+          <LazyLoadComponent>
+            <ProductsComponent
+              i18n={i18n}
+              lng={lng}
+              type='grid'
+              ishomepageProductHighlights
+              display="Display2"
+            />
+          </LazyLoadComponent>
+        </section>
+      </TemplateFeatures>
 
       <section className="container">
         <LazyLoadComponent>

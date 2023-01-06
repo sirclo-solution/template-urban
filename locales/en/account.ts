@@ -25,6 +25,7 @@ const locale = {
     "delivered": "Delivered",
     "editAccount": "Edit Account",
     "editErrorMsg": "Failed to edit profile data",
+    "editInvalidMsg": "Invalid input, please check again",
     "editSuccessMsg": "success to edit profile data",
     "email": "Email",
     "emailPlaceholder": "Email",
