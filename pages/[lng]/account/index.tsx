@@ -8,12 +8,9 @@ import {
 } from '@sirclo/nexus'
 import { toast } from 'react-toastify'
 import { 
-  CheckCircle,
-  Copy, 
-  Download
+  CheckCircle
 } from 'react-feather'
 import { FaMapMarkedAlt, FaMapMarkerAlt } from 'react-icons/fa'
-import { GoAlert } from 'react-icons/go'
 import { 
   FiCrosshair,
   FiX,
@@ -359,10 +356,7 @@ const AccountsPage: FC<any> = ({
                   email: <RiMailUnreadFill />,
                   whatsApp: <RiWhatsappFill />,
                   line: <RiLineFill />,
-                  telegram: <RiTelegramFill />,
-                  downloadIcon: <Download />,
-                  copyIcon: <Copy />,
-                  warningIcon: <GoAlert />
+                  telegram: <RiTelegramFill />
                 }}
                 loadingComponent={
                   <p>{i18n.t("global.loading")}</p>
