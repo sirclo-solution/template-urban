@@ -25,6 +25,7 @@ const locale = {
     "delivered": "Pesanan Tiba",
     "editAccount": "Sunting Akun",
     "editErrorMsg": "Gagal mengubah data akun",
+    "editInvalidMsg": "Input tidak sesuai, silahkan cek kembali",
     "editSuccessMsg": "Berhasil mengubah data akun",
     "email": "Email",
     "emailPlaceholder": "Email",
