@@ -1884,11 +1884,6 @@
       @include fixedWidth(calc(100% - (16px + 10px)));
       margin-left: auto !important;
       margin-right: 0 !important;
-
-      &:nth-child(2)
-      {
-        // @extend .account_shipmentNote;
-      }
     }
   }
 

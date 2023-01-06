@@ -306,6 +306,8 @@ const AccountsPage: FC<any> = ({
                 onInvalidMsg={(msg: string) => toast.error(msg)}
                 onSuccessMsg={onSuccess}
                 onSuccessChPass={onSuccessChPass}
+                onSuccessCopyPaymentNumber={() => toast.success(i18n.t('paymentMethod.copySuccess'))}
+                onSuccessQrDownload={() => toast.success(i18n.t('paymentMethod.downloadQrSuccess'))}
                 showSettingNotification={hasOtp}
                 paymentHrefPrefix="payment_notif"
                 passwordViewIcon={<RiEyeCloseLine />}
