@@ -1139,8 +1139,8 @@
   &_orderInnerHeader
   {
     @include flex(column, stretch, flex-start);
-    [class*="orderTitle"],
-    [class*="paymentStatus"]
+
+    [class*="orderTitle"]
     {
       @include fixedWidth(calc(100% - (16px * 4)));
     }
@@ -1154,7 +1154,7 @@
   &_paymentStatus
   {
     @include flex(row, center, center);
-    @include fixedWidth(100%);
+    @include fixedWidth(50%);
     @include SmallSmall;
     position: relative;
     margin: 0 auto 12px;
@@ -1574,7 +1574,7 @@
     @include flex(row, center, space-between);
     order: 2;
     position: relative;
-    margin: 16px;
+    margin: 0 16px 12px;
     padding: 8px 10px;
     background: $color_elements_line_darker;
     border-radius: 3px;
