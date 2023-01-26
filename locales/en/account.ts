@@ -61,7 +61,6 @@ const locale = {
     "passwordSuccess": "Password changed!",
     "paymentMethod": "Payment Method",
     "paymentStatus": "Payment Status",
-    // "placedOn": "Placed on",
     "point": "Points",
     "points": "Points",
     "postalCode": "Postal Code",
