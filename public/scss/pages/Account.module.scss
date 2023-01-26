@@ -116,6 +116,7 @@
       &__active
       {
         @extend .account_tabLink;
+        @include fontPrimary(500);
 
         &::after
         {
@@ -152,6 +153,7 @@
   &_tabPane
   {
     border: solid 1px $color_elements_line_darker;
+    border-radius: 2px;
     background-color: transparent;
     padding: 16px;
   }
@@ -187,7 +189,7 @@
   margin: 0;
   padding: 16px;
 
-  background-color: $color_elements_line;
+  background-color: $color_elements;
   color: $color_text_secondary;
 
   &_accordion
@@ -195,7 +197,7 @@
     &Toggle
     {
       @include flex(row, center, flex-start);
-      @include typographyBuilder(400, 12, 16);
+      @include typographyBuilder(500, 12, 16);
       @include fixedWidth(100%);
       @include fixedHeight(32px);
       position: relative;
@@ -236,6 +238,7 @@
   &_progress
   {
     @include styleProgressBar($color_elements_line_darker, $color_black);
+    border-radius: 6px;
   }
 
   &_prompt
@@ -505,9 +508,10 @@
     margin: 0 0 25px;
     padding: 8px 12px;
 
-    background: $color_elements_line;
+    background: $color_elements;
     border: solid 1px $color_elements_line_darker;
-    color: $color_text;
+    border-radius: 2px;
+    color: $color_black;
   }
 
   &_icon
@@ -519,6 +523,7 @@
     svg
     {
       @include fixedSize(100%);
+      background: transparent;
     }
   }
 
@@ -534,7 +539,7 @@
 
   &_label
   {
-    padding: 0 10px;
+    padding: 0 4px 0 10px;
   }
 
   &_searchHere
@@ -1063,6 +1068,12 @@
     padding: 0;
   }
 
+  &_shippingMethodValue
+  {
+    color: $color_black !important;
+    margin-top: 6px !important;
+  }
+
   &_orderItem
   {
     @include fixedWidth(100%);
@@ -1174,7 +1185,7 @@
   &_orderDate
   {
     @include flex(row, center, flex-start);
-    @include SmallSmall;
+    @include SmallSemiBold;
     position: relative;
     margin: 0;
     padding: 0;
@@ -1255,6 +1266,14 @@
       background-color: $color_white;
       border-color: $color_white;
       color: $color_text;
+    }
+  }
+  
+  &_invoiceButton
+  {
+    @media (max-width: #{$breakpoint_max_sm})
+    {
+      @include flex(row, center, flex-end);
     }
   }
 
@@ -1484,10 +1503,19 @@
 
       & + p
       {
+        @include SmallSmall;
         margin-top: 6px;
+        color: $color_black;
       }
     }
   }
+
+      p
+      {
+        @include SmallSmall;
+        color: $color_black;
+      }
+    }
 
   &_paymentMethodContainer
   {
@@ -1564,7 +1592,7 @@
       overflow: hidden;
       overflow-y: hidden;
       overflow-x: auto;
-      border-bottom: solid 1px $color_elements_line;
+      border-bottom: solid 1px $color_elements;
 
       li,
       &Item
@@ -1914,5 +1942,247 @@
   &_shipmentTrackButton
   {
     position: relative;
+  }
+}
+
+.paymentMethod 
+{
+  &_detail 
+  {
+    &_wrapper 
+    {
+      flex-direction: column;
+    }
+
+    &_container 
+    {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    &_option 
+    {
+      @include flex(row, center, flex-start);
+      margin-top: 6px;
+    }
+
+    &_text,
+    &_textTable
+    {
+      @include fontSize(12);
+      @include fontPrimary(500);
+      line-height: 20px;
+      color: $color_black;
+
+      a 
+      {
+        text-decoration: none;
+        color: $color_blue;
+
+        &:hover 
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &_card 
+    {
+      float: left;
+      background-color: $color_white;
+      border: 1px solid $color_geyser;
+      border-radius: 4px;
+      margin-bottom: 4px;
+
+      [class*="_instruction"]:nth-child(3)
+      {
+        width: 180px;
+      }
+    
+    }
+
+    &_code 
+    {
+      @include fontSize(16);
+      font-weight: 600;
+      line-height: 24px;
+      padding: 8px 12px !important;
+      text-align: center;
+      color: $color_oxford_blue;
+      margin: 8px auto;
+    }
+
+    &_copyCodeButton 
+    {
+      background: none;
+      border: none;
+      padding: 0 6px 0 0;
+
+      svg 
+      {
+        @include fixedSize(12px);
+        color: $color_teal_blue;
+        margin-left: 6px;
+      }
+    }
+
+    &_instruction 
+    {
+      &_container 
+      {
+        @include flex(row, center);
+        width: 100%;
+        background: $color_lighter_low_blue;
+        padding: 8px;
+        grid-gap: 6px;
+        gap: 6px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        svg 
+        {
+          @include fixedSize(12px);
+          color: $color_deep_sky_blue;
+        }
+
+      }
+
+      button + &_container 
+      {
+        @include flex(row, flex-start);
+      }
+
+      &_text 
+      {
+        width: 100%;
+        color: $color_deep_sky_blue;
+
+        span 
+        {
+          font-weight: 400 !important;
+          color: $color_teal_blue;
+        }
+      }
+    }
+
+    &_seeMore 
+    {
+      &_text 
+      {
+        @include SmallSmall;
+        color: $color_gray_darker;
+      }
+
+      &_link 
+      {
+        @include fontPrimary(500);
+        color: $color_deep_sky_blue;
+
+        &:hover 
+        {
+          color: $color_deep_sky_blue;
+        }
+      }
+    }
+
+    &_bankList 
+    {
+      width: 100%;
+      float: left;
+      padding: 0;
+      margin: 0;
+
+      li 
+      {
+        @include flex(row, center, space-between);
+        padding: 12px;
+        width: 100%;
+        border-bottom: 1px solid #ccc;
+
+        p 
+        {
+          margin: 0;
+          padding: 0;
+        }
+
+        &:last-child 
+        {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &_bankInfo 
+    {
+      span
+      {
+        color: $color_tundora;
+      }
+
+      p
+      {
+        color: $color_gray_light;
+      }
+    }
+
+    &_qr 
+    {
+      @include flex(row, center, space-between);
+      width: 180px;
+
+      img 
+      {
+        position: relative;
+        width: inherit;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &_downloadBtn 
+      {
+        @include flex(row, center);
+        @include fontSize(13);
+        font-weight: 600;
+        width: 180px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: transparent;
+        color: $color_tundora;
+
+        svg 
+        {
+          @include fixedSize(12px);
+          margin-right: 6px;
+        }
+      }
+    }
+
+    &_expiry 
+    {
+      color: $color_gray_darker;
+      background: rgba(255, 152, 0, 0.1);
+      padding: 4px 6px;
+      border-radius: 4px;
+      
+      svg 
+      {
+        @include fixedSize(13px);
+        color: $color_orange;
+        margin-right: 8px;
+      }
+
+      &_date 
+      {
+        padding-left: 3px !important;
+      }
+
+      &_warning,
+      &_date
+      {
+        font-weight: 400 !important;
+        font-size: 12px !important;
+        color: $color_black !important;
+      } 
+    }
   }
 }

@@ -7,8 +7,13 @@ import {
   useI18n
 } from '@sirclo/nexus'
 import { toast } from 'react-toastify'
-import { CheckCircle } from 'react-feather'
+import { 
+  CheckCircle,
+  Copy, 
+  Download
+} from 'react-feather'
 import { FaMapMarkedAlt, FaMapMarkerAlt } from 'react-icons/fa'
+import { GoAlert } from 'react-icons/go'
 import { 
   FiAlertCircle,
   FiCrosshair,
@@ -21,7 +26,7 @@ import {
   RiNotification2Line,
   RiLockPasswordLine,
   RiUserStarLine,
-  RiShoppingBag2Line,
+  RiShoppingBag2Fill,
   RiUser3Line,
   RiArrowDownSLine,
   RiMailUnreadFill,
@@ -323,7 +328,7 @@ const AccountsPage: FC<any> = ({
                   infoIcon: <FiAlertCircle />,
                   iconTracker: <FaMapMarkerAlt />,
                   myAccount: <RiUser3Line />,
-                  orderHistory: <RiShoppingBag2Line />,
+                  orderHistory: <RiShoppingBag2Fill />,
                   membershipHistory: <RiUserStarLine />,
                   changePassword: <RiLockPasswordLine />,
                   settingNotification: <RiNotification2Line />,
@@ -332,7 +337,10 @@ const AccountsPage: FC<any> = ({
                   email: <RiMailUnreadFill />,
                   whatsApp: <RiWhatsappFill />,
                   line: <RiLineFill />,
-                  telegram: <RiTelegramFill />
+                  telegram: <RiTelegramFill />,
+                  downloadIcon: <Download />,
+                  copyIcon: <Copy />,
+                  warningIcon: <GoAlert />
                 }}
                 loadingComponent={
                   <p>{i18n.t("global.loading")}</p>
