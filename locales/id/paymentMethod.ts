@@ -8,7 +8,7 @@ const locale = {
       "manualBankTransfer": "Transfer Bank Manual",
       "manualBankTransferInstruction": "Pilih 1 rekening penerima pembayaran",
       "manualBankTransferAccountNamePrefix": "a.n.",
-      "page": "halaman pembayaran",
+      "page": "halaman pembayaran.",
       "qrDownload": "Unduh QR Code",
       "qrInstruction": "Scan kode QR melalui aplikasi e-wallet atau m-banking yang mendukung pembayaran QRIS",
       "seeMore": "Lihat info lengkap di"
