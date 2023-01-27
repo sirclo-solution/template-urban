@@ -2002,9 +2002,7 @@
 
     &_code 
     {
-      @include fontSize(16);
-      font-weight: 600;
-      line-height: 24px;
+      @include typography_builder(600, 16, 24);
       padding: 8px 12px !important;
       text-align: center;
       color: $color_oxford_blue;
@@ -2140,8 +2138,7 @@
       &_downloadBtn 
       {
         @include flex(row, center);
-        @include fontSize(13);
-        font-weight: 600;
+        @include typography_builder(600, 13, 21);
         width: 180px;
         margin-bottom: 10px;
         border: none;
