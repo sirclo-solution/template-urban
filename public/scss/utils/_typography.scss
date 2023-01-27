@@ -39,6 +39,11 @@
 {   
     @if $font-weight > 500
     {
+        $font-weight: 600;
+    }
+
+    @else if $font-weight > 600
+    {
         $font-weight: 700;
     }
 

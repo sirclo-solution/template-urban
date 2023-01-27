@@ -53,7 +53,7 @@ const locale = {
     "noOrder": "Belum ada order saat ini",
     "oldPassword": "Password Lama",
     "orderHistory": "Riwayat order",
-    "orderNumber": "Nomor Pesanan : ",
+    "orderNumber": "Nomor Pesanan: ",
     "orderedItem": "Item yang di pesan",
     "paid": "Sudah Dibayar",
     "passwordError": "Password gagal diubah!",
@@ -76,7 +76,7 @@ const locale = {
     "shippingDetail": "Detil pengiriman",
     "shippingDetails": "Alamat pengiriman",
     "shippingMethod": "Metode Pengiriman",
-    "total": "Total :",
+    "total": "Total:",
     "unpaid": "Menunggu pembayaran",
     "viewInvoice": "Lihat Tagihan",
     "youHave": "Anda memiliki"
