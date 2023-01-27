@@ -116,6 +116,7 @@
       &__active
       {
         @extend .account_tabLink;
+        @include fontPrimary(500);
 
         &::after
         {
@@ -152,6 +153,7 @@
   &_tabPane
   {
     border: solid 1px $color_elements_line_darker;
+    border-radius: 2px;
     background-color: transparent;
     padding: 16px;
   }
@@ -187,7 +189,7 @@
   margin: 0;
   padding: 16px;
 
-  background-color: $color_elements_line;
+  background-color: $color_elements;
   color: $color_text_secondary;
 
   &_accordion
@@ -195,7 +197,7 @@
     &Toggle
     {
       @include flex(row, center, flex-start);
-      @include typographyBuilder(400, 12, 16);
+      @include typographyBuilder(500, 12, 16);
       @include fixedWidth(100%);
       @include fixedHeight(32px);
       position: relative;
@@ -236,6 +238,7 @@
   &_progress
   {
     @include styleProgressBar($color_elements_line_darker, $color_black);
+    border-radius: 6px;
   }
 
   &_prompt
@@ -505,9 +508,10 @@
     margin: 0 0 25px;
     padding: 8px 12px;
 
-    background: $color_elements_line;
+    background: $color_elements;
     border: solid 1px $color_elements_line_darker;
-    color: $color_text;
+    border-radius: 2px;
+    color: $color_black;
   }
 
   &_icon
@@ -519,6 +523,7 @@
     svg
     {
       @include fixedSize(100%);
+      background: transparent;
     }
   }
 
@@ -534,7 +539,7 @@
 
   &_label
   {
-    padding: 0 10px;
+    padding: 0 4px 0 10px;
   }
 
   &_searchHere
@@ -1066,6 +1071,7 @@
   &_shippingMethodValue
   {
     color: $color_black !important;
+    margin-top: 6px !important;
   }
 
   &_orderItem
@@ -1133,8 +1139,8 @@
   &_orderInnerHeader
   {
     @include flex(column, stretch, flex-start);
-    [class*="orderTitle"],
-    [class*="paymentStatus"]
+
+    [class*="orderTitle"]
     {
       @include fixedWidth(calc(100% - (16px * 4)));
     }
@@ -1148,7 +1154,7 @@
   &_paymentStatus
   {
     @include flex(row, center, center);
-    @include fixedWidth(100%);
+    @include fixedWidth(50%);
     @include SmallSmall;
     position: relative;
     margin: 0 auto 12px;
@@ -1179,7 +1185,7 @@
   &_orderDate
   {
     @include flex(row, center, flex-start);
-    @include SmallSmall;
+    @include SmallSemiBold;
     position: relative;
     margin: 0;
     padding: 0;
@@ -1261,6 +1267,14 @@
       background-color: $color_white;
       border-color: $color_white;
       color: $color_text;
+    }
+  }
+  
+  &_invoiceButton
+  {
+    @media (max-width: #{$breakpoint_max_sm})
+    {
+      @include flex(row, center, flex-end);
     }
   }
 
@@ -1484,12 +1498,20 @@
 
     span
     {
-      @include SmallSmall;
+      @include SmallSemiBold;
       color: $color_text_secondary;
 
       & + p
       {
+        @include SmallSmall;
         margin-top: 6px;
+        color: $color_black;
+      }
+
+      p
+      {
+        @include SmallSmall;
+        color: $color_black;
       }
     }
   }
@@ -1552,7 +1574,7 @@
     @include flex(row, center, space-between);
     order: 2;
     position: relative;
-    margin: 16px;
+    margin: 0 16px 12px;
     padding: 8px 10px;
     background: $color_elements_line_darker;
     border-radius: 3px;
@@ -1611,7 +1633,7 @@
       overflow: hidden;
       overflow-y: hidden;
       overflow-x: auto;
-      border-bottom: solid 1px $color_elements_line;
+      border-bottom: solid 1px $color_elements;
 
       li,
       &Item
@@ -1982,19 +2004,21 @@
     &_option 
     {
       @include flex(row, center, flex-start);
+      margin-top: 6px;
     }
 
     &_text,
-    &_textTable {
+    &_textTable
+    {
       @include fontSize(12);
-      @include fontPrimary(400);
+      @include fontPrimary(500);
       line-height: 20px;
       color: $color_black;
 
       a 
       {
         text-decoration: none;
-        color: $color_curious_blue;
+        color: $color_blue;
 
         &:hover 
         {
@@ -2009,6 +2033,7 @@
       background-color: $color_white;
       border: 1px solid $color_geyser;
       border-radius: 4px;
+      margin-bottom: 4px;
 
       [class*="_instruction"]:nth-child(3)
       {
@@ -2019,9 +2044,8 @@
 
     &_code 
     {
-      @include fontSize(16);
-      font-weight: 700;
-      line-height: 24px;
+      @include typography_builder(600, 16, 24);
+      padding: 8px 12px !important;
       text-align: center;
       color: $color_oxford_blue;
       margin: 8px auto;
@@ -2031,6 +2055,7 @@
     {
       background: none;
       border: none;
+      padding: 0 6px 0 0;
 
       svg 
       {
@@ -2047,25 +2072,33 @@
         @include flex(row, center);
         width: 100%;
         background: $color_lighter_low_blue;
-        padding: 8px 8px;
+        padding: 8px;
+        grid-gap: 6px;
+        gap: 6px;
         border-bottom-left-radius: 4px;
         border-bottom-right-radius: 4px;
 
         svg 
         {
           @include fixedSize(12px);
-          color: $color_teal_blue;
-          margin-right: 6px;
+          color: $color_deep_sky_blue;
         }
+
+      }
+
+      button + &_container 
+      {
+        @include flex(row, flex-start);
       }
 
       &_text 
       {
         width: 100%;
-        color: $color_teal_blue;
+        color: $color_deep_sky_blue;
 
         span 
         {
+          font-weight: 400 !important;
           color: $color_teal_blue;
         }
       }
@@ -2073,8 +2106,6 @@
 
     &_seeMore 
     {
-      margin-top: 8px;
-
       &_text 
       {
         @include SmallSmall;
@@ -2083,6 +2114,7 @@
 
       &_link 
       {
+        @include fontPrimary(500);
         color: $color_deep_sky_blue;
 
         &:hover 
@@ -2121,7 +2153,15 @@
 
     &_bankInfo 
     {
-      color: $color_gray_light;
+      span
+      {
+        color: $color_tundora;
+      }
+
+      p
+      {
+        color: $color_gray_light;
+      }
     }
 
     &_qr 
@@ -2140,16 +2180,16 @@
       &_downloadBtn 
       {
         @include flex(row, center);
-        @include fontSize(16);
+        @include typography_builder(600, 13, 21);
         width: 180px;
         margin-bottom: 10px;
         border: none;
         background-color: transparent;
-        color: $color_tiktok;
+        color: $color_tundora;
 
         svg 
         {
-          @include fixedSize(14px);
+          @include fixedSize(12px);
           margin-right: 6px;
         }
       }
@@ -2164,23 +2204,23 @@
       
       svg 
       {
-        @include fixedSize(15px);
+        @include fixedSize(13px);
         color: $color_orange;
-        margin-right: 6px;
+        margin-right: 8px;
       }
 
       &_date 
       {
-        font-weight: 400 !important;
-        font-size: 12px !important;
         padding-left: 3px !important;
       }
 
-      &_warning
+      &_warning,
+      &_date
       {
         font-weight: 400 !important;
         font-size: 12px !important;
-      }
+        color: $color_black !important;
+      } 
     }
   }
 }
