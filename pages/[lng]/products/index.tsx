@@ -92,23 +92,23 @@ const ProductsPage: FC<any> = ({
   const [filterProduct, setFilterProduct] = useState({})
   const categories: string = useQuery('categories')
   
-  const [currPage, setCurrPage] = useState(0);
+  const [currPage, setCurrPage] = useState(0)
   const [pageInfo, setPageInfo] = useState({
     pageNumber: 0,
     itemPerPage: 12,
     totalItems: 0,
   })
   
-  const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage);
+  const totalPage = Math.ceil(pageInfo.totalItems / pageInfo.itemPerPage)
   
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  });
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  })
 
   useEffect(() => {
-    setCurrPage(0);
-  }, [filterProduct, categories]);
+    setCurrPage(0)
+  }, [filterProduct, categories])
 
   const handleFilter = (selectedFilter: any) => setFilterProduct(selectedFilter)
   const resetFilter = () => router.replace(`/${lng}/products`)
@@ -126,18 +126,18 @@ const ProductsPage: FC<any> = ({
   const handleScroll = () => {
     const lastItem = document.querySelector(
       ".products_container:last-of-type"
-    ) as HTMLElement;
+    ) as HTMLElement
 
     if (lastItem) {
-      const lastItemOffset = lastItem.offsetTop + lastItem.clientHeight;
-      const pageOffset = window.pageYOffset + window.innerHeight;
-      if (pageOffset > lastItemOffset && currPage < totalPage - 1) setCurrPage(currPage + 1);
+      const lastItemOffset = lastItem.offsetTop + lastItem.clientHeight
+      const pageOffset = window.pageYOffset + window.innerHeight
+      if (pageOffset > lastItemOffset && currPage < totalPage - 1) setCurrPage(currPage + 1)
     }
-  };
+  }
 
   const scrollToTop = () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    document.body.scrollTop = 0 // For Safari
+    document.documentElement.scrollTop = 0 // For Chrome, Firefox, IE and Opera
   }
 
   type TProductsProps = {
@@ -178,7 +178,7 @@ const ProductsPage: FC<any> = ({
 
   return (
     <Layout {...layoutProps}>
-      <section className={styleProducts.products_breadcumb}>
+      <section className={styleProducts.products_breadcrumb}>
         <Breadcrumb
           title={i18n.t("product.title")}
           links={linksBreadcrumb}
@@ -215,7 +215,6 @@ const ProductsPage: FC<any> = ({
                   <button className={`${styles.productsComponent_reset}`} onClick={resetFilter}>
                     {i18n.t("product.reset")}
                   </button>
-
                 </div>
               </>
               <div
