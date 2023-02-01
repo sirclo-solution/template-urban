@@ -238,6 +238,7 @@ const ProductDetailComponent: FC<IProps> = ({
         enableArrow
         enableDots
         withRating
+        ratingIcon={<Icon.productDetail.starRatingIcon />}
         onComplete={(data: any) => {
           toogleSuccessAddToCart(data?.saveCart ? data?.saveCart?.lineItems :
             data?.saveCartByMemberID?.lineItems)
@@ -295,7 +296,7 @@ const ProductDetailComponent: FC<IProps> = ({
                     iconRight={<Icon.chevronRight />}
                     reviewsNextLabel={<Icon.arrowRight />}
                     reviewsPrevLabel={<Icon.arrowLeft />}
-                  getTotalAllReviews={(total: number) => setTotalReviews(total)}
+                    getTotalAllReviews={(total: number) => setTotalReviews(total)}
                     loadingComponent={
                       <div className={stylesReview.placeholderContainer}>
                         <Placeholder
