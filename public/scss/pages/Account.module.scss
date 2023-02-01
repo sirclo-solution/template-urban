@@ -1171,7 +1171,7 @@
     &[class*="shipped"],
     &[class*="readyToShip"],
     &[class*="delivered"],
-    &[class*="confirming"],
+    &[class*="confirming"]
     {
       color: $color_white !important;
     }
@@ -1180,11 +1180,6 @@
     {
       color: $color_text_grey;
     }
-
-    // &[class*="confirming"]
-    // {
-      
-    // }
   }
 
   &_orderTitle,
