@@ -145,6 +145,7 @@ const classesAccount = {
   paymentStatusNeedReviewClassName: `${styles.orderHistory_paymentStatus} needReview`,
   paymentStatusCompletedClassName: `${styles.orderHistory_paymentStatus} completed`,
   paymentStatusReturnedClassName: `${styles.orderHistory_paymentStatus} returned`,
+  paymentStatusConfirmingClassName: `${styles.orderHistory_paymentStatus} confirming`,
 
   // Order History Info
   orderInfoContainerClassName: styles.orderInfo_container,

@@ -1170,7 +1170,8 @@
     &[class*="paid"],
     &[class*="shipped"],
     &[class*="readyToShip"],
-    &[class*="delivered"]
+    &[class*="delivered"],
+    &[class*="confirming"]
     {
       color: $color_white !important;
     }
@@ -1618,7 +1619,6 @@
     padding: 0;
   }
 }
-
 
 @media (max-width: #{$breakpoint_max_lg})
 {
