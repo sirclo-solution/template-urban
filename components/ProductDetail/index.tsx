@@ -6,6 +6,8 @@ import { ProductDetail, ProductReviews } from '@sirclo/nexus'
 
 /* library component */
 import useProductDetail from './hooks/useProductDetail'
+import useWindowSize from 'lib/useWindowSize'
+import { useSizeBanner } from 'lib/useSizeBanner'
 
 /* components */
 import Placeholder from 'components/Placeholder'
@@ -168,6 +170,7 @@ const ProductDetailComponent: FC<IProps> = ({
 }) => {
 
   const router = useRouter()
+  const size = useWindowSize();
   const [showReview, setShowReview] = useState<boolean>(true)
   const [totalReviews, setTotalReviews] = useState<number>(0)
 
@@ -254,9 +257,9 @@ const ProductDetailComponent: FC<IProps> = ({
           1: true,
         }}
         thumborSetting={{
-          width: 800,
+          width: useSizeBanner(size.width),
           format: "webp",
-          quality: 85,
+          quality: 100,
         }}
         customDetailComponent={
           <>

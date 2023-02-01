@@ -75,6 +75,8 @@
     width: 100%;
     color: $color_text;
     position: relative;
+    word-break: break-all;
+    padding-right: 40px;
 
     &:hover
     {

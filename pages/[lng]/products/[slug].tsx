@@ -6,7 +6,9 @@ import {
 } from 'react'
 import { LazyLoadComponent } from 'react-lazy-load-image-component'
 import {
+  FeaturesType,
   Products,
+  TemplateFeatures,
   useAuthToken,
   useI18n
 } from '@sirclo/nexus'
@@ -23,6 +25,7 @@ import EmptyComponent from 'components/EmptyComponent/EmptyComponent'
 /* styles */
 import styleProducts from 'public/scss/pages/Products.module.scss'
 import styles from 'public/scss/components/ProductsComponent.module.scss'
+import Error404Page from 'pages/404'
 
 export const placeholder = {
   placeholderImage: styles.products_placeholder,
@@ -145,54 +148,59 @@ const ProductsHighlightPage: FC<any> = ({
   }
 
   return (
-    <Layout {...layoutProps}>
-      <section className={styleProducts.productsHighlight_breadcrumb}>
-        <Breadcrumb
-          title={titleProductSection}
-          links={linksBreadcrumb}
-          lng={lng}
-        />
-      </section>
-
-      <LazyLoadComponent>
-        <>
-          <section
-            className={`
-              container my-2 
-              ${pageInfo.totalItems !== 0 ? 'pb-4' : ""}
-              ${pageInfo.totalItems !== 0 ? styles.productsComponent_lastSection : ""}      
-            `}
-          >
-            <div className={`${pageInfo.totalItems === 0 && "mb-0"}`}>
-              <div className={styles["productsComponent_showResetContainer--productsHighlight"]}>
-                <p className={styles.productsComponent_show}>
-                  {i18n.t("product.show")}
-                  {" "}{pageInfo.totalItems}{" "}
-                  {i18n.t("product.result")}
-                </p>
-              </div>
-              <div
-                className={`${styles.productsComponent_grid} ${'mt-0 pt-0'}
-                ${pageInfo.totalItems === 0 && "pb-0"}    
+    <TemplateFeatures
+      id={FeaturesType.PRODUCT_HIGHLIGHT}
+      defaultChildren={<Error404Page />}
+    >
+      <Layout {...layoutProps}>
+        <section className={styleProducts.productsHighlight_breadcrumb}>
+          <Breadcrumb
+            title={titleProductSection}
+            links={linksBreadcrumb}
+            lng={lng}
+          />
+        </section>
+    
+        <LazyLoadComponent>
+          <>
+            <section
+              className={`
+                container my-2 
+                ${pageInfo.totalItems !== 0 ? 'pb-4' : ""}
+                ${pageInfo.totalItems !== 0 ? styles.productsComponent_lastSection : ""}      
               `}
-              >
-                {Array.from(Array(currPage + 1)).map((_, i) => (
-                  <Products
-                    key={i}
-                    pageNumber={i}
-                    {...baseProductsProps}                    
-                  />
-                ))
-                }
-                <button onClick={scrollToTop} className={styles.productsComponent_goToTop}>
-                  <div className={styles.productsComponent_arrowUp}></div>
-                </button>
+            >
+              <div className={`${pageInfo.totalItems === 0 && "mb-0"}`}>
+                <div className={styles["productsComponent_showResetContainer--productsHighlight"]}>
+                  <p className={styles.productsComponent_show}>
+                    {i18n.t("product.show")}
+                    {" "}{pageInfo.totalItems}{" "}
+                    {i18n.t("product.result")}
+                  </p>
+                </div>
+                <div
+                  className={`${styles.productsComponent_grid} ${'mt-0 pt-0'}
+                  ${pageInfo.totalItems === 0 && "pb-0"}    
+                `}
+                >
+                  {Array.from(Array(currPage + 1)).map((_, i) => (
+                    <Products
+                      key={i}
+                      pageNumber={i}
+                      {...baseProductsProps}                    
+                    />
+                  ))
+                  }
+                  <button onClick={scrollToTop} className={styles.productsComponent_goToTop}>
+                    <div className={styles.productsComponent_arrowUp}></div>
+                  </button>
+                </div>
               </div>
-            </div>
-          </section >
-        </>
-      </LazyLoadComponent>
-    </Layout>
+            </section >
+          </>
+        </LazyLoadComponent>
+      </Layout>
+    </TemplateFeatures>
   )
 }
 export const getServerSideProps = async ({

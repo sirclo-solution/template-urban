@@ -56,7 +56,7 @@ const locale = {
     "reviewer": "Nama",
     "reviewsPerPage": "Ulasan",
     "sale": "Sale",
-    "seeAll": "Lihat Semua",
+    "seeAll": "Lihat semua",
     "share": "Bagikan",
     "shareProduct": "Bagikan Produk",
     "shop": "Belanja",
