@@ -1171,7 +1171,8 @@
     &[class*="shipped"],
     &[class*="readyToShip"],
     &[class*="delivered"],
-    &[class*="confirming"]
+    &[class*="confirming"],
+    &[class*="needReview"]
     {
       color: $color_white !important;
     }
