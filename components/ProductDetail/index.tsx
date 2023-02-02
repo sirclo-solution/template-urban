@@ -50,7 +50,10 @@ const productDetailClass = {
   addToCartBtnClassName: styles.addToCartBtn,
   buyNowBtnClassName: styles.buyNowBtn,
   arrowClassName: styles.arrow,
-  detailTitleStarNumberClassName: styles.detailTitleStarNumber
+  detailTitleStarNumberClassName: styles.detailTitleStarNumber,
+  ratingWrapperClassName: styles.ratingWrapper,
+  ratingCountClassName: styles.ratingCount,
+  
 }
 
 const notifyMeClass = {
@@ -234,6 +237,8 @@ const ProductDetailComponent: FC<IProps> = ({
         qtyLabel={i18n.t("product.quantity")}
         enableArrow
         enableDots
+        withRating
+        ratingIcon={<Icon.productDetail.starRatingIcon />}
         onComplete={(data: any) => {
           toogleSuccessAddToCart(data?.saveCart ? data?.saveCart?.lineItems :
             data?.saveCartByMemberID?.lineItems)
@@ -291,7 +296,7 @@ const ProductDetailComponent: FC<IProps> = ({
                     iconRight={<Icon.chevronRight />}
                     reviewsNextLabel={<Icon.arrowRight />}
                     reviewsPrevLabel={<Icon.arrowLeft />}
-                  getTotalAllReviews={(total: number) => setTotalReviews(total)}
+                    getTotalAllReviews={(total: number) => setTotalReviews(total)}
                     loadingComponent={
                       <div className={stylesReview.placeholderContainer}>
                         <Placeholder
