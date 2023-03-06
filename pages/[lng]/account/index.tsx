@@ -256,7 +256,18 @@ const classesAccount = {
   mediaLabel: styles.otpSetting_mediaLabel,
   mediaDescription: styles.otpSetting_mediaDescription,
   mediaCheckboxContainer: styles.otpSetting_toggle,
-  mediaDetailCheckboxContainer: styles.otpSetting_checkbox
+  mediaDetailCheckboxContainer: styles.otpSetting_checkbox,
+
+  //detailPriceSection
+  detailPriceSectionClassName: styles.orderHistory_detailPriceSection,
+  detailPriceLineClassName: styles.orderHistory_detailPriceLine,
+  detailPriceTitleClassName: styles.orderHistory_detailPriceTitle,
+  detailPriceClassName: styles.orderHistory_detailPrice,
+  detailTotalPriceLineClassName: styles.orderHistory_detailPriceLine,
+  detailTotalPriceTitleClassName: styles.orderHistory_detailTotalPriceTitle,
+  detailTotalPriceClassName: styles.orderHistory_detailTotalPrice,
+  detailDiscountPriceClassName: styles.orderHistory_detailDiscountPrice,
+  productNotesClassName: styles.orderHistory_productNotes,
 }
 
 const passwordStrengthClasses = {
