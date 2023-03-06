@@ -3,6 +3,7 @@ const locale = {
     "lineItemDelivered": "Delivered",
     "lineItemNeedReview": "Needs Review",
     "lineItemReviewed": "Reviewed",
+    "productNote": "Note",
     "uploading": "Uploading...",
     "uploadReceipt": "Upload proof of Payment"
   }

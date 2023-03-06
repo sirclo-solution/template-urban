@@ -1,8 +1,9 @@
 const locale = {
   "orderHistory": {
     "lineItemDelivered": "Selesaikan Pesanan",
-    "lineItemNeedReview": "Needs Review",
-    "lineItemReviewed": "Reviewed",
+    "lineItemNeedReview": "Tulis Ulasan",
+    "lineItemReviewed": "Telah diulas",
+    "productNote": "Catatan",
     "uploading": "Unggah..",
     "uploadReceipt": "Unggah Bukti Pembayaran"
   }
