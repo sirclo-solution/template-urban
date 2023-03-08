@@ -116,6 +116,7 @@
       &__active
       {
         @extend .account_tabLink;
+        @include fontPrimary(500);
 
         &::after
         {
@@ -152,6 +153,7 @@
   &_tabPane
   {
     border: solid 1px $color_elements_line_darker;
+    border-radius: 2px;
     background-color: transparent;
     padding: 16px;
   }
@@ -187,7 +189,7 @@
   margin: 0;
   padding: 16px;
 
-  background-color: $color_elements_line;
+  background-color: $color_elements;
   color: $color_text_secondary;
 
   &_accordion
@@ -195,7 +197,7 @@
     &Toggle
     {
       @include flex(row, center, flex-start);
-      @include typographyBuilder(400, 12, 16);
+      @include typographyBuilder(500, 12, 16);
       @include fixedWidth(100%);
       @include fixedHeight(32px);
       position: relative;
@@ -236,6 +238,7 @@
   &_progress
   {
     @include styleProgressBar($color_elements_line_darker, $color_black);
+    border-radius: 6px;
   }
 
   &_prompt
@@ -505,9 +508,10 @@
     margin: 0 0 25px;
     padding: 8px 12px;
 
-    background: $color_elements_line;
+    background: $color_elements;
     border: solid 1px $color_elements_line_darker;
-    color: $color_text;
+    border-radius: 2px;
+    color: $color_black;
   }
 
   &_icon
@@ -519,6 +523,7 @@
     svg
     {
       @include fixedSize(100%);
+      background: transparent;
     }
   }
 
@@ -534,7 +539,7 @@
 
   &_label
   {
-    padding: 0 10px;
+    padding: 0 4px 0 10px;
   }
 
   &_searchHere
@@ -1063,13 +1068,19 @@
     padding: 0;
   }
 
+  &_shippingMethodValue
+  {
+    color: $color_black !important;
+    margin-top: 6px !important;
+  }
+
   &_orderItem
   {
     @include fixedWidth(100%);
+    @include flex(column, normal);
     position: relative;
     margin: 0 0 12px;
     padding: 0;
-
     border: solid 1px $color_elements_line_darker;
     background-color: $color_white;
 
@@ -1121,6 +1132,7 @@
 
   &_orderHeader
   {
+    order: 1;
     padding: 16px;
   }
 
@@ -1128,8 +1140,7 @@
   {
     @include flex(column, stretch, flex-start);
 
-    [class*="orderTitle"],
-    [class*="paymentStatus"]
+    [class*="orderTitle"]
     {
       @include fixedWidth(calc(100% - (16px * 4)));
     }
@@ -1143,7 +1154,7 @@
   &_paymentStatus
   {
     @include flex(row, center, center);
-    @include fixedWidth(100%);
+    @include fixedWidth(50%);
     @include SmallSmall;
     position: relative;
     margin: 0 auto 12px;
@@ -1174,7 +1185,7 @@
   &_orderDate
   {
     @include flex(row, center, flex-start);
-    @include SmallSmall;
+    @include SmallSemiBold;
     position: relative;
     margin: 0;
     padding: 0;
@@ -1195,6 +1206,7 @@
   &_orderBody
   {
     @include fixedWidth(100%);
+    order: 3;
     position: relative;
     margin: 0;
     padding: 0;
@@ -1257,6 +1269,14 @@
       color: $color_text;
     }
   }
+  
+  &_invoiceButton
+  {
+    @media (max-width: #{$breakpoint_max_sm})
+    {
+      @include flex(row, center, flex-end);
+    }
+  }
 
   &_shippingTrackerButton
   {
@@ -1284,7 +1304,7 @@
 
   &_orderedItem
   {
-    @include flex(row, center, flex-start);
+    @include flex(row, flex-start, flex-start);
     position: relative;
     margin: 0;
     padding: 0;
@@ -1292,7 +1312,7 @@
 
     & + li
     {
-      margin-top: 16px;
+      margin-top: 12px;
     }
   }
 
@@ -1312,7 +1332,7 @@
     @include flex(column, flex-start, center);
     position: relative;
     margin: 0;
-    padding: 6px;
+    padding-left: 6px;
     flex-grow: 1;
   }
 
@@ -1327,6 +1347,7 @@
     padding: 0;
     color: $color_danger_light;
     text-decoration: none;
+    order: 4;
 
     &::before
     {
@@ -1341,22 +1362,22 @@
       background-repeat: no-repeat;
       background-color: transparent;
     }
+  }
 
+  &_orderedItemDetailNeedReview
+  {
     &,
     &:hover,
     &:focus,
     &:active
     {
       outline: none;
-      color: $color_danger_light;
+      color: $color_blue;
     }
-  }
 
-  &_orderedItemDetailNeedReview
-  {
     &::before
     {
-      background-image: url("data:image/svg+xml,%3Csvg width='10' height='10' viewBox='0 0 10 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 10.0003C2.2385 10.0003 0 7.76181 0 5.00031C0 2.23881 2.2385 0.000305176 5 0.000305176C7.7615 0.000305176 10 2.23881 10 5.00031C10 7.76181 7.7615 10.0003 5 10.0003ZM5 9.00031C6.06087 9.00031 7.07828 8.57888 7.82843 7.82873C8.57857 7.07859 9 6.06117 9 5.00031C9 3.93944 8.57857 2.92202 7.82843 2.17188C7.07828 1.42173 6.06087 1.00031 5 1.00031C3.93913 1.00031 2.92172 1.42173 2.17157 2.17188C1.42143 2.92202 1 3.93944 1 5.00031C1 6.06117 1.42143 7.07859 2.17157 7.82873C2.92172 8.57888 3.93913 9.00031 5 9.00031ZM4.5 6.50031H5.5V7.50031H4.5V6.50031ZM4.5 2.50031H5.5V5.50031H4.5V2.50031Z' fill='%23EA715A'/%3E%3C/svg%3E%0A");
+      background-image: url("data:image/svg+xml,%3Csvg width='12' height='14' viewBox='0 0 12 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M9.78033 3.21751C9.48743 2.92514 9.01256 2.92514 8.71966 3.21751L8.32322 3.61326L9.38388 4.67204L9.78033 4.2763C10.0732 3.98392 10.0732 3.50989 9.78033 3.21751ZM10.4874 4.98215C11.1709 4.29995 11.1709 3.19387 10.4874 2.51166C9.80402 1.82945 8.69597 1.82945 8.01255 2.51166L7.26265 3.26024L1.14645 9.36561C1.05268 9.45921 1 9.58616 1 9.71853V11.5009C1 11.7766 1.22386 12 1.5 12H3.25001C3.38261 12 3.50979 11.9474 3.60356 11.8538L10.4874 4.98215ZM8.67677 5.3779L7.61611 4.31912L2 9.92527V11.0018H3.0429L8.67677 5.3779Z' fill='%232374C4'/%3E%3C/svg%3E%0A");
     }
   }
 
@@ -1397,12 +1418,25 @@
   &_orderedItemDetailTitle
   {
     @include RegulerReguler;
-    margin-bottom: 8px;
+    order: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  &_orderedItemDetailNeedReview,
+  &_orderedItemDetailReviewed,
+  &_orderedItemDetailPrice
+  {
+    margin-top: 8px;
   }
 
   &_orderedItemDetailPrice
   {
     @include SmallSmall;
+    order: 3;
   }
   
   &_orderedItemDetailUploadReceipt
@@ -1440,21 +1474,9 @@
     }
   }
 
-  &_buyerNoteContainer,
   &_shippingDetails,
-  &_shippingMethodContainer,
-  &_paymentMethodContainer
+  &_shippingMethodContainer
   {
-    @include fixedWidth(100%);
-    @include SmallSmall;
-    position: relative;
-    margin: 0;
-    padding: 16px 16px 0;
-
-    border: none;
-    background: $color_elements;
-    color: $color_text;
-
     &::after
     {
       content: "";
@@ -1465,6 +1487,23 @@
       @include fixedHeight(1px);
       background-color: $color_elements_line_darker;
     }
+  }
+
+  &_shippingDetails
+  {
+    border-top: solid 1px $color_elements_line_darker;
+  }
+
+  &_buyerNoteContainer,
+  &_shippingDetails,
+  &_shippingMethodContainer
+  {
+    @include fixedWidth(100%);
+    @include SmallSmall;
+    position: relative;
+    padding: 16px 16px 0;
+    background: $color_elements;
+    color: $color_text;
 
     span,
     p
@@ -1484,13 +1523,50 @@
 
       & + p
       {
+        @include SmallSmall;
         margin-top: 6px;
+        color: $color_black;
+      }
+
+      p
+      {
+        @include SmallSmall;
+        color: $color_black;
       }
     }
   }
 
   &_paymentMethodContainer
   {
+    @include fixedWidth(100%);
+    @include SmallSmall;
+    position: relative;
+    margin: 0;
+    padding: 16px 16px 0;
+    border-bottom: 1px solid $color_elements_line_darker;
+    background: $color_elements;
+    color: $color_text;
+
+    span,
+    p
+    {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    span
+    {
+      @include SmallSemiBold;
+      color: $color_text_secondary;
+
+      & + p
+      {
+        margin-top: 6px;
+      }
+    }
+  
+    overflow: auto;
     padding-bottom: 16px;
     &::after
     {
@@ -1504,8 +1580,9 @@
   &_orderFooter
   {
     @include flex(row, center, space-between);
+    order: 2;
     position: relative;
-    margin: 16px;
+    margin: 0 16px 12px;
     padding: 8px 10px;
     background: $color_elements_line_darker;
     border-radius: 3px;
@@ -1548,8 +1625,51 @@
     margin: 0;
     padding: 0;
   }
-}
 
+  &_detailPrice
+  {
+    &Section
+    {
+      @extend .orderHistory_paymentMethodContainer;
+      order: 4;
+      background: none !important;
+      padding: 16px 0 !important;
+      border-bottom: none !important;
+    }
+
+    &Line
+    {
+      @include flex(row, center, space-between);
+      padding: 0 16px;
+  
+      &:not(:last-child)
+      {
+        margin-bottom: 8px;
+      }
+  
+      &:nth-last-child(3),
+      &:last-child
+      {
+        border-top: 1px solid $color_elements_line_darker;
+        padding-top: 12px;
+        margin-top: 12px;
+      }
+    
+      &:last-child
+      {
+        @include SmallSemiBold;
+      }
+    }
+  }
+
+  &_productNotes
+  {
+    @include SmallSmall;
+    color: $color_text_grey;
+    order: 2;
+    margin-top: 4px;
+  }
+}
 
 @media (max-width: #{$breakpoint_max_lg})
 {
@@ -1564,7 +1684,7 @@
       overflow: hidden;
       overflow-y: hidden;
       overflow-x: auto;
-      border-bottom: solid 1px $color_elements_line;
+      border-bottom: solid 1px $color_elements;
 
       li,
       &Item
@@ -1914,5 +2034,244 @@
   &_shipmentTrackButton
   {
     position: relative;
+  }
+}
+
+.paymentMethod 
+{
+  &_detail 
+  {
+    &_wrapper 
+    {
+      flex-direction: column;
+    }
+
+    &_container 
+    {
+      display: inline-block;
+      margin-top: 8px;
+    }
+
+    &_option 
+    {
+      @include flex(row, center, flex-start);
+      margin-top: 6px;
+    }
+
+    &_text,
+    &_textTable
+    {
+      @include fontSize(12);
+      @include fontPrimary(500);
+      line-height: 20px;
+      color: $color_black;
+
+      a 
+      {
+        text-decoration: none;
+        color: $color_blue;
+
+        &:hover 
+        {
+          text-decoration: underline;
+        }
+      }
+    }
+
+    &_card 
+    {
+      float: left;
+      background-color: $color_white;
+      border: 1px solid $color_geyser;
+      border-radius: 4px;
+      margin-bottom: 4px;
+
+      [class*="_instruction"]:nth-child(3)
+      {
+        width: 180px;
+      }
+    
+    }
+
+    &_code 
+    {
+      @include typography_builder(600, 16, 24);
+      padding: 8px 12px !important;
+      text-align: center;
+      color: $color_oxford_blue;
+      margin: 8px auto;
+    }
+
+    &_copyCodeButton 
+    {
+      background: none;
+      border: none;
+      padding: 0 6px 0 0;
+
+      svg 
+      {
+        @include fixedSize(12px);
+        color: $color_teal_blue;
+        margin-left: 6px;
+      }
+    }
+
+    &_instruction 
+    {
+      &_container 
+      {
+        @include flex(row, center);
+        width: 100%;
+        background: $color_lighter_low_blue;
+        padding: 8px;
+        grid-gap: 6px;
+        gap: 6px;
+        border-bottom-left-radius: 4px;
+        border-bottom-right-radius: 4px;
+
+        svg 
+        {
+          @include fixedSize(12px);
+          color: $color_deep_sky_blue;
+        }
+
+      }
+
+      button + &_container 
+      {
+        @include flex(row, flex-start);
+      }
+
+      &_text 
+      {
+        width: 100%;
+        color: $color_deep_sky_blue;
+
+        span 
+        {
+          font-weight: 400 !important;
+          color: $color_teal_blue;
+        }
+      }
+    }
+
+    &_seeMore 
+    {
+      &_text 
+      {
+        @include SmallSmall;
+        color: $color_gray_darker;
+      }
+
+      &_link 
+      {
+        @include fontPrimary(500);
+        color: $color_deep_sky_blue;
+
+        &:hover 
+        {
+          color: $color_deep_sky_blue;
+        }
+      }
+    }
+
+    &_bankList 
+    {
+      width: 100%;
+      float: left;
+      padding: 0;
+      margin: 0;
+
+      li 
+      {
+        @include flex(row, center, space-between);
+        padding: 12px;
+        width: 180px;
+        border-bottom: 1px solid #ccc;
+
+        p 
+        {
+          margin: 0;
+          padding: 0;
+        }
+
+        &:last-child 
+        {
+          border-bottom: none;
+        }
+      }
+    }
+
+    &_bankInfo 
+    {
+      span
+      {
+        color: $color_tundora;
+      }
+
+      p
+      {
+        color: $color_gray_light;
+      }
+    }
+
+    &_qr 
+    {
+      @include flex(row, center, space-between);
+      width: 180px;
+
+      img 
+      {
+        position: relative;
+        width: inherit;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+      }
+
+      &_downloadBtn 
+      {
+        @include flex(row, center);
+        @include typography_builder(600, 13, 21);
+        width: 180px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: transparent;
+        color: $color_tundora;
+
+        svg 
+        {
+          @include fixedSize(12px);
+          margin-right: 6px;
+        }
+      }
+    }
+
+    &_expiry 
+    {
+      color: $color_gray_darker;
+      background: rgba(255, 152, 0, 0.1);
+      padding: 4px 6px;
+      border-radius: 4px;
+      
+      svg 
+      {
+        @include fixedSize(13px);
+        color: $color_orange;
+        margin-right: 8px;
+      }
+
+      &_date 
+      {
+        padding-left: 3px !important;
+      }
+
+      &_warning,
+      &_date
+      {
+        font-weight: 400 !important;
+        font-size: 12px !important;
+        color: $color_black !important;
+      } 
+    }
   }
 }
