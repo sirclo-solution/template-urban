@@ -1,6 +1,6 @@
 const locale = {
   "instagram": {
-    "cta": "follow us on instagram"
+    "cta": "Follow us on Instagram"
   }
 }
 
