@@ -49,14 +49,12 @@ const Instafeed: FC<InstafeedType> = ({
     <>
       {title && totalPost ? (
         <div className={styles.instagramFeed_titleContainer}>
-          <h2 className={styles.instagramFeed_title}>@{title}</h2>
+          <h2 className={styles.instagramFeed_followUs}>{followButtonText}</h2>
           {withFollowButton && (
-            <span
-              className={styles.instagramFeed_followUs}
-              onClick={handleFollowButton}
-            >
-              {followButtonText}
-            </span>
+            <div className={styles.instagramFeed_usernameContainer} onClick={handleFollowButton}>
+              <span className={styles.instagramFeed_title}>@{title}</span>
+              <span className={styles.instagramFeed_arrow}/>
+            </div>
           )}
         </div>
       ) : (
