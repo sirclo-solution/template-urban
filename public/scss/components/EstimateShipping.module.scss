@@ -144,11 +144,16 @@
 {
   @include grid-start-(1, 1);
   @include row-span-(2);
-  @include fixedWidth(34px);
+  @include fixedWidth(32px);
+  @include fixedHeight(24px);
+  @include flex();
+  border: 0.5px solid $color_border_2;
+  border-radius: 2px;
+  padding: 3px;
 
   img
   {
-    @include fixedWidth(34px);
+    @include fixedWidth(100%);
   }
 }
 
@@ -173,7 +178,7 @@
 
 .estimateShippingPopupLineProvider
 {
-  @include flex(row, flex-start, space-between);
+  @include flex(row, center, space-between);
   padding: 12px 0;
 }
 
