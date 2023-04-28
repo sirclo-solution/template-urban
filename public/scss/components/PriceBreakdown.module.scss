@@ -49,13 +49,6 @@
       color: $color_black;
     }
   }
-  & > div:not(:first-of-type):not(:nth-child(2))
-  {
-    [class*="expandedPrice"]
-    {
-      color: $color_red_other;
-    }
-  }
 }
 
 .customChevronDownIcon
