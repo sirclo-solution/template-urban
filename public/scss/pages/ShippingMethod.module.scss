@@ -165,6 +165,46 @@
 .shippingNameDiv
 {
   @include RegulerReguler;
+
+  @media screen and (max-width: 575px)
+  {
+    max-width: 40%;
+    white-space: break-spaces;
+  }
+}
+
+.shippingPriceDiv
+{
+  @include flex(column, flex-end);
+
+  & > p[class*="_shippingPrice"]:not(:only-child)
+  {
+    font-size: 12px;
+    text-decoration: line-through;
+    color: $color_text_secondary;
+  }
+}
+
+.shippingPriceDivDiscounted
+{
+  @include flex(row);
+  margin-top: 8px;
+}
+
+.shippingDiscountPercentageDiv
+{
+  @include typographyBuilder(500, 10, 16);
+  background: $color_red_other;
+  color: $color_white;
+  border-radius: 3px;
+  padding: 3px;
+  margin-right: 5px;
+  width: max-content;
+}
+
+.shippingDiscountedPrice
+{
+  color: $color_red_other;
 }
 
 .shippingPrice
@@ -210,9 +250,10 @@
 
 .warningPinPoint
 {
-  @include position(absolute, 6px, 16px);
+  @include position(absolute, 6.5px, 16px);
   @include fontSize(12);
   color: $color_text_secondary;
+  margin-bottom: 8px;
 }
 
 .orderSummaryBoxContainer

@@ -8,6 +8,7 @@ const locale = {
     "created": "AWB is created",
     "delivered": "Buyer has received the order",
     "deliveryCourier": "Delivery Courier",
+    "discount": "DISCOUNT",
     "inDelivery": "Driver is on the way to send your order",
     "inTransit": "Order in transit",
     "moreShipping": "Choose other shipping method",
