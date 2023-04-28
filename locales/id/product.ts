@@ -14,6 +14,7 @@ const locale = {
     "day": "Hari",
     "description": "Deskripsi",
     "destination": "Tujuan",
+    "discount": "DISKON",
     "emptyCategory": "Kategori Kosong",
     "estimateCost": "Estimasi Ongkos Pengiriman",
     "estimateShipping": "Estimasi Pengiriman",
