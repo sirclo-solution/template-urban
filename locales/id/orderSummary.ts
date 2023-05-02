@@ -12,6 +12,7 @@ const locale = {
     "pointsLeft": "Point tersisa",
     "products":"Produk",
     "shipping": "Ongkos Kirim",
+    "shippingDiscount": "Diskon Ongkos Kirim",
     "shippingEmpty": "Semua kolom di alamat pengiriman tidak boleh kosong.",
     "subTotal": "Subtotal",
     "subTotalTransaction":"Subtotal Transaksi",

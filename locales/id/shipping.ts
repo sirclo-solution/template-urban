@@ -8,6 +8,7 @@ const locale = {
     "created": "AWB telah dibuat",
     "delivered": "Pembeli telah menerima pesanan",
     "deliveryCourier": "Kurir Pengiriman",
+    "discount": "DISKON",
     "inDelivery": "Kurir dalam perjalanan menuju pembeli",
     "inTransit": "Pesanan tiba di",
     "moreShipping": "Pilih metode pengiriman lainnya",

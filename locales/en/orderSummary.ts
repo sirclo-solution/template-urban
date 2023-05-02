@@ -11,6 +11,7 @@ const locale = {
     "pointsLeft": "Points left",
     "products":"Product(s)",
     "shipping": "Shipping Fee",
+    "shippingDiscount": "Shipping Discount",
     "shippingEmpty": "All field on Shipping Address Form must not be empty.",
     "subTotal": "Subtotal",
     "subTotalTransaction": "Subtotal Transaction",
