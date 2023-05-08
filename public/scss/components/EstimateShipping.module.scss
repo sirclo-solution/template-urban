@@ -72,16 +72,22 @@
 {
   @extend .popup_container;
   @include flex(column, flex-start, flex-start);
-  padding: 16px 16px 0;
-  border-top: 4px solid $color_blue;
-  width: 340px;
+  width: 560px;
+  min-height: 474px;
   max-width: 100%;
-  border-radius: 2px,
+  border-radius: 4px;
+}
+
+.estimateShippingPopupHeader
+{
+  width: 100%;
 }
 
 .estimateShippingPopupTitle
 {
   @include RegulerSemiBold;
+  padding: 16px;
+  border-bottom: 1px solid $color_geyser;
 }
 
 .estimateShippingPopupButtonClose
@@ -96,10 +102,10 @@
 
 .estimateShippingPopupBody
 {
-  padding: 0 12px;
+  width: 100%;
+  align-self: center;
+  padding: 16px 28px;
   background: $color_elements;
-  border: 1px solid $color_elements_line_darker;
-  margin: 10px 0 4px;
   border-radius: 2px;
 }
 
@@ -126,7 +132,77 @@
 .estimateShippingPopupLabel
 {
   @include SmallSemiBold;
+  color: $color_black;
+}
+
+.estimateShippingPopupProviderValueContainer
+{
+  @include flex(column);
+}
+
+.estimateShippingPopupProviderImg
+{
+  @include grid-start-(1, 1);
+  @include row-span-(2);
+  @include fixedWidth(32px);
+  @include fixedHeight(24px);
+  @include flex();
+  border: 0.5px solid $color_border_2;
+  border-radius: 2px;
+  padding: 3px;
+
+  img
+  {
+    @include fixedWidth(100%);
+  }
+}
+
+.estimateShippingPopupProviderLabel
+{
+  @include SmallSemiBold;
+  margin-left: 12px;
+  flex-grow: 1;
+  margin-right: auto;
+
+  &:last-child
+  {
+    border-bottom: 0;
+  }
+
+  @media screen and (max-width: 575px)
+  {
+    max-width: 44%;
+    white-space: break-spaces;
+  }
+}
+
+.estimateShippingPopupLineProvider
+{
+  @include flex(row, center, space-between);
+  padding: 12px 0;
+}
+
+.estimateShippingPopupProviderDiscountedValueContainer
+{
+  @include flex(row);
+}
+
+.estimateShippingPopupProviderDiscountedValuePercentage
+{
+  @include typographyBuilder(500, 10, 16);
+  background: $color_elements_line_darker;
   color: $color_text_secondary;
+  border-radius: 3px;
+  padding: 3px;
+  margin-right: 5px;
+}
+
+.estimateShippingPopupProviderDiscountedValuePrice
+{
+  @include SmallSmall;
+  color: $color_text_secondary;
+  text-decoration: line-through;
+  align-self: flex-end;
 }
 
 .estimateShippingPopupValue
@@ -140,38 +216,7 @@
   width: 100%;
   max-height: 200px;
   overflow-y: auto;
-}
-
-.estimateShippingPopupLineProvider
-{
-  @include flex(row, center, space-between);
-  padding: 12px;
-  margin-right: 8px;
-  border-bottom: 1px solid $color_elements_line;
-}
-
-.estimateShippingPopupProviderImg
-{
-  @include grid-start-(1, 1);
-  @include row-span-(2);
-  @include fixedWidth(34px);
-
-  img
-  {
-    @include fixedWidth(34px);
-  }
-}
-
-.estimateShippingPopupProviderLabel
-{
-  @include SmallSemiBold;
-  margin-left: 12px;
-  flex-grow: 1;
-
-  &:last-child
-  {
-    border-bottom: 0;
-  }
+  padding: 0 16px 16px;
 }
 
 .estimateShippingPopupProviderValue
