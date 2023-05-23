@@ -13,8 +13,6 @@ import stylesNotify from 'public/scss/components/Notify.module.scss'
 
 const useProductDetail = ({ lng, i18n, slug }) => {
 
-  const IS_PROD = process.env.IS_PROD
-
   const [successAddToCart, setSuccessAddToCart] = useState(null)
   const [errorAddToCart, setErrorAddToCart] = useState(null)
   const [errorNotify, setErrorNotify] = useState<boolean>(false)
@@ -134,7 +132,6 @@ const useProductDetail = ({ lng, i18n, slug }) => {
     toogleErrorAddToCart,
     toogleErrorNotify,
     toogleSuccessNotify,
-    IS_PROD,
     toogleSuccessAddToCart,
     ModalSuccessAddToCart,
     ModalErrorAddToCart,

@@ -186,7 +186,6 @@ const ProductDetailComponent: FC<IProps> = ({
     successNotify,
     toogleErrorAddToCart,
     toogleSuccessNotify,
-    IS_PROD,
     toogleSuccessAddToCart,
     ModalSuccessAddToCart,
     ModalErrorAddToCart,
@@ -251,7 +250,7 @@ const ProductDetailComponent: FC<IProps> = ({
         onCompleteMsg={toogleSuccessNotify}
         onError={toogleErrorAddToCart}
         onErrorMsg={(msg) => msg && toast.error(msg)}
-        withEstimateShipping={IS_PROD === "false" ? true : false}
+        withEstimateShipping
         prevIcon={<Icon.productDetail.prevIcon />}
         nextIcon={<Icon.productDetail.nextIcon />}
         notifyIcon={<Icon.productDetail.notifyIcon />}
