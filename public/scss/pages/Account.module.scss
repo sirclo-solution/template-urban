@@ -1334,6 +1334,11 @@
     margin: 0;
     padding-left: 6px;
     flex-grow: 1;
+
+    &Wrapper
+    {
+      order: 4;
+    }
   }
 
   &_orderedItemDetailNeedReview,
