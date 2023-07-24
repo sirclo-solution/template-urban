@@ -7,7 +7,8 @@ const locale = {
     "later": "Nanti saja",
     "productCategory": "Kategori produk",
     "showMore": "Lihat Selengkapnya",
-    "title": "Beranda"
+    "title": "Beranda",
+    "allProducts": "Semua Produk",
   }
 }
 
