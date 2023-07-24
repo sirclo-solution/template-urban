@@ -7,7 +7,8 @@ const locale = {
     "later": "Later",
     "productCategory": "Category products",
     "showMore": "Show More",
-    "title": "Home"
+    "title": "Home",
+    "allProducts": "All Products",
   }
 }
 

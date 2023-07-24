@@ -6,11 +6,13 @@ import {
   useAuthToken, 
   useI18n,
   TemplateFeatures,
-  FeaturesType
+  FeaturesType,
+  useGetHomepageSection
  } from '@sirclo/nexus'
 /* library template */
 import { handleGetBanner } from 'lib/client'
 import { useBrandCommon } from 'lib/useBrand'
+import { GRAPHQL_URI } from 'lib/Constants'
 /* component */
 import Layout from 'components/Layout/Layout'
 import Banner from 'components/Banner'
@@ -27,7 +29,9 @@ const Home: FC<any> = ({
   lng,
   lngDict,
   dataBanners,
-  brand
+  brand,
+  isMenuCategorySectionActive = true,
+  isAllProductsSectionActive = false
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const i18n: any = useI18n()
   const layoutProps = { 
@@ -127,18 +131,35 @@ const Home: FC<any> = ({
           <SecondAdvertisement />
         </LazyLoadComponent>
       </section>
-
-      <section className="container">
-        <ProductCategoryComponent
-          i18n={i18n}
-          page='homepage'
-          displayMode='normal'
-          withTitle
-          lng={lng}
-          withSeeAll
-          itemPerPage={5}
-        />
-      </section>
+      
+      {isMenuCategorySectionActive && (
+        <section className="container">
+          <ProductCategoryComponent
+            i18n={i18n}
+            page='homepage'
+            displayMode='normal'
+            withTitle
+            lng={lng}
+            withSeeAll
+            itemPerPage={5}
+          />
+        </section>
+      )}
+      
+      {isAllProductsSectionActive && (
+        <LazyLoadComponent>
+          <ProductsComponent
+            i18n={i18n}
+            lng={lng}
+            type='grid'
+            withTitle={{
+              type: 'left',
+              title: i18n.t('home.allProducts'),
+              withSeeAll: true
+            }}
+          />
+        </LazyLoadComponent>
+      )}
 
       {brand?.socmedSetting?.instagramToken &&
         <section className="container">
@@ -163,10 +184,12 @@ export const getServerSideProps: GetServerSideProps = async ({
 }: any) => {
   const [
     brand,
-    dataBanners
+    dataBanners,
+    { isAllProductsSectionActive, isMenuCategorySectionActive }
   ] = await Promise.all([
     useBrandCommon(req, params),
     handleGetBanner(req),
+    useGetHomepageSection(GRAPHQL_URI(req)),
     useAuthToken({req, res, env: process.env})
   ])
 
@@ -182,7 +205,9 @@ export const getServerSideProps: GetServerSideProps = async ({
   return {
     props: {
       ...brand,
-      dataBanners
+      dataBanners,
+      isMenuCategorySectionActive,
+      isAllProductsSectionActive
     }
   }
 }
