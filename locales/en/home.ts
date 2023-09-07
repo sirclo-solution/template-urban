@@ -5,7 +5,7 @@ const locale = {
     "featuredProducts": "Featured Products",
     "loading": "Please Wait",
     "later": "Later",
-    "productCategory": "Category products",
+    "productCategory": "Product Categories",
     "showMore": "Show More",
     "title": "Home",
     "allProducts": "All Products",
