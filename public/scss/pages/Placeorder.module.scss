@@ -57,6 +57,13 @@
     }
   }
 
+  label[for="street"]
+  {
+    display: flex;
+    justify-content: space-between !important;
+    width: 92%;
+  }
+
   &[class$="-placeholder"],
   &[class$="-Placeholder"]
   {
