@@ -1,29 +1,29 @@
 /* library package */
-import { FC } from 'react'
-import { GetServerSideProps, InferGetServerSidePropsType } from 'next'
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import { 
-  useAuthToken, 
+import { FC } from "react";
+import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import {
+  useAuthToken,
   useI18n,
   TemplateFeatures,
   FeaturesType,
-  useGetHomepageSection
- } from '@sirclo/nexus'
+  useGetHomepageSection,
+} from "@sirclo/nexus";
 /* library template */
-import { handleGetBanner } from 'lib/client'
-import { useBrandCommon } from 'lib/useBrand'
-import { GRAPHQL_URI } from 'lib/Constants'
+import { handleGetBanner } from "lib/client";
+import { useBrandCommon } from "lib/useBrand";
+import { GRAPHQL_URI } from "lib/Constants";
 /* component */
-import Layout from 'components/Layout/Layout'
-import Banner from 'components/Banner'
-import MainAdvertisement from 'components/Widget/MainAdvertisement'
-import SecondAdvertisement from 'components/Widget/SecondAdvertisement'
-import ProductsComponent from 'components/Products/ProductsComponent'
-import ProductCategoryComponent from 'components/ProductCategoryComponent/ProductCategoryComponent'
-import Instafeed from 'components/Instafeed'
+import Layout from "components/Layout/Layout";
+import Banner from "components/Banner";
+import MainAdvertisement from "components/Widget/MainAdvertisement";
+import SecondAdvertisement from "components/Widget/SecondAdvertisement";
+import ProductsComponent from "components/Products/ProductsComponent";
+import ProductCategoryComponent from "components/ProductCategoryComponent/ProductCategoryComponent";
+import Instafeed from "components/Instafeed";
 
 /* styles */
-import styles from 'public/scss/components/ProductsComponent.module.scss'
+import styles from "public/scss/components/ProductsComponent.module.scss";
 
 const Home: FC<any> = ({
   lng,
@@ -31,26 +31,25 @@ const Home: FC<any> = ({
   dataBanners,
   brand,
   isMenuCategorySectionActive = true,
-  isAllProductsSectionActive = false
+  isAllProductsSectionActive = false,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
-  const i18n: any = useI18n()
-  const layoutProps = { 
-    lngDict, 
-    i18n, 
-    lng, 
-    brand,  
+  const i18n: any = useI18n();
+  const layoutProps = {
+    lngDict,
+    i18n,
+    lng,
+    brand,
     SEO: {
-      title: i18n.t("home.title")
-    }
-  }
+      title: i18n.t("home.title"),
+    },
+  };
+
+  console.log({ brand: brand }, { banners: dataBanners });
 
   return (
     <Layout {...layoutProps}>
       <div className="container-fluid p-0">
-        <Banner
-          i18n={i18n}
-          dataBanners={dataBanners}
-        />
+        <Banner i18n={i18n} dataBanners={dataBanners} />
       </div>
 
       <TemplateFeatures
@@ -62,45 +61,45 @@ const Home: FC<any> = ({
                 <ProductsComponent
                   i18n={i18n}
                   lng={lng}
-                  type='grid'
-                  tagname='featured'
+                  type="grid"
+                  tagname="featured"
                   withTitle={{
-                    type: 'left',
-                    title: i18n.t('home.featuredProducts'),
-                    withSeeAll: true
+                    type: "left",
+                    title: i18n.t("home.featuredProducts"),
+                    withSeeAll: true,
                   }}
                 />
               </LazyLoadComponent>
             </div>
-                
+
             <section className="container">
               <LazyLoadComponent>
                 <MainAdvertisement />
               </LazyLoadComponent>
             </section>
-                
+
             <LazyLoadComponent>
               <ProductsComponent
                 i18n={i18n}
                 lng={lng}
-                type='grid'
-                tagname='new-arrivals'
+                type="grid"
+                tagname="new-arrivals"
                 withTitle={{
-                  type: 'left',
-                  title: i18n.t('home.arrivalsProducts'),
-                  withSeeAll: true
+                  type: "left",
+                  title: i18n.t("home.arrivalsProducts"),
+                  withSeeAll: true,
                 }}
               />
             </LazyLoadComponent>
           </>
         }
       >
-        <section className={styles.products_display1}>        
+        <section className={styles.products_display1}>
           <LazyLoadComponent>
             <ProductsComponent
               i18n={i18n}
               lng={lng}
-              type='grid'
+              type="grid"
               ishomepageProductHighlights
               display="Display1"
             />
@@ -118,7 +117,7 @@ const Home: FC<any> = ({
             <ProductsComponent
               i18n={i18n}
               lng={lng}
-              type='grid'
+              type="grid"
               ishomepageProductHighlights
               display="Display2"
             />
@@ -131,13 +130,13 @@ const Home: FC<any> = ({
           <SecondAdvertisement />
         </LazyLoadComponent>
       </section>
-      
+
       {isMenuCategorySectionActive && (
         <section className="container">
           <ProductCategoryComponent
             i18n={i18n}
-            page='homepage'
-            displayMode='normal'
+            page="homepage"
+            displayMode="normal"
             withTitle
             lng={lng}
             withSeeAll
@@ -145,71 +144,75 @@ const Home: FC<any> = ({
           />
         </section>
       )}
-      
+
       {isAllProductsSectionActive && (
         <LazyLoadComponent>
           <ProductsComponent
             i18n={i18n}
             lng={lng}
-            type='grid'
+            type="grid"
             withTitle={{
-              type: 'left',
-              title: i18n.t('home.allProducts'),
-              withSeeAll: true
+              type: "left",
+              title: i18n.t("home.allProducts"),
+              withSeeAll: true,
             }}
           />
         </LazyLoadComponent>
       )}
 
-      {brand?.socmedSetting?.instagramToken &&
+      {brand?.socmedSetting?.instagramToken && (
         <section className="container">
           <LazyLoadComponent>
-            <Instafeed
-              i18n={i18n}
-              brand={brand}
-              withFollowButton
-            />
+            <Instafeed i18n={i18n} brand={brand} withFollowButton />
           </LazyLoadComponent>
         </section>
-      }
-
+      )}
     </Layout>
-  )
-}
+  );
+};
 
 export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
-  params
+  params,
 }: any) => {
+  const tokenData = await useAuthToken({ req, res, env: process.env });
+  const token = tokenData.value;
   const [
     brand,
     dataBanners,
-    { isAllProductsSectionActive, isMenuCategorySectionActive }
+    { isAllProductsSectionActive, isMenuCategorySectionActive },
   ] = await Promise.all([
-    useBrandCommon(req, params),
-    handleGetBanner(req),
-    useGetHomepageSection(GRAPHQL_URI(req)),
-    useAuthToken({req, res, env: process.env})
-  ])
+    useBrandCommon(req, params, token),
+    handleGetBanner(req, token),
+    useGetHomepageSection(GRAPHQL_URI(req), token),
+  ]);
 
-  const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico', "manifest", "sitemap.xml"]
+  const allowedUri: Array<string> = [
+    "en",
+    "id",
+    "graphql",
+    "favicon.ico",
+    "manifest",
+    "sitemap.xml",
+  ];
 
   if (allowedUri.indexOf(params.lng.toString()) == -1) {
     res.writeHead(307, {
-      Location: `/${brand.lng}/` + params.lng
-    })
-    res.end()
+      Location: `/${brand.lng}/` + params.lng,
+    });
+    res.end();
   }
 
+  console.log("gssp", token, brand, dataBanners);
   return {
     props: {
       ...brand,
       dataBanners,
       isMenuCategorySectionActive,
-      isAllProductsSectionActive
-    }
-  }
-}
+      isAllProductsSectionActive,
+    },
+  };
+};
 
-export default Home
+export default Home;
