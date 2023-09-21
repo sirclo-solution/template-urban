@@ -22,6 +22,7 @@ import Instafeed from 'components/Instafeed'
 
 /* styles */
 import styles from 'public/scss/components/ProductsComponent.module.scss'
+import { log } from 'console';
 
 const Home: FC<any> = ({
   lng,
@@ -39,6 +40,8 @@ const Home: FC<any> = ({
       title: i18n.t("home.title")
     }
   }
+
+  console.log({brand: brand}, {banners: dataBanners});
 
   return (
     <Layout {...layoutProps}>
@@ -161,13 +164,14 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }: any) => {
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+	const token = tokenData.value; 
   const [
     brand,
     dataBanners
   ] = await Promise.all([
-    useBrandCommon(req, params),
-    handleGetBanner(req),
-    useAuthToken({req, res, env: process.env})
+    useBrandCommon(req, params, token),
+    handleGetBanner(req, token)
   ])
 
   const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico', "manifest", "sitemap.xml"]
@@ -179,6 +183,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     res.end()
   }
 
+  console.log('gssp', token, brand, dataBanners);
   return {
     props: {
       ...brand,
