@@ -202,6 +202,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     res.end();
   }
 
+  console.log("gssp", token, brand, dataBanners);
   return {
     props: {
       ...brand,
