@@ -22,7 +22,6 @@ import Instafeed from 'components/Instafeed'
 
 /* styles */
 import styles from 'public/scss/components/ProductsComponent.module.scss'
-import { log } from 'console';
 
 const Home: FC<any> = ({
   lng,
@@ -40,8 +39,6 @@ const Home: FC<any> = ({
       title: i18n.t("home.title")
     }
   }
-
-  console.log({brand: brand}, {banners: dataBanners});
 
   return (
     <Layout {...layoutProps}>
@@ -183,7 +180,6 @@ export const getServerSideProps: GetServerSideProps = async ({
     res.end()
   }
 
-  console.log('gssp', token, brand, dataBanners);
   return {
     props: {
       ...brand,
