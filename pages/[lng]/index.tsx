@@ -161,13 +161,14 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
   params
 }: any) => {
+  const tokenData = await useAuthToken({ req, res, env: process.env }); 
+	const token = tokenData.value; 
   const [
     brand,
     dataBanners
   ] = await Promise.all([
-    useBrandCommon(req, params),
-    handleGetBanner(req),
-    useAuthToken({req, res, env: process.env})
+    useBrandCommon(req, params, token),
+    handleGetBanner(req, token)
   ])
 
   const allowedUri: Array<string> = ['en', 'id', 'graphql', 'favicon.ico', "manifest", "sitemap.xml"]
