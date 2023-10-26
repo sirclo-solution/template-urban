@@ -117,7 +117,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
 	const token = tokenData.value; 
-  const { brand } = await useBrandCommon(req, params, token)
+  const brand = await useBrandCommon(req, params, token)
   const [orderID, status] = params?.orderID as string[]
 
   return {

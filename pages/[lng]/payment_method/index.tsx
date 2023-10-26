@@ -306,10 +306,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const tokenData = await useAuthToken({ req, res, env: process.env }); 
 	const token = tokenData.value; 
-  const [
-    { brand },
-    hasOtp
-  ] = await Promise.all([
+  const [brand, hasOtp] = await Promise.all([
     useBrandCommon(req, params, token),
     useWhatsAppOTPSetting(req, token)
   ])
