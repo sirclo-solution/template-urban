@@ -170,7 +170,7 @@ export const getServerSideProps: GetServerSideProps = async ({
 	const token = tokenData.value;
   
   const [
-    { brand },
+    brand,
     headerImage
   ] = await Promise.all([
     useBrandCommon(req, params, token),
