@@ -13,6 +13,7 @@ const locale = {
     "inputWhatsApp": "Enter your Whatsapp number to login our store",
     "insertVerificationCode": "Enter verification code (OTP)",
     "loginWithAnotherMethod": "Sign in using another method",
+    "maxRequestOTP": "Maximum retry of otp verification has been reached, please try again.",
     "notReceivedMessage": "Haven't received the message yet?",
     "noWhatsApp": "Don't have whatsapp?",
     "otpSent": "We have sent a verification code via Whatsapp number ",
