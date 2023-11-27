@@ -21,6 +21,7 @@ const locale = {
     "fieldNotComplete": "Mohon dilengkapi form yang tersedia.",
     "haveAnAccount": "Sudah punya akun?",
     "internationalShipping": " Internasional (luar negeri)",
+    "minimumAddress": "Detail Alamat minimal 11 karakter",
     "mobilePhone": "No. Handphone",
     "mobilePhonePlaceholder": "0810 0000 000",
     "nameInvalid": "Nama harus mengandung huruf, silahkan cek lagi",

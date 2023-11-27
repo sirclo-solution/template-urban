@@ -21,6 +21,7 @@ const locale = {
     "fieldNotComplete": "Please complete the field.",
     "haveAnAccount": "Do you have an account?",
     "internationalShipping": "International",
+    "minimumAddress": "Address Detail minimum 11 characters",
     "mobilePhone": "Phone Number",
     "mobilePhonePlaceholder": "0810 0000 000",
     "nameInvalid": "Name must contain letter, please check again",
